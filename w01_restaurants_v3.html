@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYSN Wireframe — Restaurants & Gastronomie v3</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --light: #f4f4f4;
+      --mid: #d0d0d0;
+      --dark: #333333;
+      --black: #111111;
+      --body: #f0f0f0;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--body); }
+
+    body {
+      margin: 0;
+      min-width: 1365px;
+      background: var(--body);
+      color: var(--black);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+      overflow-x: auto;
+    }
+
+    .page {
+      width: 900px;
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      position: relative;
+      min-height: 100vh;
+    }
+
+    nav,
+    section,
+    footer {
+      position: relative;
+      padding: 58px 40px;
+      border-bottom: 1px solid var(--mid);
+      background: var(--white);
+    }
+
+    .section-label {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--dark);
+      font-weight: 800;
+    }
+
+    .annotation {
+      position: absolute;
+      left: calc(100% + 22px);
+      top: 28px;
+      width: 210px;
+      background: var(--light);
+      border: 1px solid var(--mid);
+      padding: 14px;
+      font-size: 12px;
+      color: var(--dark);
+      box-shadow: 4px 4px 0 var(--mid);
+    }
+
+    .annotation::before {
+      content: "NOTE";
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    p { margin-top: 0; }
+
+    h1 {
+      font-size: 50px;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+      max-width: 650px;
+    }
+
+    h2 {
+      font-size: 35px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+      max-width: 720px;
+    }
+
+    h3 {
+      font-size: 19px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    h4 {
+      font-size: 15px;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    p,
+    li {
+      font-size: 15px;
+      color: var(--dark);
+    }
+
+    .lead {
+      font-size: 18px;
+      max-width: 720px;
+      color: var(--dark);
+      margin-bottom: 0;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--dark);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin: 24px 0 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--dark);
+      background: transparent;
+      color: var(--black);
+      text-decoration: none;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 800;
+      min-height: 46px;
+    }
+
+    .btn.secondary {
+      border-color: var(--mid);
+      font-weight: 700;
+    }
+
+    .objection,
+    .microcopy {
+      color: var(--dark);
+      font-size: 13px;
+      margin: 10px 0 0;
+    }
+
+    .divider-top { border-top: 1px solid var(--mid); padding-top: 18px; margin-top: 20px; }
+
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+
+    .card,
+    .feature,
+    .stat,
+    .type-card,
+    .use-card,
+    .step,
+    .product-card,
+    .case-copy,
+    .quote-card,
+    .package-box,
+    .faq-row,
+    .comparison-table,
+    .risk-card,
+    .cta-strip-inner,
+    .trust-pill,
+    .gallery-card {
+      border: 1px solid var(--mid);
+      background: var(--white);
+    }
+
+    .card,
+    .type-card,
+    .use-card,
+    .step,
+    .quote-card,
+    .risk-card,
+    .gallery-card {
+      padding: 22px;
+    }
+
+    .circle-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--mid);
+      background: var(--light);
+      margin-bottom: 16px;
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .circle-icon::before,
+    .circle-icon::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 8px;
+      width: 32px;
+      border-top: 1px solid var(--mid);
+      transform-origin: center;
+    }
+
+    .circle-icon::before { transform: rotate(45deg); }
+    .circle-icon::after { transform: rotate(-45deg); }
+
+    .image-placeholder {
+      width: 100%;
+      min-height: 180px;
+      background: var(--light);
+      border: 1px solid var(--mid);
+      overflow: hidden;
+      display: block;
+    }
+
+    .image-placeholder svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: inherit;
+    }
+
+    .image-caption {
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 1.3;
+      text-align: center;
+      color: var(--dark);
+    }
+
+    .mini-label {
+      display: inline-block;
+      border: 1px solid var(--mid);
+      background: var(--light);
+      padding: 5px 8px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 12px;
+    }
+
+    .number {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--mid);
+      background: var(--light);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      min-height: 84px;
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    .logo-ph {
+      width: 106px;
+      height: 40px;
+      border: 1px solid var(--mid);
+      background: var(--light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      color: var(--black);
+      font-size: 13px;
+      flex: 0 0 auto;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      margin-left: auto;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      color: var(--black);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    nav .btn { padding: 10px 16px; min-height: 40px; }
+
+    /* Hero */
+    .hero { min-height: 560px; padding-top: 52px; }
+    .hero .image-placeholder { min-height: 230px; margin-bottom: 28px; }
+
+    /* Trust */
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--mid);
+    }
+
+    .stat {
+      border: 0;
+      border-right: 1px solid var(--mid);
+      padding: 22px 18px;
+      min-height: 162px;
+    }
+
+    .stat:last-child { border-right: 0; }
+
+    .stat-number {
+      display: block;
+      font-size: 38px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+      color: var(--black);
+    }
+
+    .stat p { font-size: 13px; margin: 0; }
+
+    /* Restaurant types */
+    .type-card { min-height: 180px; }
+    .type-card p { margin-bottom: 0; font-size: 14px; }
+
+    /* Use cases */
+    .use-card { min-height: 280px; }
+    .use-card p:last-child { margin-bottom: 0; }
+
+    /* Plans */
+    .plan-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .step-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .step p { font-size: 14px; margin-bottom: 0; }
+
+    /* CTA */
+    .cta-strip { padding: 42px 40px; background: var(--light); }
+    .cta-strip-inner { padding: 26px; background: var(--white); }
+    .cta-strip h2 { margin-bottom: 8px; }
+
+    /* Products */
+    .product-card { padding: 16px; min-height: 350px; }
+    .product-card .image-placeholder { min-height: 136px; margin-bottom: 16px; }
+    .product-card p { font-size: 14px; }
+    .product-card a { color: var(--black); font-size: 14px; font-weight: 800; text-decoration: underline; text-underline-offset: 3px; }
+
+    /* Comparison */
+    .comparison-table { width: 100%; border-collapse: collapse; }
+    .comparison-table th,
+    .comparison-table td {
+      border: 1px solid var(--mid);
+      padding: 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+      color: var(--dark);
+    }
+
+    .comparison-table th { color: var(--black); background: var(--light); font-weight: 900; }
+    .comparison-table td:first-child { color: var(--black); font-weight: 800; width: 24%; }
+
+    /* Case */
+    .before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 22px; }
+    .before-after .image-placeholder { min-height: 220px; }
+    .case-copy { padding: 24px; }
+    .case-meta { font-weight: 900; margin-bottom: 14px; }
+    .case-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+    .proof-point { border-top: 1px solid var(--mid); margin-top: 18px; padding-top: 16px; font-weight: 800; color: var(--black); }
+
+    /* Quotes */
+    blockquote { margin: 0 0 16px; color: var(--dark); font-size: 15px; }
+    cite { display: block; font-style: normal; font-weight: 800; color: var(--black); font-size: 13px; }
+
+    /* Package */
+    .package-box { padding: 30px; }
+    .checklist { list-style: none; padding: 0; margin: 22px 0 26px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+    .checklist li { position: relative; padding-left: 28px; margin: 0; }
+    .checklist li::before { content: "✓"; position: absolute; left: 0; top: 0; font-weight: 900; color: var(--black); }
+
+    /* FAQ */
+    .faq-list { display: grid; gap: 12px; }
+    .faq-row { padding: 18px 20px; }
+    .faq-row strong { display: block; color: var(--black); font-size: 16px; margin-bottom: 8px; }
+    .faq-row p { margin-bottom: 0; }
+
+    /* Stakes */
+    .trust-points { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+    .trust-pill { background: var(--light); padding: 10px 12px; font-size: 13px; color: var(--dark); }
+
+    /* Footer */
+    footer { padding-bottom: 34px; }
+    .footer-top { display: grid; grid-template-columns: 160px 1fr; gap: 34px; align-items: start; }
+    .footer-links { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+    .footer-col strong { display: block; margin-bottom: 10px; color: var(--black); }
+    .footer-col a,
+    .legal a { display: block; color: var(--dark); text-decoration: none; font-size: 14px; margin-bottom: 8px; }
+    .legal { display: flex; gap: 18px; border-top: 1px solid var(--mid); margin-top: 34px; padding-top: 20px; align-items: center; flex-wrap: wrap; }
+    .legal .copyright { margin-left: auto; color: var(--dark); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav>
+      <span class="section-label">[NAVIGATION]</span>
+      <div class="logo-ph">HYSN</div>
+      <div class="nav-links" aria-label="Hauptnavigation">
+        <a href="#">Lösungen</a>
+        <a href="#">Services</a>
+        <a href="#">Referenzen</a>
+        <a href="#">DOOH</a>
+        <a href="#">Kontakt</a>
+        <a class="btn" href="#">Menüboard-Beratung starten</a>
+      </div>
+      <aside class="annotation">Sticky nav keeps the primary action reachable while owners compare use cases, proof and package scope.</aside>
+    </nav>
+
+    <section class="hero">
+      <span class="section-label">[HERO]</span>
+      <div class="image-placeholder" aria-label="Bildplatzhalter für Restaurant mit digitalen Menüboards">
+        <svg viewBox="0 0 900 230" preserveAspectRatio="none" role="img" aria-label="Grauer Bildplatzhalter mit diagonalen Linien">
+          <rect x="0" y="0" width="900" height="230" fill="#f4f4f4" />
+          <line x1="0" y1="0" x2="900" y2="230" stroke="#d0d0d0" stroke-width="2" />
+          <line x1="900" y1="0" x2="0" y2="230" stroke="#d0d0d0" stroke-width="2" />
+        </svg>
+      </div>
+      <div class="image-caption">Hero-Bild — Restauranttheke mit digitalen Menüboards über dem Bestellbereich</div>
+      <h1>Gedruckte Menüs bremsen Ihren Verkauf.</h1>
+      <p class="lead">HYSN plant, liefert und gestaltet digitale Menüboards für Restaurants, Cafés und Schnellgastronomie — inklusive Bildschirmen, Wandhalterungen, Menüdesign, Animation und optionaler Montage.</p>
+      <div class="button-row">
+        <a class="btn" href="#">Menüboard für mein Restaurant planen</a>
+        <a class="btn secondary" href="#">Gastronomie-Beispiele ansehen</a>
+      </div>
+      <p class="objection">Sie brauchen kein eigenes Technik- oder Designteam: HYSN führt Sie vom ersten Layout bis zum betriebsbereiten Bildschirm.</p>
+      <aside class="annotation">Problem-led hero for a problem-aware restaurant owner. The subline immediately explains what HYSN does and what is included.</aside>
+    </section>
+
+    <section class="trust">
+      <span class="section-label">[TRUST BAR]</span>
+      <div class="trust-row">
+        <article class="stat">
+          <span class="stat-number">30+</span>
+          <p>Digitale Werbedisplays im HYSN- und hyads-Umfeld zeigen praktische Erfahrung mit echten Standorten, Content-Abläufen und laufendem Betrieb.</p>
+        </article>
+        <article class="stat">
+          <span class="stat-number">24/7</span>
+          <p>Ausgelegt für Geschäftszeiten, Kampagnenwechsel und dauerhafte Sichtbarkeit — nicht für eine einmalige Präsentation am Laptop.</p>
+        </article>
+        <article class="stat">
+          <span class="stat-number">360°</span>
+          <p>Beratung, Hardware, Content, Montagepfad und Support werden als zusammenhängendes System geplant, statt als einzelne Baustellen.</p>
+        </article>
+        <article class="stat">
+          <span class="stat-number">Rhein-Main</span>
+          <p>Persönliche Nähe zu Restaurants, Filialisten und lokalen Betrieben in Deutschland — mit Schwerpunkt auf praktischer Umsetzung vor Ort.</p>
+        </article>
+      </div>
+      <aside class="annotation">Proof appears directly after the hero. These signals are specific to HYSN: operated screens, full-service scope, local execution.</aside>
+    </section>
+
+    <section class="restaurant-types">
+      <span class="section-label">[FÜR WELCHE GASTRONOMIEBETRIEBE]</span>
+      <p class="eyebrow">Erkennen Sie sich wieder?</p>
+      <h2>Digitale Menüboards für Betriebe, in denen schnell entschieden wird.</h2>
+      <div class="grid-3">
+        <article class="type-card">
+          <h3>Döner & Kebab</h3>
+          <p>Für Theken mit hoher Frequenz, vielen Varianten, wechselnden Fleisch- und Menüpreisen und klar sichtbaren Tagesangeboten.</p>
+        </article>
+        <article class="type-card">
+          <h3>Burger & Fast Food</h3>
+          <p>Für Combos, Upgrades, Limited Editions und Aktionsprodukte, die direkt im Bestellmoment sichtbar sein müssen.</p>
+        </article>
+        <article class="type-card">
+          <h3>Café & Bäckerei</h3>
+          <p>Für Frühstück, Kaffee, Kuchen, saisonale Produkte und schnelle Vormittagsbestellungen mit wenig Erklärzeit.</p>
+        </article>
+        <article class="type-card">
+          <h3>Pizzeria</h3>
+          <p>Für große Speisekarten, Zusatzbeläge, Mittagsmenüs und Abholangebote, die auf Papier schnell unübersichtlich werden.</p>
+        </article>
+        <article class="type-card">
+          <h3>Sushi & Asia</h3>
+          <p>Für visuelle Gerichte, Boxen, Menüs, Lunch-Specials und klare Orientierung zwischen vielen Kombinationsmöglichkeiten.</p>
+        </article>
+        <article class="type-card">
+          <h3>Franchise & Filialen</h3>
+          <p>Für einheitliche Markenführung, zentrale Aktionen und lokale Anpassungen, ohne dass jede Filiale eigene Dateien baut.</p>
+        </article>
+      </div>
+      <aside class="annotation">Self-qualification section lets different restaurant owners find themselves before they evaluate features.</aside>
+    </section>
+
+    <section class="pain-points">
+      <span class="section-label">[PAIN POINTS]</span>
+      <p class="eyebrow">Was Restaurants jeden Monat Zeit kostet</p>
+      <h2>Wenn die Speisekarte statisch bleibt, arbeitet sie gegen Ihren Betrieb.</h2>
+      <div class="grid-3">
+        <article class="card">
+          <div class="circle-icon" aria-hidden="true"></div>
+          <h3>Jede Preisänderung kostet unnötig Zeit</h3>
+          <p>Wenn Fleisch, Käse, Verpackung oder Energie teurer werden, müssen Preise schnell angepasst werden. Gedruckte Tafeln machen daraus einen Druckauftrag, Abstimmungen und mehrere Tage Wartezeit.</p>
+        </article>
+        <article class="card">
+          <div class="circle-icon" aria-hidden="true"></div>
+          <h3>Ihre besten Produkte gehen unter</h3>
+          <p>Combos, Menüs und margenstarke Extras stehen oft irgendwo in einer langen Liste. Kunden bestellen dann das Gewohnte, weil nichts am Counter aktiv ihre Aufmerksamkeit führt.</p>
+        </article>
+        <article class="card">
+          <div class="circle-icon" aria-hidden="true"></div>
+          <h3>Der Laden wirkt älter als das Essen</h3>
+          <p>Gute Produkte verlieren Wirkung, wenn darüber alte Tafeln, gemischte Schriftarten oder überklebte Preise hängen. Gerade neue Gäste schließen vom Menübild auf die Qualität des Betriebs.</p>
+        </article>
+      </div>
+      <aside class="annotation">Loss-aversion framing. The cards show what the owner loses: time, margin visibility and perceived quality.</aside>
+    </section>
+
+    <section class="use-cases">
+      <span class="section-label">[USE CASES]</span>
+      <p class="eyebrow">Konkrete Einsatzszenarien</p>
+      <h2>So funktioniert ein digitales Menüboard in Ihrem Alltag.</h2>
+      <div class="grid-2">
+        <article class="use-card">
+          <span class="mini-label">Döner & Kebab Shop</span>
+          <h3>Mehr Orientierung, wenn samstags die Schlange bis zur Tür geht</h3>
+          <p>An der Döner-Theke entscheiden viele Gäste erst, wenn sie vorne stehen: Tasche, Dürüm, Box, Teller, Menü, extra Käse, scharf oder nicht. HYSN strukturiert meist mehrere Screens über der Theke: links die Klassiker, mittig die starken Hero-Produkte, rechts Menüs und Aktionen.</p>
+          <p>Wenn Fleisch- oder Verpackungskosten steigen, müssen Preise nicht neu gedruckt werden. Die digitale Fläche hilft besonders im Rush, weil Gäste Varianten schon sehen, bevor sie bestellen.</p>
+        </article>
+        <article class="use-card">
+          <span class="mini-label">Burger Restaurant / Fast Food</span>
+          <h3>Combos und Upgrades werden sichtbar, bevor gefragt wird</h3>
+          <p>Bei Burger-Konzepten entscheidet die Theke oft über den Warenkorb: einzelner Burger oder Menü, normale Pommes oder Loaded Fries, Standard-Drink oder Upgrade. HYSN baut die Bildschirme so auf, dass Combos nicht wie eine Zusatzinformation wirken, sondern als logische Bestellung.</p>
+          <p>Zur Mittagszeit stehen schnelle Menüs im Fokus; in ruhigeren Stunden können Limited Editions, Dessert oder Social-Media-Aktionen größer laufen. So bleibt derselbe Screen verkaufsorientiert, aber situativ passend.</p>
+        </article>
+        <article class="use-card">
+          <span class="mini-label">Café & Bäckerei</span>
+          <h3>Der Gast sieht die Tagesauswahl, während der Kaffee bestellt wird</h3>
+          <p>Morgens zählt jede Sekunde: Kaffee, belegtes Brötchen, Croissant, Kuchen, Frühstücksdeal. Ein Screen in Blickrichtung der Warteschlange zeigt Tagesprodukte und saisonale Backwaren, bevor die Kundin an der Kasse steht.</p>
+          <p>Wenn die Erdbeerzeit beginnt oder ein Kuchen ausverkauft ist, muss keine Tafel neu geschrieben werden. HYSN plant die Anzeige so, dass Heißgetränke, Gebäck und Aktionen getrennt lesbar bleiben.</p>
+        </article>
+        <article class="use-card">
+          <span class="mini-label">Franchise-Filiale</span>
+          <h3>Zentrale Markenführung ohne starre Filialen</h3>
+          <p>Bei mehreren Standorten muss das Menü überall gleich aussehen, aber nicht jede Filiale hat dieselben Aktionen, Öffnungszeiten oder regionalen Produkte. HYSN kann das Grundlayout markenkonform aufbauen und lokale Flächen für Filialangebote vorsehen.</p>
+          <p>Die Zentrale behält Kontrolle über Design, Kampagnen und Produktlogik; die Filiale kann abgestimmte regionale Specials einspielen. Das reduziert Wildwuchs und macht Rollouts für weitere Standorte planbarer.</p>
+        </article>
+      </div>
+      <aside class="annotation">Deep use cases are the conversion engine. They make the page feel written for real restaurants, not generic signage buyers.</aside>
+    </section>
+
+    <section class="hysn-plan">
+      <span class="section-label">[THE HYSN PLAN]</span>
+      <p class="eyebrow">Der einfache Weg zum laufenden Menüboard</p>
+      <h2>Drei Schritte, damit aus einer Idee ein fertiger Counter wird.</h2>
+      <div class="plan-row">
+        <article class="step">
+          <div class="number">1</div>
+          <h3>Theke verstehen</h3>
+          <p>Sie zeigen uns Speisekarte, Raum, Wandfläche, Blickrichtung und typische Bestellsituation. Daraus entsteht eine sinnvolle Screen-Struktur.</p>
+        </article>
+        <article class="step">
+          <div class="number">2</div>
+          <h3>Menü sichtbar machen</h3>
+          <p>HYSN übersetzt Ihre Kategorien, Preise, Bilder und Aktionen in ein klares digitales Layout mit Animationen, die nicht überladen wirken.</p>
+        </article>
+        <article class="step">
+          <div class="number">3</div>
+          <h3>Bildschirme betreiben</h3>
+          <p>Nach Lieferung, Montagepfad und Einrichtung laufen die Inhalte auf den Screens. Für spätere Änderungen wird ein klarer Update-Ablauf festgelegt.</p>
+        </article>
+      </div>
+      <aside class="annotation">StoryBrand plan: understand the counter, design the menu, operate the screens. This reduces perceived complexity.</aside>
+    </section>
+
+    <section class="how-it-works">
+      <span class="section-label">[HOW IT WORKS]</span>
+      <p class="eyebrow">Vom Erstkontakt bis zum Betrieb</p>
+      <h2>Sie wissen vorab, was als Nächstes passiert.</h2>
+      <div class="step-row">
+        <article class="step">
+          <div class="number">01</div>
+          <h3>Kurzes Gespräch</h3>
+          <p>Restauranttyp, Screen-Anzahl, Wand- oder Deckenmontage, gewünschte Inhalte und Zeitplan werden geklärt.</p>
+        </article>
+        <article class="step">
+          <div class="number">02</div>
+          <h3>Layout-Vorschlag</h3>
+          <p>Sie erhalten eine klare Empfehlung für Bildschirmaufteilung, Menüstruktur, Bildsprache und benötigte Formate.</p>
+        </article>
+        <article class="step">
+          <div class="number">03</div>
+          <h3>Produktion & Setup</h3>
+          <p>HYSN bereitet Hardware, Halterungen, Screen-Inhalte, Animationen und technische Einrichtung für den Einsatz vor.</p>
+        </article>
+        <article class="step">
+          <div class="number">04</div>
+          <h3>Übergabe & Updates</h3>
+          <p>Nach dem Start wird festgelegt, wie Preisänderungen, neue Produkte und Aktionen künftig sauber aktualisiert werden.</p>
+        </article>
+      </div>
+      <aside class="annotation">Operational clarity answers the hidden question: “What will working with HYSN actually feel like?”</aside>
+    </section>
+
+    <section class="cta-strip">
+      <span class="section-label">[MID-PAGE CTA STRIP]</span>
+      <div class="cta-strip-inner">
+        <h2>Sie wissen schon, dass Papier nicht mehr reicht?</h2>
+        <p>Dann lassen Sie prüfen, welche Bildschirmaufteilung zu Ihrer Theke, Speisekarte und Bestellsituation passt.</p>
+        <div class="button-row">
+          <a class="btn" href="#">Meine Theke digital planen lassen</a>
+          <a class="btn secondary" href="#">Erst Beispiel-Layouts ansehen</a>
+        </div>
+        <p class="objection">Die erste Einschätzung verpflichtet Sie nicht zu einem Projekt.</p>
+      </div>
+      <aside class="annotation">Captures conviction mid-page. The objection killer lowers risk without waiting for the final CTA.</aside>
+    </section>
+
+    <section class="products">
+      <span class="section-label">[RELEVANT PRODUCTS]</span>
+      <p class="eyebrow">Relevante HYSN Lösungen</p>
+      <h2>Die passenden Bildschirmflächen für Theke, Eingang und Fenster.</h2>
+      <div class="grid-3">
+        <article class="product-card">
+          <div class="image-placeholder" aria-label="Bildplatzhalter Digitale Menüboards">
+            <svg viewBox="0 0 260 136" preserveAspectRatio="none" role="img" aria-label="Grauer Bildplatzhalter mit diagonalen Linien">
+              <rect x="0" y="0" width="260" height="136" fill="#f4f4f4" />
+              <line x1="0" y1="0" x2="260" y2="136" stroke="#d0d0d0" stroke-width="2" />
+              <line x1="260" y1="0" x2="0" y2="136" stroke="#d0d0d0" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="image-caption">Produktbild — digitale Menüboards über einer Restauranttheke</div>
+          <h3>Digitale Menüboards</h3>
+          <p>Für Speisekarten, Menüs, Kombi-Angebote, Preise und animierte Hero-Gerichte direkt über dem Bestellbereich.</p>
+          <a href="#">Menüboard-Lösung ansehen</a>
+        </article>
+        <article class="product-card">
+          <div class="image-placeholder" aria-label="Bildplatzhalter Digital Signage Display">
+            <svg viewBox="0 0 260 136" preserveAspectRatio="none" role="img" aria-label="Grauer Bildplatzhalter mit diagonalen Linien">
+              <rect x="0" y="0" width="260" height="136" fill="#f4f4f4" />
+              <line x1="0" y1="0" x2="260" y2="136" stroke="#d0d0d0" stroke-width="2" />
+              <line x1="260" y1="0" x2="0" y2="136" stroke="#d0d0d0" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="image-caption">Produktbild — Display für Angebote im Eingangsbereich</div>
+          <h3>Digital Signage Displays</h3>
+          <p>Für Tagesangebote, Abholhinweise, Lieferkampagnen oder Zusatzverkäufe im Warte- und Eingangsbereich.</p>
+          <a href="#">Display-Optionen prüfen</a>
+        </article>
+        <article class="product-card">
+          <div class="image-placeholder" aria-label="Bildplatzhalter HYOUTSTAND Outdoor Signage">
+            <svg viewBox="0 0 260 136" preserveAspectRatio="none" role="img" aria-label="Grauer Bildplatzhalter mit diagonalen Linien">
+              <rect x="0" y="0" width="260" height="136" fill="#f4f4f4" />
+              <line x1="0" y1="0" x2="260" y2="136" stroke="#d0d0d0" stroke-width="2" />
+              <line x1="260" y1="0" x2="0" y2="136" stroke="#d0d0d0" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="image-caption">Produktbild — Outdoor-Stele vor einem Restaurant</div>
+          <h3>HYOUTSTAND Outdoor Signage</h3>
+          <p>Für sichtbare Angebote vor dem Eingang, auf der Terrasse oder an Laufwegen mit hoher Passantenfrequenz.</p>
+          <a href="#">Outdoor-Signage ansehen</a>
+        </article>
+      </div>
+      <aside class="annotation">Keeps product navigation contextual. These are not generic product cards; each ties to a restaurant placement.</aside>
+    </section>
+
+    <!-- Added because comparison removes two strong alternatives from the buyer's mind: print and DIY screens. -->
+    <section class="comparison">
+      <span class="section-label">[COMPARISON]</span>
+      <p class="eyebrow">Warum nicht einfach drucken oder Fernseher aufhängen?</p>
+      <h2>Die Lösung entscheidet sich nicht nur am Bildschirm.</h2>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Was im Alltag passiert</th>
+            <th>Wo das Risiko liegt</th>
+            <th>Was HYSN anders macht</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gedruckte Menütafeln</td>
+            <td>Preisänderungen, neue Gerichte und Aktionen müssen jedes Mal neu gestaltet und produziert werden.</td>
+            <td>Die Karte wirkt schnell veraltet oder wird mit Notlösungen überklebt.</td>
+            <td>Digitale Inhalte können strukturiert angepasst werden, ohne die gesamte Wand neu zu bauen.</td>
+          </tr>
+          <tr>
+            <td>DIY-TV-Lösung</td>
+            <td>Ein Consumer-TV zeigt zwar ein Bild, aber Layout, Helligkeit, Format, Betrieb und Update-Prozess bleiben ungeklärt.</td>
+            <td>Das Ergebnis sieht oft improvisiert aus und wird bei Änderungen wieder zur Handarbeit.</td>
+            <td>HYSN plant Bildschirm, Halterung, Content und Betrieb als zusammenhängendes System.</td>
+          </tr>
+          <tr>
+            <td>Billiger Screen-Anbieter</td>
+            <td>Hardware kommt an, aber Menüdesign, Animation, Montagepfad und spätere Pflege fehlen.</td>
+            <td>Sie müssen Designer, Techniker und Content-Prozess selbst koordinieren.</td>
+            <td>HYSN übernimmt Beratung, Content-Erstellung, Setup und Support aus einer Hand.</td>
+          </tr>
+        </tbody>
+      </table>
+      <aside class="annotation">Comparison table positions HYSN against the real alternatives: print, DIY TV and hardware-only sellers.</aside>
+    </section>
+
+    <section class="case-study">
+      <span class="section-label">[VORHER / NACHHER CASE STUDY]</span>
+      <p class="eyebrow">Repräsentatives Projektbeispiel</p>
+      <h2>Aus einer vollen Speiseliste wird ein klarer Bestellmoment.</h2>
+      <div class="before-after">
+        <div>
+          <div class="image-placeholder" aria-label="Bildplatzhalter vorher gedruckte Menütafeln">
+            <svg viewBox="0 0 390 220" preserveAspectRatio="none" role="img" aria-label="Grauer Bildplatzhalter mit diagonalen Linien">
+              <rect x="0" y="0" width="390" height="220" fill="#f4f4f4" />
+              <line x1="0" y1="0" x2="390" y2="220" stroke="#d0d0d0" stroke-width="2" />
+              <line x1="390" y1="0" x2="0" y2="220" stroke="#d0d0d0" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="image-caption">Vorher — gedruckte Speisekarte mit vielen Einzelpositionen</div>
+        </div>
+        <div>
+          <div class="image-placeholder" aria-label="Bildplatzhalter nachher HYSN Menüboards">
+            <svg viewBox="0 0 390 220" preserveAspectRatio="none" role="img" aria-label="Grauer Bildplatzhalter mit diagonalen Linien">
+              <rect x="0" y="0" width="390" height="220" fill="#f4f4f4" />
+              <line x1="0" y1="0" x2="390" y2="220" stroke="#d0d0d0" stroke-width="2" />
+              <line x1="390" y1="0" x2="0" y2="220" stroke="#d0d0d0" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="image-caption">Nachher — drei digitale Menüboards mit Kategorien, Hero-Produkten und Aktionen</div>
+        </div>
+      </div>
+      <div class="case-copy">
+        <div class="case-meta">Szenario: Quick-Service-Restaurant mit Döner-, Bowl- und Menüverkauf</div>
+        <div class="case-columns">
+          <div>
+            <h3>Vorher</h3>
+            <p>Die Speisekarte bestand aus vielen Positionen, Preiszeilen und Zusatzoptionen. Neue Produkte wurden kaum sichtbar, Preisänderungen mussten manuell in Dateien und Druckvorlagen nachgezogen werden.</p>
+          </div>
+          <div>
+            <h3>Nachher</h3>
+            <p>Drei Bildschirme trennen Hauptkategorien, visuelle Hero-Gerichte und Aktionsflächen. Gäste sehen schneller, was sie bestellen können, und der Betrieb kann Änderungen vorbereiten, ohne neue Tafeln zu produzieren.</p>
+          </div>
+        </div>
+        <p class="proof-point">Konkrete Veränderung: Aus einer statischen Wand entsteht eine digitale Verkaufsfläche mit klarer Kategorie-Logik, besserer Bildwirkung und planbarem Update-Prozess.</p>
+      </div>
+      <aside class="annotation">Representative before/after based on HYSN capabilities. The contrast makes the operational change tangible.</aside>
+    </section>
+
+    <section class="testimonials">
+      <span class="section-label">[TESTIMONIALS]</span>
+      <p class="eyebrow">Beispielhafte Kundenstimmen für den Wireframe</p>
+      <h2>So sollte sich echtes Feedback später anhören.</h2>
+      <div class="grid-3">
+        <article class="quote-card">
+          <blockquote>„Vorher haben wir bei jeder Preisänderung neue Tafeln vorbereitet. Gerade beim Döner war das nervig, weil Fleisch und Verpackung sich ständig ändern. Jetzt können wir die Preise erst intern prüfen und dann sauber auf die Screens bringen.“</blockquote>
+          <cite>Döner-Shop, Frankfurt</cite>
+        </article>
+        <article class="quote-card">
+          <blockquote>„Unsere Wochenkarte wechselt oft. Früher stand das auf einem Aufsteller, den viele Gäste gar nicht gesehen haben. Jetzt läuft das Mittagsangebot auf dem Screen direkt neben der Kaffeemaschine, also genau dort, wo die Leute warten.“</blockquote>
+          <cite>Café & Bäckerei, Dreieich</cite>
+        </article>
+        <article class="quote-card">
+          <blockquote>„Wir wollten nicht, dass jede Filiale eigene Designs baut. Mit dem zentralen Layout sehen die Aktionen überall gleich aus, aber ein Standort kann trotzdem ein regionales Special bekommen, ohne die Marke zu verwässern.“</blockquote>
+          <cite>Burger-Franchise, Offenbach</cite>
+        </article>
+      </div>
+      <aside class="annotation">Dummy testimonials are transparent but operationally specific. Replace with verified customer quotes before launch.</aside>
+    </section>
+
+    <section class="package">
+      <span class="section-label">[WHAT'S IN THE PACKAGE]</span>
+      <div class="package-box">
+        <p class="eyebrow">Paketumfang</p>
+        <h2>HYSN Menüboard-System für Restaurants</h2>
+        <p>Ein Paket für Betriebe, die ihre Speisekarte nicht nur digital anzeigen, sondern als klare Verkaufsfläche aufbauen wollen — mit Technik, Gestaltung und Betrieb zusammengedacht.</p>
+        <ul class="checklist">
+          <li>Analyse Ihrer Theke und Bestellsituation</li>
+          <li>Empfehlung für Bildschirmanzahl und Platzierung</li>
+          <li>Auswahl geeigneter Commercial Displays</li>
+          <li>Planung von Wandhalterung oder optionaler Deckenlösung</li>
+          <li>Strukturierung Ihrer Speisekarte nach Kategorien</li>
+          <li>Menüdesign für alle geplanten Screens</li>
+          <li>Animationen für Angebote und Hero-Produkte</li>
+          <li>Formatanpassung für horizontale oder vertikale Screens</li>
+          <li>Technisches Setup und Inhaltsübergabe</li>
+          <li>Update-Ablauf für Preise, Produkte und Aktionen</li>
+          <li>Optionaler Montage- und Wartungsservice</li>
+          <li>Erweiterung für Filialen, Fenster oder Außenbereiche</li>
+        </ul>
+        <a class="btn" href="#">Paket für meine Speisekarte prüfen</a>
+        <p class="objection">Sie erhalten erst eine Empfehlung für Ihren konkreten Standort, bevor ein verbindliches Angebot entsteht.</p>
+      </div>
+      <aside class="annotation">Package lists what is included without price anchoring. It reduces cost anxiety while keeping the offer tangible.</aside>
+    </section>
+
+    <!-- Added because restaurant owners often hesitate if they fear a sales call or wrong-fit project. -->
+    <section class="risk-reversal">
+      <span class="section-label">[RISK REVERSAL]</span>
+      <p class="eyebrow">Erst prüfen, dann entscheiden</p>
+      <h2>Wenn digitale Menüboards nicht passen, sagen wir es.</h2>
+      <div class="grid-3">
+        <article class="risk-card">
+          <h3>Keine Lösung von der Stange</h3>
+          <p>Wenn Ihre Wandfläche, Lichtverhältnisse oder Speisekarte eine andere Lösung brauchen, wird das im Gespräch offen geklärt.</p>
+        </article>
+        <article class="risk-card">
+          <h3>Kein Projekt ohne klares Angebot</h3>
+          <p>Sie entscheiden erst, wenn Umfang, Hardware, Content, Montagepfad und mögliche laufende Leistungen nachvollziehbar sind.</p>
+        </article>
+        <article class="risk-card">
+          <h3>Kein Technikdruck</h3>
+          <p>Sie müssen keine Display-Spezifikationen vorbereiten. HYSN übersetzt Ihre Restaurantrealität in die passende technische Lösung.</p>
+        </article>
+      </div>
+      <aside class="annotation">Risk reversal addresses hidden hesitation: fear of being sold hardware before the actual site is understood.</aside>
+    </section>
+
+    <section class="faq">
+      <span class="section-label">[FAQ]</span>
+      <p class="eyebrow">Fragen aus den ersten zehn Minuten</p>
+      <h2>Was Restaurantbesitzer vor dem Start wissen wollen.</h2>
+      <div class="faq-list">
+        <article class="faq-row">
+          <strong>Reichen unsere vorhandenen Food-Fotos aus?</strong>
+          <p>Manchmal ja, aber nicht jedes Handyfoto wirkt auf einem großen Bildschirm hochwertig. HYSN prüft, ob Bildqualität, Licht, Zuschnitt und Format passen, und zeigt, welche Motive neu oder besser aufbereitet werden sollten.</p>
+        </article>
+        <article class="faq-row">
+          <strong>Sind die Bildschirme hell genug, wenn viel Tageslicht oder ein Fenster in der Nähe ist?</strong>
+          <p>Das hängt vom Standort ab. Genau deshalb wird die Platzierung vorher besprochen: Thekenhöhe, Blickwinkel, Fenster, Reflexionen und Öffnungszeiten beeinflussen die richtige Display-Auswahl.</p>
+        </article>
+        <article class="faq-row">
+          <strong>Was passiert, wenn das Internet ausfällt?</strong>
+          <p>Viele Setups können Inhalte lokal weiter abspielen, wenn sie korrekt eingerichtet sind. Welche Lösung sinnvoll ist, hängt vom gewünschten Content-Management und vom Betrieb vor Ort ab.</p>
+        </article>
+        <article class="faq-row">
+          <strong>Können wir Preisänderungen sehen, bevor Kunden sie sehen?</strong>
+          <p>Ja, der Update-Prozess sollte so aufgebaut werden, dass Änderungen zuerst geprüft und erst danach live geschaltet werden. So vermeiden Sie falsche Preise während des Betriebs.</p>
+        </article>
+        <article class="faq-row">
+          <strong>Machen die Bildschirme Geräusche?</strong>
+          <p>Menüboards laufen in der Regel ohne Ton. Die Wirkung entsteht über klare Struktur, starke Food-Bilder, dezente Animation und gut lesbare Preise — nicht über Lautstärke.</p>
+        </article>
+        <article class="faq-row">
+          <strong>Halten die Displays die Nähe zur Küche aus?</strong>
+          <p>Restaurantumgebungen bringen Wärme, Fett, Staub und lange Laufzeiten mit. HYSN empfiehlt deshalb keine beliebige Consumer-Lösung, sondern passende Displays, Platzierung und Pflegehinweise für den Betrieb.</p>
+        </article>
+      </div>
+      <aside class="annotation">FAQ mirrors real sales-call questions: photos, brightness, internet, preview workflow, sound and restaurant environment.</aside>
+    </section>
+
+    <section class="stakes">
+      <span class="section-label">[STAKES + FINAL CTA]</span>
+      <p class="eyebrow">Der Bestellmoment entscheidet</p>
+      <h2>Ihre Speisekarte ist nicht nur Information. Sie ist Verkaufsfläche.</h2>
+      <p class="lead">Wenn Kunden vor der Theke stehen, entscheiden sie schnell. Ein unübersichtliches, veraltetes oder schwer änderbares Menü lässt Aufmerksamkeit und Zusatzverkäufe liegen — genau in dem Moment, in dem die Bestellung entsteht.</p>
+      <div class="button-row">
+        <a class="btn" href="#">Digitales Menüboard für mein Restaurant planen</a>
+      </div>
+      <p class="objection">Ein kurzes Erstgespräch reicht, um zu klären, welche Lösung für Ihre Theke sinnvoll ist.</p>
+      <div class="trust-points">
+        <span class="trust-pill">Hardware, Content und Setup aus einer Hand</span>
+        <span class="trust-pill">Für echte Bestellsituationen geplant</span>
+        <span class="trust-pill">Erweiterbar für Aktionen, Fenster und Filialen</span>
+      </div>
+      <aside class="annotation">Final section uses mild stakes, not pressure. It reframes the menu as sales surface and gives one clear next action.</aside>
+    </section>
+
+    <footer>
+      <span class="section-label">[FOOTER]</span>
+      <div class="footer-top">
+        <div class="logo-ph">HYSN</div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <strong>Lösungen</strong>
+            <a href="#">Restaurants & Gastronomie</a>
+            <a href="#">Einzelhandel</a>
+            <a href="#">Städte & Kommunen</a>
+            <a href="#">DOOH-Standorte</a>
+          </div>
+          <div class="footer-col">
+            <strong>Services</strong>
+            <a href="#">Beratung</a>
+            <a href="#">Content-Erstellung</a>
+            <a href="#">Installation & Montage</a>
+            <a href="#">Wartung & Betrieb</a>
+          </div>
+          <div class="footer-col">
+            <strong>Unternehmen</strong>
+            <a href="#">Über HYSN</a>
+            <a href="#">Referenzen</a>
+            <a href="#">Partnerprogramm</a>
+            <a href="#">Karriere</a>
+          </div>
+          <div class="footer-col">
+            <strong>Kontakt</strong>
+            <a href="#">Menüboard-Beratung</a>
+            <a href="#">Projekt besprechen</a>
+            <a href="#">Support</a>
+            <a href="#">Standortanalyse</a>
+          </div>
+        </div>
+      </div>
+      <div class="legal">
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">AGB</a>
+        <span class="copyright">© 2026 HYSN / RA Vision GmbH. Alle Rechte vorbehalten.</span>
+      </div>
+      <aside class="annotation">Footer follows the standard HYSN structure and keeps restaurants connected to services, proof and contact paths.</aside>
+    </footer>
+  </div>
+</body>
+</html>

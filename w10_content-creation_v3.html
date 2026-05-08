@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYSN – Content Creation & Animation Wireframe</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --body: #f0f0f0;
+      --light: #f4f4f4;
+      --line: #d0d0d0;
+      --text: #333333;
+      --black: #111111;
+      --muted: #777777;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--body);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+    }
+
+    .page {
+      width: 900px;
+      max-width: 900px;
+      margin: 0 auto;
+      margin-right: calc((100vw - 900px) / 2 + 250px);
+      background: var(--white);
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      position: relative;
+      min-height: 100vh;
+    }
+
+    @media (max-width: 1200px) {
+      .page { margin: 0 auto; }
+      .note { display: none; }
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      height: 76px;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 36px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--black);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .nav-cta {
+      border: 2px solid var(--text);
+      padding: 9px 16px;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    section, footer {
+      position: relative;
+      padding: 74px 46px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    footer { border-bottom: none; }
+
+    .section-label {
+      display: block;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-weight: 700;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      font-size: 56px;
+      line-height: 0.98;
+      letter-spacing: -0.055em;
+      color: var(--black);
+      margin-bottom: 24px;
+      max-width: 760px;
+    }
+
+    h2 {
+      font-size: 36px;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      color: var(--black);
+      margin-bottom: 18px;
+      max-width: 720px;
+    }
+
+    h3 {
+      font-size: 20px;
+      line-height: 1.2;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      font-size: 20px;
+      max-width: 700px;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .kicker-line {
+      margin-top: 14px;
+      font-size: 13px;
+      color: var(--text);
+      max-width: 620px;
+    }
+
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin: 26px 0 0;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      border: 2px solid var(--text);
+      background: transparent;
+      color: var(--black);
+      font-weight: 700;
+      font-size: 14px;
+      min-height: 48px;
+    }
+
+    .button.secondary { color: var(--text); }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 20px;
+      min-height: 100%;
+    }
+
+    .card.shaded { background: var(--light); }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
+      margin-top: 28px;
+    }
+
+    .metric {
+      padding: 22px 18px;
+      border-right: 1px solid var(--line);
+    }
+
+    .metric:last-child { border-right: none; }
+
+    .metric strong {
+      display: block;
+      font-size: 26px;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .metric span {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.3;
+    }
+
+    .placeholder {
+      position: relative;
+      background: var(--light);
+      border: 1px solid var(--line);
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: var(--text);
+      text-align: center;
+      padding: 22px;
+    }
+
+    .placeholder::before,
+    .placeholder::after {
+      content: "";
+      position: absolute;
+      width: 145%;
+      height: 1px;
+      background: var(--line);
+      left: -22%;
+      top: 50%;
+    }
+
+    .placeholder::before { transform: rotate(28deg); }
+    .placeholder::after { transform: rotate(-28deg); }
+
+    .placeholder-caption {
+      position: relative;
+      z-index: 2;
+      max-width: 75%;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.86);
+      font-size: 12px;
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .screen-mockup {
+      border: 10px solid var(--black);
+      background: var(--black);
+      padding: 10px;
+      box-shadow: 0 14px 0 #d0d0d0;
+    }
+
+    .screen-mockup .placeholder {
+      border-color: #333333;
+      min-height: 310px;
+    }
+
+    .problem-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .problem-item {
+      border: 1px solid var(--line);
+      padding: 22px;
+      background: var(--light);
+    }
+
+    .problem-item strong {
+      display: block;
+      color: var(--black);
+      margin-bottom: 8px;
+      font-size: 17px;
+    }
+
+    .visual-card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      min-height: 100%;
+    }
+
+    .visual-card .placeholder { min-height: 128px; border: 0; border-bottom: 1px solid var(--line); }
+    .visual-card .content { padding: 16px; }
+    .visual-card h3 { font-size: 16px; margin-bottom: 8px; }
+    .visual-card p { font-size: 13px; margin-bottom: 0; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .gallery-side {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .tab-viewer {
+      border: 1px solid var(--line);
+      background: var(--light);
+      margin-top: 30px;
+      padding: 18px;
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tab {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 12px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 750;
+      color: var(--black);
+    }
+
+    .tab.active {
+      border: 2px solid var(--text);
+      padding: 11px;
+    }
+
+    .viewer-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .viewer-copy {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 22px;
+    }
+
+    .use-case {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 24px;
+    }
+
+    .use-case .scenario {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+      font-weight: 750;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
+      margin-top: 28px;
+    }
+
+    .step {
+      padding: 24px 18px;
+      border-right: 1px solid var(--line);
+      min-height: 230px;
+    }
+
+    .step:last-child { border-right: none; }
+    .step-number { font-size: 13px; color: var(--muted); font-weight: 800; margin-bottom: 16px; }
+
+    .briefing-box {
+      border: 1px solid var(--line);
+      background: var(--light);
+      padding: 28px;
+      margin-top: 28px;
+    }
+
+    .briefing-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .briefing-item {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 18px;
+    }
+
+    .fit-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .cta-strip {
+      background: var(--black);
+      color: var(--white);
+      border-bottom-color: #333333;
+    }
+
+    .cta-strip h2,
+    .cta-strip p,
+    .cta-strip .section-label { color: var(--white); }
+    .cta-strip .section-label { opacity: 0.72; }
+    .cta-strip .button { color: var(--white); border-color: var(--white); }
+    .cta-strip .kicker-line { color: var(--white); opacity: 0.82; }
+
+    .checklist {
+      columns: 2;
+      column-gap: 34px;
+      margin-top: 26px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checklist li {
+      break-inside: avoid;
+      border-bottom: 1px solid var(--line);
+      padding: 13px 0;
+      font-size: 15px;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      display: inline-block;
+      width: 22px;
+      color: var(--black);
+      font-weight: 800;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .comparison-card {
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .comparison-card .content { padding: 22px; }
+    .comparison-card.before .content { background: var(--light); }
+
+    .impact-box {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      padding: 22px;
+      background: var(--light);
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    blockquote {
+      margin: 0;
+      border: 1px solid var(--line);
+      background: var(--light);
+      padding: 24px;
+      min-height: 100%;
+    }
+
+    blockquote p {
+      font-size: 15px;
+      margin-bottom: 18px;
+    }
+
+    blockquote cite {
+      font-style: normal;
+      color: var(--black);
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .faq {
+      margin-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+      padding: 22px 0;
+    }
+
+    .faq-item h3 { font-size: 18px; margin-bottom: 8px; }
+    .faq-item p { margin-bottom: 0; max-width: 760px; }
+
+    .trust-points {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .trust-point {
+      border: 1px solid var(--line);
+      padding: 16px;
+      font-size: 13px;
+      background: var(--light);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 0.9fr;
+      gap: 28px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .note {
+      position: absolute;
+      left: calc(100% + 24px);
+      top: 70px;
+      width: 220px;
+      background: var(--light);
+      border: 1px solid var(--line);
+      padding: 14px;
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--text);
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.06);
+    }
+
+    .note strong {
+      display: block;
+      color: var(--black);
+      margin-bottom: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero .note { top: 96px; }
+    .nav-note {
+      position: fixed;
+      left: calc(50% + 475px);
+      top: 18px;
+      width: 220px;
+      background: var(--light);
+      border: 1px solid var(--line);
+      padding: 12px;
+      font-size: 12px;
+      color: var(--text);
+      z-index: 60;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.06);
+    }
+
+    @media (max-width: 1200px) { .nav-note { display: none; } }
+
+    .mini-label {
+      display: inline-block;
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 6px 10px;
+      font-size: 11px;
+      font-weight: 750;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .timeline {
+      margin-top: 22px;
+      border: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .timeline div {
+      padding: 18px;
+      border-right: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .timeline div:last-child { border-right: none; }
+    .timeline strong { display: block; color: var(--black); margin-bottom: 6px; }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 12px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <!-- Elevation choices: Added content example viewer, briefing simplicity story, production timeline and template library reference because they directly reduce the highest objection: "this will require too much briefing and cost too much." Animation samples are represented inside the portfolio and content-type cards instead of a separate section to keep the page focused. -->
+
+  <div class="nav-note"><strong>Wireframe note</strong>Sticky navigation keeps the consultation path available while the visitor browses visual proof.</div>
+
+  <main class="page">
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#top" class="logo">HYSN</a>
+      <div class="nav-links">
+        <a href="#beispiele">Beispiele</a>
+        <a href="#leistungen">Leistungen</a>
+        <a href="#prozess">Prozess</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a href="#beratung" class="nav-cta">Content-Beratung anfragen</a>
+    </nav>
+
+    <section class="hero" id="top">
+      <div class="note"><strong>Hero strategy</strong>Problem-led headline. Buyer immediately understands: screens alone are not enough; HYSN makes the screen valuable through content.</div>
+      <span class="section-label">[Hero]</span>
+      <div class="grid-2">
+        <div>
+          <h1>Ein guter Bildschirm verliert Wirkung, wenn der Content nicht verkauft.</h1>
+          <p class="lead">HYSN entwickelt professionelle Screen-Inhalte, Animationen und Kampagnen für digitale Menüboards, Werbescreens, LED-Wände und DOOH-Flächen – passend zu Ihrem Geschäft, Ihrem Format und Ihrem Ziel.</p>
+          <div class="btn-row">
+            <a class="button" href="#beispiele">Content-Beispiele ansehen</a>
+            <a class="button secondary" href="#beratung">Beratung anfragen</a>
+          </div>
+          <p class="kicker-line">Kein langer Briefing-Aufwand: HYSN entwickelt die erste Richtung aus einem kurzen Gespräch, vorhandenen Materialien und den technischen Screen-Daten.</p>
+        </div>
+        <div class="screen-mockup" aria-label="Bildplatzhalter professioneller animierter Screen Content">
+          <div class="placeholder">
+            <div class="placeholder-caption">Bildplatzhalter: professionell animiertes Menüboard / Werbescreen mit HYSN Content</div>
+          </div>
+        </div>
+      </div>
+      <div class="metric-row" aria-label="Vertrauensleiste">
+        <div class="metric"><strong>4K</strong><span>screen-ready Assets für passende Formate</span></div>
+        <div class="metric"><strong>1</strong><span>Ansprechpartner für Design, Animation und Ausspielung</span></div>
+        <div class="metric"><strong>3</strong><span>typische Screenrichtungen: Menü, Werbung, Information</span></div>
+        <div class="metric"><strong>30+</strong><span>verwaltete Werbescreens im HYSN / hyads Umfeld</span></div>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="note"><strong>Problem section</strong>Frames the cost of bad content as wasted screen investment, not as a design preference.</div>
+      <span class="section-label">[Das Problem]</span>
+      <h2>Der teuerste Fehler ist nicht der falsche Bildschirm. Es ist Inhalt, der wie ein Notbehelf wirkt.</h2>
+      <p class="lead">Viele Unternehmen investieren in hochwertige Displays – und zeigen darauf gestreckte Handyfotos, uneinheitliche Schriften oder statische Grafiken, die nach wenigen Sekunden nicht mehr auffallen.</p>
+      <div class="problem-list">
+        <div class="problem-item">
+          <strong>Handyfotos wirken auf großen Screens schnell billig.</strong>
+          <p>Was auf Instagram noch funktioniert, sieht auf 55 Zoll oft unscharf, falsch belichtet oder zu dunkel aus.</p>
+        </div>
+        <div class="problem-item">
+          <strong>Gemischte Schriftarten zerstören Preis- und Markenwirkung.</strong>
+          <p>Menüs, Aktionen und Produktflächen verlieren Klarheit, wenn jede Seite anders aufgebaut ist.</p>
+        </div>
+        <div class="problem-item">
+          <strong>Statische Screens verlieren Aufmerksamkeit.</strong>
+          <p>Ohne Bewegung, Wechsel und klare Priorität wird der Bildschirm nach kurzer Zeit wie ein digitales Poster wahrgenommen.</p>
+        </div>
+        <div class="problem-item">
+          <strong>Agenturcontent passt selten direkt auf Screen-Formate.</strong>
+          <p>Print- oder Social-Media-Grafiken müssen für Helligkeit, Abstand, Lesbarkeit, Seitenverhältnis und Laufzeit neu gedacht werden.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="leistungen">
+      <div class="note"><strong>Content types</strong>Five clear buckets make the service tangible and help different buyers identify their own use case.</div>
+      <span class="section-label">[Content-Arten]</span>
+      <h2>Content, der für Bildschirme gemacht ist – nicht nur für eine Dateiablage.</h2>
+      <p class="lead">HYSN erstellt Inhalte, die auf realen Displays funktionieren: gut lesbar, visuell stark, technisch passend und schnell aktualisierbar.</p>
+      <div class="grid-5">
+        <article class="visual-card">
+          <div class="placeholder"><div class="placeholder-caption">Mockup: animiertes Menüboard</div></div>
+          <div class="content">
+            <h3>Animierte Menüboards</h3>
+            <p>Klare Menüstruktur, Preis-Hierarchie, Tagesangebote und Produktanimationen für Gastronomie.</p>
+          </div>
+        </article>
+        <article class="visual-card">
+          <div class="placeholder"><div class="placeholder-caption">Mockup: Food-Visual</div></div>
+          <div class="content">
+            <h3>Produktvisuals & Food-Fotografie</h3>
+            <p>Gerichte, Produkte und Details so inszeniert, dass sie auf großen Screens appetitlich wirken.</p>
+          </div>
+        </article>
+        <article class="visual-card">
+          <div class="placeholder"><div class="placeholder-caption">Mockup: Aktionsscreen</div></div>
+          <div class="content">
+            <h3>Werbe- und Aktionscontent</h3>
+            <p>Angebote, Neueröffnungen, saisonale Aktionen und lokale Kampagnen als screen-ready Designs.</p>
+          </div>
+        </article>
+        <article class="visual-card">
+          <div class="placeholder"><div class="placeholder-caption">Mockup: Markenloop</div></div>
+          <div class="content">
+            <h3>Markenfilme & Loops</h3>
+            <p>Kurze Wiederholschleifen für Empfang, Storefront, Messe, Showroom oder LED-Wand.</p>
+          </div>
+        </article>
+        <article class="visual-card">
+          <div class="placeholder"><div class="placeholder-caption">Mockup: DOOH Kampagne</div></div>
+          <div class="content">
+            <h3>Lokale DOOH-Kampagnen</h3>
+            <p>Werbemotive für digitale Außenwerbung, Supermarkt-Screens und lokale Netzwerke.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="beispiele">
+      <div class="note"><strong>Critical proof</strong>Visual gallery is the trust anchor. Visitors believe the service when they can imagine the final screen.</div>
+      <span class="section-label">[Portfolio-Galerie]</span>
+      <h2>Zeigen Sie nicht „irgendetwas“. Zeigen Sie, was Ihre Kunden in Sekunden verstehen sollen.</h2>
+      <p class="lead">Die Galerie ist als zentraler Proof-Bereich geplant: reale Menüboards, Food-Visuals, Retail-Angebote, Stadtinformationen und Office-Screens sollen hier später durch echte HYSN Arbeiten ersetzt werden.</p>
+      <div class="gallery-grid">
+        <div class="placeholder" style="min-height: 390px;"><div class="placeholder-caption">Großer Galerieplatzhalter: Restaurant Menüboard mit animierten Gerichten und Preisstruktur</div></div>
+        <div class="gallery-side">
+          <div class="placeholder"><div class="placeholder-caption">Retail Werbescreen: Produktaktion</div></div>
+          <div class="placeholder"><div class="placeholder-caption">Stadt-Infostele: Events + lokale Werbung</div></div>
+        </div>
+      </div>
+      <div class="gallery-strip">
+        <div class="placeholder"><div class="placeholder-caption">LED-Wand Markenloop</div></div>
+        <div class="placeholder"><div class="placeholder-caption">Office Welcome Screen</div></div>
+        <div class="placeholder"><div class="placeholder-caption">DOOH Kampagne im Supermarkt</div></div>
+      </div>
+
+      <div class="tab-viewer" aria-label="Content Beispiel Viewer">
+        <div class="tabs">
+          <div class="tab active">Menüboard</div>
+          <div class="tab">Retail Ad</div>
+          <div class="tab">City Info</div>
+          <div class="tab">Office Loop</div>
+        </div>
+        <div class="viewer-grid">
+          <div class="placeholder" style="min-height: 280px;"><div class="placeholder-caption">Interaktiver Platzhalter: Beispiel wechselt zwischen Menü, Retail, Stadtinfo und Office</div></div>
+          <div class="viewer-copy">
+            <span class="mini-label">Beispiel-Logik</span>
+            <h3>Ein Screen braucht eine klare Aufgabe.</h3>
+            <p>Beim Menüboard steht die Bestellentscheidung im Vordergrund. Beim Retail-Screen zählt die Aktion. Bei der Stadt-Infostele müssen Bürgerinformation und lokale Werbung sauber getrennt sein.</p>
+            <p class="small">Dieses Modul sollte später mit echten HYSN Animationen oder kurzen MP4-Loops gefüllt werden.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="use-cases">
+      <div class="note"><strong>Use cases</strong>Operational specificity replaces generic feature copy. Each card shows how HYSN thinks through real screen usage.</div>
+      <span class="section-label">[Use Cases]</span>
+      <h2>Vier typische Situationen. Vier unterschiedliche Content-Logiken.</h2>
+      <p class="lead">Ein Dönerladen braucht andere Inhalte als ein Supermarkt, eine Stadtstele oder ein Corporate-Empfang. HYSN plant Content nach Geschäftsmodell, Screen-Position und Aktualisierungsrhythmus.</p>
+      <div class="grid-2" style="align-items: stretch;">
+        <article class="use-case">
+          <div class="scenario">Restaurant Menüboard</div>
+          <h3>Von unübersichtlicher Speisekarte zu klarer Bestellführung.</h3>
+          <p>HYSN strukturiert Kategorien, Preise und Bestseller so, dass Gäste schneller entscheiden können. Food-Fotos können direkt vor Ort erstellt oder aus vorhandenem Material professionell aufbereitet werden. Typisch sind 3 Screens mit Hauptmenü, Aktionen und Hero-Gerichten – bei ca. 20 bis 80 Produkten je nach Konzept. Saisonale Gerichte, Tagesangebote und Preisänderungen können monatlich oder kampagnenweise eingepflegt werden.</p>
+        </article>
+        <article class="use-case">
+          <div class="scenario">Retail Werbescreen</div>
+          <h3>Eigene Aktionen und bezahlte Werbeplätze sauber kombinieren.</h3>
+          <p>Für Retail und Supermärkte entwickelt HYSN Produktvisuals, Angebotsgrafiken und animierte Aktionsflächen in Hoch- oder Querformat. Eigene Promotions können im Loop mit bezahlten Drittanzeigen wechseln, zum Beispiel 70 % Eigencontent und 30 % lokale Werbung. Inhalte werden für gängige Formate wie 16:9, 9:16 und 4K-Auflösung angelegt. So bleibt der Screen verkaufsstark, ohne wie eine zufällige Slideshow zu wirken.</p>
+        </article>
+        <article class="use-case">
+          <div class="scenario">Stadt-Infostele</div>
+          <h3>Öffentliche Information sichtbar machen, ohne Werbewirkung zu verlieren.</h3>
+          <p>Für Städte und Kommunen trennt HYSN Bürgerinformationen, Veranstaltungshinweise, Stadtmarketing und lokale Anzeigen in klare Layout-Zonen. Ein typischer Split kann zum Beispiel Stadtnews, Eventankündigungen, Servicehinweise und lokale Werbeslots kombinieren. Rund um Märkte, Stadtfeste oder kurzfristige Hinweise lassen sich Inhalte zeitgesteuert priorisieren. Für Sonderfälle können Templates für Warnhinweise oder wichtige Meldungen vorbereitet werden.</p>
+        </article>
+        <article class="use-case">
+          <div class="scenario">Corporate Reception / Office</div>
+          <h3>Weniger Content-Menge, aber höhere Markenpräzision.</h3>
+          <p>Im Empfangsbereich zählen Klarheit, Ruhe und ein hochwertiger Eindruck. HYSN erstellt Welcome Screens, Markenloops, interne News, Besucherhinweise und KPI-Flächen mit sauberer Typografie und konsistenter Bildsprache. Da der Content weniger häufig wechselt, wird stärker auf Politur, Übergänge und Markenkonformität geachtet. Wiederkehrende Updates können über einfache Templates vorbereitet werden.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="prozess">
+      <div class="note"><strong>Process</strong>Shows low effort. The buyer sees that HYSN owns the production workflow instead of pushing work back to the client.</div>
+      <span class="section-label">[Prozess]</span>
+      <h2>So entsteht screen-ready Content ohne wochenlange Abstimmung.</h2>
+      <p class="lead">HYSN reduziert den Prozess auf die Entscheidungen, die wirklich wichtig sind: Ziel, Inhalte, Format und Freigabe.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">01</div>
+          <h3>Kurzgespräch</h3>
+          <p>Sie erklären Ziel, Branche, Screen-Standort und gewünschte Inhalte. Daraus entsteht die erste visuelle Richtung.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">02</div>
+          <h3>Materialcheck</h3>
+          <p>HYSN prüft Logo, Fotos, Speisekarte, Produktdaten, Markenfarben und Screen-Spezifikationen.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">03</div>
+          <h3>Design & Animation</h3>
+          <p>Die Inhalte werden für Lesbarkeit, Bewegung, Laufzeit, Seitenverhältnis und technische Ausspielung produziert.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">04</div>
+          <h3>Lieferung & Ausspielung</h3>
+          <p>Sie erhalten screen-ready Dateien oder HYSN spielt die Inhalte direkt über das vereinbarte System aus.</p>
+        </div>
+      </div>
+
+      <div class="briefing-box">
+        <h3>Was HYSN von Ihnen braucht – mehr nicht.</h3>
+        <p>Kein 50-seitiges Brandbook, keine endlosen Meetings. Für die meisten Projekte reichen drei Grundlagen.</p>
+        <div class="briefing-list">
+          <div class="briefing-item"><strong>Ihre Inhalte</strong><p class="small">Menü, Produkte, Angebote, Öffnungszeiten, Standorte oder Kampagnendaten.</p></div>
+          <div class="briefing-item"><strong>Ihre visuelle Basis</strong><p class="small">Logo, Farben, vorhandene Fotos – falls vorhanden. Wenn nicht, baut HYSN eine saubere Richtung auf.</p></div>
+          <div class="briefing-item"><strong>Ihre Screen-Daten</strong><p class="small">Format, Auflösung, Ausrichtung und Einsatzort. Bei HYSN-Hardware liegt das bereits vor.</p></div>
+        </div>
+        <div class="timeline">
+          <div><strong>Kleines Update</strong><span class="small">z. B. Preisänderung oder Aktionsmotiv</span></div>
+          <div><strong>Content-Paket</strong><span class="small">z. B. Menüboard, Produktserie oder Kampagne</span></div>
+          <div><strong>Rollout</strong><span class="small">z. B. mehrere Filialen, Formate und Screen-Gruppen</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fit">
+      <div class="note"><strong>Fit section</strong>Clarifies that the service is not only for new HYSN hardware buyers; it can also solve content problems for existing screens.</div>
+      <span class="section-label">[Für wen geeignet]</span>
+      <h2>Geeignet für Unternehmen, die gute Screens nicht mit schwachem Content bremsen wollen.</h2>
+      <div class="fit-list">
+        <div class="card shaded">
+          <h3>Restaurants & Quick-Service-Betriebe</h3>
+          <p>Passt, wenn Menü, Fotos, Preise und Aktionen professionell aussehen sollen – ohne eine eigene Designabteilung aufzubauen.</p>
+        </div>
+        <div class="card shaded">
+          <h3>Retail, Supermärkte & lokale Händler</h3>
+          <p>Passt, wenn Eigenwerbung, Produktaktionen und lokale Anzeigen regelmäßig aktualisiert werden müssen.</p>
+        </div>
+        <div class="card shaded">
+          <h3>Städte, Kommunen & Standortpartner</h3>
+          <p>Passt, wenn öffentliche Information, Stadtmarketing und Werbeflächen in einem sauberen System laufen sollen.</p>
+        </div>
+        <div class="card shaded">
+          <h3>Unternehmen mit bestehenden Screens</h3>
+          <p>Passt, wenn die Hardware bereits hängt, aber der Inhalt nicht hochwertig, nicht aktuell oder nicht formatgerecht ist.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-strip" id="beratung">
+      <div class="note"><strong>Mid-page CTA</strong>Gives two actions: proof-seeking visitors can view examples; ready buyers can ask for consultation.</div>
+      <span class="section-label">[Zwischen-CTA]</span>
+      <h2>Sie haben schon Screens – oder planen gerade neue?</h2>
+      <p class="lead">HYSN prüft, welche Inhalte für Ihren Standort sinnvoll sind und welche Formate technisch benötigt werden.</p>
+      <div class="btn-row">
+        <a class="button" href="#beispiele">Passende Beispiele ansehen</a>
+        <a class="button" href="mailto:info@hysn.de?subject=Content-Beratung%20f%C3%BCr%20digitale%20Screens">Content-Beratung per E-Mail anfragen</a>
+      </div>
+      <p class="kicker-line">Sie müssen noch keine fertigen Fotos, Texte oder Designvorgaben haben – HYSN kann aus vorhandenen Unterlagen eine klare Richtung entwickeln.</p>
+    </section>
+
+    <section id="included">
+      <div class="note"><strong>Package contents</strong>Checklist turns an abstract creative service into a concrete business package.</div>
+      <span class="section-label">[Inhalte der Pakete]</span>
+      <h2>Was in Content-Paketen enthalten sein kann.</h2>
+      <p class="lead">Der Umfang wird nach Screen-Anzahl, Branche, Aktualisierungsbedarf und gewünschter Animation geplant. Für kleinere Budgets können vorhandene HYSN Templates angepasst werden.</p>
+      <ul class="checklist">
+        <li>Konzept für Screen-Aufbau und Inhaltslogik</li>
+        <li>Design für Hochformat, Querformat oder Sonderformate</li>
+        <li>Menüboard-Layout mit Preis- und Kategorie-Hierarchie</li>
+        <li>Food- und Produktvisuals aus Shootings oder vorhandenen Bildern</li>
+        <li>Animationen für Angebote, Bestseller und saisonale Inhalte</li>
+        <li>Export als MP4, PNG, JPG oder nach Systemanforderung</li>
+        <li>4K-ready Dateien, wenn Format und Hardware es erfordern</li>
+        <li>Anpassung für mehrere Screens und Filialen</li>
+        <li>Template-System für spätere Preis- und Produktupdates</li>
+        <li>Content-Scheduling für Kampagnen, Tageszeiten und Werbeslots</li>
+        <li>Ein Korrekturlauf für saubere Freigabe</li>
+        <li>Optional: direkte Ausspielung über HYSN Content Management</li>
+      </ul>
+    </section>
+
+    <section id="case-study">
+      <div class="note"><strong>Before/after</strong>Case study uses the required transformation structure: visible pain first, then changed screen experience.</div>
+      <span class="section-label">[Vorher / Nachher]</span>
+      <h2>Vorher: Handyfotos auf drei Screens. Nachher: ein Menüboard, das wie ein Verkaufssystem wirkt.</h2>
+      <p class="lead">Beispiel eines Quick-Service-Restaurants mit vorhandenen Bildschirmen, aber schwacher visueller Wirkung am Tresen.</p>
+      <div class="before-after">
+        <article class="comparison-card before">
+          <div class="placeholder"><div class="placeholder-caption">Vorher-Bildplatzhalter: gestreckte Fotos, uneinheitliche Schriften, zu viele Preise</div></div>
+          <div class="content">
+            <h3>Vorher</h3>
+            <p>Die Gerichte wurden mit Handyfotos dargestellt, Preise waren unterschiedlich groß und Aktionen gingen zwischen dem Menü unter. Gäste mussten länger suchen und Mitarbeiter mussten häufiger erklären, welche Kombinationen verfügbar sind.</p>
+          </div>
+        </article>
+        <article class="comparison-card after">
+          <div class="placeholder"><div class="placeholder-caption">Nachher-Bildplatzhalter: animiertes Menüboard mit Hero-Gerichten und klarer Preisstruktur</div></div>
+          <div class="content">
+            <h3>Nachher</h3>
+            <p>HYSN strukturierte das Menü nach Bestelllogik, setzte Bestseller als Hero-Flächen ein und animierte Tagesangebote separat. Die Screens wirkten einheitlich, lesbarer und deutlich hochwertiger am Verkaufspunkt.</p>
+          </div>
+        </article>
+      </div>
+      <div class="impact-box">
+        <h3>Auswirkung am Standort</h3>
+        <p>Das Team konnte Angebote schneller erklären, neue Aktionen sichtbarer platzieren und Preisänderungen ohne Neudruck umsetzen. Kunden reagierten besonders auf die echten Food-Bilder, weil die Produkte nicht generisch, sondern wie die eigenen Gerichte aussahen.</p>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="note"><strong>Testimonials</strong>Dummy quotes are specific and believable. Replace with real client quotes once available.</div>
+      <span class="section-label">[Kundenstimmen]</span>
+      <h2>Was Kunden an der Content-Seite schätzen.</h2>
+      <div class="quote-grid">
+        <blockquote>
+          <p>„Wir hatten vorher Handyfotos auf dem Menüboard. HYSN hat zwei Stunden bei uns fotografiert und die Gerichte sehen jetzt aus wie aus einer Werbung – aber es sind unsere echten Produkte.“</p>
+          <cite>Inhaber, Quick-Service-Restaurant</cite>
+        </blockquote>
+        <blockquote>
+          <p>„Wenn wir eine Aktion starten wollen, schicken wir die Daten an HYSN und kurz danach läuft die Animation auf dem Screen. Früher haben wir mit einer Agentur für jede Kleinigkeit lange abgestimmt.“</p>
+          <cite>Marketingverantwortliche, Retail-Standort</cite>
+        </blockquote>
+        <blockquote>
+          <p>„Eine Agentur hatte uns für die Animation ein Budget genannt, das für uns nicht realistisch war. Bei HYSN war der Content Teil des Pakets – professionell, aber passend für ein echtes Geschäft.“</p>
+          <cite>Geschäftsführer, lokaler Filialist</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="note"><strong>FAQ</strong>Answers practical content objections: photos, formats, revisions, brand guides, screen sizes and future updates.</div>
+      <span class="section-label">[FAQ]</span>
+      <h2>Häufige Fragen zu Content Creation & Animation.</h2>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Müssen wir eigene Fotos liefern?</h3>
+          <p>Nein. Wenn gute Fotos vorhanden sind, kann HYSN sie prüfen und aufbereiten. Wenn die Bildqualität nicht reicht, kann ein Food- oder Produktshooting organisiert oder eine andere visuelle Lösung entwickelt werden.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Welche Dateiformate liefert HYSN?</h3>
+          <p>Typische Formate sind MP4 für Animationen sowie PNG oder JPG für statische Screens. Die genaue Ausgabe richtet sich nach Display, Mediaplayer, CMS, Seitenverhältnis und gewünschter Auflösung.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Können wir Inhalte später selbst aktualisieren?</h3>
+          <p>Ja, wenn ein geeignetes Template- oder CMS-Setup vorgesehen wird. HYSN kann Inhalte so vorbereiten, dass einfache Preis-, Produkt- oder Aktionsänderungen später schneller umgesetzt werden.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Was ist, wenn wir kein Logo oder keinen Brand Guide haben?</h3>
+          <p>Dann entwickelt HYSN eine saubere visuelle Grundrichtung für den Screen: Schrift, Kontraste, Bildstil, Kategorien und klare Hierarchien. Ein vollständiges Branding-Projekt ist dafür nicht immer nötig.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Erstellt HYSN auch nur Animationen, wenn das Design schon steht?</h3>
+          <p>Ja. HYSN kann bestehende Designs für Screens animieren, technisch anpassen oder in verschiedene Formate übertragen, sofern die Ausgangsdaten dafür geeignet sind.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Welche Seitenverhältnisse und Auflösungen werden unterstützt?</h3>
+          <p>HYSN kann Content für Hochformat, Querformat, 16:9, 9:16, 4:3, 3:4, LED-Sonderformate und 4K-ready Ausgaben vorbereiten. Entscheidend sind die konkrete Screen-Größe, Auflösung und Ausspieltechnik.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Wie läuft die Korrektur ab?</h3>
+          <p>Der übliche Ablauf sieht eine erste Richtung, eine gebündelte Feedbackrunde und die finale screen-ready Ausgabe vor. So bleibt der Prozess schnell und verhindert endlose Einzeländerungen.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="final-cta">
+      <div class="note"><strong>Final CTA</strong>Specific next step plus objection killer. Trust points lower perceived effort, cost uncertainty and technical complexity.</div>
+      <span class="section-label">[Finaler CTA]</span>
+      <h2>Lassen Sie prüfen, welcher Content auf Ihren Screens wirklich arbeiten kann.</h2>
+      <p class="lead">Ob digitale Menüboards, Werbescreens, Stadtstelen oder Office-Displays: HYSN zeigt Ihnen, welche Inhalte sinnvoll sind, welche Formate gebraucht werden und wie der Produktionsaufwand schlank bleibt.</p>
+      <div class="btn-row">
+        <a class="button" href="mailto:info@hysn.de?subject=Content-Konzept%20f%C3%BCr%20meine%20Screens">Content-Konzept für meine Screens anfragen</a>
+        <a class="button secondary" href="tel:+4961038315032">Telefonisch besprechen</a>
+      </div>
+      <p class="kicker-line">Ein kurzer Erstkontakt reicht: Sie müssen noch keine fertigen Designs, Screen-Dateien oder perfekten Fotos vorbereitet haben.</p>
+      <div class="trust-points">
+        <div class="trust-point"><strong>Full-Service möglich</strong><br>Design, Animation, Export und Ausspielung aus einer Hand.</div>
+        <div class="trust-point"><strong>Für bestehende Screens</strong><br>Auch geeignet, wenn Ihre Hardware bereits installiert ist.</div>
+        <div class="trust-point"><strong>Screen-first gedacht</strong><br>Lesbarkeit, Bewegung, Abstand und Auflösung werden von Anfang an berücksichtigt.</div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="note"><strong>Footer</strong>Footer keeps service navigation and real contact points visible without distracting from the conversion path.</div>
+      <span class="section-label">[Footer]</span>
+      <div class="footer-grid">
+        <div>
+          <div class="logo" style="margin-bottom: 14px;">HYSN</div>
+          <p>Digital Signage, Content Creation, DOOH Advertising und smarte Displaylösungen von RA Vision GmbH.</p>
+          <p class="mono">© 2026 HYSN / RA Vision GmbH</p>
+        </div>
+        <div>
+          <h3>Leistungen</h3>
+          <div class="footer-links">
+            <a href="#leistungen">Content Creation</a>
+            <a href="#use-cases">Digitale Menüboards</a>
+            <a href="#use-cases">Retail Screens</a>
+            <a href="#use-cases">Stadt-Infostelen</a>
+          </div>
+        </div>
+        <div>
+          <h3>Kontakt</h3>
+          <div class="footer-links">
+            <a href="tel:+4961038315032">+49 6103 8315 032</a>
+            <a href="mailto:info@hysn.de">info@hysn.de</a>
+            <a href="#final-cta">Content-Konzept anfragen</a>
+            <a href="#top">Nach oben</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYSN Wireframe — Städte & Kommunen</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --body: #f0f0f0;
+      --soft: #f4f4f4;
+      --line: #d0d0d0;
+      --text: #111111;
+      --muted: #333333;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--body);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+
+    .layout {
+      width: 1150px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .page {
+      width: 900px;
+      background: var(--white);
+      min-height: 100vh;
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+
+    section, footer, .nav-wrap {
+      position: relative;
+      border-bottom: 1px solid var(--line);
+      padding: 54px 56px;
+    }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.96);
+      padding: 18px 56px;
+      border-top: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 22px;
+      letter-spacing: 0.14em;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .nav-links a, .footer-links a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .section-label {
+      display: block;
+      margin-bottom: 18px;
+      font-size: 10px;
+      line-height: 1;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #777777;
+      font-weight: 700;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      max-width: 720px;
+      font-size: 46px;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      max-width: 680px;
+      font-size: 34px;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      font-size: 19px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      max-width: 650px;
+      font-size: 19px;
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin: 24px 0 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--muted);
+      color: var(--text);
+      background: transparent;
+      padding: 12px 28px;
+      min-height: 46px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .objection {
+      max-width: 620px;
+      font-size: 13px;
+      color: var(--muted);
+      margin: 8px 0 0;
+    }
+
+    .image-placeholder {
+      position: relative;
+      min-height: 290px;
+      margin-top: 32px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .image-placeholder svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .image-placeholder span {
+      position: relative;
+      max-width: 420px;
+      padding: 12px 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .annotation {
+      position: absolute;
+      left: 922px;
+      top: 38px;
+      width: 198px;
+      padding: 14px 14px 15px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.04);
+    }
+
+    .annotation strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--text);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .trust-grid, .card-grid, .equipment-grid, .benefit-grid, .faq-grid, .testimonial-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .trust-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 18px;
+      min-height: 112px;
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 9px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .qual-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 26px;
+    }
+
+    .qual-item {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 16px;
+      font-size: 15px;
+      font-weight: 750;
+    }
+
+    .card-grid { grid-template-columns: repeat(3, 1fr); }
+    .two-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .equipment-grid { grid-template-columns: repeat(3, 1fr); }
+    .benefit-grid { grid-template-columns: repeat(4, 1fr); }
+    .testimonial-grid { grid-template-columns: repeat(3, 1fr); }
+
+    .card, .equipment-card, .use-card, .testimonial, .faq-item, .compare-box, .timeline-item, .standard-box {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 22px;
+    }
+
+    .card, .equipment-card, .use-card, .testimonial, .faq-item {
+      min-height: 100%;
+    }
+
+    .card-label {
+      display: inline-block;
+      margin-bottom: 11px;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #777777;
+      font-weight: 800;
+    }
+
+    .chart-wrap {
+      margin-top: 28px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 24px;
+    }
+
+    .chart {
+      display: grid;
+      grid-template-columns: 1fr 70px 1fr;
+      align-items: stretch;
+      gap: 18px;
+    }
+
+    .chart-panel {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 22px;
+      min-height: 240px;
+    }
+
+    .arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--muted);
+    }
+
+    .bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 12px 14px;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    .bar strong { color: var(--text); }
+
+    .use-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 28px; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 18px;
+    }
+
+    .step-number {
+      display: inline-flex;
+      width: 28px;
+      height: 28px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--muted);
+      margin-bottom: 12px;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .model-table, .handle-table, .faq-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      font-size: 14px;
+    }
+
+    .model-table th, .model-table td, .handle-table th, .handle-table td, .faq-table th, .faq-table td {
+      border: 1px solid var(--line);
+      padding: 14px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .model-table th, .handle-table th, .faq-table th {
+      background: var(--soft);
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .cta-strip {
+      background: var(--soft);
+    }
+
+    .case-study {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .case-box {
+      border: 1px solid var(--line);
+      padding: 24px;
+      background: var(--soft);
+    }
+
+    .quote {
+      font-size: 15px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .quote-author {
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      font-size: 13px;
+      color: var(--text);
+      font-weight: 800;
+    }
+
+    .ratio {
+      display: grid;
+      grid-template-columns: 30fr 70fr;
+      gap: 0;
+      border: 1px solid var(--line);
+      margin: 24px 0;
+      min-height: 72px;
+    }
+
+    .ratio div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      font-weight: 800;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    .ratio .city { background: var(--white); border-right: 1px solid var(--line); }
+    .ratio .ads { background: var(--soft); }
+
+    .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 24px; }
+
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
+    }
+
+    ul.clean li {
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .faq-grid { grid-template-columns: 1fr; margin-top: 24px; }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 28px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .legal {
+      border-top: 1px solid var(--line);
+      padding-top: 18px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 1200px) {
+      body::before {
+        content: "Desktop-Wireframe: Bitte mit einer Browserbreite ab 1200px ansehen.";
+        display: block;
+        padding: 16px;
+        background: var(--text);
+        color: var(--white);
+        font-size: 13px;
+      }
+      .layout { margin-left: 20px; margin-right: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Elevation choices included: pilot framing, public benefit framing, content/ad ratio, revenue orientation, and permit timeline. These remove public-sector risk without making the page feel like a hard sell. -->
+  <div class="layout">
+    <div class="page">
+      <div class="nav-wrap">
+        <div class="nav">
+          <div class="logo">HYSN</div>
+          <nav class="nav-links" aria-label="Hauptnavigation">
+            <a href="#modell">Modell</a>
+            <a href="#standorte">Standorte</a>
+            <a href="#einnahmen">Einnahmen</a>
+            <a href="#standards">Standards</a>
+            <a href="#kontakt">Pilot prüfen</a>
+          </nav>
+        </div>
+        <aside class="annotation"><strong>Nav</strong> Sticky navigation keeps the cautious municipal buyer oriented. Links follow the decision logic: model, locations, revenue, standards, pilot.</aside>
+      </div>
+
+      <section id="hero">
+        <span class="section-label">[Hero]</span>
+        <h1>Modernes Stadtbild ohne Investition — Werbeeinnahmen für die Kommune.</h1>
+        <p class="lead">HYSN plant, finanziert und betreibt digitale Stadtbildschirme für öffentliche Informationen und kuratierte lokale Werbung. Ihre Kommune stellt geeignete Standorte frei — und erhält eine Beteiligung an den laufenden Werbeeinnahmen.</p>
+        <div class="button-row">
+          <a class="btn" href="#kontakt">Konzept für unsere Kommune anfragen</a>
+          <a class="btn" href="#standorte">Beispielstandorte ansehen</a>
+        </div>
+        <p class="objection">Kein Investitionsrisiko für die Kommune: HYSN übernimmt Finanzierung, Technik, Betrieb, Werbemanagement und laufende Betreuung.</p>
+        <div class="image-placeholder" role="img" aria-label="Digitale Outdoor-Stele in einer Fußgängerzone">
+          <svg viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="0" x2="100" y2="40" stroke="#d0d0d0" stroke-width="0.5"/>
+            <line x1="100" y1="0" x2="0" y2="40" stroke="#d0d0d0" stroke-width="0.5"/>
+          </svg>
+          <span>Bildplatzhalter: digitale HYSN Outdoor-Stele in realer Fußgängerzone mit Stadtinformation und lokaler Werbung</span>
+        </div>
+        <aside class="annotation"><strong>Hero strategy</strong> Audience is nearly unaware. Lead with the new possibility: not a cost center, but a revenue-generating public communication asset.</aside>
+      </section>
+
+      <section id="proof">
+        <span class="section-label">[Trust Bar]</span>
+        <div class="trust-grid">
+          <div class="stat"><span class="stat-number">30+</span><span class="stat-label">verwaltete Werbe- und Informationsscreens im laufenden Betrieb</span></div>
+          <div class="stat"><span class="stat-number">4</span><span class="stat-label">Standorttypen: Rathaus, Innenstadt, Handel, kommunale Einrichtungen</span></div>
+          <div class="stat"><span class="stat-number">100+</span><span class="stat-label">lokale Werbepartner als skalierbares Ziel im Netzwerkaufbau</span></div>
+          <div class="stat"><span class="stat-number">0 €</span><span class="stat-label">kommunale Anfangsinvestition im HYSN-Betreibermodell</span></div>
+        </div>
+        <aside class="annotation"><strong>Proof</strong> Numbers are framed carefully. No exaggerated guarantees; credibility comes from operational capability and zero upfront investment.</aside>
+      </section>
+
+      <section id="fuer-wen">
+        <span class="section-label">[Für welche Kommunen]</span>
+        <h2>Geeignet für Kommunen, die sichtbare Orte sinnvoll nutzen möchten.</h2>
+        <p>Das Modell passt nicht nur zu Großstädten. Gerade kleinere und mittlere Städte besitzen Standorte mit hoher lokaler Relevanz: Rathausfoyers, Bürgerbüros, Fußgängerzonen, Bäder, Bibliotheken, Veranstaltungsflächen oder stark frequentierte Eingänge kommunaler Einrichtungen.</p>
+        <div class="qual-row">
+          <div class="qual-item">Großstadt</div>
+          <div class="qual-item">Mittelstadt</div>
+          <div class="qual-item">Kleinstadt & Gemeinde</div>
+          <div class="qual-item">Stadtwerke</div>
+          <div class="qual-item">Wirtschaftsförderung</div>
+          <div class="qual-item">BID / Stadtmarketing</div>
+        </div>
+        <aside class="annotation"><strong>Self qualification</strong> Shows that several municipal bodies can be valid entry points. This prevents the visitor from self-disqualifying too early.</aside>
+      </section>
+
+      <section id="probleme">
+        <span class="section-label">[Pain Points]</span>
+        <h2>Viele Städte verschenken Sichtbarkeit, obwohl die Flächen bereits vorhanden sind.</h2>
+        <div class="card-grid">
+          <div class="card">
+            <span class="card-label">Kommunikation</span>
+            <h3>Öffentliche Hinweise gehen auf statischen Tafeln unter.</h3>
+            <p>Veranstaltungen, Baustellenhinweise, Bürgerservice-Informationen oder lokale Warnmeldungen konkurrieren mit überfüllten Aushängen. Was nicht auffällt, erreicht Bürgerinnen und Bürger zu spät oder gar nicht.</p>
+          </div>
+          <div class="card">
+            <span class="card-label">Einnahmen</span>
+            <h3>Stark frequentierte Standorte bringen der Kommune oft keinen Ertrag.</h3>
+            <p>Innenstadtlagen, Rathausbereiche oder kommunale Einrichtungen haben lokale Werbewirkung. Ohne digitales Vermarktungskonzept bleibt dieser Wert ungenutzt — während private Anbieter ähnliche Aufmerksamkeit monetarisieren.</p>
+          </div>
+          <div class="card">
+            <span class="card-label">Budget</span>
+            <h3>Modernisierung scheitert häufig am Investitionshaushalt.</h3>
+            <p>Digitale Infrastruktur wird vertagt, weil Anschaffung, Installation, Wartung und Betrieb als zusätzlicher Kostenblock erscheinen. Dadurch bleibt das Stadtbild sichtbar hinter dem tatsächlichen Anspruch der Kommune zurück.</p>
+          </div>
+        </div>
+        <aside class="annotation"><strong>Pain</strong> Loss-framed but not fear-based. The municipal buyer sees missed communication, missed revenue, and modernization delay.</aside>
+      </section>
+
+      <section id="modell">
+        <span class="section-label">[The Opportunity in One Chart]</span>
+        <h2>Der Unterschied: Die Kommune bezahlt nicht für Displays — sie beteiligt sich an deren Erlösen.</h2>
+        <p>Das HYSN-Modell dreht die übliche Logik um. Statt Anschaffung, Betrieb und Inhalte selbst zu tragen, kann die Kommune geeignete Standorte in ein werbefinanziertes Kommunikationsnetz einbringen.</p>
+        <div class="chart-wrap">
+          <div class="chart">
+            <div class="chart-panel">
+              <h3>Traditionelles Modell</h3>
+              <p>Die Stadt kauft oder erneuert Informationsflächen selbst.</p>
+              <div class="bar"><strong>Investition</strong><span>Kommune</span></div>
+              <div class="bar"><strong>Wartung</strong><span>Kommune</span></div>
+              <div class="bar"><strong>Inhalte</strong><span>interne Ressourcen</span></div>
+              <div class="bar"><strong>Einnahmen</strong><span>keine oder gering</span></div>
+            </div>
+            <div class="arrow">→</div>
+            <div class="chart-panel">
+              <h3>HYSN-Partnermodell</h3>
+              <p>HYSN stellt und betreibt Screens mit Stadtinformationen und kuratierter Werbung.</p>
+              <div class="bar"><strong>Investition</strong><span>HYSN</span></div>
+              <div class="bar"><strong>Betrieb</strong><span>HYSN</span></div>
+              <div class="bar"><strong>Werbung</strong><span>HYSN kuratiert</span></div>
+              <div class="bar"><strong>Einnahmen</strong><span>Anteil für Kommune</span></div>
+            </div>
+          </div>
+        </div>
+        <aside class="annotation"><strong>Key insight</strong> This is the conversion mechanism. The chart makes the financial flip visible in seconds.</aside>
+      </section>
+
+      <section id="use-cases">
+        <span class="section-label">[Use Cases]</span>
+        <h2>Vier kommunale Szenarien, in denen das Modell unterschiedlich funktioniert.</h2>
+        <p>Jede Kommune hat andere Entscheidungswege, Standortqualitäten und Einnahmepotenziale. Deshalb beginnt HYSN nicht mit einem Standardprodukt, sondern mit einer Standort- und Stakeholder-Prüfung.</p>
+        <div class="use-grid">
+          <div class="use-card">
+            <span class="card-label">Kleine Gemeinde · 5.000–20.000 Einwohner</span>
+            <h3>Ein Rathaus-Foyer als erster sichtbarer Pilot.</h3>
+            <p>In kleineren Gemeinden ist die Frequenz geringer, aber die lokale Werberelevanz ist klar: Handwerksbetriebe, regionale Händler, Pflegedienste, Fahrschulen oder Gastronomie möchten sichtbar sein, ohne große Außenwerbeflächen zu buchen. Ein realistischer Einstieg ist eine Indoor-Stele im Rathaus, Bürgerbüro oder Gemeindezentrum.</p>
+            <p>Die Vereinbarung ist bewusst schlank: Die Kommune gibt den Standort frei und erhält eine Beteiligung an den Werbeeinnahmen; HYSN übernimmt Hardware, Inhalte, Vermarktung und Betrieb. Je nach Lage ist eher ein moderater, aber stabiler monatlicher Ertrag zu erwarten — wichtiger ist hier die Kombination aus Bürgerinformation und lokaler Wirtschaftsförderung.</p>
+          </div>
+          <div class="use-card">
+            <span class="card-label">Mittelstadt · 20.000–100.000 Einwohner</span>
+            <h3>Mehrere Outdoor-Stelen entlang der Innenstadtfrequenz.</h3>
+            <p>Für Mittelstädte liegt das Potenzial häufig in der Fußgängerzone, am Bahnhofsumfeld, an Parkhauszugängen oder an Veranstaltungsplätzen. Stadtmarketing oder Wirtschaftsförderung sind meist die passenden operativen Partner, weil dort Veranstaltungen, Händlerkommunikation und Standortentwicklung zusammenlaufen.</p>
+            <p>Der Rollout startet sinnvoll mit einem Pilotstandort über mehrere Monate. Nach Auswertung von Werbenachfrage, Bürgerfeedback und Betriebssicherheit können weitere Stelen ergänzt werden — ohne dass die Kommune direkt ein vollständiges Netz beschließen muss.</p>
+          </div>
+          <div class="use-card">
+            <span class="card-label">Großstadt-Bezirk</span>
+            <h3>Ein gemischtes Netz aus Innen- und Außenstandorten.</h3>
+            <p>In Großstadtbezirken entstehen stärkere Netzwerkeffekte: Outdoor-Stelen an Laufwegen, Indoor-Stelen in öffentlichen Gebäuden und gegebenenfalls LED-Flächen an geeigneten Fassaden oder Verkehrspunkten. Die Entscheidung betrifft oft mehrere Stellen: Verwaltung, Liegenschaften, Stadtmarketing, BID, Bauamt und gegebenenfalls private Standortpartner.</p>
+            <p>Die Erlösverteilung kann projektspezifisch geregelt werden, zum Beispiel zwischen Kommune, BID und Standortgeber. HYSN sorgt dafür, dass die Vermarktung zentral bleibt und die Stadt trotzdem definierte Freigabe- und Ausschlussrechte für Inhalte behält.</p>
+          </div>
+          <div class="use-card">
+            <span class="card-label">Stadtwerke / kommunaler Eigenbetrieb</span>
+            <h3>Digitale Kommunikation an stark frequentierten Einrichtungen.</h3>
+            <p>Stadtwerke und Eigenbetriebe haben andere Entscheidungswege als die Kernverwaltung und oft eigene Standorte: Bäder, Kundenzentren, Bibliotheken, Energieberatungen, Mobilitätsstationen oder Bürgerservice-Flächen. Dort kann ein Display gleichzeitig interne Informationen, Servicehinweise und ausgewählte Werbung zeigen.</p>
+            <p>Der Einstieg erfolgt häufig über Geschäftsführung, Marketing oder Facility Management statt über einen klassischen Ratsbeschluss. Das Modell eignet sich besonders, wenn der Betrieb eigene Angebote kommunizieren und zusätzliche Standorterlöse schaffen möchte.</p>
+          </div>
+        </div>
+        <aside class="annotation"><strong>Use cases</strong> Each scenario handles a different decision pathway. This makes the page concrete for municipalities of different sizes.</aside>
+      </section>
+
+      <section id="partner-konzept">
+        <span class="section-label">[HYSN Partnerkonzept]</span>
+        <h2>Ein Modell mit klaren Rollen: HYSN betreibt, die Kommune profitiert und behält Kontrolle über den Rahmen.</h2>
+        <p>Die Bildschirme zeigen kommunale Informationen und kuratierte kommerzielle Werbung. HYSN finanziert die Technik, koordiniert Installation und Betrieb, verwaltet das Backend und akquiriert Werbepartner. Die Kommune erhält einen vereinbarten Anteil an den Werbeeinnahmen.</p>
+        <div class="steps">
+          <div class="step"><span class="step-number">1</span><h3>Standort prüfen</h3><p>Gemeinsam werden Sichtbarkeit, Frequenz, Stromversorgung, Eigentumsverhältnisse und Genehmigungsweg bewertet.</p></div>
+          <div class="step"><span class="step-number">2</span><h3>Pilot definieren</h3><p>Ein erster Standort wird mit Laufzeit, Inhaltsspielregeln und Erlösmodell sauber beschrieben.</p></div>
+          <div class="step"><span class="step-number">3</span><h3>Betrieb starten</h3><p>HYSN installiert den Screen, richtet das System ein und startet Stadtinformationen sowie lokale Werbung.</p></div>
+          <div class="step"><span class="step-number">4</span><h3>Auswertung entscheiden</h3><p>Nach der Pilotphase werden Betrieb, Akzeptanz und Einnahmen bewertet; danach folgt optional der Ausbau.</p></div>
+        </div>
+        <aside class="annotation"><strong>Plan</strong> Four-step plan reduces perceived complexity. It also introduces the pilot as a low-risk next action.</aside>
+      </section>
+
+      <section id="einnahmen">
+        <span class="section-label">[Revenue Model]</span>
+        <h2>Transparente Beteiligungsmodelle — ohne unrealistische Umsatzversprechen.</h2>
+        <p>Werbeeinnahmen hängen von Standortfrequenz, Sichtbarkeit, lokaler Nachfrage, Gerätegröße, Laufzeit und Werbepaket ab. Deshalb arbeitet HYSN mit Orientierungsspannen und Standortprüfung statt mit pauschalen Garantien.</p>
+        <table class="model-table" aria-label="Revenue-Modelle für Kommunen">
+          <thead>
+            <tr><th>Modell</th><th>Wie es funktioniert</th><th>Geeignet für</th><th>Kommunaler Vorteil</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Betreibermodell</strong></td>
+              <td>HYSN finanziert und betreibt die Geräte. Die Kommune erhält 20% der monatlichen Werbeeinnahmen, bis die Geräte amortisiert sind; danach steigt der Anteil auf 35%.</td>
+              <td>Kommunen, die ohne Investitionshaushalt starten möchten.</td>
+              <td>Keine Anfangsinvestition, laufender Einnahmeanteil, klare Zuständigkeiten.</td>
+            </tr>
+            <tr>
+              <td><strong>Co-Investment</strong></td>
+              <td>Kommune, Eigenbetrieb oder Standortpartner beteiligt sich an der Investition. Der operative Überschuss kann projektbezogen 50/50 geteilt werden.</td>
+              <td>Standorte mit besonders hoher Frequenz oder strategischer Bedeutung.</td>
+              <td>Höherer Erlösanteil bei geteilter Investitionsverantwortung.</td>
+            </tr>
+            <tr>
+              <td><strong>Kommunaler Kauf</strong></td>
+              <td>Die Kommune kauft die Geräte und beauftragt HYSN optional für Betrieb, Content, Wartung und Werbemanagement.</td>
+              <td>Kommunen mit eigenem Digitalisierungsbudget und langfristiger Eigentumsstrategie.</td>
+              <td>Volle Eigentümerrolle, planbare Dienstleistungskosten.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="chart-wrap">
+          <h3>Beispielrechnung als Orientierung</h3>
+          <p>Eine Outdoor-Stele an einem guten Innenstadtstandort erzielt beispielhaft 1.800–3.000 € monatliche Brutto-Werbeeinnahmen. Im Betreibermodell läge der kommunale Anteil zunächst bei 360–600 € pro Monat; nach Amortisation bei 630–1.050 € pro Monat. Diese Werte sind keine Garantie, sondern eine Grundlage für die Standortprüfung.</p>
+        </div>
+        <aside class="annotation"><strong>Revenue</strong> Honest math builds trust. The numbers are concrete enough to be useful and cautious enough for public-sector scrutiny.</aside>
+      </section>
+
+      <section class="cta-strip" id="pilot">
+        <span class="section-label">[Mid-Page CTA]</span>
+        <h2>Starten Sie mit einem Standort, nicht mit einem Großprojekt.</h2>
+        <p>Für die erste Prüfung reicht ein konkreter Standortvorschlag: Rathaus, Fußgängerzone, Bürgerbüro, Bibliothek, Bad, Parkhauszugang oder Veranstaltungsfläche. HYSN bewertet daraus die technische Machbarkeit, die Werberelevanz und ein passendes Pilotmodell.</p>
+        <div class="button-row">
+          <a class="btn" href="#kontakt">Pilotstandort für unsere Kommune prüfen lassen</a>
+        </div>
+        <p class="objection">Die Prüfung verpflichtet Ihre Kommune nicht zu einem Rollout — sie schafft eine belastbare Entscheidungsgrundlage.</p>
+        <aside class="annotation"><strong>Risk reversal</strong> Municipal buyers fear commitment. A single pilot location is a safer, more realistic ask than a network rollout.</aside>
+      </section>
+
+      <section id="standorte">
+        <span class="section-label">[Available Equipment]</span>
+        <h2>Displays für öffentliche Räume, Innenbereiche und hochsichtbare Stadtlagen.</h2>
+        <div class="equipment-grid">
+          <div class="equipment-card">
+            <div class="image-placeholder" style="min-height:170px; margin-top:0; margin-bottom:18px;">
+              <svg viewBox="0 0 100 50" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="50" stroke="#d0d0d0" stroke-width="0.8"/><line x1="100" y1="0" x2="0" y2="50" stroke="#d0d0d0" stroke-width="0.8"/></svg>
+              <span>Outdoor LED Stele</span>
+            </div>
+            <h3>Outdoor LED Stelen</h3>
+            <p>Für Fußgängerzonen, Plätze, Parkhauszugänge und hochfrequentierte Laufwege. Hohe Helligkeit, wetterfeste Ausführung und gute Sichtbarkeit im öffentlichen Raum.</p>
+          </div>
+          <div class="equipment-card">
+            <div class="image-placeholder" style="min-height:170px; margin-top:0; margin-bottom:18px;">
+              <svg viewBox="0 0 100 50" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="50" stroke="#d0d0d0" stroke-width="0.8"/><line x1="100" y1="0" x2="0" y2="50" stroke="#d0d0d0" stroke-width="0.8"/></svg>
+              <span>Outdoor LED Video Wall</span>
+            </div>
+            <h3>Outdoor LED Video Walls</h3>
+            <p>Für größere Sichtachsen, Gebäude, Einfahrtsbereiche oder Veranstaltungsflächen. Geeignet, wenn Stadtinformation und Werbung über größere Distanz wahrgenommen werden sollen.</p>
+          </div>
+          <div class="equipment-card">
+            <div class="image-placeholder" style="min-height:170px; margin-top:0; margin-bottom:18px;">
+              <svg viewBox="0 0 100 50" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="50" stroke="#d0d0d0" stroke-width="0.8"/><line x1="100" y1="0" x2="0" y2="50" stroke="#d0d0d0" stroke-width="0.8"/></svg>
+              <span>Indoor Infostele</span>
+            </div>
+            <h3>Indoor Infostelen</h3>
+            <p>Für Rathausfoyers, Bürgerbüros, Bibliotheken, Bäder, Wartebereiche und kommunale Einrichtungen. Besonders geeignet für lokale Hinweise, Serviceinformationen und regionale Werbung.</p>
+          </div>
+        </div>
+        <aside class="annotation"><strong>Equipment</strong> Hardware is framed by public-space use, not specs. The buyer needs to picture where each unit belongs.</aside>
+      </section>
+
+      <section id="case-study">
+        <span class="section-label">[Vorher / Nachher Case Study]</span>
+        <h2>Von überfüllten Aushängen zu digitaler Infrastruktur mit laufenden Einnahmen.</h2>
+        <p>Repräsentatives Beispiel einer mittelgroßen Kommune mit Innenstadtlage und aktivem Stadtmarketing.</p>
+        <div class="case-study">
+          <div class="case-box">
+            <span class="card-label">Vorher</span>
+            <h3>Informationen waren sichtbar, aber nicht wirksam.</h3>
+            <p>Veranstaltungshinweise wurden gedruckt, Aushänge mussten regelmäßig ausgetauscht werden und aktuelle Meldungen erreichten nur einen kleinen Teil der Passanten. Die Stadt besaß gute Standorte, erzielte daraus aber keine Werbeeinnahmen.</p>
+            <ul class="clean">
+              <li>3 analoge Hinweisflächen in der Innenstadt</li>
+              <li>Keine lokale Werbevermarktung</li>
+              <li>Hoher manueller Aufwand für Aktualisierungen</li>
+            </ul>
+          </div>
+          <div class="case-box">
+            <span class="card-label">Nachher</span>
+            <h3>Digitale Stelen informieren, finanzieren sich durch Werbung und werten den Standort auf.</h3>
+            <p>Nach einem Pilotstandort wurden zwei weitere Stelen ergänzt. Stadtinformationen, Veranstaltungshinweise und kuratierte lokale Werbung laufen zentral gesteuert. Die Kommune erhält monatliche Beteiligungen und kann wichtige Hinweise kurzfristig einspielen lassen.</p>
+            <ul class="clean">
+              <li>3 digitale Stelen im laufenden Betrieb</li>
+              <li>ca. 540–900 € monatlicher kommunaler Anteil in der Startphase</li>
+              <li>Aktualisierungen ohne Neudruck und ohne eigenes Technikteam</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="annotation"><strong>Proof structure</strong> Before/after makes the result meaningful. Representative numbers stay cautious and public-sector appropriate.</aside>
+      </section>
+
+      <section id="testimonials">
+        <span class="section-label">[Testimonials]</span>
+        <h2>So klingt ein Projekt, wenn es in Verwaltung und Stadtpolitik funktioniert.</h2>
+        <div class="testimonial-grid">
+          <div class="testimonial">
+            <p class="quote">„Anfangs war der Stadtrat skeptisch — kein Risiko und Werbeeinnahmen klang zu gut. Nach dem ersten Quartal mit dem Pilot in der Fußgängerzone war die Verlängerung einstimmig, weil Betrieb, Inhalte und Einnahmen nachvollziehbar dokumentiert waren.“</p>
+            <div class="quote-author">Bürgermeister einer Kleinstadt · repräsentative Stimme</div>
+          </div>
+          <div class="testimonial">
+            <p class="quote">„Für uns war entscheidend, dass wir nicht noch ein technisches System verwalten mussten. HYSN hat die Abstimmung mit den zuständigen Stellen vorbereitet; wir mussten den Standort freigeben und die kommunalen Inhalte zuliefern.“</p>
+            <div class="quote-author">Leiterin Stadtmarketing · repräsentative Stimme</div>
+          </div>
+          <div class="testimonial">
+            <p class="quote">„Die lokalen Händler bekommen eine digitale Werbefläche, die sie sich bei klassischen großformatigen Kampagnen nicht leisten würden. Damit wurde das Projekt nicht nur ein Kommunikationsthema, sondern auch ein Wirtschaftsförderungsthema.“</p>
+            <div class="quote-author">Direktor Wirtschaftsförderung · repräsentative Stimme</div>
+          </div>
+        </div>
+        <aside class="annotation"><strong>Testimonials</strong> Dummy quotes are labeled as representative. Register is careful and substantive, not generic praise.</aside>
+      </section>
+
+      <section id="standards">
+        <span class="section-label">[Content & Advertising Standards]</span>
+        <h2>Öffentliche Wirkung braucht klare Inhaltsregeln.</h2>
+        <p>Digitale Stadtbildschirme dürfen nicht wie beliebige Werbeträger wirken. Deshalb wird vor dem Start definiert, welche Inhalte laufen, welche ausgeschlossen sind und welche Freigaben die Kommune erhält.</p>
+        <div class="ratio">
+          <div class="city">ca. 30% Stadtinformation</div>
+          <div class="ads">ca. 70% kuratierte Werbung</div>
+        </div>
+        <div class="two-grid">
+          <div class="standard-box">
+            <h3>Kommunale Inhalte</h3>
+            <ul class="clean">
+              <li>Veranstaltungen, Märkte, Kultur- und Sporthinweise</li>
+              <li>Bürgerservice, Öffnungszeiten, Baustelleninformationen</li>
+              <li>Warnhinweise oder dringende Mitteilungen nach Absprache</li>
+              <li>Informationen kommunaler Eigenbetriebe und Stadtwerke</li>
+            </ul>
+          </div>
+          <div class="standard-box">
+            <h3>Werbestandards</h3>
+            <ul class="clean">
+              <li>Lokale und regionale Werbepartner werden bevorzugt</li>
+              <li>Keine unangemessenen Inhalte im öffentlichen Raum</li>
+              <li>Keine politische Werbung in sensiblen Wahlzeiträumen</li>
+              <li>Keine Alkoholwerbung in unmittelbarer Nähe von Schulen oder Jugendeinrichtungen</li>
+              <li>Keine diskriminierenden, jugendgefährdenden oder reputationsschädigenden Kampagnen</li>
+            </ul>
+          </div>
+        </div>
+        <aside class="annotation"><strong>Ad safety</strong> This section removes the biggest emotional objection: fear of embarrassing or inappropriate advertising in public space.</aside>
+      </section>
+
+      <section id="genehmigung">
+        <span class="section-label">[Permits & Legal Handling]</span>
+        <h2>Genehmigungen werden vorbereitet — Standorte werden von der Kommune freigegeben.</h2>
+        <p>Der genaue Ablauf hängt von Eigentumsverhältnissen, Standort, Bauordnungsrecht, Sondernutzung, Denkmalschutz, Verkehrssicherheit und kommunalen Satzungen ab. HYSN bereitet die notwendigen Unterlagen, technischen Angaben und Standortskizzen vor; die Kommune entscheidet über Standorte und interne Freigaben.</p>
+        <div class="timeline">
+          <div class="timeline-item"><span class="card-label">Woche 1</span><h3>Standortscreening</h3><p>Sichtbarkeit, Strom, Eigentum, Frequenz und mögliche Einschränkungen werden bewertet.</p></div>
+          <div class="timeline-item"><span class="card-label">Woche 2–4</span><h3>Unterlagen</h3><p>HYSN erstellt technische Beschreibung, Visualisierung, Betriebsrahmen und Inhaltskonzept.</p></div>
+          <div class="timeline-item"><span class="card-label">Woche 4–8</span><h3>Freigaben</h3><p>Die zuständigen kommunalen Stellen prüfen Standort, Satzung, Sicherheit und Zuständigkeiten.</p></div>
+          <div class="timeline-item"><span class="card-label">Nach Freigabe</span><h3>Installation</h3><p>Montage, Einrichtung, Contentplan und Werbestart werden koordiniert.</p></div>
+        </div>
+        <aside class="annotation"><strong>Legal clarity</strong> Avoids overpromising. HYSN helps prepare; the municipality retains authority and approvals.</aside>
+      </section>
+
+      <section id="rollen">
+        <span class="section-label">[HYSN übernimmt / Kommune übernimmt]</span>
+        <h2>Wenig Aufwand für die Verwaltung, klare Kontrollpunkte für die Kommune.</h2>
+        <table class="handle-table" aria-label="Aufgabenverteilung HYSN und Kommune">
+          <thead>
+            <tr><th>HYSN übernimmt</th><th>Die Kommune übernimmt</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Standortanalyse, Konzept, Visualisierung und technische Planung</td><td>Benennung geeigneter Standorte und zuständiger Ansprechpersonen</td></tr>
+            <tr><td>Finanzierung der Geräte im Betreibermodell</td><td>Freigabe des Standorts und Abstimmung interner Entscheidungswege</td></tr>
+            <tr><td>Installation, Einrichtung, Backend, Wartungskoordination und Betrieb</td><td>Zulieferung oder Freigabe kommunaler Inhalte</td></tr>
+            <tr><td>Akquise und Verwaltung lokaler und regionaler Werbepartner</td><td>Definition von Ausschlusskategorien und kommunalen Werbestandards</td></tr>
+            <tr><td>Monatliche Abrechnung der vereinbarten Erlösbeteiligung</td><td>Prüfung der Abrechnung und Entscheidung über mögliche Erweiterungen</td></tr>
+          </tbody>
+        </table>
+        <aside class="annotation"><strong>Responsibility split</strong> This answers the silent question: “Who will actually do the work?”</aside>
+      </section>
+
+      <section id="public-benefit">
+        <span class="section-label">[Public Benefit]</span>
+        <h2>Mehr als Werbung: digitale Infrastruktur mit öffentlichem Nutzen.</h2>
+        <div class="benefit-grid">
+          <div class="card"><h3>Schnellere Information</h3><p>Kurzfristige Hinweise können digital eingespielt werden, ohne Druck, Verteilung oder manuelle Aushänge.</p></div>
+          <div class="card"><h3>Lokale Wirtschaft</h3><p>Regionale Unternehmen erhalten sichtbare Werbemöglichkeiten an relevanten Orten der Stadt.</p></div>
+          <div class="card"><h3>Weniger Printaufwand</h3><p>Wiederkehrende Plakate und Aushänge lassen sich reduzieren, vor allem bei häufig wechselnden Terminen.</p></div>
+          <div class="card"><h3>Modernes Stadtbild</h3><p>Digitale Kommunikation zeigt, dass eine Kommune öffentliche Räume aktiv weiterentwickelt.</p></div>
+        </div>
+        <aside class="annotation"><strong>Civic angle</strong> Municipal buyers need more than revenue. Public benefit makes the project politically easier to explain.</aside>
+      </section>
+
+      <section id="faq">
+        <span class="section-label">[FAQ]</span>
+        <h2>Fragen, die vor einer kommunalen Entscheidung geklärt werden sollten.</h2>
+        <div class="faq-grid">
+          <div class="faq-item"><h3>Wer beantragt die Genehmigungen?</h3><p>HYSN bereitet technische Unterlagen, Visualisierungen und Standortinformationen vor. Je nach kommunaler Struktur laufen formale Freigaben über die zuständigen Stellen der Kommune oder über abgestimmte Verwaltungswege.</p></div>
+          <div class="faq-item"><h3>Welche Inhalte sind erlaubt — und welche nicht?</h3><p>Vor dem Start werden Werbestandards und Ausschlusskategorien definiert. Üblich sind keine jugendgefährdenden, diskriminierenden, politisch sensiblen oder reputationsschädigenden Inhalte; Sonderregeln gelten zum Beispiel bei Schulen, Kirchen, sensiblen öffentlichen Einrichtungen oder Wahlzeiträumen.</p></div>
+          <div class="faq-item"><h3>Was passiert am Ende der Vertragslaufzeit?</h3><p>Je nach Vereinbarung kann das Projekt verlängert, erweitert, beendet oder in ein anderes Eigentums- oder Betriebsmodell überführt werden. Die Bedingungen werden vor Projektstart schriftlich definiert.</p></div>
+          <div class="faq-item"><h3>Wer zahlt Strom und laufende Betriebskosten?</h3><p>Das hängt vom Standortmodell ab. Im Betreibermodell können Strom- und Betriebskosten in der Kalkulation berücksichtigt oder separat vereinbart werden. Wichtig ist, dass die Kostenregelung vor Installation transparent feststeht.</p></div>
+          <div class="faq-item"><h3>Braucht der Gemeinderat oder Stadtrat einen Beschluss?</h3><p>Das hängt von Satzung, Standort, Vertragsdauer, Eigentumsverhältnissen und Zuständigkeiten ab. HYSN liefert eine verständliche Entscheidungsgrundlage mit Modell, Standort, Nutzen, Rollen und Risiken, damit die Verwaltung intern sauber beraten kann.</p></div>
+          <div class="faq-item"><h3>Kann die Kommune einzelne Werbekunden ausschließen?</h3><p>Ja, Ausschlusskategorien und sensible Branchen können vorab festgelegt werden. Zusätzlich kann definiert werden, ob bestimmte lokale Kampagnen vor Veröffentlichung abgestimmt werden müssen.</p></div>
+          <div class="faq-item"><h3>Wer haftet bei Beschädigung oder Ausfall?</h3><p>Haftung, Versicherung, Wartung, Reaktionszeiten und Umgang mit Vandalismus werden im Vertrag geregelt. HYSN plant die Geräte für den vorgesehenen Standort und koordiniert den technischen Betrieb.</p></div>
+          <div class="faq-item"><h3>Werden Kameras oder personenbezogene Daten genutzt?</h3><p>Der Standardbetrieb benötigt keine personenbezogenen Kameradaten. Falls Frequenzmessung oder Sensorik gewünscht wird, erfolgt dies nur nach gesonderter Vereinbarung, datenschutzrechtlicher Prüfung und in anonymisierter beziehungsweise aggregierter Form.</p></div>
+          <div class="faq-item"><h3>Kann der Screen für Notfallkommunikation genutzt werden?</h3><p>Ja, technische und organisatorische Abläufe können so definiert werden, dass dringende kommunale Hinweise priorisiert eingespielt werden. Die Zuständigkeit für Auslösung, Inhalt und Freigabe sollte vorab festgelegt werden.</p></div>
+        </div>
+        <aside class="annotation"><strong>FAQ</strong> Public-sector objections are practical, legal, and reputational. Answer them before the contact form.</aside>
+      </section>
+
+      <section id="kontakt">
+        <span class="section-label">[Stakes + Final CTA]</span>
+        <h2>Wenn kommunale Sichtbarkeit nicht aktiv gestaltet wird, übernehmen andere den Wert der besten Standorte.</h2>
+        <p>Innenstädte, Bürgerbüros und kommunale Einrichtungen bleiben relevante Kontaktpunkte. Die Frage ist, ob diese Flächen weiterhin nur informieren — oder ob sie zusätzlich digitale Infrastruktur, lokale Wirtschaftsförderung und laufende Einnahmen ermöglichen.</p>
+        <div class="button-row">
+          <a class="btn" href="mailto:info@hysn.de?subject=Konzept%20f%C3%BCr%20unsere%20Kommune%20anfragen">Konzept für unsere Kommune anfragen</a>
+          <a class="btn" href="tel:+4961038315032">Telefonische Erstprüfung vereinbaren</a>
+        </div>
+        <p class="objection">Für die Erstprüfung genügen ein möglicher Standort, Ihre Kommune und ein kurzer Hinweis, ob ein Pilot oder ein größeres Standortnetz geprüft werden soll.</p>
+        <div class="image-placeholder" role="img" aria-label="Kontaktformular für Kommunen">
+          <svg viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="0" x2="100" y2="40" stroke="#d0d0d0" stroke-width="0.5"/>
+            <line x1="100" y1="0" x2="0" y2="40" stroke="#d0d0d0" stroke-width="0.5"/>
+          </svg>
+          <span>Formularplatzhalter: Kommune, Ansprechpartner, Standortidee, gewünschtes Modell, Nachricht</span>
+        </div>
+        <aside class="annotation"><strong>Final CTA</strong> Stakes are mild: do not let valuable public locations remain underused. CTA asks for a concept, not a purchase.</aside>
+      </section>
+
+      <footer>
+        <span class="section-label">[Footer]</span>
+        <div class="footer-top">
+          <div>
+            <div class="logo" style="margin-bottom:14px;">HYSN</div>
+            <p class="small">RA Vision GmbH · Digital Signage, DOOH Advertising und Smart Display Solutions für Unternehmen, Kommunen und öffentliche Standorte.</p>
+          </div>
+          <div class="footer-links">
+            <a href="#modell">Partnermodell</a>
+            <a href="#einnahmen">Revenue Sharing</a>
+            <a href="#standards">Content-Standards</a>
+            <a href="#genehmigung">Genehmigungen</a>
+            <a href="#kontakt">Kommunales Konzept anfragen</a>
+          </div>
+          <div class="footer-links">
+            <span>info@hysn.de</span>
+            <span>+49 6103 8315 032</span>
+            <span>Deutschlandweite Projektanfragen</span>
+          </div>
+        </div>
+        <div class="legal">© 2026 HYSN / RA Vision GmbH. Impressum · Datenschutz · AGB</div>
+        <aside class="annotation"><strong>Footer</strong> Keeps the public-sector page focused. Avoid unrelated product clutter and template leftovers.</aside>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

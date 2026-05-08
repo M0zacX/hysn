@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYSN Über uns – HTML Wireframe</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --soft: #f4f4f4;
+      --line: #d0d0d0;
+      --text: #333333;
+      --dark: #111111;
+      --body: #f0f0f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--body);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .stage {
+      width: 1150px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .page {
+      width: 900px;
+      background: var(--white);
+      min-height: 100vh;
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      position: relative;
+      min-height: 76px;
+      padding: 18px 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 22px;
+      letter-spacing: 0.1em;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .nav-links a {
+      padding: 6px 0;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      border-bottom-color: var(--dark);
+      color: var(--dark);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      border: 2px solid var(--text);
+      background: transparent;
+      color: var(--dark);
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.2;
+      cursor: pointer;
+      min-height: 46px;
+    }
+
+    .button.small {
+      padding: 10px 18px;
+      font-size: 12px;
+    }
+
+    .button.secondary {
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .section {
+      position: relative;
+      padding: 64px 42px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section.compact {
+      padding-top: 42px;
+      padding-bottom: 42px;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 16px;
+      font-size: 10px;
+      line-height: 1;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+      opacity: 0.72;
+      font-weight: 700;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 690px;
+      margin-bottom: 20px;
+      color: var(--dark);
+      font-size: 48px;
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      font-weight: 850;
+    }
+
+    h2 {
+      max-width: 700px;
+      margin-bottom: 18px;
+      color: var(--dark);
+      font-size: 34px;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      font-weight: 820;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      color: var(--dark);
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 780;
+    }
+
+    p {
+      margin-bottom: 18px;
+      font-size: 16px;
+    }
+
+    .lead {
+      max-width: 680px;
+      font-size: 19px;
+      line-height: 1.55;
+      color: var(--text);
+    }
+
+    .muted {
+      color: var(--text);
+      opacity: 0.78;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      min-width: 0;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-top: 34px;
+    }
+
+    .meta-card {
+      background: var(--soft);
+      padding: 18px;
+      min-height: 114px;
+    }
+
+    .meta-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--dark);
+      font-size: 14px;
+    }
+
+    .meta-card span {
+      display: block;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .placeholder {
+      position: relative;
+      min-height: 320px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .placeholder.tall {
+      min-height: 420px;
+    }
+
+    .placeholder.small {
+      min-height: 180px;
+    }
+
+    .placeholder svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .placeholder .caption {
+      position: relative;
+      z-index: 2;
+      max-width: 70%;
+      padding: 12px 16px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      color: var(--text);
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .annotation {
+      position: absolute;
+      right: -230px;
+      top: 42px;
+      width: 200px;
+      padding: 14px 14px 15px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .annotation strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--dark);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .story-block {
+      padding: 26px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+    }
+
+    .quote-card {
+      padding: 28px;
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .quote-card p {
+      margin-bottom: 0;
+      color: var(--white);
+      font-size: 25px;
+      line-height: 1.34;
+      letter-spacing: -0.02em;
+      font-weight: 730;
+    }
+
+    .quote-card .quote-source {
+      display: block;
+      margin-top: 18px;
+      color: var(--white);
+      opacity: 0.8;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .proof-grid,
+    .values-grid,
+    .facts-grid,
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-top: 28px;
+    }
+
+    .proof-card,
+    .value-card,
+    .fact-card,
+    .capability-card {
+      background: var(--white);
+      padding: 24px;
+      min-height: 190px;
+    }
+
+    .proof-card:nth-child(2n),
+    .value-card:nth-child(2n),
+    .fact-card:nth-child(2n),
+    .capability-card:nth-child(2n) {
+      background: var(--soft);
+    }
+
+    .proof-card p,
+    .value-card p,
+    .fact-card p,
+    .capability-card p {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    .fact-number {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--dark);
+      font-size: 42px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      font-weight: 850;
+    }
+
+    .timeline {
+      margin-top: 30px;
+      border: 1px solid var(--line);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      gap: 24px;
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .timeline-item:nth-child(even) {
+      background: var(--soft);
+    }
+
+    .timeline-item:last-child {
+      border-bottom: 0;
+    }
+
+    .timeline-date {
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    .timeline-copy h3 {
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    .timeline-copy p {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    .brand-structure {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 28px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .brand-card {
+      padding: 24px;
+      min-height: 230px;
+      background: var(--white);
+    }
+
+    .brand-card:nth-child(2) {
+      background: var(--soft);
+    }
+
+    .brand-kicker {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 750;
+    }
+
+    .brand-card p {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .founder-statement {
+      padding: 30px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .founder-statement blockquote {
+      margin: 0 0 20px;
+      color: var(--dark);
+      font-size: 25px;
+      line-height: 1.35;
+      letter-spacing: -0.025em;
+      font-weight: 750;
+    }
+
+    .founder-statement cite {
+      font-style: normal;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .logo-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin-top: 28px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .logo-box {
+      min-height: 96px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--soft);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .region-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: center;
+      margin-top: 28px;
+    }
+
+    .region-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border: 1px solid var(--line);
+    }
+
+    .region-list li {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+      font-size: 15px;
+    }
+
+    .region-list li:nth-child(even) {
+      background: var(--soft);
+    }
+
+    .region-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .final-cta {
+      text-align: center;
+      background: var(--soft);
+    }
+
+    .final-cta h2,
+    .final-cta p {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .objection-killer {
+      margin-top: 16px;
+      margin-bottom: 0;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .footer {
+      position: relative;
+      padding: 38px 42px;
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .footer h3 {
+      color: var(--white);
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .footer p,
+    .footer a {
+      color: var(--white);
+      opacity: 0.82;
+      font-size: 13px;
+    }
+
+    .footer a {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid var(--text);
+      color: var(--white);
+      opacity: 0.75;
+      font-size: 12px;
+    }
+
+    /* Desktop-only wireframe by brief. A simple guard keeps the layout readable if opened on smaller screens. */
+    @media (max-width: 1200px) {
+      .stage {
+        width: 100%;
+        margin: 0;
+      }
+      .page {
+        width: 900px;
+        margin: 0;
+      }
+      .annotation {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Elevation choices: Included founder voice, timeline, partner logo strip, regional presence and capability snapshot because the About page must build due-diligence trust. No press section was included because no real press proof is available yet. -->
+  <div class="stage">
+    <main class="page">
+      <header class="site-header">
+        <div class="nav-inner">
+          <a class="logo" href="#top" aria-label="HYSN Startseite">HYSN</a>
+          <nav class="nav-links" aria-label="Hauptnavigation">
+            <a href="#loesungen">Lösungen</a>
+            <a href="#branchen">Branchen</a>
+            <a href="#projekte">Projekte</a>
+            <a class="active" href="#top">Über uns</a>
+            <a href="#kontakt">Kontakt</a>
+          </nav>
+          <a class="button small" href="#kontakt">Erstgespräch planen</a>
+          <aside class="annotation">
+            <strong>Sticky nav</strong>
+            Keeps the consultation action visible while visitors validate credibility and decide whether HYSN is a serious partner.
+          </aside>
+        </div>
+      </header>
+
+      <section class="section" id="top">
+        <aside class="annotation">
+          <strong>Hero</strong>
+          Avoids “Wir sind HYSN.” The headline tells cautious B2B buyers what HYSN means for their project: responsibility and reliability.
+        </aside>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="label">[Über HYSN]</span>
+            <h1>Verlässliche Digital Signage Projekte beginnen mit einem Partner, der Verantwortung übernimmt.</h1>
+            <p class="lead">HYSN begleitet Restaurants, Einzelhändler, Standortpartner und Kommunen von der ersten Idee bis zum laufenden Betrieb digitaler Bildschirme. Sie erhalten keine lose Hardware, sondern ein durchdachtes System aus Beratung, Displays, Content, Installation und Support.</p>
+            <div class="cta-row">
+              <a class="button" href="#kontakt">Mein Projekt mit HYSN einordnen</a>
+              <a class="button secondary" href="#belege">Belege ansehen</a>
+            </div>
+          </div>
+          <div class="placeholder tall" role="img" aria-label="Platzhalter für echtes HYSN Teamfoto oder Installation">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="0.8" />
+              <line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="0.8" />
+            </svg>
+            <div class="caption">Bildplatzhalter: echtes Teamfoto, Büro oder starke Installation mit HYSN Display</div>
+          </div>
+        </div>
+        <div class="meta-row" aria-label="HYSN Kurzprofil">
+          <div class="meta-card">
+            <strong>Für professionelle Standorte</strong>
+            <span>Restaurants, Handel, Supermärkte, Events, Kommunen und öffentliche Bereiche.</span>
+          </div>
+          <div class="meta-card">
+            <strong>Full-Service statt Einzelteile</strong>
+            <span>Hardware, Content, Montage, technische Einrichtung und laufende Betreuung aus einer Hand.</span>
+          </div>
+          <div class="meta-card">
+            <strong>Aus Deutschland heraus</strong>
+            <span>Schwerpunkt Rhein-Main, Projektumsetzung deutschlandweit nach Umfang.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="problem">
+        <aside class="annotation">
+          <strong>Empathy first</strong>
+          Before presenting the company, this section names the real friction buyers experience with screens, content and support.
+        </aside>
+        <span class="label">[Was Kunden vor der Anfrage beschäftigt]</span>
+        <h2>Sie wollen digitale Bildschirme einsetzen. Aber niemand soll das Projekt zwischen vier Dienstleistern verlieren.</h2>
+        <div class="two-col">
+          <div>
+            <p>Viele Unternehmen wissen, dass gedruckte Speisekarten, statische Poster oder alte Monitore nicht mehr zur Wirkung ihres Standorts passen. Gleichzeitig ist der Weg zur passenden Lösung oft unklar: Welche Displaygröße ist richtig? Welche Helligkeit braucht der Standort? Wer gestaltet den Content? Wer montiert, wartet und hilft, wenn etwas ausfällt?</p>
+          </div>
+          <div>
+            <p>Genau an dieser Stelle entsteht Vertrauen oder Unsicherheit. HYSN ist für Kunden relevant, die keine technische Bastellösung suchen, sondern einen Partner, der mitdenkt, ehrlich plant und auch nach der Inbetriebnahme erreichbar bleibt.</p>
+            <p class="muted">Die Über-uns-Seite beantwortet deshalb nicht nur, wer hinter HYSN steht. Sie zeigt, warum Kunden mit HYSN weniger Abstimmungsaufwand, weniger technische Unsicherheit und mehr Klarheit im Projekt haben.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="ursprung">
+        <aside class="annotation">
+          <strong>Origin story</strong>
+          The story is grounded in a market gap: fragmented responsibility. No abstract founder-vision language.
+        </aside>
+        <span class="label">[Warum HYSN entstanden ist]</span>
+        <h2>Der Auslöser war nicht ein Bildschirm. Es war die Lücke zwischen Technik, Inhalt und Verantwortung.</h2>
+        <div class="two-col">
+          <div class="story-block">
+            <h3>Was RA Vision GmbH im Markt gesehen hat</h3>
+            <p>In vielen Projekten war das Problem nicht, dass es keine Displays gab. Das Problem war, dass Kunden einen Hardwarehändler, einen Monteur, eine Designagentur und einen technischen Ansprechpartner separat koordinieren mussten. Wenn der Content nicht passte, verwies der eine auf den anderen. Wenn ein Bildschirm nicht richtig lief, war selten klar, wer wirklich verantwortlich ist.</p>
+          </div>
+          <div class="story-block">
+            <h3>Was daraus wurde</h3>
+            <p>Aus dieser Erfahrung entstand HYSN als Marke der RA Vision GmbH für Digital Signage Lösungen, die von Anfang an zusammen gedacht werden: Standortanalyse, passende Hardware, screenfertiger Content, saubere Installation, Backend und Support. Der Kunde muss nicht zum Display-Experten werden, um ein professionelles Ergebnis zu bekommen.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="one-liner">
+        <aside class="annotation">
+          <strong>StoryBrand one-liner</strong>
+          Clear formula: audience, desired outcome and obstacle removed. This can be reused in sales decks and proposals.
+        </aside>
+        <span class="label">[Der Satz, der HYSN erklärt]</span>
+        <div class="quote-card">
+          <p>Wir helfen Restaurants, Einzelhändlern, Standortpartnern und Kommunen, ihre Flächen mit digitalen Displays zu modernisieren und sichtbarer zu kommunizieren — ohne dass sie Hardware, Content, Installation und Betrieb selbst koordinieren müssen.</p>
+          <span class="quote-source">HYSN One-Liner für Website, Vertrieb und Angebote</span>
+        </div>
+      </section>
+
+      <section class="section" id="belege">
+        <aside class="annotation">
+          <strong>Authority after empathy</strong>
+          Four proof blocks. Each uses specific evidence rather than generic quality claims.
+        </aside>
+        <span class="label">[Warum HYSN der richtige Guide ist]</span>
+        <h2>Vertrauen entsteht nicht durch große Worte. Sondern durch konkrete Verantwortung im Projekt.</h2>
+        <p class="lead">HYSN verbindet Displaytechnik, Installation, Content und digitale Werbevermarktung in einem praktischen System. Für Kunden bedeutet das: weniger Schnittstellen, klarere Entscheidungen und ein Ansprechpartner, der das Ergebnis im Blick behält.</p>
+        <div class="proof-grid">
+          <article class="proof-card">
+            <h3>Mehrere Jahre im Digital-Signage-Markt</h3>
+            <p>RA Vision GmbH ist seit mehreren Jahren im Markt für digitale Werbedisplays, LCD- und LED-Lösungen aktiv. Diese Erfahrung fließt in die Beratung ein, bevor ein Kunde in Hardware investiert.</p>
+          </article>
+          <article class="proof-card">
+            <h3>Projekte in realen Kundenumgebungen</h3>
+            <p>HYSN arbeitet mit Restaurantkonzepten, Retail-Flächen und DOOH-Standorten in Umfeldern wie REWE- und EDEKA-Märkten. Dadurch entstehen Lösungen, die nicht nur im Angebot gut aussehen, sondern im Alltag funktionieren müssen.</p>
+          </article>
+          <article class="proof-card">
+            <h3>Technik, Content und Montage zusammen gedacht</h3>
+            <p>Digitale Menüboards, LCD-Stelen, LED-Videowände und interaktive Displays werden nicht isoliert geplant. Contentformat, Auflösung, Montageart, Medienplayer und späterer Betrieb werden früh mitgedacht.</p>
+          </article>
+          <article class="proof-card">
+            <h3>Laufende Modelle statt Einmalgeschäft</h3>
+            <p>Über hyads und wiederkehrende Service- und Werbemodelle betreut RA Vision GmbH digitale Bildschirme nicht nur bis zur Lieferung. Bestehende Kundenbeziehungen und monatliche Erlösmodelle zeigen, dass Betrieb und Betreuung Teil des Systems sind.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="founder">
+        <aside class="annotation">
+          <strong>Founder voice</strong>
+          Human trust-builder. Replace placeholder image with real founder or leadership photo when available.
+        </aside>
+        <span class="label">[Stimme aus der Geschäftsführung]</span>
+        <div class="founder-grid">
+          <div class="placeholder" role="img" aria-label="Platzhalter für Foto der Geschäftsführung">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="0.8" />
+              <line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="0.8" />
+            </svg>
+            <div class="caption">Bildplatzhalter: Raqeeb Khan / Geschäftsführung RA Vision GmbH</div>
+          </div>
+          <div class="founder-statement">
+            <blockquote>„Viele Kunden kommen nicht zu uns, weil sie einfach einen Bildschirm kaufen wollen. Sie kommen, weil sie eine Lösung brauchen, die am Standort zuverlässig läuft, gut aussieht und ihnen Arbeit abnimmt.“</blockquote>
+            <cite>Raqeeb Khan, Geschäftsführung RA Vision GmbH</cite>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="werte">
+        <aside class="annotation">
+          <strong>Lived values</strong>
+          Each value is written as daily behavior, not as a corporate poster word.
+        </aside>
+        <span class="label">[Werte im Alltag]</span>
+        <h2>Was Kunden im Projekt tatsächlich von HYSN erwarten können.</h2>
+        <div class="values-grid">
+          <article class="value-card">
+            <h3>Komplettverantwortung</h3>
+            <p>HYSN verkauft nicht nur ein Display und lässt den Kunden danach allein. Beratung, Content, Montage, Einrichtung und laufende Betreuung werden so geplant, dass der Kunde einen klaren Ansprechpartner hat.</p>
+          </article>
+          <article class="value-card">
+            <h3>Technik, die zum Standort passt</h3>
+            <p>Nicht jeder Standort braucht die teuerste Lösung. HYSN prüft Sichtabstand, Lichtverhältnisse, Format, Nutzung und Betriebsmodell, bevor Displaytyp, Größe oder Montageart empfohlen werden.</p>
+          </article>
+          <article class="value-card">
+            <h3>Content wird nicht nachträglich angehängt</h3>
+            <p>Ein Bildschirm wirkt nur, wenn das Motiv, die Speisekarte oder die Kampagne für dieses Format gestaltet ist. Deshalb gehören Design, Animation und Contentplanung bei HYSN direkt zum Lösungsdenken.</p>
+          </article>
+          <article class="value-card">
+            <h3>Erreichbarkeit nach der Inbetriebnahme</h3>
+            <p>Digitale Displays sind kein statisches Produkt. Preise ändern sich, Kampagnen laufen aus, Inhalte müssen angepasst werden. HYSN bleibt für Support, Updates und Erweiterungen ansprechbar.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="zahlen">
+        <aside class="annotation">
+          <strong>Numbers and facts</strong>
+          Makes the operation tangible while avoiding inflated claims. Replace “rund” values as internal data becomes exact.
+        </aside>
+        <span class="label">[Zahlen & Fakten]</span>
+        <h2>Konkrete Signale, dass hinter HYSN ein reales operatives Geschäft steht.</h2>
+        <div class="facts-grid">
+          <article class="fact-card">
+            <span class="fact-number">30+</span>
+            <h3>verwaltete oder eigene Screens im DOOH-Kontext</h3>
+            <p>Über die Verbindung zu hyads werden digitale Werbeflächen in realen Standortumgebungen betrieben, geplant oder vermarktet.</p>
+          </article>
+          <article class="fact-card">
+            <span class="fact-number">3</span>
+            <h3>Leistungsbereiche in einem System</h3>
+            <p>HYSN verbindet Display-Hardware, Content-Erstellung und Betrieb/Support, damit Kunden nicht zwischen einzelnen Dienstleistern vermitteln müssen.</p>
+          </article>
+          <article class="fact-card">
+            <span class="fact-number">2025</span>
+            <h3>Ausbau wiederkehrender Kundenmodelle</h3>
+            <p>Mit Kunden wie Haus des Döners und digitalen Werbeflächen wird der Fokus auf langfristige Service-, Content- und Werbeeinnahmen ausgebaut.</p>
+          </article>
+          <article class="fact-card">
+            <span class="fact-number">DACH</span>
+            <h3>Beschaffung und Projektfähigkeit über Einzelstandorte hinaus</h3>
+            <p>HYSN plant lokale Projekte im Rhein-Main-Gebiet ebenso wie größere Display- und Rollout-Anfragen in Deutschland und nach Projektumfang darüber hinaus.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="entwicklung">
+        <aside class="annotation">
+          <strong>Timeline</strong>
+          Shows progress without pretending the company is older or larger than proven. Dates can be refined with exact internal milestones.
+        </aside>
+        <span class="label">[Entwicklung]</span>
+        <h2>Von Displayprojekten zur integrierten Digital-Signage-Marke.</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Startpunkt</div>
+            <div class="timeline-copy">
+              <h3>RA Vision GmbH arbeitet im Markt für digitale Werbedisplays</h3>
+              <p>LCD-Displays, LED-Wände, digitale Stelen und interaktive Systeme bilden die technische Grundlage.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Projektphase</div>
+            <div class="timeline-copy">
+              <h3>Mehr Nachfrage nach kompletten Lösungen</h3>
+              <p>Kunden fragen nicht nur nach Hardware, sondern nach Content, Montage, Einrichtung und verlässlicher Betreuung.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">Rollouts</div>
+            <div class="timeline-copy">
+              <h3>Restaurants, Retail-Standorte und Supermarktumfelder</h3>
+              <p>Digitale Menüboards, Werbescreens und Standortkonzepte machen den Bedarf nach einem klaren Full-Service-Angebot sichtbar.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">hyads</div>
+            <div class="timeline-copy">
+              <h3>Aufbau digitaler Werbeflächen und lokaler Vermarktung</h3>
+              <p>Der nächste Schritt verbindet Displays mit Werbepartnern, Standortbetreibern und wiederkehrenden Einnahmemodellen.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">HYSN heute</div>
+            <div class="timeline-copy">
+              <h3>Premium-Marke für Digital Signage, DOOH und smarte Displaylösungen</h3>
+              <p>HYSN bündelt die Leistungen der RA Vision GmbH in einer klaren Marke für Kunden, die professionelle Umsetzung statt Einzelteile suchen.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="capabilities">
+        <aside class="annotation">
+          <strong>Capability snapshot</strong>
+          Gives a “not one-person operation” feeling without inventing employee names or fake bios.
+        </aside>
+        <span class="label">[Wer an Ihrem Projekt arbeitet]</span>
+        <h2>Ein gutes Displayprojekt braucht mehr als einen Lieferanten.</h2>
+        <p class="lead">Bei HYSN werden die wichtigsten Projektrollen früh zusammengeführt, damit Ihr Standort nicht erst nach der Lieferung zur Baustelle wird.</p>
+        <div class="capabilities-grid">
+          <article class="capability-card">
+            <h3>Beratung & Standortanalyse</h3>
+            <p>Welche Lösung passt zur Fläche, zum Licht, zur Entfernung, zum Budget und zum späteren Content?</p>
+          </article>
+          <article class="capability-card">
+            <h3>Content & Animation</h3>
+            <p>Menüs, Werbemotive und Kampagnen werden screenfertig gestaltet, statt nur als statische Grafik übernommen zu werden.</p>
+          </article>
+          <article class="capability-card">
+            <h3>Montage & technische Einrichtung</h3>
+            <p>Halterung, Verkabelung, Ausrichtung, Medienplayer, CMS und Funktionstest werden als Teil des Projekts geplant.</p>
+          </article>
+          <article class="capability-card">
+            <h3>Betrieb & Support</h3>
+            <p>Nach dem Start geht es um Contentwechsel, Wartung, Erweiterungen und technische Reaktion, wenn etwas nicht läuft.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="struktur">
+        <aside class="annotation">
+          <strong>Brand structure</strong>
+          Clarifies RA Vision GmbH / HYSN / hyads so buyers understand who contracts, who brands and who operates media.
+        </aside>
+        <span class="label">[Hinter der Marke]</span>
+        <h2>RA Vision GmbH, HYSN und hyads — klar getrennt, aber strategisch verbunden.</h2>
+        <p class="lead">Viele Besucher sehen mehrere Namen und fragen sich, was dahintersteht. Die Struktur ist einfach: RA Vision GmbH ist die Gesellschaft, HYSN ist die Lösungsmarke, hyads ist der Werbenetzwerk-Arm.</p>
+        <div class="brand-structure">
+          <article class="brand-card">
+            <span class="brand-kicker">Gesellschaft</span>
+            <h3>RA Vision GmbH</h3>
+            <p>Die RA Vision GmbH steht hinter der geschäftlichen Umsetzung, Angeboten, Projekten und operativen Leistungen im Bereich digitaler Displaylösungen.</p>
+          </article>
+          <article class="brand-card">
+            <span class="brand-kicker">Marke</span>
+            <h3>HYSN</h3>
+            <p>HYSN bündelt die Digital-Signage-Lösungen: Menüboards, LCD-Displays, LED-Wände, Stelen, Touchlösungen, Content, Montage und Support.</p>
+          </article>
+          <article class="brand-card">
+            <span class="brand-kicker">Werbenetzwerk</span>
+            <h3>hyads</h3>
+            <p>hyads steht für digitale Werbeflächen, lokale DOOH-Kampagnen, Standortpartner und Vermarktungsmodelle auf eigenen oder betreuten Screens.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="partner">
+        <aside class="annotation">
+          <strong>Partner credibility</strong>
+          Logo strip is a wireframe block. Use only confirmed manufacturer/supplier logos in production.
+        </aside>
+        <span class="label">[Technik & Beschaffung]</span>
+        <h2>HYSN plant nicht markenblind, sondern projektbezogen.</h2>
+        <p class="lead">Je nach Standort und Anforderung werden passende Displaytypen, Größen, Helligkeiten, Befestigungen, Medienplayer und Steuerungssysteme ausgewählt. In der finalen Website sollten hier nur bestätigte Hersteller- und Lieferantenlogos erscheinen.</p>
+        <div class="logo-strip" aria-label="Partnerlogo-Platzhalter">
+          <div class="logo-box">Samsung<br />Business</div>
+          <div class="logo-box">LG<br />Displays</div>
+          <div class="logo-box">LED<br />Hardware</div>
+          <div class="logo-box">CMS<br />Systeme</div>
+        </div>
+      </section>
+
+      <section class="section" id="region">
+        <aside class="annotation">
+          <strong>Regional trust</strong>
+          Reinforces local proximity while keeping larger project reach open.
+        </aside>
+        <span class="label">[Regionale Nähe]</span>
+        <h2>Persönliche Projektbetreuung im Rhein-Main-Gebiet. Deutschlandweite Umsetzung nach Projektumfang.</h2>
+        <div class="region-box">
+          <div class="placeholder small" role="img" aria-label="Platzhalter für regionale Abdeckungskarte">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="0.8" />
+              <line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="0.8" />
+            </svg>
+            <div class="caption">Platzhalter: Karte Rhein-Main / Deutschlandweite Projekte</div>
+          </div>
+          <ul class="region-list">
+            <li><strong>Rhein-Main:</strong> persönliche Nähe für Beratung, Installation und Betreuung.</li>
+            <li><strong>Deutschlandweit:</strong> Projektumsetzung bei passenden technischen und logistischen Anforderungen.</li>
+            <li><strong>Standortpartner:</strong> Konzepte für Supermärkte, öffentliche Flächen und frequenzstarke Orte.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section final-cta" id="kontakt">
+        <aside class="annotation">
+          <strong>Final CTA</strong>
+          Specific, low-pressure and immediately connected to the trust story. Includes objection-killer line.
+        </aside>
+        <span class="label">[Nächster Schritt]</span>
+        <h2>Prüfen Sie zuerst, ob HYSN zu Ihrem Standort und Vorhaben passt.</h2>
+        <p class="lead">In einem kostenlosen Erstgespräch ordnen wir ein, welche Displaylösung sinnvoll ist, welche Inhalte benötigt werden und ob ein Kauf-, Miet-, Service- oder Werbemodell für Sie in Frage kommt.</p>
+        <div class="cta-row" style="justify-content:center;">
+          <a class="button" href="mailto:info@hysn.de">Kostenloses Erstgespräch vereinbaren</a>
+        </div>
+        <p class="objection-killer">Unverbindlich: Sie erhalten eine ehrliche Ersteinschätzung, ohne sofort ein Angebot beauftragen zu müssen.</p>
+      </section>
+
+      <footer class="footer">
+        <aside class="annotation">
+          <strong>Footer</strong>
+          Keeps legal company clarity visible and reinforces HYSN as a serious B2B brand.
+        </aside>
+        <div class="footer-grid">
+          <div>
+            <h3>HYSN</h3>
+            <p>Digital Signage, DOOH Advertising und smarte Displaylösungen von RA Vision GmbH.</p>
+          </div>
+          <div>
+            <h3>Lösungen</h3>
+            <a href="#">Digitale Menüboards</a>
+            <a href="#">LED Videowalls</a>
+            <a href="#">LCD Displays</a>
+            <a href="#">DOOH Werbeflächen</a>
+          </div>
+          <div>
+            <h3>Kontakt</h3>
+            <a href="mailto:info@hysn.de">info@hysn.de</a>
+            <a href="tel:+4961038315032">+49 6103 8315 032</a>
+            <a href="#">Impressum</a>
+            <a href="#">Datenschutz</a>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 RA Vision GmbH / HYSN. Alle Angaben als Wireframe-Copy zur finalen Prüfung.</div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

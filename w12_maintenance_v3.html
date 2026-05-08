@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYSN Wireframe – Wartung & Support</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --body: #f0f0f0;
+      --soft: #f4f4f4;
+      --line: #d0d0d0;
+      --text: #333333;
+      --dark: #111111;
+      --muted: #707070;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--body);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-width: 1200px;
+      line-height: 1.55;
+    }
+
+    .wireframe-shell {
+      width: 1150px;
+      margin: 0 auto;
+      padding: 0 0 80px;
+      position: relative;
+    }
+
+    .page {
+      width: 900px;
+      max-width: 900px;
+      background: var(--white);
+      min-height: 100vh;
+      box-shadow: 0 0 0 1px var(--line);
+      position: relative;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 38px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--dark);
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--dark);
+      display: grid;
+      place-items: center;
+      font-size: 10px;
+      letter-spacing: 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      border: 2px solid var(--text);
+      padding: 8px 14px;
+      font-weight: 650;
+    }
+
+    section, footer {
+      position: relative;
+      padding: 66px 54px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-label {
+      font-size: 10px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      color: var(--dark);
+      font-size: 44px;
+      line-height: 1.06;
+      letter-spacing: -0.035em;
+      margin-bottom: 22px;
+      max-width: 650px;
+    }
+
+    h2 {
+      color: var(--dark);
+      font-size: 31px;
+      line-height: 1.12;
+      letter-spacing: -0.026em;
+      margin-bottom: 18px;
+      max-width: 650px;
+    }
+
+    h3 {
+      color: var(--dark);
+      font-size: 18px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 15px;
+      margin-bottom: 16px;
+    }
+
+    .lead {
+      font-size: 18px;
+      line-height: 1.5;
+      max-width: 690px;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .button-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      border: 2px solid var(--text);
+      color: var(--dark);
+      text-decoration: none;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 700;
+      background: transparent;
+    }
+
+    .btn:hover {
+      background: var(--soft);
+    }
+
+    .objection {
+      margin-top: 13px;
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 640px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .hero-grid h1 {
+      max-width: none;
+    }
+
+    .image-placeholder {
+      position: relative;
+      min-height: 280px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 28px;
+      color: var(--muted);
+    }
+
+    .image-placeholder.tall {
+      min-height: 380px;
+    }
+
+    .image-placeholder.short {
+      min-height: 190px;
+    }
+
+    .image-placeholder svg.cross {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .image-placeholder .caption {
+      position: relative;
+      background: rgba(244, 244, 244, 0.86);
+      border: 1px solid var(--line);
+      padding: 12px 14px;
+      font-size: 13px;
+      max-width: 260px;
+    }
+
+    .trust-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      margin-top: 30px;
+    }
+
+    .trust-item {
+      padding: 20px 16px;
+      border-right: 1px solid var(--line);
+      min-height: 92px;
+    }
+
+    .trust-item:last-child {
+      border-right: none;
+    }
+
+    .trust-number {
+      display: block;
+      font-size: 24px;
+      line-height: 1;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .grid-3, .grid-4, .grid-2 {
+      display: grid;
+      gap: 16px;
+      margin-top: 30px;
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 22px;
+      min-height: 160px;
+    }
+
+    .card.soft {
+      background: var(--soft);
+    }
+
+    .card-label {
+      display: inline-block;
+      font-size: 10px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-weight: 800;
+    }
+
+    .icon-box {
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--text);
+      margin-bottom: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: var(--dark);
+      font-size: 12px;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 10px;
+      margin-top: 24px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .checklist li {
+      border: 1px solid var(--line);
+      padding: 14px 16px 14px 44px;
+      background: var(--white);
+      position: relative;
+      font-size: 14px;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 16px;
+      top: 12px;
+      font-weight: 900;
+      color: var(--dark);
+    }
+
+    .loss-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .loss-item {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      border: 1px solid var(--line);
+      padding: 18px;
+      background: var(--soft);
+    }
+
+    .loss-index {
+      width: 42px;
+      height: 42px;
+      border: 2px solid var(--text);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      color: var(--dark);
+    }
+
+    .diagram {
+      margin-top: 30px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 24px;
+    }
+
+    .dashboard-top {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .status-tile {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 14px;
+      min-height: 78px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid var(--dark);
+      display: inline-block;
+      margin-right: 7px;
+      vertical-align: middle;
+    }
+
+    .dashboard-map {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+    }
+
+    .screen-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .screen-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 11px 12px;
+      font-size: 13px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .flow-step {
+      border: 1px solid var(--line);
+      padding: 18px;
+      background: var(--white);
+      min-height: 155px;
+      position: relative;
+    }
+
+    .flow-step::after {
+      content: "→";
+      position: absolute;
+      right: -14px;
+      top: 46%;
+      color: var(--muted);
+      font-weight: 900;
+    }
+
+    .flow-step:last-child::after {
+      content: "";
+    }
+
+    .channel-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .meta-line {
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .meta-line strong {
+      color: var(--dark);
+    }
+
+    .package-table,
+    .issue-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 28px;
+      font-size: 14px;
+    }
+
+    .package-table th,
+    .package-table td,
+    .issue-table th,
+    .issue-table td {
+      border: 1px solid var(--line);
+      padding: 15px 14px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    .package-table th,
+    .issue-table th {
+      background: var(--soft);
+      color: var(--dark);
+      font-size: 13px;
+    }
+
+    .tier-name {
+      display: block;
+      color: var(--dark);
+      font-weight: 850;
+      margin-bottom: 5px;
+    }
+
+    .cta-strip {
+      background: var(--soft);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .commitment-box {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 26px;
+      align-items: stretch;
+      margin-top: 30px;
+    }
+
+    .commitment-number {
+      border: 2px solid var(--dark);
+      background: var(--white);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 28px;
+    }
+
+    .commitment-number strong {
+      font-size: 62px;
+      line-height: 1;
+      color: var(--dark);
+      display: block;
+      letter-spacing: -0.06em;
+    }
+
+    .quote {
+      min-height: 250px;
+    }
+
+    .quote p {
+      font-size: 15px;
+    }
+
+    .quote-author {
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+      margin-top: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .covered-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .covered-box {
+      border: 1px solid var(--line);
+      padding: 24px;
+      background: var(--white);
+    }
+
+    .covered-box.warning {
+      background: var(--soft);
+    }
+
+    .covered-box ul {
+      margin: 18px 0 0;
+      padding-left: 18px;
+    }
+
+    .covered-box li {
+      margin-bottom: 11px;
+      font-size: 14px;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    details {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 16px 18px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 750;
+      color: var(--dark);
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      float: right;
+      color: var(--muted);
+      font-weight: 900;
+    }
+
+    details[open] summary::after {
+      content: "–";
+    }
+
+    details p {
+      margin: 14px 0 0;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr 0.7fr;
+      gap: 36px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 9px;
+      font-size: 14px;
+    }
+
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .annotation {
+      position: absolute;
+      left: 930px;
+      top: 26px;
+      width: 205px;
+      background: #f4f4f4;
+      border: 1px solid var(--line);
+      padding: 13px 14px;
+      font-size: 12px;
+      line-height: 1.42;
+      color: var(--text);
+      box-shadow: 0 2px 0 rgba(0, 0, 0, 0.04);
+    }
+
+    .annotation strong {
+      display: block;
+      color: var(--dark);
+      margin-bottom: 4px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .anchor-offset {
+      scroll-margin-top: 84px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wireframe-shell">
+    <main class="page">
+      <header class="topbar">
+        <div class="brand" aria-label="HYSN Logo">
+          <div class="brand-mark">HY</div>
+          <span>HYSN</span>
+        </div>
+        <nav class="nav" aria-label="Hauptnavigation">
+          <a href="#leistungen">Leistungen</a>
+          <a href="#kanaele">Support-Kanäle</a>
+          <a href="#pakete">Pakete</a>
+          <a href="#faq">FAQ</a>
+          <a class="nav-cta" href="#kontakt">Support-Paket anfragen</a>
+        </nav>
+      </header>
+
+      <section class="hero anchor-offset" id="start">
+        <div class="annotation"><strong>Hero strategy</strong>Reliability first. Visitor understands: screens keep running, support is reachable, remote fixes reduce downtime.</div>
+        <div class="section-label">[Wartung & Support]</div>
+        <div class="hero-grid">
+          <div>
+            <h1>Ihre Bildschirme sollen laufen. Wenn etwas ist, wissen Sie genau, wen Sie erreichen.</h1>
+            <p class="lead">HYSN betreut digitale Menüboards, Signage-Displays, Werbestelen und LED-Systeme nach der Installation weiter — mit Remote-Support, Wartung vor Ort und klaren Reaktionszeiten.</p>
+            <div class="button-row">
+              <a class="btn" href="#kontakt">Support-Paket anfragen</a>
+              <a class="btn" href="#pakete">Wartungs-Optionen ansehen</a>
+            </div>
+            <p class="objection">Viele Störungen lassen sich per Remote-Zugriff beheben, bevor ein Technikertermin nötig wird.</p>
+          </div>
+          <div class="image-placeholder tall" role="img" aria-label="Platzhalterbild Remote Support und Monitoring">
+            <svg class="cross" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1" />
+              <line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1" />
+            </svg>
+            <div class="caption">Bildplatzhalter: Techniker prüft Display-Status im Monitoring-Dashboard</div>
+          </div>
+        </div>
+        <div class="trust-bar" aria-label="Support-Vertrauen">
+          <div class="trust-item"><span class="trust-number">1</span>fester Ansprechpartner für Technik, Content und Betrieb</div>
+          <div class="trust-item"><span class="trust-number">Remote</span>für Neustarts, Inhaltsupdates und Fehlerdiagnose</div>
+          <div class="trust-item"><span class="trust-number">4 h</span>werktägliche Reaktion auf Support-Anfragen</div>
+          <div class="trust-item"><span class="trust-number">Vor Ort</span>wenn ein Remote-Fix nicht ausreicht</div>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="risiko">
+        <div class="annotation"><strong>Pain-away</strong>Frames support as avoided operational loss, not a nice-to-have feature.</div>
+        <div class="section-label">[Ohne verlässlichen Support]</div>
+        <h2>Ein Bildschirm fällt selten im richtigen Moment aus.</h2>
+        <p class="lead">Wenn ein Display während der Stoßzeit hängt, geht es nicht nur um Technik. Es geht um sichtbare Angebote, geordnete Abläufe und die Frage, wer sofort erreichbar ist.</p>
+        <div class="loss-list">
+          <div class="loss-item">
+            <div class="loss-index">01</div>
+            <div>
+              <h3>Umsatzrelevante Inhalte sind nicht sichtbar</h3>
+              <p>Menüs, Aktionen oder Werbekampagnen bleiben stehen. Kunden sehen veraltete Preise, falsche Angebote oder im schlimmsten Fall einen schwarzen Bildschirm.</p>
+            </div>
+          </div>
+          <div class="loss-item">
+            <div class="loss-index">02</div>
+            <div>
+              <h3>Ihr Team verliert Zeit mit Fehlersuche</h3>
+              <p>Statt den Betrieb zu führen, werden Kabel geprüft, Geräte neu gestartet und alte Ansprechpartner gesucht. Kleine Fehler werden unnötig groß.</p>
+            </div>
+          </div>
+          <div class="loss-item">
+            <div class="loss-index">03</div>
+            <div>
+              <h3>Niemand fühlt sich zuständig</h3>
+              <p>Hardware-Lieferant, Software-Anbieter, Monteur und Content-Team verweisen aufeinander. Für Sie zählt aber nur: Der Bildschirm muss wieder laufen.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="leistungen">
+        <div class="annotation"><strong>Included</strong>Checklist removes ambiguity. Buyer sees the ongoing operating model, not just hardware warranty.</div>
+        <div class="section-label">[Im HYSN Support enthalten]</div>
+        <h2>Alles, was den laufenden Betrieb Ihrer Displays absichert.</h2>
+        <p class="lead">Je nach System und Wartungspaket betreut HYSN Ihre Displays technisch, organisatorisch und inhaltlich. Ziel ist ein Betrieb, der für Ihr Team möglichst wenig Aufwand erzeugt.</p>
+        <div class="grid-2">
+          <div>
+            <ul class="checklist">
+              <li><strong>Monitoring, wo technisch möglich:</strong> Statusprüfung für erreichbare Displays, Player und geplante Inhalte.</li>
+              <li><strong>Remote-Troubleshooting:</strong> Neustarts, Konfigurationsprüfung, Zeitpläne, Netzwerkdiagnose und Software-Checks.</li>
+              <li><strong>Content-Updates:</strong> Austausch von Menüs, Kampagnen, Preisänderungen und saisonalen Motiven im vereinbarten Umfang.</li>
+              <li><strong>Vor-Ort-Service:</strong> Technikertermin, wenn Hardware, Montage, Verkabelung oder Standortbedingungen geprüft werden müssen.</li>
+              <li><strong>Regelmäßige Wartungsbesuche:</strong> Reinigung, Sichtprüfung, Firmware-Updates, Kalibrierung und Funktionskontrolle laut Paket.</li>
+            </ul>
+          </div>
+          <div class="image-placeholder" role="img" aria-label="Platzhalter Support Leistung">
+            <svg class="cross" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1" />
+              <line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1" />
+            </svg>
+            <div class="caption">Bildplatzhalter: Wartungscheck an Outdoor-Stele oder Menüboard</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="kanaele">
+        <div class="annotation"><strong>Channels</strong>Visible access options reduce fear of being trapped in a slow ticket system.</div>
+        <div class="section-label">[Support-Kanäle]</div>
+        <h2>Ein Problem. Mehrere Wege zu einer schnellen Lösung.</h2>
+        <p class="lead">Sie müssen nicht wissen, ob es an Hardware, Software, Content oder Netzwerk liegt. Sie melden die Störung — HYSN prüft den passenden Lösungsweg.</p>
+        <div class="grid-4">
+          <div class="card channel-card">
+            <div class="icon-box">TEL</div>
+            <h3>Telefon</h3>
+            <p>Für akute Störungen im laufenden Betrieb und schnelle Ersteinschätzung.</p>
+            <div class="meta-line"><strong>Reaktion:</strong> priorisiert bei kritischen Ausfällen</div>
+            <div class="meta-line"><strong>Verfügbarkeit:</strong> werktags, paketabhängig erweitert</div>
+          </div>
+          <div class="card channel-card">
+            <div class="icon-box">WA</div>
+            <h3>WhatsApp</h3>
+            <p>Für Fotos, kurze Videos und schnelle Rückfragen direkt aus der Filiale.</p>
+            <div class="meta-line"><strong>Reaktion:</strong> innerhalb der Support-Zeit</div>
+            <div class="meta-line"><strong>Ideal für:</strong> sichtbare Fehlerbilder</div>
+          </div>
+          <div class="card channel-card">
+            <div class="icon-box">@</div>
+            <h3>E-Mail</h3>
+            <p>Für planbare Content-Anpassungen, Wartungsanfragen und Dokumentation.</p>
+            <div class="meta-line"><strong>Reaktion:</strong> werktags innerhalb von 4 Stunden</div>
+            <div class="meta-line"><strong>Ideal für:</strong> nicht-akute Themen</div>
+          </div>
+          <div class="card channel-card">
+            <div class="icon-box">↗</div>
+            <h3>Vor-Ort-Service</h3>
+            <p>Wenn Hardware, Halterung, Kabelweg oder Standort geprüft werden müssen.</p>
+            <div class="meta-line"><strong>Planung:</strong> nach Diagnose und Paket</div>
+            <div class="meta-line"><strong>Ziel:</strong> Austausch oder Reparatur mit wenig Downtime</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="remote">
+        <div class="annotation"><strong>Remote capability</strong>Makes the “no site visit needed” benefit concrete: content, restart, schedule, diagnosis.</div>
+        <div class="section-label">[Remote Management]</div>
+        <h2>Die schnellste Wartung ist oft die, für die niemand zu Ihnen fahren muss.</h2>
+        <p class="lead">Viele typische Störungen entstehen nicht am Bildschirm selbst, sondern in Wiedergabe, Zeitplan, Netzwerk oder Content-Konfiguration. Diese Punkte lassen sich häufig aus der Ferne prüfen und korrigieren.</p>
+        <div class="flow">
+          <div class="flow-step">
+            <span class="card-label">Schritt 1</span>
+            <h3>Störung melden</h3>
+            <p>Ihr Team sendet Standort, Foto oder kurze Beschreibung per Telefon, WhatsApp oder E-Mail.</p>
+          </div>
+          <div class="flow-step">
+            <span class="card-label">Schritt 2</span>
+            <h3>Remote-Diagnose</h3>
+            <p>HYSN prüft Player, Netzwerkstatus, Zeitplan, Inhaltsdateien und Display-Erreichbarkeit.</p>
+          </div>
+          <div class="flow-step">
+            <span class="card-label">Schritt 3</span>
+            <h3>Direkter Fix</h3>
+            <p>Neustart, Content-Austausch, Schedule-Korrektur oder Konfigurationsanpassung erfolgen remote.</p>
+          </div>
+          <div class="flow-step">
+            <span class="card-label">Schritt 4</span>
+            <h3>Vor-Ort-Eskalation</h3>
+            <p>Wenn der Fehler physisch ist, wird ein Technikertermin mit klarer Aufgabenliste geplant.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Elevation: monitoring dashboard included because it visualizes proactive reliability and makes support tangible. -->
+      <section class="anchor-offset" id="monitoring">
+        <div class="annotation"><strong>Dashboard visual</strong>Placeholder converts an abstract service into a visible operations system.</div>
+        <div class="section-label">[Monitoring-Dashboard]</div>
+        <h2>Probleme sollen erkannt werden, bevor sie im Tagesgeschäft auffallen.</h2>
+        <p class="lead">Bei kompatiblen Systemen kann HYSN relevante Betriebsdaten überwachen: Erreichbarkeit, letzter Content-Upload, Wiedergabestatus und auffällige Abweichungen.</p>
+        <div class="diagram" aria-label="Wireframe Monitoring Dashboard">
+          <div class="dashboard-top">
+            <div class="status-tile"><span class="status-dot"></span><strong>Online</strong><br><span class="small">16 Displays erreichbar</span></div>
+            <div class="status-tile"><span class="status-dot"></span><strong>Update läuft</strong><br><span class="small">2 Standorte in Prüfung</span></div>
+            <div class="status-tile"><span class="status-dot"></span><strong>Warnung</strong><br><span class="small">1 Player ohne Rückmeldung</span></div>
+            <div class="status-tile"><span class="status-dot"></span><strong>Backup</strong><br><span class="small">Content gesichert</span></div>
+          </div>
+          <div class="dashboard-map">
+            <div class="image-placeholder short" role="img" aria-label="Platzhalter Standortübersicht">
+              <svg class="cross" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1" />
+                <line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1" />
+              </svg>
+              <div class="caption">Wireframe: Standortkarte mit Display-Status</div>
+            </div>
+            <div class="screen-list">
+              <div class="screen-row"><span>Restaurant Mitte · Menüboard 01</span><strong>Online</strong></div>
+              <div class="screen-row"><span>Retail Filiale West · Werbescreen</span><strong>Update</strong></div>
+              <div class="screen-row"><span>Outdoor-Stele · Eingang</span><strong>Prüfen</strong></div>
+              <div class="screen-row"><span>Filiale Süd · Kampagne</span><strong>Live</strong></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="faelle">
+        <div class="annotation"><strong>Use cases</strong>Operational scenarios help each buyer picture a real support moment.</div>
+        <div class="section-label">[Typische Support-Szenarien]</div>
+        <h2>So sieht Support aus, wenn im Betrieb wirklich etwas passiert.</h2>
+        <p class="lead">HYSN-Support ist nicht nur eine Hotline. Es ist ein Ablauf: melden, prüfen, remote lösen oder gezielt vor Ort eingreifen.</p>
+        <div class="grid-2">
+          <div class="card">
+            <span class="card-label">Restaurant · Stoßzeit</span>
+            <h3>Content hängt während der Mittagszeit</h3>
+            <p>Um 12:30 Uhr meldet die Restaurantleitung, dass ein Menüboard eingefroren ist. HYSN prüft remote Player, Wiedergabe und Netzwerkverbindung. Nach einem kontrollierten Neustart und kurzer Inhaltsprüfung läuft das Board wieder. Für Gäste bleibt der Ablauf ungestört.</p>
+          </div>
+          <div class="card">
+            <span class="card-label">Retail · Hardware</span>
+            <h3>Display fällt aus und muss ersetzt werden</h3>
+            <p>Ein Werbescreen in einer Filiale zeigt kein Signal mehr. HYSN grenzt den Fehler remote ein, bereitet ein Ersatzgerät vor und stimmt einen Technikertermin innerhalb von 48 Stunden ab. Die gespeicherte Content-Konfiguration wird übernommen, damit die Kampagne nach dem Austausch wieder live ist.</p>
+          </div>
+          <div class="card">
+            <span class="card-label">Outdoor · Prävention</span>
+            <h3>Quartalswartung an einer digitalen Stele</h3>
+            <p>Der Wartungsbesuch wird vorab in eine verkehrsarme Zeit gelegt. Vor Ort werden Gehäuse, Dichtungen, Lüftung, Helligkeit, Firmware und sichtbare Verschmutzung geprüft. Kleine Abweichungen werden direkt behoben, bevor sie zu Ausfällen führen.</p>
+          </div>
+          <div class="card">
+            <span class="card-label">Franchise · Multi-Location</span>
+            <h3>Wöchentlicher Kampagnenwechsel an 18 Standorten</h3>
+            <p>Das zentrale Content-Team stellt die neue Wochenkampagne am Sonntagabend bereit. HYSN verteilt die Inhalte, überwacht die Ausspielung und prüft Standorte, bei denen der Upload nicht direkt bestätigt wird. Am Montag zur Öffnung laufen alle Filialen mit derselben Kampagne.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="loesungszeiten">
+        <div class="annotation"><strong>Resolution table</strong>Concrete examples make response time more believable without promising impossible fixes.</div>
+        <div class="section-label">[Typische Probleme & Lösungswege]</div>
+        <h2>Viele Störungen haben einen klaren ersten Lösungsweg.</h2>
+        <p class="lead">Die tatsächliche Dauer hängt von Ursache, Standort, Paket und Erreichbarkeit des Systems ab. Die Tabelle zeigt, wie HYSN typische Fälle zuerst einordnet.</p>
+        <table class="issue-table">
+          <thead>
+            <tr>
+              <th>Problem</th>
+              <th>Erster Prüfweg</th>
+              <th>Typische Lösung</th>
+              <th>Üblicher Kanal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bildschirm eingefroren</td>
+              <td>Player-Status, Netzwerk, letzter Neustart</td>
+              <td>Remote-Neustart oder Wiedergabe neu starten</td>
+              <td>Telefon / WhatsApp</td>
+            </tr>
+            <tr>
+              <td>Falscher Content sichtbar</td>
+              <td>Zeitplan, Kampagnenzuordnung, Upload-Stand</td>
+              <td>Schedule korrigieren oder Datei neu verteilen</td>
+              <td>E-Mail / Remote</td>
+            </tr>
+            <tr>
+              <td>Kein Signal</td>
+              <td>Player, Kabelweg, Eingang, Stromversorgung</td>
+              <td>Remote-Prüfung, danach ggf. Vor-Ort-Termin</td>
+              <td>Telefon / Vor Ort</td>
+            </tr>
+            <tr>
+              <td>Helligkeit passt nicht</td>
+              <td>Display-Profil, Tageszeit, Sensorik, Standortlicht</td>
+              <td>Kalibrierung oder Profilanpassung</td>
+              <td>Remote / Wartungsbesuch</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="anchor-offset" id="pakete">
+        <div class="annotation"><strong>Package logic</strong>No exact pricing. Buyer can self-select support level before inquiry.</div>
+        <div class="section-label">[Wartungspakete]</div>
+        <h2>Der richtige Support hängt davon ab, wie wichtig der Bildschirm für Ihren Betrieb ist.</h2>
+        <p class="lead">Ein einzelnes Infodisplay braucht eine andere Betreuung als 18 Menüboards in mehreren Filialen oder eine Outdoor-Werbestele. HYSN strukturiert Wartung deshalb nach Betriebsrelevanz.</p>
+        <table class="package-table">
+          <thead>
+            <tr>
+              <th>Leistung</th>
+              <th><span class="tier-name">Basic</span>Für einzelne Displays</th>
+              <th><span class="tier-name">Standard</span>Für betriebsrelevante Screens</th>
+              <th><span class="tier-name">Premium</span>Für Filialen, Outdoor & DOOH</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Remote-Support</td>
+              <td>Bei gemeldeten Problemen</td>
+              <td>Priorisierte Remote-Diagnose</td>
+              <td>Priorisierte Remote-Diagnose mit Eskalationspfad</td>
+            </tr>
+            <tr>
+              <td>Content-Updates</td>
+              <td>Nach Aufwand oder vereinbartem Umfang</td>
+              <td>Regelmäßige Änderungen im Paketvolumen</td>
+              <td>Zentrale Kampagnenplanung für mehrere Standorte</td>
+            </tr>
+            <tr>
+              <td>Monitoring</td>
+              <td>Optional, systemabhängig</td>
+              <td>Statusprüfung kompatibler Systeme</td>
+              <td>Aktives Monitoring mit Standortübersicht</td>
+            </tr>
+            <tr>
+              <td>Vor-Ort-Service</td>
+              <td>Nach Termin und Aufwand</td>
+              <td>Geplante Einsätze bei Bedarf</td>
+              <td>Priorisierte Technikerkoordination</td>
+            </tr>
+            <tr>
+              <td>Wartungsbesuche</td>
+              <td>Optional buchbar</td>
+              <td>Regelmäßige Checks nach Vereinbarung</td>
+              <td>Proaktive Wartungsplanung für kritische Systeme</td>
+            </tr>
+            <tr>
+              <td>Empfohlen für</td>
+              <td>Einzelne Displays, einfache Indoor-Setups</td>
+              <td>Restaurants, Retail, Empfangsbereiche</td>
+              <td>Filialketten, Outdoor-Stelen, Werbenetzwerke</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="cta-strip anchor-offset" id="cta-mitte">
+        <div class="annotation"><strong>Mid CTA</strong>Converts after package comparison. Specific action: evaluate display risk/support fit.</div>
+        <div>
+          <div class="section-label">[Support prüfen]</div>
+          <h2>Sie haben bereits Displays im Einsatz?</h2>
+          <p>HYSN prüft, welche Wartung für Ihr System sinnvoll ist — auch wenn einzelne Komponenten nicht ursprünglich von HYSN geliefert wurden.</p>
+          <p class="objection">Die erste Einordnung zeigt, ob Remote-Support möglich ist und wo ein Vor-Ort-Check sinnvoll wäre.</p>
+        </div>
+        <div>
+          <a class="btn" href="#kontakt">Störfall-Schutz für meine Displays prüfen</a>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="reaktionszeit">
+        <div class="annotation"><strong>Commitment</strong>Specific response promise answers the biggest objection: “Will anyone answer?”</div>
+        <div class="section-label">[Reaktionszeit]</div>
+        <h2>Klare Rückmeldung statt offenes Ticket.</h2>
+        <p class="lead">Bei Support-Anfragen reagieren wir werktags innerhalb von 4 Stunden. Kritische Betriebsstörungen werden je nach Paket priorisiert und zuerst per Remote-Diagnose geprüft.</p>
+        <div class="commitment-box">
+          <div class="commitment-number">
+            <div>
+              <strong>4 h</strong>
+              <span>werktägliche Reaktion auf Support-Anfragen</span>
+            </div>
+          </div>
+          <div class="card soft">
+            <h3>Was „Reaktion“ konkret bedeutet</h3>
+            <p>Sie erhalten keine automatische Standardantwort, sondern eine erste technische Einordnung: Welche Anlage ist betroffen, welcher Fehler ist sichtbar, welche Remote-Prüfung ist möglich und ob ein Vor-Ort-Termin vorbereitet werden muss.</p>
+            <p>Für Premium- und Multi-Location-Kunden wird zusätzlich definiert, wann eine Störung als kritisch gilt und wie sie eskaliert wird.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="eskalation">
+        <div class="annotation"><strong>Escalation</strong>Explains what happens after remote support fails, reducing uncertainty around bigger incidents.</div>
+        <div class="section-label">[Eskalationspfad]</div>
+        <h2>Wenn Remote nicht reicht, wird der Vor-Ort-Einsatz gezielt vorbereitet.</h2>
+        <p class="lead">Ein Technikertermin ist am effektivsten, wenn vorher klar ist, welches Ersatzteil, welche Dateien und welche Zugänge benötigt werden.</p>
+        <div class="flow">
+          <div class="flow-step">
+            <span class="card-label">01</span>
+            <h3>Fehler eingrenzen</h3>
+            <p>HYSN prüft, ob Content, Player, Strom, Netzwerk, Display oder Verkabelung betroffen sind.</p>
+          </div>
+          <div class="flow-step">
+            <span class="card-label">02</span>
+            <h3>Einsatz planen</h3>
+            <p>Termin, Zugang, Ansprechpartner und Zeitpunkt mit geringer Kundenfrequenz werden abgestimmt.</p>
+          </div>
+          <div class="flow-step">
+            <span class="card-label">03</span>
+            <h3>Ersatz vorbereiten</h3>
+            <p>Wenn nötig, werden Ersatzgerät, Player, Kabel oder Konfigurationsbackup vorab bereitgestellt.</p>
+          </div>
+          <div class="flow-step">
+            <span class="card-label">04</span>
+            <h3>Betrieb wiederherstellen</h3>
+            <p>Nach Reparatur oder Austausch wird die Ausspielung getestet und dokumentiert.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="multi-location">
+        <div class="annotation"><strong>Chains</strong>Shows scalable support model for franchises and multi-location clients.</div>
+        <div class="section-label">[Für mehrere Standorte]</div>
+        <h2>Ein Service-Standard für jede Filiale.</h2>
+        <p class="lead">Bei Filialen, Franchise-Systemen und regionalen Retail-Netzwerken zählt Konsistenz. Jede Filiale soll wissen, wen sie erreicht — und die Zentrale soll sehen, was live ist.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Zentraler Account</h3>
+            <p>Ein Ansprechpartner koordiniert Content, technische Themen und Eskalationen für alle Standorte.</p>
+          </div>
+          <div class="card">
+            <h3>Standortliste mit Status</h3>
+            <p>Filialen werden nach Standort, Gerätetyp, Content-Zeitplan und Support-Priorität strukturiert.</p>
+          </div>
+          <div class="card">
+            <h3>Einheitliche Kampagnen</h3>
+            <p>Preisaktionen, Wochenangebote und Markeninhalte werden zentral ausgerollt und geprüft.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="proaktiv">
+        <div class="annotation"><strong>Proactive maintenance</strong>Positions maintenance as risk prevention, not only repair.</div>
+        <div class="section-label">[Proaktive Wartung]</div>
+        <h2>Wartung ist günstiger als ein sichtbarer Ausfall im Betrieb.</h2>
+        <p class="lead">Regelmäßige Checks halten Systeme sauber, aktuell und stabil. Besonders bei Outdoor-Stelen, LED-Flächen und stark frequentierten Standorten verhindert Prävention viele spätere Probleme.</p>
+        <div class="grid-4">
+          <div class="card soft">
+            <span class="card-label">Quartal</span>
+            <h3>Sichtprüfung</h3>
+            <p>Gehäuse, Halterung, Kabelwege, Lüftung und sichtbare Schäden werden geprüft.</p>
+          </div>
+          <div class="card soft">
+            <span class="card-label">Software</span>
+            <h3>Updates</h3>
+            <p>Firmware, Player-Konfiguration und Wiedergabeprofile werden bei Bedarf aktualisiert.</p>
+          </div>
+          <div class="card soft">
+            <span class="card-label">Bild</span>
+            <h3>Kalibrierung</h3>
+            <p>Helligkeit, Ausrichtung, Format und Lesbarkeit werden an Standortbedingungen angepasst.</p>
+          </div>
+          <div class="card soft">
+            <span class="card-label">Content</span>
+            <h3>Backup</h3>
+            <p>Wichtige Layouts, Kampagnen und Konfigurationen bleiben für Wiederherstellung verfügbar.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="stimmen">
+        <div class="annotation"><strong>Testimonials</strong>Dummy quotes are practical and support-specific, not generic praise.</div>
+        <div class="section-label">[Kundenstimmen]</div>
+        <h2>Support zeigt seinen Wert, wenn es schnell gehen muss.</h2>
+        <div class="grid-3">
+          <div class="card quote">
+            <p>„Samstagabend, Bildschirm hängt, Laden voll. Ich rufe an, nach wenigen Minuten war klar, was geprüft wird. Der Neustart lief remote, nach kurzer Zeit war das Menü wieder sichtbar — ohne dass jemand vorbeikommen musste.“</p>
+            <div class="quote-author">Restaurantleitung · Quick-Service-Gastronomie</div>
+          </div>
+          <div class="card quote">
+            <p>„Ich merke meistens nicht, dass HYSN gerade eingegriffen hat. Updates laufen außerhalb unserer Öffnungszeiten, kleinere Probleme werden im Hintergrund behoben. Für Facility Management ist genau das der Punkt.“</p>
+            <div class="quote-author">Facility Manager · Unternehmensstandort</div>
+          </div>
+          <div class="card quote">
+            <p>„Wir haben Standorte in vier Städten. Egal welche Filiale sich meldet — derselbe Ansprechpartner, dieselbe Reaktionslogik, derselbe Service-Standard. Das macht den Betrieb deutlich ruhiger.“</p>
+            <div class="quote-author">Retail Manager · Filialbetrieb</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="abdeckung">
+        <div class="annotation"><strong>Transparency</strong>Covered vs not covered builds trust and prevents billing surprises.</div>
+        <div class="section-label">[Abgedeckt & nicht abgedeckt]</div>
+        <h2>Klare Grenzen verhindern spätere Missverständnisse.</h2>
+        <p class="lead">Guter Support heißt auch: Sie wissen vorher, was im Paket enthalten ist und wo zusätzliche Leistungen entstehen können.</p>
+        <div class="covered-grid">
+          <div class="covered-box">
+            <h3>Abgedeckt</h3>
+            <ul>
+              <li>Hardware-Defekte innerhalb der Garantiezeit</li>
+              <li>Software- und Konfigurationsprobleme</li>
+              <li>Inhaltsupdates und Anpassungen im vereinbarten Umfang</li>
+              <li>Fern-Wartung und Remote-Support</li>
+              <li>Regelmäßige Maintenance-Visits laut Paket</li>
+            </ul>
+          </div>
+          <div class="covered-box warning">
+            <h3>Nicht abgedeckt</h3>
+            <ul>
+              <li>Schäden durch externe Einwirkung wie Vandalismus, Wasser oder unsachgemäße Nutzung</li>
+              <li>Drittpartei-Hardware außerhalb des HYSN-Systems</li>
+              <li>Größere Standortänderungen, zum Beispiel Umzug eines Bildschirms</li>
+              <li>Inhaltsänderungen außerhalb des vereinbarten Volumens</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="faq">
+        <div class="annotation"><strong>FAQ</strong>Answers operational objections that would otherwise block inquiry.</div>
+        <div class="section-label">[FAQ]</div>
+        <h2>Fragen, die vor einem Support-Paket geklärt sein sollten.</h2>
+        <div class="faq-list">
+          <details open>
+            <summary>Wie melde ich ein Problem mit einem Bildschirm?</summary>
+            <p>Sie melden den betroffenen Standort, das Gerät und das sichtbare Fehlerbild per Telefon, WhatsApp oder E-Mail. Ein Foto oder kurzes Video hilft, den Fehler schneller einzuordnen.</p>
+          </details>
+          <details>
+            <summary>Welche Reaktionszeit bietet HYSN?</summary>
+            <p>Werktags reagieren wir innerhalb von 4 Stunden auf Support-Anfragen. Kritische Störungen und erweiterte Reaktionszeiten werden im jeweiligen Wartungspaket definiert.</p>
+          </details>
+          <details>
+            <summary>Bietet HYSN 24/7 Support?</summary>
+            <p>Standard-Support erfolgt werktags. Für kritische Systeme, Filialketten, Outdoor-Stelen oder DOOH-Netzwerke können erweiterte Support- und Monitoring-Modelle vereinbart werden.</p>
+          </details>
+          <details>
+            <summary>Was passiert, wenn ein Bildschirm komplett ausfällt?</summary>
+            <p>Zuerst wird geprüft, ob der Fehler remote eingegrenzt werden kann. Bei einem Hardware-Defekt wird je nach Garantie, Paket und Verfügbarkeit ein Austausch oder Technikertermin geplant.</p>
+          </details>
+          <details>
+            <summary>Gibt es Ersatzgeräte auf Standby?</summary>
+            <p>Für größere Installationen, kritische Standorte und Premium-Pakete kann eine Ersatzgeräte-Strategie vereinbart werden. Das wird vorab nach Gerätetyp und Standortpriorität geplant.</p>
+          </details>
+          <details>
+            <summary>Kann ich einfache Content-Updates selbst machen?</summary>
+            <p>Ja, wenn das System entsprechend eingerichtet ist. HYSN kann einfache Abläufe für Preisänderungen, Bilder oder Kampagnen vorbereiten und Ihr Team darin einweisen.</p>
+          </details>
+          <details>
+            <summary>Was unterscheidet Basic, Standard und Premium?</summary>
+            <p>Basic eignet sich für einzelne Displays mit überschaubarer Betriebsrelevanz. Standard ist für Screens gedacht, die regelmäßig im Kundenkontakt laufen. Premium ist für Filialen, Outdoor-Systeme, Werbenetzwerke und Standorte mit höherem Ausfallrisiko.</p>
+          </details>
+          <details>
+            <summary>Unterstützt HYSN auch Bildschirme, die wir bei einem anderen Anbieter gekauft haben?</summary>
+            <p>In vielen Fällen ja. Voraussetzung ist eine technische Prüfung von Hardware, Player, Software, Zugriffsmöglichkeiten und bestehender Installation.</p>
+          </details>
+          <details>
+            <summary>Was passiert bei dringend benötigtem Vor-Ort-Service?</summary>
+            <p>Nach der Remote-Diagnose wird der Einsatz vorbereitet: Fehlerbild, Ersatzteile, Zugang, Ansprechpartner und sinnvoller Zeitpunkt. So wird der Termin möglichst effizient und mit minimaler Betriebsunterbrechung durchgeführt.</p>
+          </details>
+          <details>
+            <summary>Wie lange gilt die Garantie auf Hardware?</summary>
+            <p>Die Garantiedauer hängt vom jeweiligen Gerät, Hersteller und Angebot ab. Im Angebot wird transparent festgelegt, welche Garantiebedingungen gelten und welche Leistungen über Wartung abgedeckt werden.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="anchor-offset" id="kontakt">
+        <div class="annotation"><strong>Final CTA</strong>Specific CTA, objection killer, and trust points. No vague “contact us”.</div>
+        <div class="section-label">[Nächster Schritt]</div>
+        <h2>Planen Sie den Support, bevor ein Ausfall sichtbar wird.</h2>
+        <p class="lead">Beschreiben Sie kurz Ihre Displays, Standorte und die gewünschte Betreuung. HYSN prüft, welches Wartungsmodell zu Ihrem Betrieb passt und welche Remote-Funktionen möglich sind.</p>
+        <div class="grid-3">
+          <div class="card soft">
+            <h3>Für neue HYSN-Systeme</h3>
+            <p>Support wird direkt mit Hardware, Installation und Content-Setup geplant.</p>
+          </div>
+          <div class="card soft">
+            <h3>Für bestehende Displays</h3>
+            <p>HYSN prüft Zugänge, Player, Software und Wartbarkeit Ihrer aktuellen Anlage.</p>
+          </div>
+          <div class="card soft">
+            <h3>Für mehrere Standorte</h3>
+            <p>Support-Level, Eskalation und Content-Rollouts werden zentral strukturiert.</p>
+          </div>
+        </div>
+        <div class="button-row">
+          <a class="btn" href="mailto:info@hysn.de?subject=Support-Paket%20anfragen">Support-Konzept für meine Displays anfragen</a>
+          <a class="btn" href="tel:+4961038315032">Direkt anrufen</a>
+        </div>
+        <p class="objection">Sie müssen vor der Anfrage nicht wissen, welches technische Problem künftig auftreten könnte — HYSN prüft zuerst, welche Support-Struktur für Ihr System sinnvoll ist.</p>
+      </section>
+
+      <footer>
+        <div class="annotation"><strong>Footer</strong>Keeps conversion paths and service links accessible at the end.</div>
+        <div class="footer-grid">
+          <div>
+            <div class="brand" style="margin-bottom: 18px;">
+              <div class="brand-mark">HY</div>
+              <span>HYSN</span>
+            </div>
+            <p>Digitale Displays, LED-Systeme, Content, Installation und Support für Unternehmen, Gastronomie, Retail, Events und öffentliche Standorte.</p>
+            <p class="small">RA Vision GmbH · Deutschland · info@hysn.de · +49 6103 8315 032</p>
+          </div>
+          <div>
+            <h3>Leistungen</h3>
+            <div class="footer-links">
+              <a href="#leistungen">Wartung & Support</a>
+              <a href="#remote">Remote Management</a>
+              <a href="#pakete">Wartungspakete</a>
+              <a href="#multi-location">Multi-Location Support</a>
+            </div>
+          </div>
+          <div>
+            <h3>Unternehmen</h3>
+            <div class="footer-links">
+              <a href="#start">HYSN</a>
+              <a href="#faq">FAQ</a>
+              <a href="#kontakt">Support anfragen</a>
+              <a href="/impressum">Impressum</a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

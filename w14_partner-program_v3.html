@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYSN Partnerprogramm Wireframe</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --light: #f4f4f4;
+      --line: #d0d0d0;
+      --dark: #333333;
+      --black: #111111;
+      --body: #f0f0f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--body);
+      color: var(--black);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      min-width: 1180px;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      position: relative;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--black);
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+      color: var(--dark);
+    }
+
+    .nav-links a,
+    .footer a {
+      color: var(--dark);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover,
+    .footer a:hover {
+      border-bottom-color: var(--dark);
+    }
+
+    .nav-cta {
+      border: 2px solid var(--dark);
+      padding: 9px 16px;
+      color: var(--black);
+      font-weight: 650;
+      background: transparent;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    section,
+    footer {
+      position: relative;
+      padding: 64px 56px;
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .section-label {
+      display: block;
+      margin-bottom: 18px;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--dark);
+      font-weight: 750;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: 54px;
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      margin-bottom: 20px;
+      color: var(--black);
+    }
+
+    h2 {
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      margin-bottom: 18px;
+      color: var(--black);
+    }
+
+    h3 {
+      font-size: 19px;
+      line-height: 1.25;
+      margin-bottom: 10px;
+      color: var(--black);
+    }
+
+    p,
+    li {
+      font-size: 16px;
+      color: var(--dark);
+    }
+
+    .lead {
+      font-size: 20px;
+      line-height: 1.45;
+      color: var(--dark);
+      max-width: 690px;
+      margin-bottom: 26px;
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--dark);
+    }
+
+    .hero {
+      padding-top: 78px;
+    }
+
+    .hero-grid,
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      min-width: 0;
+    }
+
+    .hero .placeholder {
+      min-height: 390px;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--dark);
+      background: transparent;
+      color: var(--black);
+      padding: 12px 28px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      min-height: 48px;
+    }
+
+    .btn.secondary {
+      color: var(--dark);
+    }
+
+    .objection {
+      margin-top: 12px;
+      font-size: 13px;
+      color: var(--dark);
+      max-width: 520px;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-top: 34px;
+    }
+
+    .trust-item {
+      background: var(--light);
+      padding: 18px;
+      min-height: 112px;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 25px;
+      line-height: 1;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+
+    .trust-item span {
+      display: block;
+      font-size: 13px;
+      color: var(--dark);
+    }
+
+    .placeholder {
+      position: relative;
+      min-height: 260px;
+      border: 1px solid var(--line);
+      background: var(--light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 28px;
+      text-align: center;
+      color: var(--dark);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .placeholder::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='280' viewBox='0 0 420 280'%3E%3Cline x1='0' y1='0' x2='420' y2='280' stroke='%23d0d0d0' stroke-width='2'/%3E%3Cline x1='420' y1='0' x2='0' y2='280' stroke='%23d0d0d0' stroke-width='2'/%3E%3C/svg%3E");
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      opacity: 1;
+    }
+
+    .placeholder span {
+      position: relative;
+      z-index: 1;
+      max-width: 300px;
+      padding: 10px 14px;
+      background: var(--white);
+      border: 1px solid var(--line);
+    }
+
+    .annotation {
+      position: absolute;
+      left: calc(100% + 24px);
+      top: 32px;
+      width: 210px;
+      padding: 14px 14px 16px;
+      background: var(--light);
+      border: 1px solid var(--line);
+      color: var(--dark);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .annotation strong {
+      display: block;
+      color: var(--black);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .pain-grid,
+    .fit-grid,
+    .income-grid,
+    .steps-grid,
+    .testimonial-grid,
+    .faq-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .pain-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 28px;
+    }
+
+    .fit-grid {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 30px;
+    }
+
+    .income-grid {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 30px;
+    }
+
+    .card,
+    .quote-card,
+    .faq-item,
+    .step,
+    .model-card,
+    .calculator,
+    .rotation-card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 22px;
+    }
+
+    .card.light,
+    .model-card,
+    .calculator,
+    .rotation-card,
+    .faq-item,
+    .step {
+      background: var(--light);
+    }
+
+    .card p:last-child,
+    .quote-card p:last-child,
+    .faq-item p:last-child,
+    .step p:last-child,
+    .model-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .criteria {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 8px;
+    }
+
+    .criteria span,
+    .meta-row span,
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      line-height: 1.3;
+      color: var(--dark);
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 6px 9px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .income-number {
+      display: block;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--black);
+      font-weight: 800;
+      margin: 14px 0 10px;
+    }
+
+    .note-box {
+      margin-top: 24px;
+      padding: 18px;
+      background: var(--light);
+      border: 1px solid var(--line);
+    }
+
+    .note-label {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+
+    .deliver-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .check-list li {
+      position: relative;
+      padding-left: 26px;
+      font-size: 15px;
+    }
+
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 7px;
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--dark);
+      background: var(--white);
+    }
+
+    .model-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .calculation {
+      margin-top: 20px;
+      padding: 20px;
+      background: var(--white);
+      border: 1px solid var(--line);
+    }
+
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--dark);
+    }
+
+    .calc-row:last-child {
+      border-bottom: 0;
+      font-weight: 800;
+      color: var(--black);
+    }
+
+    .steps-grid {
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: 30px;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--dark);
+      background: var(--white);
+      color: var(--black);
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    .cta-strip {
+      background: var(--black);
+      color: var(--white);
+      padding: 54px 56px;
+    }
+
+    .cta-strip .section-label,
+    .cta-strip h2,
+    .cta-strip p,
+    .cta-strip .objection {
+      color: var(--white);
+    }
+
+    .cta-strip .btn {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 30px;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .ba-card {
+      border: 1px solid var(--line);
+      background: var(--light);
+      padding: 22px;
+    }
+
+    .ba-label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--black);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .testimonial-grid {
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 30px;
+    }
+
+    blockquote {
+      margin: 0;
+      font-size: 15px;
+      color: var(--dark);
+    }
+
+    cite {
+      display: block;
+      margin-top: 16px;
+      font-style: normal;
+      font-size: 13px;
+      color: var(--black);
+      font-weight: 700;
+    }
+
+    .standards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .rotation {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      margin-top: 18px;
+    }
+
+    .rotation div {
+      background: var(--white);
+      padding: 16px;
+    }
+
+    .rotation strong {
+      display: block;
+      font-size: 24px;
+      color: var(--black);
+      margin-bottom: 6px;
+    }
+
+    .faq-grid {
+      grid-template-columns: 1fr;
+      margin-top: 28px;
+    }
+
+    .faq-item h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    .calculator {
+      margin-top: 30px;
+    }
+
+    .fake-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .fake-input {
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 14px;
+    }
+
+    .fake-input label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dark);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .fake-input div {
+      font-size: 16px;
+      color: var(--black);
+      font-weight: 750;
+    }
+
+    .footer {
+      background: var(--white);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 24px;
+      margin-top: 22px;
+    }
+
+    .footer h3 {
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .footer p,
+    .footer a {
+      font-size: 13px;
+      color: var(--dark);
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 8px;
+    }
+
+    .fineprint {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      color: var(--dark);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <nav class="nav" aria-label="Hauptnavigation">
+      <div class="brand">HYSN</div>
+      <div class="nav-links">
+        <a href="#modell">Modell</a>
+        <a href="#standorte">Standorte</a>
+        <a href="#einnahmen">Einnahmen</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#standort-pruefen">Standort prüfen lassen</a>
+      </div>
+    </nav>
+
+    <section class="hero" id="top">
+      <div class="annotation"><strong>Hero strategy</strong>Open the possibility: the location already has value. HYSN only turns attention into a managed revenue stream.</div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="section-label">[PARTNERPROGRAMM]</span>
+          <h1>Ihre Standortfrequenz wird zur Einnahmequelle.</h1>
+          <p class="lead">HYSN platziert digitale Werbescreens an stark frequentierten Standorten, übernimmt Technik, Werbepartner und Betrieb — und Sie erhalten eine monatliche Umsatzbeteiligung.</p>
+          <div class="button-row">
+            <a class="btn" href="#standort-pruefen">Standort prüfen lassen</a>
+            <a class="btn secondary" href="#modell">Umsatzmodell verstehen</a>
+          </div>
+          <p class="objection">Keine Hardware-Investition im Standardmodell. Kein Anzeigenverkauf, kein Content-Management, kein technischer Betrieb auf Ihrer Seite.</p>
+        </div>
+        <div class="placeholder" aria-label="Bildplatzhalter">
+          <span>Bildplatzhalter: Digitaler Werbescreen im Eingangsbereich eines Supermarkts oder einer stark besuchten Gewerbefläche</span>
+        </div>
+      </div>
+      <div class="trust-strip" aria-label="Trust-Bar">
+        <div class="trust-item"><strong>0 €</strong><span>Investition im Standardmodell, wenn der Standort passt</span></div>
+        <div class="trust-item"><strong>1</strong><span>Pilot-Screen möglich, bevor mehrere Standorte ausgerollt werden</span></div>
+        <div class="trust-item"><strong>100%</strong><span>Betrieb, Werbung und Reporting zentral durch HYSN</span></div>
+        <div class="trust-item"><strong>20–35%</strong><span>Umsatzbeteiligung je nach Amortisationsphase</span></div>
+      </div>
+    </section>
+
+    <section id="verlust">
+      <div class="annotation"><strong>Pain away</strong>Frame the current loss: attention walks through the site every day without being monetized.</div>
+      <span class="section-label">[UNGENUTZTES POTENZIAL]</span>
+      <h2>Jeden Monat laufen Kunden an Werbepotenzial vorbei, das nicht erfasst wird.</h2>
+      <p class="lead">In einem Supermarkt, Fitnessstudio, einer Apotheke oder Lobby entsteht täglich Aufmerksamkeit. Ohne digitalen Screen bleibt diese Frequenz für Ihren Standort ungenutzt — und für lokale Werbepartner unsichtbar.</p>
+      <div class="pain-grid">
+        <div class="card light">
+          <h3>Leere Wandflächen bringen keine Einnahmen.</h3>
+          <p>Wartebereiche, Eingänge und Laufwege werden täglich gesehen. Ohne digitale Fläche erzeugen sie jedoch keinen wiederkehrenden Umsatz.</p>
+        </div>
+        <div class="card light">
+          <h3>Lokale Werbung findet woanders statt.</h3>
+          <p>Restaurants, Praxen, Dienstleister und Händler suchen Sichtbarkeit in der Nähe. Ohne Screen kann Ihr Standort diese Nachfrage nicht aufnehmen.</p>
+        </div>
+        <div class="card light">
+          <h3>Statische Flächen altern schnell.</h3>
+          <p>Poster, Aushänge und Plakate wirken schnell unruhig oder veraltet. Ein professionell gesteuerter Screen bleibt aktuell, sauber und kontrollierbar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="modell">
+      <div class="annotation"><strong>Core explanation</strong>Make the model simple enough for a nearly-unaware location partner to repeat in one sentence.</div>
+      <div class="two-col">
+        <div>
+          <span class="section-label">[WAS IST DAS PARTNERPROGRAMM?]</span>
+          <h2>Ein Werbescreen an Ihrem Standort. Die Arbeit läuft über HYSN.</h2>
+          <p>Das HYSN Partnerprogramm verbindet attraktive Standorte mit lokalen und regionalen Werbepartnern. HYSN prüft die Fläche, plant den passenden Screen, installiert die Technik und steuert die Werbeinhalte zentral.</p>
+          <p>Sie stellen den Standort bereit. HYSN übernimmt Advertiser-Akquise, Content-Freigabe, technische Überwachung, monatliches Reporting und Support. Die Werbeumsätze werden transparent abgerechnet und nach vereinbartem Modell geteilt.</p>
+          <div class="button-row">
+            <a class="btn" href="#standort-pruefen">Meinen Standort bewerten lassen</a>
+          </div>
+          <p class="objection">Die Prüfung klärt zuerst, ob Ihr Standort wirtschaftlich sinnvoll ist — bevor eine Vereinbarung entsteht.</p>
+        </div>
+        <div class="placeholder">
+          <span>Bildplatzhalter: HYSN-Screen mit lokalem Werbespot, Standort-Hinweis und dezentem Partner-Content in Rotation</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="standorte">
+      <div class="annotation"><strong>Fit criteria</strong>Show who qualifies and why. This prevents low-quality leads while making good-fit partners recognize themselves.</div>
+      <span class="section-label">[PASSENDE STANDORTE]</span>
+      <h2>Gute Standorte haben Frequenz, Sichtbarkeit und einen sauberen Kontext für Werbung.</h2>
+      <p class="lead">Nicht jede Fläche eignet sich. Entscheidend sind tägliche Besucherzahl, Blickkontakt, Aufenthaltsdauer, Markenumfeld und lokale Werbenachfrage.</p>
+      <div class="fit-grid">
+        <div class="card">
+          <h3>Supermarkt-Eingangsbereich</h3>
+          <p>Besonders geeignet für lokale Händler, Restaurants, Gesundheitsangebote und regionale Kampagnen.</p>
+          <div class="criteria">
+            <span>800–2.500 Kunden pro Tag</span>
+            <span>30-Sekunden-Fenster beim Betreten oder Verlassen</span>
+            <span>Hohe Nachfrage lokaler Werbepartner</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Fitnessstudio-Empfang</h3>
+          <p>Starker Kontext für Sport, Ernährung, Gesundheit, Physiotherapie, lokale Marken und Serviceangebote.</p>
+          <div class="criteria">
+            <span>150–500 Mitglieder pro Tag</span>
+            <span>5–15 Minuten Sichtfenster bei Check-in und Wartezeit</span>
+            <span>Klare Zielgruppe für passende Werbung</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Tankstelle / Convenience</h3>
+          <p>Kurze Kontaktzeit, aber hohe Frequenz und starke Nähe zu lokalen Dienstleistungen.</p>
+          <div class="criteria">
+            <span>500–1.500 Kunden pro Tag</span>
+            <span>Screen nahe Kasse oder Eingangszone</span>
+            <span>Passend für Gastronomie, Autodienste und lokale Angebote</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Bürogebäude-Lobby</h3>
+          <p>Geeignet für hochwertige lokale Angebote, Business-Lunch, Finanzdienstleistung und Recruiting.</p>
+          <div class="criteria">
+            <span>200–800 Mitarbeitende und Besucher pro Tag</span>
+            <span>1–2 Minuten Blickkontakt beim Betreten</span>
+            <span>Premium-Kontext für B2B-nahe Werbung</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Apotheke / Gesundheitspraxis</h3>
+          <p>Gute Aufenthaltsdauer, klare Gesundheitsnähe und kontrollierbarer Werbekontext.</p>
+          <div class="criteria">
+            <span>100–400 Besucher pro Tag</span>
+            <span>Längeres Sichtfenster im Wartebereich</span>
+            <span>Passend für OTC, Gesundheit und lokale Services</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Stadt-Standort / öffentlicher Raum</h3>
+          <p>Für Kommunen, Stadtmarketing und Partnerflächen mit öffentlicher Information plus Werbung.</p>
+          <div class="criteria">
+            <span>Mehrere tausend Passanten möglich</span>
+            <span>Mix aus Bürgerinformation und Werbung</span>
+            <span>Kommunales Modell mit klarer Freigabestruktur</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="einnahmen">
+      <div class="annotation"><strong>Revenue realism</strong>Use orientation ranges, not guarantees. The goal is credibility, not hype.</div>
+      <span class="section-label">[UMSATZBEISPIELE]</span>
+      <h2>Was ein Standort monatlich einbringen kann.</h2>
+      <p class="lead">Die folgenden Beispiele dienen als Orientierung. Entscheidend sind reale Frequenz, Sichtbarkeit, Standortumfeld, Werbepartner-Mix und Auslastung des Screens.</p>
+      <div class="income-grid">
+        <div class="card light">
+          <h3>Großer Supermarkt im REWE-/EDEKA-Format</h3>
+          <span class="income-number">280 € – 480 €</span>
+          <p>Bei ca. 1.500 täglichen Kunden, Screen am Eingang und 4–6 aktiven Werbepartnern.</p>
+          <div class="tag-row">
+            <span class="tag">Eingangsbereich</span><span class="tag">lokale Händler</span><span class="tag">0 Aufwand</span>
+          </div>
+        </div>
+        <div class="card light">
+          <h3>Fitnessstudio mit ca. 250 täglichen Mitgliedern</h3>
+          <span class="income-number">120 € – 240 €</span>
+          <p>Bei Screen am Empfang, 3–5 aktiven Werbepartnern und member-relevantem Anzeigenmix.</p>
+          <div class="tag-row">
+            <span class="tag">Sportkontext</span><span class="tag">Wartezeit</span><span class="tag">gezielte Werbung</span>
+          </div>
+        </div>
+        <div class="card light">
+          <h3>Tankstelle in mittlerer Lage</h3>
+          <span class="income-number">180 € – 320 €</span>
+          <p>Bei ca. 800 täglichen Kunden, Screen nahe Kasse und 4–6 lokalen Werbepartnern.</p>
+          <div class="tag-row">
+            <span class="tag">kurze Kontakte</span><span class="tag">hohe Frequenz</span><span class="tag">lokale Services</span>
+          </div>
+        </div>
+        <div class="card light">
+          <h3>Apotheke in Innenstadtlage</h3>
+          <span class="income-number">90 € – 180 €</span>
+          <p>Bei ca. 250 täglichen Besuchern, Screen im Wartebereich und 3–4 passenden Werbepartnern.</p>
+          <div class="tag-row">
+            <span class="tag">Wartebereich</span><span class="tag">Gesundheitsumfeld</span><span class="tag">kontrollierter Kontext</span>
+          </div>
+        </div>
+      </div>
+      <div class="note-box">
+        <span class="note-label">Orientierungswert — keine Garantie</span>
+        <p>Die Werte zeigen typische Umsatzkorridore für geeignete Standorte. Vor einer Vereinbarung prüft HYSN Frequenz, Sichtbarkeit, Standortumfeld, Werbemarkt und technische Machbarkeit.</p>
+      </div>
+
+      <div class="calculator" id="rechner">
+        <h3>Wireframe-Element: Standort-Umsatzrechner</h3>
+        <p>Ein späterer Rechner kann Besuchsfrequenz, Standorttyp und Sichtfenster abfragen und daraus einen realistischen Umsatzkorridor ableiten.</p>
+        <div class="fake-inputs">
+          <div class="fake-input"><label>Standorttyp</label><div>Supermarkt</div></div>
+          <div class="fake-input"><label>Besucher / Tag</label><div>ca. 1.500</div></div>
+          <div class="fake-input"><label>Orientierung</label><div>280 € – 480 € / Monat</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="leistung">
+      <div class="annotation"><strong>Responsibility split</strong>Remove operational fear. The partner should see that their role is almost zero after approval.</div>
+      <span class="section-label">[LEISTUNG & NUTZEN]</span>
+      <h2>HYSN liefert den Betrieb. Sie erhalten den Standortnutzen.</h2>
+      <p class="lead">Die Aufgabenverteilung ist bewusst klar: HYSN kümmert sich um Technik, Werbeverkauf, Inhalte und laufende Kontrolle. Ihr Standort profitiert ohne eigenes Werbemanagement.</p>
+      <div class="deliver-grid">
+        <div class="card">
+          <h3>HYSN liefert</h3>
+          <ul class="check-list">
+            <li>Professionellen Werbescreen passend zur Fläche</li>
+            <li>Montage, Einrichtung und technische Inbetriebnahme</li>
+            <li>Zentrale Content-Steuerung und Anzeigenplanung</li>
+            <li>Akquise und Betreuung der Werbepartner</li>
+            <li>Monitoring, technischer Support und Wartungskoordination</li>
+            <li>Monatliches Reporting und transparente Abrechnung</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Sie erhalten</h3>
+          <ul class="check-list">
+            <li>Monatliche Umsatzbeteiligung aus Werbeeinnahmen</li>
+            <li>Modernen digitalen Blickfang für Ihren Standort</li>
+            <li>Optionale Eigencontent-Slots für Angebote oder Hinweise</li>
+            <li>Kontrollierten Werbekontext mit Freigabemöglichkeiten</li>
+            <li>Testmöglichkeit über einen Pilot-Screen</li>
+            <li>Skalierbares Modell für weitere Standorte</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="umsatzmodell">
+      <div class="annotation"><strong>Model clarity</strong>Explain the 20/35 and co-investment options without making the financial model feel like a promise.</div>
+      <span class="section-label">[UMSATZMODELL]</span>
+      <h2>Zwei Modelle, abhängig von Investition und gewünschter Beteiligung.</h2>
+      <p class="lead">Im Standardmodell trägt HYSN die Investition und refinanziert den Screen über Werbeeinnahmen. Bei Co-Investment beteiligt sich der Partner an der Anschaffung und erhält eine höhere langfristige Beteiligung.</p>
+      <div class="model-grid">
+        <div class="model-card">
+          <h3>Variante A: Revenue Share ohne Partner-Investition</h3>
+          <p>HYSN finanziert, installiert und betreibt den Screen. Der Standortpartner erhält 20% der monatlichen Werbeeinnahmen, bis die Geräte amortisiert sind. Danach steigt die Beteiligung auf 35%.</p>
+          <div class="tag-row">
+            <span class="tag">kein Hardware-Risiko</span><span class="tag">guter Einstieg</span><span class="tag">Pilot geeignet</span>
+          </div>
+        </div>
+        <div class="model-card">
+          <h3>Variante B: Co-Investment 50/50</h3>
+          <p>Partner und HYSN investieren gemeinsam. Die Amortisation läuft schneller, die wirtschaftliche Beteiligung kann langfristig höher ausfallen und eignet sich besonders für mehrere Standorte.</p>
+          <div class="tag-row">
+            <span class="tag">höherer Anteil</span><span class="tag">schnellere Amortisation</span><span class="tag">mehrere Standorte</span>
+          </div>
+        </div>
+      </div>
+      <div class="note-box">
+        <span class="note-label">Orientierungswert — keine Garantie</span>
+        <h3>Beispielrechnung: Supermarkt mit 420 € monatlichem Werbeumsatz</h3>
+        <div class="calculation">
+          <div class="calc-row"><span>Monatlicher Werbeumsatz des Screens</span><span>420 €</span></div>
+          <div class="calc-row"><span>Partneranteil vor Amortisation bei 20%</span><span>84 € / Monat</span></div>
+          <div class="calc-row"><span>Partneranteil nach Amortisation bei 35%</span><span>147 € / Monat</span></div>
+          <div class="calc-row"><span>Operativer Aufwand des Standortpartners</span><span>0 Anzeigenverkauf / 0 Content-Betrieb</span></div>
+        </div>
+        <p class="small">Die tatsächliche Beteiligung wird standortbezogen berechnet und vertraglich festgelegt. Strom, Laufzeit, Flächenfreigabe und Werbestandards werden vor Installation eindeutig geregelt.</p>
+      </div>
+    </section>
+
+    <section id="ablauf">
+      <div class="annotation"><strong>Plan</strong>Give a low-friction path. The first step is evaluation, not commitment.</div>
+      <span class="section-label">[ABLAUF]</span>
+      <h2>Vom Standort zur laufenden Einnahme in vier Schritten.</h2>
+      <p class="lead">Der Einstieg beginnt mit einer Prüfung. Erst wenn Frequenz, Sichtbarkeit und wirtschaftlicher Rahmen passen, wird die Partnerschaft umgesetzt.</p>
+      <div class="steps-grid">
+        <div class="step">
+          <span class="step-number">1</span>
+          <h3>Anfrage</h3>
+          <p>Sie senden Standorttyp, Adresse, mögliche Screenfläche und grobe Besucherfrequenz.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span>
+          <h3>Standortprüfung</h3>
+          <p>HYSN bewertet Sichtbarkeit, Technik, Zielgruppe, Werbemarkt und Umsatzpotenzial.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span>
+          <h3>Vereinbarung</h3>
+          <p>Umsatzmodell, Laufzeit, Content-Regeln, Strom und Freigaben werden sauber festgelegt.</p>
+        </div>
+        <div class="step">
+          <span class="step-number">4</span>
+          <h3>Installation & Einnahmen</h3>
+          <p>Der Screen geht live. HYSN betreibt die Werbung und rechnet monatlich transparent ab.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-strip" id="standort-pruefen">
+      <div class="annotation"><strong>Mid-page CTA</strong>Focus on one pilot location. Reduce commitment fear and push the next measurable step.</div>
+      <span class="section-label">[PILOT-STANDORT]</span>
+      <h2>Starten Sie mit einem Standort, bevor Sie größer denken.</h2>
+      <p class="lead">Ein Pilot-Screen zeigt, ob Frequenz, Werbepartner und Umsatzkorridor zusammenpassen. Danach können weitere Flächen oder Filialen strukturiert ausgerollt werden.</p>
+      <div class="button-row">
+        <a class="btn" href="mailto:info@hysn.de?subject=Standortprüfung%20Partnerprogramm">Pilot-Standort prüfen lassen</a>
+      </div>
+      <p class="objection">Die Prüfung ist der erste Schritt — keine Verpflichtung zur Installation, solange das Modell für Ihren Standort nicht sinnvoll ist.</p>
+    </section>
+
+    <section id="case-study">
+      <div class="annotation"><strong>Proof structure</strong>Use before/after. The revenue only matters once the prior missed potential is understood.</div>
+      <span class="section-label">[PARTNERBEISPIEL]</span>
+      <h2>Vorher eine ungenutzte Fläche. Nachher ein laufender Werbestandort.</h2>
+      <p class="lead">Repräsentatives Beispiel aus einem Lebensmitteleingangsbereich mit hoher täglicher Frequenz und lokalen Werbepartnern.</p>
+      <div class="case-grid">
+        <div class="placeholder">
+          <span>Bildplatzhalter: Vorher/Nachher-Mockup eines Supermarkt-Eingangsbereichs mit freistehendem Digital-Signage-Screen</span>
+        </div>
+        <div>
+          <div class="before-after">
+            <div class="ba-card">
+              <span class="ba-label">Vorher</span>
+              <h3>Leere Wandfläche im Eingangsbereich</h3>
+              <p>Der Bereich wurde täglich von vielen Kunden passiert, brachte aber keinen zusätzlichen Umsatz. Lokale Werbeanfragen wurden nicht aktiv genutzt.</p>
+            </div>
+            <div class="ba-card">
+              <span class="ba-label">Nachher</span>
+              <h3>Digitaler Werbescreen mit laufender Rotation</h3>
+              <p>Der Screen zeigt lokale Anzeigen, ausgewählte Angebote und Standort-Hinweise. Der Partner erhält eine transparente monatliche Beteiligung.</p>
+            </div>
+          </div>
+          <div class="note-box">
+            <span class="note-label">Orientierungswert — keine Garantie</span>
+            <p>Bei ca. 1.400–1.700 täglichen Kunden und 4–6 aktiven Werbepartnern lag der realistische Monatskorridor bei etwa 300 € – 450 € Werbeumsatz. Der konkrete Partneranteil hängt vom vereinbarten Modell ab.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stimmen">
+      <div class="annotation"><strong>Partner voice</strong>Quotes address income realism, brand fit and effort — the three biggest objections.</div>
+      <span class="section-label">[PARTNERSTIMMEN]</span>
+      <h2>Was Standortpartner an dem Modell schätzen.</h2>
+      <div class="testimonial-grid">
+        <div class="quote-card">
+          <blockquote>„Im ersten Quartal habe ich nicht damit gerechnet, dass die Werbeeinnahmen so stabil sein würden. Es ist nicht das Hauptgeschäft — aber es ist mehr, als ich für ungenutzte Wandfläche jemals erwartet hätte.“</blockquote>
+          <cite>Supermarktbetreiber, Rhein-Main</cite>
+        </div>
+        <div class="quote-card">
+          <blockquote>„Uns war wichtig, dass keine billige Werbung läuft. HYSN hat uns die Werbepartner vorgestellt, wir konnten sportrelevante Marken priorisieren. Unsere Mitglieder finden den Bildschirm passend.“</blockquote>
+          <cite>Inhaber eines Fitnessstudios</cite>
+        </div>
+        <div class="quote-card">
+          <blockquote>„Mein einziger Aufwand war ein kurzer Vor-Ort-Termin. Seit der Installation habe ich nichts gemacht — und am Monatsende kommt die Abrechnung nachvollziehbar per Reporting.“</blockquote>
+          <cite>Eigentümer einer Gewerbefläche</cite>
+        </div>
+      </div>
+    </section>
+
+    <section id="werbestandards">
+      <div class="annotation"><strong>Brand safety</strong>Cheap ad fear can kill the deal. Make control and standards explicit before the FAQ.</div>
+      <span class="section-label">[WERBESTANDARDS]</span>
+      <h2>Der Screen soll zu Ihrem Standort passen — nicht dagegen arbeiten.</h2>
+      <p class="lead">HYSN kuratiert Werbepartner und Inhalte, damit die Fläche professionell wirkt. Unpassende Anzeigen, irritierende Inhalte oder Marken, die nicht zu Ihrem Standort passen, werden vorab geregelt.</p>
+      <div class="standards-grid">
+        <div class="card light">
+          <h3>Kontrollierte Werbepartner</h3>
+          <p>Werbung wird nicht ungeprüft ausgespielt. Branchen, Ausschlüsse und sensible Inhalte können im Vorfeld definiert werden.</p>
+          <ul class="check-list">
+            <li>Kein ungeprüfter Anzeigenmix</li>
+            <li>Vetorecht für definierte Werbekategorien</li>
+            <li>Passende lokale und regionale Partner</li>
+          </ul>
+        </div>
+        <div class="rotation-card">
+          <h3>Beispielhafte Tagesrotation</h3>
+          <p>Ein Screen kann kommerzielle Anzeigen und eigene Standortkommunikation sinnvoll kombinieren.</p>
+          <div class="rotation">
+            <div><strong>70%</strong><span>gebuchte Werbespots</span></div>
+            <div><strong>20%</strong><span>eigene Standort-Hinweise</span></div>
+            <div><strong>10%</strong><span>Netzwerk- und Serviceinformationen</span></div>
+          </div>
+          <p class="small">Die Aufteilung ist beispielhaft und wird je Standort festgelegt.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="annotation"><strong>FAQ</strong>Answer contract and control concerns directly. Keep every answer practical and non-salesy.</div>
+      <span class="section-label">[FAQ]</span>
+      <h2>Fragen, die Standortpartner vor der Entscheidung stellen.</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h3>Wie lange läuft ein Partnervertrag?</h3>
+          <p>Die Laufzeit hängt vom Modell, der Investition und dem Standort ab. Bei HYSN-finanzierten Screens wird die Amortisation berücksichtigt. Für Pilot-Standorte kann eine klare Testphase vereinbart werden.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Was passiert, wenn ich die Partnerschaft beenden möchte?</h3>
+          <p>Kündigungsfristen und Rückbau werden vor Installation schriftlich geregelt. Ziel ist ein Modell, das planbar bleibt und keine offenen technischen oder finanziellen Fragen hinterlässt.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Wer bezahlt den Strom?</h3>
+          <p>Das wird standortbezogen vereinbart. In vielen Fällen wird der Stromverbrauch als kleiner Betriebskostenpunkt berücksichtigt oder in der wirtschaftlichen Gesamtrechnung abgebildet.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Kann ich bestimmte Werbepartner blockieren?</h3>
+          <p>Ja. Branchen, Wettbewerber oder unpassende Inhalte können vorab ausgeschlossen werden. HYSN achtet darauf, dass der Anzeigenmix zum Standort und zur Zielgruppe passt.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Kann ich eigene Inhalte auf dem Screen zeigen?</h3>
+          <p>Ja, eigene Content-Slots sind möglich. Das kann für Standortangebote, Öffnungszeiten, Hinweise, Events oder interne Informationen genutzt werden, solange die Werbeauslastung berücksichtigt bleibt.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Was ist, wenn keine Werbepartner für meinen Standort gefunden werden?</h3>
+          <p>Deshalb beginnt das Modell mit einer Standortprüfung. HYSN bewertet vorab, ob lokale Nachfrage, Frequenz und Zielgruppe realistisch zusammenpassen. Nicht jeder Standort wird empfohlen.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Wie wird die Umsatzbeteiligung ausgezahlt?</h3>
+          <p>Die Abrechnung erfolgt monatlich anhand der erzielten Werbeumsätze und des vereinbarten Beteiligungsmodells. Sie erhalten eine nachvollziehbare Übersicht über Umsatz, Anteil und Zeitraum.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Wie schnell entsteht der erste Umsatz?</h3>
+          <p>Nach Standortfreigabe, Vereinbarung und Installation startet die Werbeakquise beziehungsweise die Belegung aus bestehenden Kampagnen. Der Zeitraum hängt von Standortqualität und Vermarktbarkeit ab.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Was, wenn meine Besucherfrequenz nicht genau bekannt ist?</h3>
+          <p>Eine grobe Einschätzung reicht für den ersten Schritt. HYSN prüft im Anschluss Sichtbarkeit, Laufwege, Öffnungszeiten, Umfeld und Erfahrungswerte ähnlicher Standorte.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Kann ich mehrere Standorte einbringen?</h3>
+          <p>Ja. Für Filialisten, Betreiberketten, Supermärkte oder Kommunen kann zunächst ein Pilotstandort getestet und danach ein strukturierter Rollout geplant werden.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="final">
+      <div class="annotation"><strong>Final stakes</strong>Close with mild loss aversion: every month without a screen leaves potential unused.</div>
+      <span class="section-label">[NÄCHSTER SCHRITT]</span>
+      <h2>Jeder Monat ohne Screen ist ein Monat ohne genutztes Standortpotenzial.</h2>
+      <p class="lead">Wenn Ihr Standort täglich Menschen erreicht, kann daraus eine planbare Werbefläche entstehen. Die erste Frage ist nicht, wie viele Screens Sie brauchen — sondern ob ein Pilot wirtschaftlich sinnvoll ist.</p>
+      <div class="button-row">
+        <a class="btn" href="mailto:info@hysn.de?subject=Standortprüfung%20für%20HYSN%20Partnerprogramm">Standortpotenzial prüfen lassen</a>
+        <a class="btn secondary" href="tel:+4961038315032">Mit HYSN über Standortmodell sprechen</a>
+      </div>
+      <p class="objection">Sie erhalten zuerst eine ehrliche Einschätzung zur Eignung Ihres Standorts — nicht direkt ein Verkaufsgespräch über Hardware.</p>
+    </section>
+
+    <footer class="footer">
+      <div class="annotation"><strong>Footer</strong>Keep the footer clean and HYSN-specific. No template remnants, no mixed brand language.</div>
+      <span class="section-label">[FOOTER]</span>
+      <div class="footer-grid">
+        <div>
+          <h3>HYSN / RA Vision GmbH</h3>
+          <p>Digital Signage, DOOH-Werbescreens und Partnerprogramme für Standorte mit hoher Sichtbarkeit.</p>
+          <p>Deutschlandweit mit Schwerpunkt Rhein-Main.</p>
+        </div>
+        <div>
+          <h3>Partnerprogramm</h3>
+          <div class="footer-links">
+            <a href="#modell">Modell verstehen</a>
+            <a href="#standorte">Geeignete Standorte</a>
+            <a href="#einnahmen">Umsatzbeispiele</a>
+            <a href="#faq">Partner-FAQ</a>
+          </div>
+        </div>
+        <div>
+          <h3>Kontakt</h3>
+          <div class="footer-links">
+            <a href="tel:+4961038315032">+49 6103 8315 032</a>
+            <a href="mailto:info@hysn.de">info@hysn.de</a>
+            <a href="/impressum">Impressum</a>
+            <a href="/datenschutz">Datenschutz</a>
+          </div>
+        </div>
+      </div>
+      <p class="fineprint">© 2026 HYSN / RA Vision GmbH. Wireframe-Entwurf für die Seite /partner-programm. Alle Umsatzbeispiele sind Orientierungswerte und keine Garantie.</p>
+    </footer>
+  </div>
+</body>
+</html>

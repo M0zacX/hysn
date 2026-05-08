@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYSN Wireframe — Installation & Montage</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --paper: #f4f4f4;
+      --line: #d0d0d0;
+      --text: #333333;
+      --black: #111111;
+      --body: #f0f0f0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--body);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .layout {
+      width: 1150px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .page {
+      width: 900px;
+      max-width: 900px;
+      background: var(--white);
+      min-height: 100vh;
+      box-shadow: 0 0 0 1px var(--line);
+    }
+
+    .section,
+    .nav-wrap,
+    .footer {
+      position: relative;
+      border-bottom: 1px solid var(--line);
+      padding: 58px 56px;
+    }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--white);
+      padding: 18px 56px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--black);
+    }
+
+    .logo-box {
+      width: 36px;
+      height: 36px;
+      border: 2px solid var(--black);
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .nav-cta {
+      border: 2px solid var(--text);
+      padding: 9px 16px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .nav-cta:hover,
+    .btn:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .annotation {
+      position: absolute;
+      right: -235px;
+      top: 28px;
+      width: 205px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: 12px 13px;
+      font-size: 12px;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .annotation strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--black);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .section-label {
+      display: block;
+      margin-bottom: 16px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #777777;
+      font-weight: 800;
+    }
+
+    h1, h2, h3, p { margin-top: 0; }
+
+    h1 {
+      margin-bottom: 18px;
+      font-size: 50px;
+      line-height: 1.04;
+      letter-spacing: -0.05em;
+      color: var(--black);
+      max-width: 730px;
+    }
+
+    h2 {
+      margin-bottom: 16px;
+      font-size: 34px;
+      line-height: 1.12;
+      letter-spacing: -0.035em;
+      color: var(--black);
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 19px;
+      line-height: 1.25;
+      color: var(--black);
+    }
+
+    .lead {
+      font-size: 19px;
+      line-height: 1.5;
+      max-width: 730px;
+      margin-bottom: 28px;
+    }
+
+    .small {
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 26px 0 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--text);
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 800;
+      min-height: 48px;
+    }
+
+    .objection {
+      margin: 8px 0 0;
+      font-size: 14px;
+      color: var(--text);
+      max-width: 650px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero-copy { min-width: 0; }
+
+    .image-placeholder {
+      position: relative;
+      min-height: 270px;
+      border: 1px solid var(--line);
+      background-color: var(--paper);
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+    }
+
+    .image-placeholder::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='700' height='420' viewBox='0 0 700 420' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='700' height='420' fill='%23f4f4f4'/%3E%3Cpath d='M0 0L700 420M700 0L0 420' stroke='%23d0d0d0' stroke-width='3'/%3E%3C/svg%3E");
+      background-size: cover;
+      opacity: 1;
+    }
+
+    .image-caption {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      background: rgba(255,255,255,0.88);
+      border-top: 1px solid var(--line);
+      padding: 12px 14px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--black);
+    }
+
+    .trust-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      margin-top: 28px;
+    }
+
+    .trust-item {
+      padding: 18px;
+      border-right: 1px solid var(--line);
+      min-height: 104px;
+    }
+
+    .trust-item:last-child { border-right: 0; }
+
+    .trust-kicker {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #777777;
+      font-weight: 800;
+    }
+
+    .trust-value {
+      display: block;
+      font-size: 17px;
+      line-height: 1.25;
+      color: var(--black);
+      font-weight: 800;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .card-grid.three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-grid.five {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 20px;
+      min-height: 160px;
+    }
+
+    .card.compact { min-height: 130px; padding: 16px; }
+
+    .card p:last-child { margin-bottom: 0; }
+
+    .number {
+      display: inline-grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--black);
+      margin-bottom: 12px;
+      color: var(--black);
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    .pain-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .pain-item {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 12px;
+      align-items: start;
+      border: 1px solid var(--line);
+      padding: 16px;
+      background: var(--paper);
+    }
+
+    .x-mark {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--black);
+      color: var(--black);
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .check {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 12px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .check-icon {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--black);
+      display: grid;
+      place-items: center;
+      color: var(--black);
+      font-weight: 900;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
+      margin-top: 28px;
+    }
+
+    .step {
+      padding: 18px;
+      min-height: 190px;
+      border-right: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .step:last-child { border-right: 0; }
+
+    .step small {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 800;
+      color: #777777;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 10px;
+    }
+
+    .mount-icon {
+      width: 100%;
+      height: 72px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .mount-icon::after {
+      content: "";
+      position: absolute;
+      inset: 12px 18px;
+      border: 2px solid var(--black);
+    }
+
+    .mount-icon.ceiling::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 28%;
+      right: 28%;
+      height: 18px;
+      border-left: 2px solid var(--black);
+      border-right: 2px solid var(--black);
+    }
+
+    .mount-icon.stele::after {
+      inset: 8px 38px 18px;
+    }
+
+    .mount-icon.stele::before {
+      content: "";
+      position: absolute;
+      left: 30%;
+      right: 30%;
+      bottom: 8px;
+      height: 8px;
+      border: 2px solid var(--black);
+    }
+
+    .mount-icon.outdoor::before {
+      content: "";
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 8px;
+      height: 5px;
+      background: var(--black);
+    }
+
+    .mount-icon.multi::after {
+      inset: 14px 16px;
+      border: 0;
+      background: linear-gradient(90deg, transparent 0 48%, var(--black) 48% 52%, transparent 52% 100%), linear-gradient(var(--black), var(--black));
+      background-size: 100% 2px, 2px 100%;
+      background-position: center center;
+      background-repeat: no-repeat;
+      box-shadow: inset 0 0 0 2px var(--black);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .gallery .image-placeholder {
+      min-height: 210px;
+    }
+
+    .cta-strip {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .cta-strip h2 {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .ba-column {
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .ba-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      font-weight: 900;
+      color: var(--black);
+    }
+
+    .ba-body {
+      padding: 18px;
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    blockquote {
+      margin: 0;
+      border: 1px solid var(--line);
+      padding: 20px;
+      background: var(--white);
+      min-height: 260px;
+    }
+
+    blockquote p {
+      font-size: 15px;
+      color: var(--black);
+      margin-bottom: 20px;
+    }
+
+    blockquote footer {
+      font-size: 12px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .two-column-table {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--line);
+      margin-top: 26px;
+    }
+
+    .column-list {
+      padding: 24px;
+    }
+
+    .column-list + .column-list { border-left: 1px solid var(--line); }
+
+    .column-list ul,
+    .faq-list,
+    .spec-list {
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .column-list li,
+    .spec-list li {
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-list {
+      border-top: 1px solid var(--line);
+      margin-top: 26px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+    }
+
+    .faq-item h3 {
+      font-size: 17px;
+      margin-bottom: 6px;
+    }
+
+    .spec-table {
+      margin-top: 26px;
+      border: 1px solid var(--line);
+    }
+
+    .spec-row {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .spec-row:last-child { border-bottom: 0; }
+
+    .spec-cell {
+      padding: 16px 18px;
+    }
+
+    .spec-cell:first-child {
+      border-right: 1px solid var(--line);
+      font-weight: 800;
+      color: var(--black);
+      background: var(--paper);
+    }
+
+    .coverage-box {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      margin-top: 26px;
+      padding: 24px;
+    }
+
+    .coverage-map {
+      min-height: 220px;
+      border: 1px solid var(--line);
+      background-color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .coverage-map::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='420' height='260' viewBox='0 0 420 260' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='420' height='260' fill='%23ffffff'/%3E%3Cpath d='M20 130C70 40 160 20 210 78C252 126 310 94 390 44M42 210C100 150 160 174 214 132C272 86 332 146 394 116' stroke='%23d0d0d0' stroke-width='3' fill='none'/%3E%3Ccircle cx='202' cy='124' r='50' fill='none' stroke='%23111111' stroke-width='2'/%3E%3Ccircle cx='202' cy='124' r='7' fill='%23111111'/%3E%3C/svg%3E");
+      background-size: cover;
+    }
+
+    .coverage-map span {
+      position: absolute;
+      left: 18px;
+      bottom: 16px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--black);
+    }
+
+    .handover-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .handover-item {
+      border: 1px solid var(--line);
+      padding: 16px;
+      min-height: 145px;
+      background: var(--white);
+    }
+
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      border-bottom: 0;
+    }
+
+    .footer a,
+    .footer h3,
+    .footer .section-label { color: var(--white); }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 0.8fr;
+      gap: 28px;
+    }
+
+    .footer ul {
+      list-style: none;
+      margin: 12px 0 0;
+      padding: 0;
+    }
+
+    .footer li { margin-bottom: 8px; }
+
+    .footer .annotation {
+      background: var(--white);
+      color: var(--text);
+    }
+
+    @media (max-width: 1180px) {
+      .layout { width: 900px; }
+      .annotation { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <main class="page">
+      <header class="nav-wrap">
+        <div class="annotation">
+          <strong>Nav strategy</strong>
+          Sticky navigation keeps the inquiry action available while visitors review technical scope and installation concerns.
+        </div>
+        <nav class="nav" aria-label="Hauptnavigation">
+          <a href="/" class="brand" aria-label="HYSN Startseite">
+            <span class="logo-box">H</span>
+            <span>HYSN</span>
+          </a>
+          <div class="nav-links">
+            <a href="/solutions/restaurants">Restaurants</a>
+            <a href="/products/led-videowalls">LED-Wände</a>
+            <a href="/services/content-creation">Content</a>
+            <a href="/projects">Referenzen</a>
+            <a href="/contact" class="nav-cta">Montage-Termin prüfen</a>
+          </div>
+        </nav>
+      </header>
+
+      <section class="section" id="hero">
+        <div class="annotation">
+          <strong>Hero</strong>
+          Problem-led: visitors understand immediately that this page is about clean installation, handover and low coordination burden.
+        </div>
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="section-label">[INSTALLATION & MONTAGE]</span>
+            <h1>Digitale Screens sauber montiert. Ohne Kabelchaos, ohne Nacharbeit.</h1>
+            <p class="lead">HYSN installiert Displays, Menüboards, Stelen und Videowalls so, dass Ihre Fläche am Ende nicht nach Baustelle aussieht — sondern nach einem professionell fertigen Projekt.</p>
+            <div class="button-row">
+              <a class="btn" href="/contact?service=installation">Montage für mein Projekt anfragen</a>
+              <a class="btn" href="#installationsbeispiele">Installations-Beispiele ansehen</a>
+            </div>
+            <p class="objection">Sie müssen keine Monteure, Halterungen, Kabelwege, Mediaplayer oder Netzwerke einzeln koordinieren — HYSN übernimmt die technische Umsetzung bis zur funktionsfähigen Übergabe.</p>
+          </div>
+          <div class="image-placeholder" role="img" aria-label="Platzhalter für professionelle Display-Montage">
+            <div class="image-caption">Bildplatzhalter: Sauber montierte 3er-Menüboard-Anlage über einem Restaurant-Counter, verdeckte Kabel, gerade Ausrichtung.</div>
+          </div>
+        </div>
+        <div class="trust-row" aria-label="Montage-Vertrauenssignale">
+          <div class="trust-item">
+            <span class="trust-kicker">Servicegebiet</span>
+            <span class="trust-value">Rhein-Main direkt, deutschlandweit nach Projektumfang</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-kicker">Übergabe</span>
+            <span class="trust-value">Montiert, konfiguriert, getestet, erklärt</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-kicker">Projektlast</span>
+            <span class="trust-value">Ein Ansprechpartner für Hardware, Montage und Setup</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-kicker">Für wen</span>
+            <span class="trust-value">Neue HYSN-Projekte und Fremdgeräte nach Prüfung</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Elevation: visual proof gallery added because installation buyers need to see clean execution before trusting the service. -->
+      <section class="section" id="installationsbeispiele">
+        <div class="annotation">
+          <strong>Visual proof</strong>
+          Installation pages convert better when they show cable routing, alignment and final cleanliness — not just hardware specs.
+        </div>
+        <span class="section-label">[INSTALLATIONS-BEISPIELE]</span>
+        <h2>So soll eine fertige Installation aussehen.</h2>
+        <p class="lead">Gute Montage fällt nicht durch Kabel, schiefe Kanten oder sichtbare Improvisation auf. Sie fällt dadurch auf, dass der Bildschirm selbstverständlich zur Fläche gehört.</p>
+        <div class="gallery">
+          <div class="image-placeholder" role="img" aria-label="Platzhalter Wandmontage">
+            <div class="image-caption">Foto: Wandmontage im Restaurant, drei Displays exakt ausgerichtet.</div>
+          </div>
+          <div class="image-placeholder" role="img" aria-label="Platzhalter Stele im Supermarkt">
+            <div class="image-caption">Foto: Freistehende Stele im Eingangsbereich, sicher positioniert.</div>
+          </div>
+          <div class="image-placeholder" role="img" aria-label="Platzhalter LCD Videowall">
+            <div class="image-caption">Foto: LCD-Videowall in Empfangsbereich, schmale Fugen, klare Kabelführung.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="schlechte-montage">
+        <div class="annotation">
+          <strong>Pain away</strong>
+          This section names the operational risks buyers already fear: damage, delays, unreliable installers and messy finish.
+        </div>
+        <div class="intro-grid">
+          <div>
+            <span class="section-label">[WAS BEI SCHLECHTER MONTAGE SCHIEFGEHT]</span>
+            <h2>Ein guter Screen verliert Wirkung, wenn die Montage nicht stimmt.</h2>
+          </div>
+          <p class="lead">Schiefe Displays, lose Kabel und falsch dimensionierte Halterungen wirken nicht nur unprofessionell. Sie kosten Zeit, erzeugen Reklamationen und können den Starttermin einer Filiale, eines Events oder einer Kampagne gefährden.</p>
+        </div>
+        <div class="pain-list">
+          <div class="pain-item">
+            <span class="x-mark">×</span>
+            <div><h3>Sichtbare Kabel und provisorische Verlängerungen</h3><p>Was als „schnell gelöst“ beginnt, bleibt oft dauerhaft sichtbar — direkt im Blickfeld Ihrer Kunden.</p></div>
+          </div>
+          <div class="pain-item">
+            <span class="x-mark">×</span>
+            <div><h3>Schiefe Ausrichtung bei Menüboards oder Videowalls</h3><p>Schon wenige Millimeter wirken bei mehreren Screens unruhig. Bei Menüboards sieht der Counter sofort unfertig aus.</p></div>
+          </div>
+          <div class="pain-item">
+            <span class="x-mark">×</span>
+            <div><h3>Bohrlöcher, Wandbeschädigungen und falsche Lastannahmen</h3><p>Wenn Wandtyp, Gewicht und Halterung nicht zusammenpassen, entsteht Nacharbeit — im schlimmsten Fall an frisch renovierten Flächen.</p></div>
+          </div>
+          <div class="pain-item">
+            <span class="x-mark">×</span>
+            <div><h3>Technik hängt, aber der Bildschirm läuft nicht</h3><p>Ohne Konfiguration, Content-Test und Netzwerkprüfung bleibt die eigentliche Nutzung liegen — genau dann, wenn das Projekt fertig sein sollte.</p></div>
+          </div>
+          <div class="pain-item">
+            <span class="x-mark">×</span>
+            <div><h3>Monteur erscheint nicht zum kritischen Zeitfenster</h3><p>Bei Store-Eröffnungen, Restaurantbetrieb und Eventaufbau sind verspätete Termine kein kleines Problem, sondern ein operatives Risiko.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="umfang">
+        <div class="annotation">
+          <strong>Scope clarity</strong>
+          The checklist removes the “what exactly is included?” objection before the visitor reaches the form.
+        </div>
+        <span class="section-label">[WAS HYSN BEI DER INSTALLATION ÜBERNIMMT]</span>
+        <h2>Sie bekommen keine lose Lieferung. Sie bekommen ein betriebsbereites System.</h2>
+        <p class="lead">HYSN verbindet Montage, technische Einrichtung und Übergabe in einem Ablauf. Vor Ort zählt nicht, ob ein Display theoretisch funktionieren könnte — sondern ob es an der richtigen Stelle hängt, sauber verkabelt ist und zuverlässig Inhalte abspielt.</p>
+        <div class="checklist">
+          <div class="check"><span class="check-icon">✓</span><div><h3>Site-Survey</h3><p>Prüfung von Standort, Wand, Strom, Sichtachse, Kabelführung, Bildschirmhöhe und Betriebssituation.</p></div></div>
+          <div class="check"><span class="check-icon">✓</span><div><h3>Montagehardware</h3><p>Auswahl passender Wandhalterungen, Deckenhalterungen, Stelenlösungen oder Spezialbefestigungen.</p></div></div>
+          <div class="check"><span class="check-icon">✓</span><div><h3>Professionelles Montageteam</h3><p>Montage mit geeignetem Werkzeug, sauberer Arbeitsweise und klarer Abstimmung vor Ort.</p></div></div>
+          <div class="check"><span class="check-icon">✓</span><div><h3>Kabelmanagement</h3><p>Planung und Umsetzung von sichtarmen Kabelwegen, Kabelkanälen oder verdeckter Führung je nach Fläche.</p></div></div>
+          <div class="check"><span class="check-icon">✓</span><div><h3>Konfiguration</h3><p>Einrichtung von Display, Mediaplayer, Ausrichtung, Startverhalten, Netzwerk und Content-Playback.</p></div></div>
+          <div class="check"><span class="check-icon">✓</span><div><h3>Content Loading</h3><p>Einspielen vorhandener oder von HYSN erstellter Inhalte, Test der Formate und Kontrolle der Darstellung.</p></div></div>
+          <div class="check"><span class="check-icon">✓</span><div><h3>Funktionsprüfung</h3><p>Testlauf vor Ort: Bild, Ton falls relevant, Zeitsteuerung, Netzwerkverbindung und Bedienbarkeit.</p></div></div>
+          <div class="check"><span class="check-icon">✓</span><div><h3>Übergabe & Einweisung</h3><p>Kurze Erklärung für Ihr Team, wer Support leistet und was bei Content-Änderungen passiert.</p></div></div>
+        </div>
+      </section>
+
+      <section class="section" id="prozess">
+        <div class="annotation">
+          <strong>Process</strong>
+          The five-step plan makes installation feel controlled and predictable, especially for buyers with a hard opening date.
+        </div>
+        <span class="section-label">[ABLAUF]</span>
+        <h2>Fünf Schritte bis zum laufenden Bildschirm.</h2>
+        <p class="lead">Der Montageprozess ist so aufgebaut, dass offene Fragen vor dem Termin geklärt werden. Dadurch muss vor Ort nicht improvisiert werden, wenn der Betrieb, die Baustelle oder der Eröffnungstermin bereits Druck erzeugt.</p>
+        <div class="process">
+          <div class="step"><small>Schritt 01</small><span class="number">1</span><h3>Site-Survey</h3><p>Wir prüfen Fläche, Maße, Wandtyp, Strom, Sichtbarkeit, Netzwerk und zeitliche Einschränkungen.</p></div>
+          <div class="step"><small>Schritt 02</small><span class="number">2</span><h3>Planung & Beschaffung</h3><p>Halterungen, Kabel, Adapter, Mediaplayer und Befestigungsmaterial werden passend vorbereitet.</p></div>
+          <div class="step"><small>Schritt 03</small><span class="number">3</span><h3>Anlieferung</h3><p>Displays, Montagezubehör und Technik kommen abgestimmt zum Standort oder werden von HYSN mitgebracht.</p></div>
+          <div class="step"><small>Schritt 04</small><span class="number">4</span><h3>Montage & Konfiguration</h3><p>Das System wird montiert, ausgerichtet, verkabelt, eingerichtet und mit Content getestet.</p></div>
+          <div class="step"><small>Schritt 05</small><span class="number">5</span><h3>Übergabe</h3><p>Sie erhalten einen laufenden Bildschirm, eine kurze Einweisung und klare nächste Schritte für Support.</p></div>
+        </div>
+      </section>
+
+      <!-- Elevation: post-installation handover added to answer what the client receives after the installers leave. -->
+      <section class="section" id="uebergabe">
+        <div class="annotation">
+          <strong>Handover</strong>
+          This reassures the buyer that the job does not end at “screen mounted”; operation and support are part of completion.
+        </div>
+        <span class="section-label">[NACH DER MONTAGE]</span>
+        <h2>Am Ende bleibt kein offenes Technikpaket zurück.</h2>
+        <p class="lead">Eine Installation ist erst abgeschlossen, wenn Sie wissen, was läuft, wer zuständig ist und wie Inhalte oder Support im Alltag funktionieren.</p>
+        <div class="handover-grid">
+          <div class="handover-item"><h3>Funktionscheck</h3><p>Display, Mediaplayer, Netzwerk und Content werden vor Übergabe getestet.</p></div>
+          <div class="handover-item"><h3>Zugang & Bedienung</h3><p>Sie erhalten die relevanten Zugänge oder wissen, welcher Ablauf über HYSN läuft.</p></div>
+          <div class="handover-item"><h3>Supportkontakt</h3><p>Ihr Team weiß, wen es bei technischen Fragen oder Content-Anpassungen kontaktiert.</p></div>
+          <div class="handover-item"><h3>Saubere Fläche</h3><p>Verpackung, Bohrstaub und Montagematerial werden nicht als Aufgabe bei Ihnen gelassen.</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="montagearten">
+        <div class="annotation">
+          <strong>Mounting options</strong>
+          Cards help visitors self-identify their project type without getting buried in technical mounting language.
+        </div>
+        <span class="section-label">[MONTAGEARTEN]</span>
+        <h2>Die richtige Befestigung hängt von Fläche, Blickrichtung und Nutzung ab.</h2>
+        <p class="lead">HYSN empfiehlt nicht einfach die erstbeste Halterung. Entscheidend sind Gewicht, Wandtyp, Kundenfluss, Reinigung, Wartung und die Frage, ob der Screen dauerhaft oder flexibel eingesetzt wird.</p>
+        <div class="card-grid five">
+          <div class="card compact"><div class="mount-icon"></div><h3>Wandmontage</h3><p>Für Menüboards, Empfangsdisplays, Werbescreens und Videowalls an tragfähigen Wänden.</p></div>
+          <div class="card compact"><div class="mount-icon ceiling"></div><h3>Deckenmontage</h3><p>Für hohe Sichtbarkeit, wenn Wandflächen fehlen oder der Counter frei bleiben muss.</p></div>
+          <div class="card compact"><div class="mount-icon stele"></div><h3>Stelen-Aufstellung</h3><p>Für Eingänge, Foyers, Supermärkte und Flächen mit starkem Laufverkehr.</p></div>
+          <div class="card compact"><div class="mount-icon outdoor"></div><h3>Outdoor-Installation</h3><p>Für wetterfeste Stelen, LED-Flächen und Standorte mit Genehmigungs- und Fundamentthemen.</p></div>
+          <div class="card compact"><div class="mount-icon multi"></div><h3>Multi-Screen-Anordnung</h3><p>Für Menüboard-Reihen, LCD-Videowalls und synchronisierte Displayflächen.</p></div>
+        </div>
+      </section>
+
+      <!-- Elevation: unusual-site section added because many installation inquiries involve imperfect walls, rented spaces, old buildings or outdoor constraints. -->
+      <section class="section" id="besondere-situationen">
+        <div class="annotation">
+          <strong>Objection killer</strong>
+          This addresses unusual locations before the visitor assumes their project is too difficult or risky.
+        </div>
+        <span class="section-label">[WENN DER STANDORT NICHT STANDARD IST]</span>
+        <h2>Nicht jede Wand ist Beton. Nicht jeder Standort ist einfach. Genau deshalb wird vorher geprüft.</h2>
+        <div class="card-grid">
+          <div class="card"><h3>Trockenbau, Glas, Altbau oder Mietfläche</h3><p>Vor der Montage wird geklärt, welche Befestigung zulässig ist, welche Lasten möglich sind und ob alternative Lösungen wie Stelen, Deckenabhängungen oder Bodenständer sinnvoller sind.</p></div>
+          <div class="card"><h3>Ungewöhnliche Höhen oder enge Ladenflächen</h3><p>Bei hohen Decken, schmalen Countern oder laufendem Kundenbetrieb wird die Montage so geplant, dass die Fläche nutzbar bleibt und der Screen aus Kundensicht richtig sitzt.</p></div>
+          <div class="card"><h3>Outdoor mit Wetter, Vandalismus und Infrastruktur</h3><p>Outdoor-Projekte brauchen wetterfeste Hardware, sichere Aufstellung, Stromführung, Schutzkonzept und häufig Abstimmung mit Eigentümern oder Behörden.</p></div>
+          <div class="card"><h3>Fremdgeräte oder vorhandene Screens</h3><p>Wenn Displays bereits gekauft wurden, prüft HYSN vorab Maße, Gewicht, Schnittstellen, Halterung, Content-Wiedergabe und Montagefähigkeit.</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="szenarien">
+        <div class="annotation">
+          <strong>Use cases</strong>
+          Operationally specific scenarios let each buyer picture their own installation instead of reading generic service claims.
+        </div>
+        <span class="section-label">[TYPISCHE INSTALLATIONS-SZENARIEN]</span>
+        <h2>Vier Situationen, in denen saubere Planung den Unterschied macht.</h2>
+        <div class="card-grid">
+          <div class="card">
+            <h3>Restaurant-Counter: 3 Menüboards über der Ausgabe</h3>
+            <p>Vor der Montage wird die Wandlast geprüft, damit drei Displays dauerhaft sicher und exakt gerade hängen. In Food-Service-Umgebungen werden Hitze, Fett, Reinigungsmittel und Laufwege berücksichtigt. Kabel werden so geführt, dass sie nicht im Arbeitsbereich stören oder Kundenblicke brechen. Die Montage wird typischerweise außerhalb der Hauptzeiten geplant; bei vorbereiteter Wand ist eine 3er-Anlage oft innerhalb weniger Stunden montiert und getestet.</p>
+          </div>
+          <div class="card">
+            <h3>Supermarkt-Eingang: digitale Stele im Laufverkehr</h3>
+            <p>Bei einer Stele zählt nicht nur der Bildschirm, sondern die Position im Kundenfluss. HYSN prüft Standfläche, Stolperrisiken, Stromzuführung und Netzwerkverbindung zum Content-Management. Die Anlage wird so platziert, dass sie sichtbar bleibt, ohne Fluchtwege, Einkaufswagen oder Aktionsflächen zu blockieren. Montage und Einrichtung erfolgen nach Abstimmung mit Marktleitung und Öffnungszeiten.</p>
+          </div>
+          <div class="card">
+            <h3>Outdoor-Stadtstele in der Fußgängerzone</h3>
+            <p>Outdoor-Installationen benötigen mehr Vorlauf, weil Genehmigungen, Untergrund, Strom aus städtischer Infrastruktur und Wetterschutz geklärt werden müssen. HYSN begleitet die Abstimmung, bereitet technische Anforderungen vor und plant Fundament, Gehäuse, Vandalismusschutz und Kabelführung. Die reine Montage ist nur ein Teil des Projekts; entscheidend ist, dass Standort, Betrieb und Wartung langfristig funktionieren.</p>
+          </div>
+          <div class="card">
+            <h3>Office-Reception: große LCD-Videowall</h3>
+            <p>Bei einer Multi-Screen-Anlage im Empfangsbereich ist Präzision sichtbar: Fugen, Kanten und Kabel müssen sauber wirken. HYSN prüft Wandstruktur, Traglast, Strom, Netzwerk und die Einbindung in bestehende Unternehmens-IT. Die Montage erfolgt häufig außerhalb der Bürozeiten, damit Empfang und Kundentermine nicht gestört werden. Nach der Ausrichtung wird die Darstellung über alle Screens kontrolliert und mit dem gewünschten Content getestet.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="gebiet">
+        <div class="annotation">
+          <strong>Coverage</strong>
+          Geographic clarity prevents wasted leads and sets expectations around travel costs for national projects.
+        </div>
+        <span class="section-label">[SERVICEGEBIET]</span>
+        <h2>Rhein-Main ist das Kerngebiet. Deutschlandweite Montage ist projektabhängig möglich.</h2>
+        <p class="lead">Für Projekte in Frankfurt, Offenbach, Darmstadt, Dreieich, Mainz, Wiesbaden und im weiteren Rhein-Main-Gebiet kann HYSN besonders direkt planen. Montagen in anderen Regionen Deutschlands werden nach Umfang, Termin und Reisekosten geprüft.</p>
+        <div class="coverage-box">
+          <div>
+            <h3>Was das für Ihre Anfrage bedeutet</h3>
+            <p>Teilen Sie Standort, gewünschtes Installationsdatum, Anzahl der Screens und Montageart mit. HYSN prüft dann, ob die Umsetzung direkt über das eigene Projektteam oder über qualifizierte Montagepartner sinnvoll ist — mit klarer Verantwortung und definierter Übergabe.</p>
+            <p class="small">Hinweis: Reisekosten, Zusatzaufwand und besondere Vor-Ort-Anforderungen werden vor Angebotsfreigabe transparent aufgeführt.</p>
+          </div>
+          <div class="coverage-map" aria-label="Schematische Rhein-Main-Karte">
+            <span>Rhein-Main Fokusgebiet</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Elevation: urgent installation callout added because many screen installations are tied to hard deadlines such as openings and events. -->
+      <section class="section" id="dringend">
+        <div class="annotation">
+          <strong>Urgent jobs</strong>
+          Hard deadline language speaks to restaurants, retail and event managers without using false scarcity tactics.
+        </div>
+        <div class="cta-strip">
+          <div>
+            <span class="section-label">[WENN DER TERMIN FESTSTEHT]</span>
+            <h2>Store-Eröffnung, Event oder Kampagnenstart? Dann muss die Montage rückwärts geplant werden.</h2>
+            <p>HYSN prüft, welche Vorarbeiten bis zum Termin realistisch sind: Strom, Wand, Halterung, Lieferung, Content, Netzwerk und Zugriff vor Ort.</p>
+          </div>
+          <div>
+            <a class="btn" href="/contact?service=urgent-installation">Fixtermin für Montage prüfen</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="mid-cta">
+        <div class="annotation">
+          <strong>Mid CTA</strong>
+          After the visitor understands scope, scenarios and coverage, this CTA gives them a low-friction next step.
+        </div>
+        <span class="section-label">[NÄCHSTER SCHRITT]</span>
+        <h2>Sie haben einen Standort, aber noch keinen sauberen Montageplan?</h2>
+        <p class="lead">Senden Sie HYSN Fotos der Fläche, die gewünschte Bildschirmanzahl und den Zieltermin. Daraus entsteht eine erste Einschätzung zu Montageart, Aufwand und nächsten Schritten.</p>
+        <div class="button-row">
+          <a class="btn" href="/contact?service=installation">Montagefläche einschätzen lassen</a>
+          <a class="btn" href="mailto:info@hysn.de?subject=Montageanfrage%20HYSN">Fotos per E-Mail senden</a>
+        </div>
+        <p class="objection">Eine erste Einschätzung bedeutet noch keine Beauftragung — sie zeigt nur, ob Wand, Halterung, Technik und Termin zusammenpassen.</p>
+      </section>
+
+      <section class="section" id="case-study">
+        <div class="annotation">
+          <strong>Before/after</strong>
+          The transformation only works because the “before” is concrete: crooked TV, visible cables, wrong height, no CMS setup.
+        </div>
+        <span class="section-label">[VORHER / NACHHER]</span>
+        <h2>Vom improvisierten TV zur fertigen Menüboard-Anlage.</h2>
+        <p class="lead">Ein Schnellrestaurant hatte bereits eigene Bildschirme gekauft. Nach der ersten Montage waren Kabel sichtbar, die Displays hingen nicht auf einer Linie und der Content wurde nur per USB abgespielt. HYSN plante die Fläche neu und machte daraus eine saubere, zentrale Menüboard-Lösung.</p>
+        <div class="before-after">
+          <div class="ba-column">
+            <div class="ba-header">Vorher: Amateurmontage</div>
+            <div class="image-placeholder" role="img" aria-label="Vorher Bildplatzhalter">
+              <div class="image-caption">Bildplatzhalter: Drei generische TVs, unterschiedliche Höhen, sichtbare Kabelkanäle.</div>
+            </div>
+            <div class="ba-body">
+              <ul class="spec-list">
+                <li>Displays nicht exakt ausgerichtet</li>
+                <li>Kabel sichtbar neben dem Counter</li>
+                <li>Falsche Höhe für Kundenblick</li>
+                <li>Keine zentrale Content-Steuerung</li>
+                <li>Nacharbeit während laufendem Betrieb nötig</li>
+              </ul>
+            </div>
+          </div>
+          <div class="ba-column">
+            <div class="ba-header">Nachher: HYSN-Montage</div>
+            <div class="image-placeholder" role="img" aria-label="Nachher Bildplatzhalter">
+              <div class="image-caption">Bildplatzhalter: Saubere Menüboard-Reihe, gleiche Höhe, verdeckte Kabelführung.</div>
+            </div>
+            <div class="ba-body">
+              <ul class="spec-list">
+                <li>Einheitliche Höhe und präzise Linienführung</li>
+                <li>Geplante Kabelführung hinter dem Sichtbereich</li>
+                <li>Passende Halterungen für Wand und Displaygewicht</li>
+                <li>Content zentral geladen und getestet</li>
+                <li>Übergabe vor Wiedereröffnung abgeschlossen</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="stimmen">
+        <div class="annotation">
+          <strong>Testimonials</strong>
+          Dummy quotes are practical and specific, written like operational managers rather than generic praise.
+        </div>
+        <span class="section-label">[STIMMEN AUS DER PRAXIS]</span>
+        <h2>Woran Kunden gute Montage merken: Der Betrieb läuft weiter.</h2>
+        <div class="quote-grid">
+          <blockquote>
+            <p>„Wir hatten vier Stunden zwischen Mittagsschluss und Abendöffnung. Das HYSN-Team kam pünktlich, alles war montiert und vor 17 Uhr konfiguriert — nicht ein Bohrloch zu viel.“</p>
+            <footer>Restaurantinhaber, Quick-Service Standort im Rhein-Main-Gebiet</footer>
+          </blockquote>
+          <blockquote>
+            <p>„Saubere Kabelführung, richtig dimensionierte Mounts und beim Abschluss waren keine Späne, keine Kartons, keine Verpackung mehr da. So muss Installation aussehen.“</p>
+            <footer>Facility Manager, Büro- und Empfangsfläche</footer>
+          </blockquote>
+          <blockquote>
+            <p>„Store-Eröffnung war Donnerstag 10 Uhr. Mittwoch 16 Uhr lief der Bildschirm, Content war geladen und der Marktleiter wusste, wen er bei Fragen anruft. Genau wie geplant.“</p>
+            <footer>Retail-Projektmanagerin, Filialeröffnung</footer>
+          </blockquote>
+        </div>
+      </section>
+
+      <section class="section" id="verantwortung">
+        <div class="annotation">
+          <strong>Responsibility split</strong>
+          This is the clearest objection killer for facility managers: who brings what, who must prepare what.
+        </div>
+        <span class="section-label">[WER BRINGT WAS MIT?]</span>
+        <h2>Klare Vorbereitung verhindert Verzögerung am Montagetag.</h2>
+        <p class="lead">Damit die Installation ohne unnötige Unterbrechungen läuft, wird vorab festgelegt, was HYSN liefert und was am Standort verfügbar sein muss.</p>
+        <div class="two-column-table">
+          <div class="column-list">
+            <h3>HYSN bringt / übernimmt</h3>
+            <ul>
+              <li>Displays, Stelen, LED-/LCD-Komponenten je nach Projekt</li>
+              <li>Passende Halterungen und Montagezubehör</li>
+              <li>Kabel, Adapter, Mediaplayer oder Controller nach Planung</li>
+              <li>Werkzeug, Ausrichtung, Befestigung und saubere Montage</li>
+              <li>Konfiguration, Content-Test und Funktionsprüfung</li>
+              <li>Projektkoordination und technische Übergabe</li>
+            </ul>
+          </div>
+          <div class="column-list">
+            <h3>Der Standort stellt bereit</h3>
+            <ul>
+              <li>Zugang zur Montagefläche im vereinbarten Zeitfenster</li>
+              <li>Geeignete Stromversorgung oder abgestimmte Elektro-Vorarbeit</li>
+              <li>Netzwerkzugang, WLAN oder LAN, wenn Online-Steuerung benötigt wird</li>
+              <li>Freie Wand-, Decken- oder Bodenfläche für die Montage</li>
+              <li>Ansprechpartner vor Ort für Freigaben und Rückfragen</li>
+              <li>Genehmigung des Eigentümers, falls die Fläche gemietet ist</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Elevation: technical scope sheet added for IT/facility managers who need practical preconditions. -->
+      <section class="section" id="technikblatt">
+        <div class="annotation">
+          <strong>Technical scope</strong>
+          Facility and IT buyers need enough detail to trust the process, without turning the page into a manual.
+        </div>
+        <span class="section-label">[TECHNISCHES SCOPE-SHEET]</span>
+        <h2>Die wichtigsten technischen Punkte werden vor Montagebeginn geklärt.</h2>
+        <p class="lead">Die Anforderungen hängen vom Gerät, Standort und Nutzungszweck ab. Diese Punkte sind die Basis für eine verlässliche Planung.</p>
+        <div class="spec-table">
+          <div class="spec-row"><div class="spec-cell">Tragfähigkeit</div><div class="spec-cell">Wandtyp, Befestigungspunkte, Displaygewicht und Halterung werden abgeglichen. Bei kritischen Flächen wird eine alternative Montage empfohlen.</div></div>
+          <div class="spec-row"><div class="spec-cell">Strom</div><div class="spec-cell">Steckdosen, Stromkreise, Kabelführung und mögliche Elektro-Vorarbeiten werden vorab definiert. Feste Elektroarbeiten erfolgen abgestimmt über qualifizierte Fachkräfte.</div></div>
+          <div class="spec-row"><div class="spec-cell">Netzwerk</div><div class="spec-cell">Für Remote Content Management wird geklärt, ob LAN, WLAN oder mobile Daten sinnvoll sind. Zugangsdaten und Freigaben müssen vor Ort verfügbar sein.</div></div>
+          <div class="spec-row"><div class="spec-cell">Belüftung</div><div class="spec-cell">Displays dürfen nicht so eingebaut werden, dass Wärme dauerhaft eingeschlossen wird. Besonders bei Dauerbetrieb zählt ausreichende Luftzirkulation.</div></div>
+          <div class="spec-row"><div class="spec-cell">Schutz & Reinigung</div><div class="spec-cell">In Gastronomie, Retail und Outdoor-Bereichen werden Fett, Staub, Feuchtigkeit, Kundennähe und Reinigungsvorgänge berücksichtigt.</div></div>
+          <div class="spec-row"><div class="spec-cell">Content-Format</div><div class="spec-cell">Vor Übergabe wird geprüft, ob Auflösung, Seitenverhältnis, Dateiformat und Wiedergabe zur Displayfläche passen.</div></div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="annotation">
+          <strong>FAQ</strong>
+          Questions are based on real installation hesitations: time, electricity, network, outside hours, wall issues, permits, damage and third-party screens.
+        </div>
+        <span class="section-label">[FAQ]</span>
+        <h2>Häufige Fragen zur Display-Montage.</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <h3>Wie lange dauert eine typische Installation?</h3>
+            <p>Eine einfache Wandmontage mit einem Display kann oft innerhalb weniger Stunden abgeschlossen werden. Mehrere Menüboards, Videowalls, Outdoor-Stelen oder Projekte mit Elektro- und Netzwerkabstimmung benötigen mehr Planung und ein eigenes Zeitfenster.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Übernimmt HYSN auch Elektroarbeiten?</h3>
+            <p>HYSN plant die benötigte Stromversorgung und stimmt die Anforderungen ab. Feste Elektroarbeiten, neue Leitungen oder Arbeiten am Stromkreis werden über qualifizierte Fachkräfte ausgeführt oder mit Ihrer vorhandenen Haustechnik koordiniert.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Richtet HYSN auch Netzwerk und Content-Management ein?</h3>
+            <p>Ja, wenn das Projekt ein Online-Content-System oder Remote Management nutzt. HYSN verbindet die Geräte, prüft die Erreichbarkeit und testet die Wiedergabe. Der Standort stellt dafür die nötigen Netzwerkzugänge bereit.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Kann die Montage außerhalb der Öffnungszeiten stattfinden?</h3>
+            <p>Ja, das ist bei Restaurants, Supermärkten, Büros und Events häufig sinnvoll. Das Zeitfenster wird vorab geplant, damit Bohrarbeiten, Ausrichtung, Testlauf und Übergabe nicht in den laufenden Kundenbetrieb fallen.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Was passiert, wenn meine Wand nicht geeignet ist?</h3>
+            <p>Dann wird nicht einfach montiert. HYSN prüft Alternativen wie andere Halterungen, Deckenmontage, Bodenständer, Stele oder eine geänderte Bildschirmposition.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Wer kümmert sich bei Outdoor-Installationen um Genehmigungen?</h3>
+            <p>HYSN unterstützt bei technischen Unterlagen, Standortplanung und Abstimmung. Finale Genehmigungen hängen vom Eigentümer, Betreiber oder der zuständigen Behörde ab und werden projektspezifisch geplant.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Bringt HYSN alle Werkzeuge und Halterungen mit?</h3>
+            <p>Ja, sofern die Montage im Angebot entsprechend geplant wurde. Deshalb sind Maße, Gerätetyp, Wandtyp und Standortfotos vorab wichtig.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Was passiert, wenn bei der Montage ein Schaden entsteht?</h3>
+            <p>Vor der Montage werden die vorgesehenen Flächen, Befestigungspunkte und Risiken abgestimmt. Sollte dennoch etwas passieren, wird der Schaden dokumentiert und gemäß der vereinbarten Haftungs- und Projektregelung geklärt.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Gibt es Gewährleistung auf die Montagearbeit?</h3>
+            <p>Die Montageleistung wird im Angebot und Projektumfang geregelt. HYSN dokumentiert die Ausführung, prüft die Funktion bei Übergabe und bleibt für vereinbarte Support- oder Wartungsleistungen erreichbar.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Installiert HYSN auch Screens, die wir woanders gekauft haben?</h3>
+            <p>Ja, nach technischer Prüfung. Entscheidend sind Gewicht, Schnittstellen, Zustand, Montagemöglichkeiten, vorhandenes Zubehör und die Frage, ob das Gerät für den geplanten Einsatz geeignet ist.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="final-cta">
+        <div class="annotation">
+          <strong>Final CTA</strong>
+          Specific action + objection killer + trust points: reduces the “what happens after I click?” hesitation.
+        </div>
+        <span class="section-label">[MONTAGE ANFRAGEN]</span>
+        <h2>Damit Ihr Screen nicht nur geliefert wird — sondern sauber läuft.</h2>
+        <p class="lead">Beschreiben Sie kurz Ihren Standort, die Anzahl der Screens, den gewünschten Termin und ob Geräte bereits vorhanden sind. HYSN prüft daraus den sinnvollsten Montageweg.</p>
+        <div class="button-row">
+          <a class="btn" href="/contact?service=installation">Montage für mein Projekt anfragen</a>
+          <a class="btn" href="tel:+4961038315032">Direkt telefonisch abstimmen</a>
+        </div>
+        <p class="objection">Sie müssen noch keine perfekte technische Beschreibung liefern — Fotos der Fläche, ungefähre Maße und Ihr Zieltermin reichen für den ersten Schritt.</p>
+        <div class="trust-row" aria-label="Abschluss-Vertrauenssignale">
+          <div class="trust-item"><span class="trust-kicker">Ein Ansprechpartner</span><span class="trust-value">Hardware, Montage, Setup und Content</span></div>
+          <div class="trust-item"><span class="trust-kicker">Saubere Ausführung</span><span class="trust-value">Kabelwege, Ausrichtung und Übergabe</span></div>
+          <div class="trust-item"><span class="trust-kicker">Planbare Termine</span><span class="trust-value">Auch außerhalb der Öffnungszeiten möglich</span></div>
+          <div class="trust-item"><span class="trust-kicker">Flexible Projekte</span><span class="trust-value">HYSN-Hardware oder geprüfte Fremdgeräte</span></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="annotation">
+          <strong>Footer</strong>
+          Footer keeps practical contact details and service links visible without adding unrelated template content.
+        </div>
+        <span class="section-label">[FOOTER]</span>
+        <div class="footer-grid">
+          <div>
+            <h3>HYSN / RA Vision GmbH</h3>
+            <p>Digital Signage, LED- und LCD-Displays, Content Creation, Installation und Betrieb für Unternehmen, Gastronomie, Retail, Events und öffentliche Standorte.</p>
+          </div>
+          <div>
+            <h3>Services</h3>
+            <ul>
+              <li><a href="/services/installation">Installation & Montage</a></li>
+              <li><a href="/services/content-creation">Content Creation</a></li>
+              <li><a href="/services/maintenance">Wartung & Support</a></li>
+              <li><a href="/solutions/dooh">DOOH Advertising</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Kontakt</h3>
+            <ul>
+              <li><a href="tel:+4961038315032">+49 6103 8315 032</a></li>
+              <li><a href="mailto:info@hysn.de">info@hysn.de</a></li>
+              <li><a href="/impressum">Impressum</a></li>
+              <li><a href="/datenschutz">Datenschutz</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

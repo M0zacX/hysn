@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYSN Kontakt – HTML Wireframe</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --body: #f0f0f0;
+      --soft: #f4f4f4;
+      --line: #d0d0d0;
+      --text: #333333;
+      --black: #111111;
+      --muted: #6f6f6f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--body);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.45;
+    }
+
+    .page {
+      width: 900px;
+      max-width: 900px;
+      margin: 0 250px 0 auto;
+      background: var(--white);
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .section {
+      position: relative;
+      padding: 56px 48px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #777;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    h1, h2, h3, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      color: var(--black);
+      font-size: 42px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 18px;
+      max-width: 690px;
+    }
+
+    h2 {
+      color: var(--black);
+      font-size: 30px;
+      line-height: 1.14;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+      max-width: 680px;
+    }
+
+    h3 {
+      color: var(--black);
+      font-size: 17px;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .lead {
+      font-size: 18px;
+      line-height: 1.45;
+      max-width: 700px;
+      color: #444;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #5c5c5c;
+    }
+
+    .muted {
+      color: #666;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      font-size: 19px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      border: 2px solid var(--text);
+      padding: 9px 16px;
+      color: var(--black);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .hero-card {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 22px;
+    }
+
+    .hero-card .eyebrow {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .meta-item {
+      border: 1px solid var(--line);
+      padding: 14px;
+      background: var(--white);
+    }
+
+    .meta-number {
+      font-size: 24px;
+      color: var(--black);
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .meta-copy {
+      font-size: 12px;
+      color: #555;
+      margin-top: 6px;
+    }
+
+    .placeholder {
+      min-height: 250px;
+      background: #e6e6e6;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #555;
+      text-align: center;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .placeholder::before,
+    .placeholder::after {
+      content: "";
+      position: absolute;
+      width: 140%;
+      height: 1px;
+      background: #b8b8b8;
+      top: 50%;
+      left: -20%;
+      transform: rotate(28deg);
+    }
+
+    .placeholder::after {
+      transform: rotate(-28deg);
+    }
+
+    .placeholder span {
+      position: relative;
+      z-index: 1;
+      background: #e6e6e6;
+      border: 1px solid #c4c4c4;
+      padding: 10px 14px;
+      font-size: 13px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .form-panel,
+    .trust-panel,
+    .card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 24px;
+    }
+
+    .commitment-line {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 14px 16px;
+      font-weight: 700;
+      color: var(--black);
+      margin: 18px 0 22px;
+    }
+
+    .form-row {
+      margin-bottom: 17px;
+    }
+
+    label {
+      display: block;
+      font-size: 13px;
+      color: var(--black);
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .field {
+      min-height: 44px;
+      border: 1px solid var(--text);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      padding: 11px 12px;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .field.textarea {
+      min-height: 118px;
+      align-items: flex-start;
+    }
+
+    .select-field {
+      justify-content: space-between;
+    }
+
+    .select-field::after {
+      content: "▾";
+      color: #555;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .button,
+    button {
+      appearance: none;
+      background: transparent;
+      border: 2px solid var(--text);
+      padding: 12px 28px;
+      color: var(--black);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 800;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .button.secondary {
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .trust-list {
+      display: grid;
+      gap: 13px;
+      margin: 0 0 24px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .trust-list li {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 13px;
+    }
+
+    .trust-list li:last-child {
+      border-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .trust-title {
+      font-size: 14px;
+      color: var(--black);
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .trust-copy {
+      font-size: 13px;
+      color: #555;
+    }
+
+    .channel {
+      border: 1px solid var(--line);
+      padding: 15px;
+      background: var(--soft);
+      margin-bottom: 10px;
+    }
+
+    .channel strong {
+      display: block;
+      color: var(--black);
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .channel a {
+      color: var(--black);
+      font-weight: 800;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 22px;
+      min-height: 210px;
+    }
+
+    .step-number {
+      width: 38px;
+      height: 38px;
+      border: 2px solid var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--black);
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .direct-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .access-card {
+      border: 1px solid var(--line);
+      padding: 22px;
+      background: var(--white);
+      min-height: 180px;
+    }
+
+    .access-card .type {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #777;
+      margin-bottom: 10px;
+      font-weight: 800;
+    }
+
+    .access-card .linkish {
+      color: var(--black);
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      word-break: break-word;
+    }
+
+    .person-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 24px;
+    }
+
+    .person-grid .placeholder {
+      min-height: 230px;
+    }
+
+    .person-info {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 24px;
+    }
+
+    .faq {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 20px 22px;
+    }
+
+    .faq-item h3 {
+      margin-bottom: 8px;
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: center;
+      margin-top: 24px;
+    }
+
+    .footer {
+      background: var(--black);
+      color: var(--white);
+      padding: 42px 48px;
+      position: relative;
+    }
+
+    .footer .section-label {
+      color: #bdbdbd;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 26px;
+    }
+
+    .footer a {
+      color: var(--white);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .footer p {
+      color: #d8d8d8;
+      font-size: 13px;
+    }
+
+    .note {
+      position: absolute;
+      left: calc(100% + 24px);
+      top: 42px;
+      width: 190px;
+      background: #fff;
+      border: 1px solid var(--line);
+      padding: 13px 14px;
+      box-shadow: 0 5px 14px rgba(0,0,0,0.06);
+      font-size: 12px;
+      color: #444;
+      line-height: 1.35;
+    }
+
+    .note strong {
+      display: block;
+      color: var(--black);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .nav .note {
+      top: 12px;
+    }
+
+    .footer .note {
+      background: #fff;
+      color: #444;
+      top: 34px;
+    }
+
+    @media (max-width: 1180px) {
+      .page {
+        margin: 0 auto;
+      }
+
+      .note {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <nav class="nav" aria-label="Hauptnavigation">
+      <div class="brand">HYSN</div>
+      <div class="nav-links">
+        <a href="#">Lösungen</a>
+        <a href="#">Branchen</a>
+        <a href="#">Referenzen</a>
+        <a href="#">Über HYSN</a>
+        <a class="nav-cta" href="#">Projektgespräch starten</a>
+      </div>
+      <aside class="note">
+        <strong>Annotation</strong>
+        Sticky nav keeps the contact action visible while visitors review reassurance sections.
+      </aside>
+    </nav>
+
+    <section class="section hero">
+      <div class="section-label">[HERO]</div>
+      <div class="hero-grid">
+        <div>
+          <h1>Lassen Sie uns über Ihr digitales Bildschirmprojekt sprechen.</h1>
+          <p class="lead">Sie erhalten eine ehrliche Einschätzung, welche Display-Lösung zu Ihrem Standort passt – ohne Verkaufsdruck, ohne Verpflichtung und ohne technische Umwege.</p>
+          <div class="button-row">
+            <a class="button" href="#formular">Beratungsgespräch anfragen</a>
+            <a class="button secondary" href="#direktkontakt">Direktkontakt wählen</a>
+          </div>
+          <p class="small" style="margin-top:14px;">Antwort an Werktagen in der Regel innerhalb von 24 Stunden.</p>
+        </div>
+        <div class="hero-card">
+          <div class="eyebrow">Für Restaurants, Handel, Events, Büros & Kommunen</div>
+          <h3>Ein Gespräch reicht, um die nächsten Schritte klarer zu sehen.</h3>
+          <p class="small">Ob digitales Menüboard, LED-Videowall, Werbestele, Display-Miete oder DOOH-Konzept: HYSN hilft Ihnen, aus einer Idee ein umsetzbares Projekt zu machen.</p>
+          <div class="hero-meta">
+            <div class="meta-item">
+              <div class="meta-number">30+</div>
+              <div class="meta-copy">betreute Werbe- und Displayflächen</div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-number">1</div>
+              <div class="meta-copy">Ansprechpartner für Hardware, Content & Montage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="note">
+        <strong>Annotation</strong>
+        Hero avoids generic “Kontaktieren Sie uns” and frames the form as a useful, low-pressure first step.
+      </aside>
+    </section>
+
+    <section class="section" id="formular">
+      <div class="section-label">[KONTAKTFORMULAR + VERTRAUEN]</div>
+      <div class="two-column">
+        <div class="form-panel">
+          <h2>Schreiben Sie kurz, worum es geht.</h2>
+          <p>Sie müssen noch keine technischen Details kennen. Beschreiben Sie einfach Ihren Standort, Ihr Ziel oder die Art der Bildschirme, die Sie benötigen. HYSN meldet sich mit den nächsten sinnvollen Fragen zurück.</p>
+          <div class="commitment-line">Keine Verpflichtung. Kein Verkaufsdruck. Nur ein ehrliches Gespräch über Ihr Projekt.</div>
+
+          <div class="form-row">
+            <label>Name *</label>
+            <div class="field">Vor- und Nachname</div>
+          </div>
+
+          <div class="form-row">
+            <label>E-Mail *</label>
+            <div class="field">name@unternehmen.de</div>
+          </div>
+
+          <div class="form-row">
+            <label>Unternehmen</label>
+            <div class="field">Firma, Restaurant, Filiale oder Organisation</div>
+          </div>
+
+          <div class="form-row">
+            <label>Telefon</label>
+            <div class="field">Für Rückruf, falls gewünscht</div>
+          </div>
+
+          <div class="form-row">
+            <label>Branche</label>
+            <div class="field select-field">Restaurant / Handel / Event / Stadt / Büro / Franchise / Sonstige</div>
+          </div>
+
+          <div class="form-row">
+            <label>Wie können wir helfen? *</label>
+            <div class="field textarea">Beschreiben Sie kurz Ihr Projekt, den Standort oder Ihre Frage.</div>
+          </div>
+
+          <div class="button-row">
+            <button type="button">Beratungsgespräch anfragen</button>
+          </div>
+          <p class="small" style="margin-top:14px;">Ihre Angaben werden nur zur Bearbeitung Ihrer Anfrage genutzt. Keine Newsletter-Anmeldung, kein Weiterverkauf von Kontaktdaten.</p>
+        </div>
+
+        <aside class="trust-panel">
+          <h3>Was Sie erwarten können</h3>
+          <ul class="trust-list">
+            <li>
+              <div class="trust-title">Antwort innerhalb von 24 Stunden</div>
+              <div class="trust-copy">An Werktagen erhalten Sie schnell eine persönliche Rückmeldung mit einer klaren nächsten Empfehlung.</div>
+            </li>
+            <li>
+              <div class="trust-title">Kein Druck nach dem Erstkontakt</div>
+              <div class="trust-copy">Das erste Gespräch dient der Orientierung. Sie entscheiden danach selbst, ob ein Angebot sinnvoll ist.</div>
+            </li>
+            <li>
+              <div class="trust-title">Lokale Präsenz in Deutschland</div>
+              <div class="trust-copy">RA Vision GmbH plant, liefert und betreut Digital-Signage-Projekte mit Fokus auf den deutschen Markt.</div>
+            </li>
+            <li>
+              <div class="trust-title">Praxis mit echten Standorten</div>
+              <div class="trust-copy">Erfahrung mit Restaurants, Supermärkten, Werbeflächen, LED-Wänden, LCD-Displays und Content-Erstellung.</div>
+            </li>
+          </ul>
+
+          <h3>Direkte Wege, wenn es schneller gehen soll</h3>
+          <div class="channel">
+            <strong>Telefon</strong>
+            <p class="small">Werktags 9–17 Uhr, ideal für schnelle Rückfragen oder akute Projektanfragen.</p>
+            <a href="tel:+4961038315032">+49 6103 8315 032</a>
+          </div>
+          <div class="channel">
+            <strong>E-Mail</strong>
+            <p class="small">Für ausführliche Anfragen mit Anhängen oder wenn Sie ohne Zeitdruck schreiben möchten.</p>
+            <a href="mailto:info@hysn.de">info@hysn.de</a>
+          </div>
+          <div class="channel">
+            <strong>WhatsApp</strong>
+            <p class="small">Für kurze Fragen oder wenn Sie Bilder von Ihrem Standort schicken möchten.</p>
+            <a href="#">WhatsApp-Nachricht vorbereiten</a>
+          </div>
+        </aside>
+      </div>
+      <aside class="note">
+        <strong>Annotation</strong>
+        Form asks only for what is needed to start a useful conversation. Trust cues sit beside the friction point.
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-label">[NACH DEM ABSENDEN]</div>
+      <h2>Was passiert, nachdem Sie die Anfrage senden?</h2>
+      <p class="lead">Der Ablauf ist bewusst einfach. Sie bekommen zuerst Orientierung – erst danach entscheiden Sie, ob eine Planung oder ein Angebot sinnvoll ist.</p>
+      <div class="steps">
+        <article class="step">
+          <div class="step-number">1</div>
+          <h3>Bestätigung Ihrer Anfrage</h3>
+          <p>Sie erhalten eine kurze Bestätigung, dass Ihre Nachricht angekommen ist und welche Informationen für die erste Einschätzung relevant sind.</p>
+          <p class="small">In der Regel direkt nach dem Absenden.</p>
+        </article>
+        <article class="step">
+          <div class="step-number">2</div>
+          <h3>Persönliche Rückmeldung</h3>
+          <p>Innerhalb eines Werktags meldet sich HYSN per E-Mail oder Telefon. Es geht nicht um einen Verkaufspitch, sondern um Ihre Ziele, den Standort und die passende Display-Art.</p>
+          <p class="small">Kurz, sachlich und mit klaren nächsten Schritten.</p>
+        </article>
+        <article class="step">
+          <div class="step-number">3</div>
+          <h3>Planung nur, wenn es passt</h3>
+          <p>Wenn Sie den nächsten Schritt gehen möchten, folgt ein konkreteres Konzept, ein Videocall oder ein Angebot. Wenn HYSN nicht passt, wird das offen gesagt.</p>
+          <p class="small">Sie können nach dem Erstgespräch ohne Begründung stoppen.</p>
+        </article>
+      </div>
+      <aside class="note">
+        <strong>Annotation</strong>
+        This section removes uncertainty by explaining the post-submit experience before the visitor commits.
+      </aside>
+    </section>
+
+    <section class="section" id="direktkontakt">
+      <div class="section-label">[DIREKTER KONTAKT]</div>
+      <h2>Wählen Sie den Weg, der zu Ihrer Anfrage passt.</h2>
+      <p class="lead">Nicht jede Anfrage braucht ein Formular. Für schnelle Rückfragen, Standortbilder oder größere Projekte können Sie direkt den passenden Kontaktweg nutzen.</p>
+
+      <div class="direct-grid">
+        <article class="access-card">
+          <div class="type">Telefon</div>
+          <div class="linkish">+49 6103 8315 032</div>
+          <p>Ideal, wenn Sie eine schnelle Einschätzung brauchen – zum Beispiel zu Bildschirmgrößen, Montage, Lieferzeit oder Display-Miete.</p>
+          <a class="button" href="tel:+4961038315032">Telefonisch anfragen</a>
+        </article>
+        <article class="access-card">
+          <div class="type">E-Mail</div>
+          <div class="linkish">info@hysn.de</div>
+          <p>Geeignet für Anfragen mit Fotos, Grundrissen, bestehenden Angeboten oder mehreren Standorten.</p>
+          <a class="button" href="mailto:info@hysn.de">Projekt per E-Mail senden</a>
+        </article>
+        <article class="access-card">
+          <div class="type">WhatsApp</div>
+          <div class="linkish">Standortbilder senden</div>
+          <p>Nützlich, wenn Sie schnell zeigen möchten, wo ein Menüboard, Display, eine Werbestele oder LED-Wand installiert werden soll.</p>
+          <a class="button" href="#">WhatsApp öffnen</a>
+        </article>
+        <article class="access-card">
+          <div class="type">Termin</div>
+          <div class="linkish">Beratung direkt planen</div>
+          <p>Für Besucher, die das Formular überspringen möchten und lieber direkt einen kurzen Beratungstermin auswählen.</p>
+          <a class="button" href="#">Terminfenster ansehen</a>
+        </article>
+      </div>
+      <aside class="note">
+        <strong>Annotation</strong>
+        Direct alternatives respect different buyer preferences and prevent form friction from blocking qualified leads.
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-label">[ANSPRECHPARTNER]</div>
+      <h2>Sie sprechen mit jemandem, der Ihr Projekt einordnen kann.</h2>
+      <p class="lead">Bei HYSN landet Ihre Anfrage nicht in einem anonymen Callcenter. Der Erstkontakt dient dazu, Ihr Vorhaben fachlich zu verstehen und realistisch einzuschätzen.</p>
+      <div class="person-grid">
+        <div class="placeholder">
+          <span>Bildplatzhalter: Ansprechpartner / Büro / Projektbesprechung</span>
+        </div>
+        <div class="person-info">
+          <h3>Ihr Ansprechpartner für die Erstberatung</h3>
+          <p><strong>RA Vision GmbH / HYSN</strong></p>
+          <p>Sie erhalten eine Einschätzung zu Bildschirmart, Standort, Montage, Content, Betrieb und möglichen nächsten Schritten.</p>
+          <p class="small">Für größere Projekte können im Anschluss technische Planung, Content-Konzept, Standortanalyse oder ein individuelles Angebot vorbereitet werden.</p>
+          <div class="button-row">
+            <a class="button" href="#formular">Projekt kurz beschreiben</a>
+          </div>
+          <p class="small" style="margin-top:14px;">Auch eine erste grobe Idee reicht aus. Die Details werden gemeinsam geklärt.</p>
+        </div>
+      </div>
+      <aside class="note">
+        <strong>Annotation</strong>
+        “Who answers?” anxiety is reduced by making the inquiry feel personal and competent.
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-label">[STANDORT]</div>
+      <h2>RA Vision GmbH – persönliches Treffen nach Vereinbarung.</h2>
+      <p class="lead">Für größere Display-Projekte, Kommunal-Konzepte, Franchise-Rollouts oder mehrere Standorte kann ein persönliches Gespräch sinnvoll sein.</p>
+      <div class="map-grid">
+        <div class="placeholder">
+          <span>Kartenplatzhalter: Standort RA Vision GmbH / HYSN</span>
+        </div>
+        <div class="card">
+          <h3>Adresse</h3>
+          <p><strong>RA Vision GmbH</strong><br />Deutschland</p>
+          <p>Persönliche Termine finden nach Vereinbarung statt. So kann vorab geklärt werden, welche Unterlagen, Fotos oder Projektinformationen für ein produktives Gespräch sinnvoll sind.</p>
+          <a class="button" href="#formular">Terminwunsch senden</a>
+          <p class="small" style="margin-top:14px;">Ein Bürotermin ist optional. Die meisten Projekte lassen sich zunächst per E-Mail, Telefon oder Videocall einschätzen.</p>
+        </div>
+      </div>
+      <aside class="note">
+        <strong>Annotation</strong>
+        Map placeholder provides physical credibility without forcing an in-person step.
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-label">[FAQ]</div>
+      <h2>Häufige Fragen vor der ersten Anfrage</h2>
+      <div class="faq">
+        <article class="faq-item">
+          <h3>Wie schnell bekomme ich eine Antwort?</h3>
+          <p>In der Regel erhalten Sie an Werktagen innerhalb von 24 Stunden eine persönliche Rückmeldung. Bei sehr konkreten Projektanfragen kann die erste Antwort Rückfragen zu Standort, Bildschirmgröße oder Montage enthalten.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Verpflichtet mich die Anfrage zu etwas?</h3>
+          <p>Nein. Die Anfrage dient nur dazu, Ihr Projekt zu verstehen und zu prüfen, welche Lösung sinnvoll wäre. Ein Angebot oder ein weiteres Gespräch entsteht nur, wenn Sie das möchten.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Was passiert, wenn HYSN nicht zu meinem Projekt passt?</h3>
+          <p>Dann sagen wir das offen. Nicht jeder Standort braucht eine LED-Wand, nicht jedes Projekt benötigt eine komplexe Digital-Signage-Lösung. Eine ehrliche Einschätzung spart beiden Seiten Zeit.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Können wir das Gespräch auf Englisch führen?</h3>
+          <p>Ja. Projektgespräche können auf Deutsch oder Englisch geführt werden – besonders bei internationalen Lieferanten, Franchise-Projekten oder mehrsprachigen Teams.</p>
+        </article>
+      </div>
+      <aside class="note">
+        <strong>Annotation</strong>
+        FAQ targets hesitation at the exact moment before submission: time, pressure, fit and language.
+      </aside>
+    </section>
+
+    <section class="section">
+      <div class="section-label">[ABSCHLUSS-CTA]</div>
+      <h2>Eine kurze Nachricht reicht für den ersten Schritt.</h2>
+      <p class="lead">Beschreiben Sie Ihr Projekt in wenigen Sätzen. HYSN prüft, welche Display-Lösung, welcher Kontaktweg und welcher nächste Schritt sinnvoll sind.</p>
+      <div class="button-row">
+        <a class="button" href="#formular">Mein Bildschirmprojekt besprechen</a>
+        <a class="button secondary" href="mailto:info@hysn.de">Per E-Mail starten</a>
+      </div>
+      <p class="small" style="margin-top:14px;">Keine Verpflichtung nach dem Erstkontakt – Sie entscheiden erst nach der Einschätzung, ob es weitergeht.</p>
+      <aside class="note">
+        <strong>Annotation</strong>
+        Final CTA repeats the low-pressure promise directly below the action.
+      </aside>
+    </section>
+
+    <footer class="footer">
+      <div class="section-label">[FOOTER]</div>
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="color:#fff; margin-bottom:12px;">HYSN</div>
+          <p>Digital signage, LED-Videowalls, LCD-Displays, digitale Menüboards, Display-Miete, Content-Erstellung und DOOH-Konzepte von RA Vision GmbH.</p>
+        </div>
+        <div>
+          <h3 style="color:#fff;">Lösungen</h3>
+          <a href="#">Digitale Menüboards</a>
+          <a href="#">LED-Videowalls</a>
+          <a href="#">Digital Signage Displays</a>
+          <a href="#">Display mieten</a>
+        </div>
+        <div>
+          <h3 style="color:#fff;">Kontakt</h3>
+          <a href="tel:+4961038315032">+49 6103 8315 032</a>
+          <a href="mailto:info@hysn.de">info@hysn.de</a>
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+        </div>
+      </div>
+      <aside class="note">
+        <strong>Annotation</strong>
+        Footer keeps contact details and legal links visible without reintroducing unrelated template content.
+      </aside>
+    </footer>
+
+  </main>
+</body>
+</html>

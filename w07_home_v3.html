@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1200, initial-scale=1.0" />
+  <title>HYSN — Startseite Wireframe</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --light: #f4f4f4;
+      --body: #f0f0f0;
+      --line: #d0d0d0;
+      --text: #333333;
+      --black: #111111;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--body);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      min-width: 1180px;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    p { margin: 0 0 16px; }
+    h1, h2, h3, h4 { margin: 0; color: var(--black); line-height: 1.05; letter-spacing: -0.03em; }
+    h1 { font-size: 58px; max-width: 680px; }
+    h2 { font-size: 38px; max-width: 720px; }
+    h3 { font-size: 23px; }
+    h4 { font-size: 16px; letter-spacing: -0.01em; }
+    ul { margin: 0; padding: 0; list-style: none; }
+
+    .page {
+      width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      position: relative;
+      box-shadow: 0 0 0 1px var(--line);
+    }
+
+    .section {
+      position: relative;
+      padding: 64px 56px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section.tight { padding-top: 34px; padding-bottom: 34px; }
+    .section-label {
+      display: block;
+      margin-bottom: 16px;
+      color: #777777;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .annotation {
+      position: absolute;
+      right: -236px;
+      top: 28px;
+      width: 205px;
+      padding: 14px 14px 15px;
+      background: var(--light);
+      border: 1px solid var(--line);
+      color: #555555;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .annotation strong {
+      display: block;
+      color: var(--black);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 7px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 14px 56px;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      color: var(--black);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 24px;
+    }
+    .brand span {
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #777777;
+      font-weight: 700;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+      color: #555555;
+    }
+    .nav-links a { padding: 6px 0; border-bottom: 1px solid transparent; }
+    .nav-links a:hover { border-bottom-color: var(--black); color: var(--black); }
+
+    .btn-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      border: 2px solid var(--text);
+      background: transparent;
+      color: var(--black);
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 1.2;
+      min-height: 48px;
+    }
+    .btn.small { padding: 10px 16px; min-height: 40px; font-size: 12px; }
+    .btn:hover { background: var(--light); }
+    .btn.secondary { border-color: var(--line); color: var(--text); }
+    .microcopy {
+      margin-top: 12px;
+      color: #666666;
+      font-size: 13px;
+      max-width: 610px;
+    }
+
+    .hero {
+      padding-top: 70px;
+      padding-bottom: 70px;
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      gap: 42px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      background: var(--light);
+      font-size: 12px;
+      font-weight: 700;
+      color: #555555;
+      margin-bottom: 18px;
+    }
+    .hero-subline {
+      margin-top: 18px;
+      font-size: 18px;
+      color: #444444;
+      max-width: 610px;
+    }
+    .hero-note {
+      margin-top: 20px;
+      padding: 14px 16px;
+      border-left: 3px solid var(--black);
+      background: var(--light);
+      font-size: 14px;
+      color: #444444;
+      max-width: 590px;
+    }
+
+    .placeholder {
+      position: relative;
+      min-height: 180px;
+      background: var(--light);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #555555;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 24px;
+    }
+    .placeholder svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .placeholder .caption {
+      position: relative;
+      z-index: 2;
+      max-width: 80%;
+      background: rgba(244,244,244,.84);
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+    }
+    .hero-visual { min-height: 410px; }
+    .visual-stack { display: grid; gap: 12px; }
+    .screen-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .mini-screen {
+      min-height: 76px;
+      border: 1px solid var(--line);
+      background: var(--light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+    }
+    .stat {
+      padding: 22px 18px;
+      border-right: 1px solid var(--line);
+      min-height: 148px;
+      background: var(--white);
+    }
+    .stat:last-child { border-right: 0; }
+    .stat-number {
+      color: var(--black);
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 12px;
+    }
+    .stat p { font-size: 13px; color: #555555; margin: 0; }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+    .lead { font-size: 18px; color: #444444; max-width: 720px; margin-top: 18px; }
+    .bullets { display: grid; gap: 10px; margin-top: 22px; }
+    .bullets li {
+      padding: 13px 14px;
+      border: 1px solid var(--line);
+      background: var(--light);
+      font-size: 14px;
+      color: #444444;
+    }
+    .proof-points { display: grid; gap: 12px; margin-top: 22px; }
+    .proof-point { border: 1px solid var(--line); padding: 16px; background: var(--white); }
+    .proof-point strong { display: block; margin-bottom: 4px; color: var(--black); }
+    .proof-point p { margin: 0; font-size: 14px; color: #555555; }
+
+    .logo-strip {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
+      margin-top: 26px;
+    }
+    .logo-box {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--light);
+      border-right: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      color: #555555;
+      text-align: center;
+      padding: 10px;
+    }
+    .logo-box:last-child { border-right: 0; }
+    .small-note { color: #666666; font-size: 12px; margin-top: 10px; }
+
+    .rotation-frame {
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: var(--light);
+      margin-top: 28px;
+    }
+    .rotation-track {
+      display: grid;
+      grid-template-columns: repeat(6, 210px);
+      gap: 0;
+      width: max-content;
+      animation: moveTrack 22s linear infinite;
+    }
+    .rotation-card {
+      min-height: 220px;
+      padding: 18px;
+      border-right: 1px solid var(--line);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .rotation-card .mock {
+      min-height: 112px;
+      border: 1px solid var(--line);
+      background: var(--light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #555555;
+    }
+    .rotation-card strong { color: var(--black); display: block; margin-top: 14px; }
+    .rotation-card p { font-size: 12px; color: #666666; margin: 5px 0 0; }
+    @keyframes moveTrack {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-630px); }
+    }
+
+    .cards-3, .cards-2, .cards-4 {
+      display: grid;
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .cards-3 { grid-template-columns: repeat(3, 1fr); }
+    .cards-2 { grid-template-columns: repeat(2, 1fr); }
+    .cards-4 { grid-template-columns: repeat(4, 1fr); }
+    .card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 20px;
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card p { font-size: 14px; color: #555555; margin-top: 10px; }
+    .card a { font-weight: 800; font-size: 13px; border-bottom: 1px solid var(--black); align-self: flex-start; margin-top: 14px; }
+
+    .numbered {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
+      margin-top: 28px;
+    }
+    .step {
+      min-height: 220px;
+      padding: 22px 18px;
+      border-right: 1px solid var(--line);
+      background: var(--white);
+    }
+    .step:last-child { border-right: 0; }
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border: 2px solid var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 18px;
+    }
+    .step p { font-size: 14px; color: #555555; margin-top: 9px; }
+
+    .use-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .use-card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      min-height: 350px;
+    }
+    .use-card .placeholder { min-height: 170px; border: 0; border-bottom: 1px solid var(--line); }
+    .use-body { padding: 20px; }
+    .use-body p { font-size: 14px; color: #555555; margin-top: 10px; }
+
+    .map-box {
+      margin-top: 28px;
+      min-height: 340px;
+      border: 1px solid var(--line);
+      background: var(--light);
+      position: relative;
+      overflow: hidden;
+      padding: 26px;
+    }
+    .map-outline {
+      position: absolute;
+      inset: 32px 76px 32px 48px;
+      border: 2px solid var(--line);
+      border-radius: 48% 42% 50% 44%;
+      transform: rotate(-7deg);
+      background: rgba(255,255,255,.45);
+    }
+    .pin {
+      position: absolute;
+      width: 116px;
+      padding: 9px 10px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--black);
+    }
+    .pin span { display: block; color: #666666; font-weight: 600; font-size: 11px; margin-top: 2px; }
+    .pin::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      background: var(--black);
+      position: absolute;
+      left: -5px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .pin.p1 { left: 115px; top: 86px; }
+    .pin.p2 { left: 290px; top: 128px; }
+    .pin.p3 { left: 442px; top: 72px; }
+    .pin.p4 { left: 552px; top: 196px; }
+    .pin.p5 { left: 216px; top: 242px; }
+    .map-caption {
+      position: absolute;
+      left: 26px;
+      bottom: 22px;
+      right: 26px;
+      background: rgba(255,255,255,.82);
+      border: 1px solid var(--line);
+      padding: 12px 14px;
+      font-size: 13px;
+      color: #555555;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--line);
+      margin-top: 28px;
+    }
+    .ba-block { padding: 24px; min-height: 260px; background: var(--white); }
+    .ba-block + .ba-block { border-left: 1px solid var(--line); background: var(--light); }
+    .ba-label {
+      display: inline-block;
+      border: 1px solid var(--line);
+      padding: 5px 8px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: #666666;
+      margin-bottom: 16px;
+    }
+    .ba-block p { color: #555555; margin-top: 12px; }
+    .ba-stat {
+      margin-top: 24px;
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--black);
+      letter-spacing: -0.04em;
+    }
+
+    .comparison-table {
+      border: 1px solid var(--line);
+      margin-top: 28px;
+    }
+    .comparison-row {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 1fr 1fr;
+      border-bottom: 1px solid var(--line);
+    }
+    .comparison-row:last-child { border-bottom: 0; }
+    .comparison-cell {
+      padding: 15px 14px;
+      border-right: 1px solid var(--line);
+      font-size: 13px;
+      color: #555555;
+    }
+    .comparison-cell:last-child { border-right: 0; }
+    .comparison-head .comparison-cell {
+      background: var(--light);
+      font-weight: 800;
+      color: var(--black);
+      font-size: 12px;
+    }
+    .comparison-cell strong { color: var(--black); }
+
+    .quote-card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 22px;
+      min-height: 300px;
+    }
+    .quote-card blockquote {
+      margin: 0;
+      color: var(--black);
+      font-size: 17px;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+    .quote-meta { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); font-size: 13px; color: #555555; }
+    .quote-meta strong { display: block; color: var(--black); }
+
+    .dooh-panel {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 24px;
+      border: 1px solid var(--line);
+      background: var(--light);
+      padding: 26px;
+      margin-top: 28px;
+      align-items: center;
+    }
+    .dooh-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+    .pill {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 8px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #555555;
+    }
+
+    .stakes {
+      background: var(--light);
+    }
+    .stakes .lead { color: #333333; }
+
+    .final-cta {
+      text-align: center;
+      padding-top: 74px;
+      padding-bottom: 76px;
+      background: var(--white);
+    }
+    .final-cta h2 { margin: 0 auto; }
+    .final-cta .lead { margin-left: auto; margin-right: auto; }
+    .final-cta .btn-row { justify-content: center; }
+    .trust-pills { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+
+    footer.section { padding-top: 48px; padding-bottom: 30px; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr 1fr;
+      gap: 26px;
+    }
+    .footer-col h4 { margin-bottom: 12px; }
+    .footer-col a, .footer-col p {
+      display: block;
+      font-size: 13px;
+      color: #555555;
+      margin: 0 0 8px;
+    }
+    .footer-bottom {
+      margin-top: 34px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      color: #777777;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="nav" aria-label="Hauptnavigation">
+      <div class="brand">HYSN <span>RA Vision GmbH</span></div>
+      <div class="nav-links">
+        <a href="#branchen">Branchen</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#referenzen">Referenzen</a>
+        <a href="#partner">Partnerprogramm</a>
+        <a class="btn small" href="#projekt">Display-Projekt besprechen</a>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>Sticky nav keeps the ready-buyer path visible at all times while still letting self-qualifiers jump to industries fast.</aside>
+    </nav>
+
+    <section class="section hero" id="start">
+      <div>
+        <span class="section-label">[Startseite Hero]</span>
+        <div class="eyebrow">Full-Service Digital Signage aus Deutschland</div>
+        <h1>Digitale Displays, die vor Ort überzeugen.</h1>
+        <p class="hero-subline">HYSN plant, installiert und betreibt Display-Systeme für Restaurants, Handel, Events, Büros, Franchise und Kommunen – inklusive Content, Montage und Support.</p>
+        <div class="btn-row">
+          <a href="#projekt" class="btn">Display-Projekt unverbindlich besprechen</a>
+          <a href="#branchen" class="btn secondary">Passende Lösung für meine Branche ansehen</a>
+        </div>
+        <p class="microcopy">Sie müssen keine Technik auswählen. HYSN prüft Standort, Nutzung und Content-Bedarf mit Ihnen und empfiehlt ein Setup, das praktisch funktioniert.</p>
+        <div class="hero-note">Für Besucher muss sofort klar sein: Es geht nicht nur um Bildschirme. Es geht um sichtbare Angebote, aktuelle Informationen, bessere Wirkung am Standort und eine Umsetzung ohne technischen Aufwand.</div>
+      </div>
+      <div class="visual-stack">
+        <div class="placeholder hero-visual">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1" />
+            <line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1" />
+          </svg>
+          <span class="caption">Hero-Bild: reales HYSN Display-Setup mit Restaurant-Menüboards, Werbe-Stele und LED-Wand als Collage</span>
+        </div>
+        <div class="screen-strip" aria-label="Schnelle Anwendungsbeispiele">
+          <div class="mini-screen">Menüboard</div>
+          <div class="mini-screen">Retail Ad</div>
+          <div class="mini-screen">City Info</div>
+        </div>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>The headline passes the grunt test: what it is, where it works, and why it matters. Subline covers the full audience without listing products first.</aside>
+    </section>
+
+    <section class="section tight" aria-label="Trust Bar">
+      <span class="section-label">[Nachweis vor dem Pitch]</span>
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-number">30+</div>
+          <p>verwaltete oder betriebene Werbescreens im HYSN/hyads Umfeld – als Grundlage für echte DOOH-Erfahrung.</p>
+        </div>
+        <div class="stat">
+          <div class="stat-number">REWE<br>EDEKA</div>
+          <p>Screen-Konzepte in Supermarkt-Umfeldern, in denen Sichtbarkeit und lokale Werbung praktisch zusammenspielen.</p>
+        </div>
+        <div class="stat">
+          <div class="stat-number">3</div>
+          <p>Displays im typischen Menüboard-Setup für Gastronomie: Screens, Wandhalterungen, Content und optional Montage.</p>
+        </div>
+        <div class="stat">
+          <div class="stat-number">4</div>
+          <p>Kernleistungen aus einer Hand: Hardware, Montage, Content-Erstellung und laufender Betrieb.</p>
+        </div>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>Proof appears before persuasion. The stats address legitimacy for skeptics without overclaiming results.</aside>
+    </section>
+
+    <section class="section tight" aria-label="Proof Strip">
+      <span class="section-label">[Wo HYSN sichtbar wird]</span>
+      <h2>Von der Theke bis zur Fußgängerzone.</h2>
+      <p class="lead">Ein gutes Display-System muss zur Umgebung passen: hell genug, richtig platziert, sauber montiert und mit Content bespielt, der im Alltag funktioniert.</p>
+      <div class="logo-strip" aria-label="Einsatzorte">
+        <div class="logo-box">Restaurants</div>
+        <div class="logo-box">REWE / EDEKA</div>
+        <div class="logo-box">Events</div>
+        <div class="logo-box">Kommunen</div>
+        <div class="logo-box">Büro & Empfang</div>
+      </div>
+      <p class="small-note">Hinweis für Umsetzung: Logos nur verwenden, wenn Nutzungsrechte und Freigaben vorliegen.</p>
+      <aside class="annotation"><strong>Strategy</strong>This strip helps visitors self-recognize within seconds and creates breadth without sounding generic.</aside>
+    </section>
+
+    <section class="section" id="problem">
+      <span class="section-label">[Problem zuerst]</span>
+      <h2>Wenn Informationen statisch bleiben, verliert der Standort Wirkung.</h2>
+      <p class="lead">Viele Unternehmen wissen, dass digitale Displays sinnvoll wären. Die Hürde entsteht nicht beim Wunsch nach Sichtbarkeit, sondern bei den offenen Fragen: Welche Technik passt? Wer erstellt den Content? Wer montiert sauber? Wer kümmert sich später um Änderungen?</p>
+      <div class="split">
+        <div>
+          <p>Gedruckte Menüs, Poster und Aushänge sind schnell veraltet. Angebote bleiben zu lange hängen, Preisänderungen kosten Zeit und Kampagnen erreichen Kunden oft erst, wenn der Moment schon vorbei ist.</p>
+          <p>Bei größeren Standorten kommt ein weiteres Problem dazu: Bildschirme können zwar Aufmerksamkeit erzeugen, aber ohne System dahinter werden sie zur technischen Aufgabe statt zum Kommunikationskanal.</p>
+        </div>
+        <ul class="bullets">
+          <li>Jede Preis- oder Angebotsänderung bedeutet neue Druckdaten, neue Abstimmung und neue Wartezeit.</li>
+          <li>Displays werden gekauft, aber Content, Montage und laufende Pflege bleiben ungeklärt.</li>
+          <li>Standorte mit Kundenfrequenz lassen Werbepotenzial liegen, weil kein Backend und keine Vermarktung dahinterstehen.</li>
+        </ul>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>Empathy before authority. The section names the customer's losses instead of hyping the solution.</aside>
+    </section>
+
+    <section class="section" id="guide">
+      <span class="section-label">[HYSN als Guide]</span>
+      <h2>Sie brauchen kein Display. Sie brauchen ein funktionierendes System.</h2>
+      <p class="lead">HYSN begleitet digitale Display-Projekte von der ersten Standortfrage bis zum laufenden Screen. So entsteht keine lose Hardware-Lösung, sondern ein Setup, das im Tagesgeschäft nutzbar bleibt.</p>
+      <div class="cards-3 proof-points">
+        <div class="proof-point">
+          <strong>Planung nach Standort</strong>
+          <p>Innen, außen, Theke, Eingang, Messe, Empfang oder Fußgängerzone: HYSN prüft Einsatzort, Format, Helligkeit, Montage und Content-Ziel.</p>
+        </div>
+        <div class="proof-point">
+          <strong>Content direkt mitgedacht</strong>
+          <p>Menüboards, Angebotsflächen, Image-Kampagnen, Stadtinformationen und Werbeinhalte werden screen-ready aufgebaut, statt später improvisiert zu werden.</p>
+        </div>
+        <div class="proof-point">
+          <strong>Betrieb statt Übergabe</strong>
+          <p>Auf Wunsch übernimmt HYSN Content-Management, Updates, technische Betreuung und bei DOOH-Projekten die Werbelogik im Hintergrund.</p>
+        </div>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>Authority is specific, not self-congratulatory. It explains why HYSN reduces risk.</aside>
+    </section>
+
+    <section class="section" aria-label="Content Showcase">
+      <span class="section-label">[Content Rotation Showcase]</span>
+      <h2>Ein System. Unterschiedliche Inhalte. Zentral steuerbar.</h2>
+      <p class="lead">Auf der Startseite muss in wenigen Sekunden sichtbar werden, dass HYSN nicht nur Displays liefert, sondern konkrete Screen-Inhalte für verschiedene Einsatzbereiche planen kann.</p>
+      <div class="rotation-frame">
+        <div class="rotation-track">
+          <div class="rotation-card">
+            <div class="mock">Animiertes Döner-Menü<br>3 Screens</div>
+            <div><strong>Gastronomie</strong><p>Preise, Produkte und Aktionen sichtbar an der Theke.</p></div>
+          </div>
+          <div class="rotation-card">
+            <div class="mock">Lokale Anzeige<br>Supermarkt-Eingang</div>
+            <div><strong>Retail Media</strong><p>Werbeflächen dort, wo Kunden bereits einkaufen.</p></div>
+          </div>
+          <div class="rotation-card">
+            <div class="mock">Stadtinformation<br>Outdoor-Stele</div>
+            <div><strong>Kommune</strong><p>Hinweise, Veranstaltungen und lokale Werbung kombiniert.</p></div>
+          </div>
+          <div class="rotation-card">
+            <div class="mock">LED-Wand<br>Messe & Event</div>
+            <div><strong>Events</strong><p>Große Sichtbarkeit für Bühnen, Stände und Markenflächen.</p></div>
+          </div>
+          <div class="rotation-card">
+            <div class="mock">Empfangsscreen<br>Unternehmen</div>
+            <div><strong>Büro</strong><p>Besucherführung, Employer Branding und interne Hinweise.</p></div>
+          </div>
+          <div class="rotation-card">
+            <div class="mock">Zentrale Kampagne<br>Filialnetz</div>
+            <div><strong>Franchise</strong><p>Einheitliche Inhalte für mehrere Standorte.</p></div>
+          </div>
+        </div>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>An animated wireframe element makes the range tangible without adding extra copy bloat.</aside>
+    </section>
+
+    <section class="section" id="branchen">
+      <span class="section-label">[Branchen wählen]</span>
+      <h2>Finden Sie schneller die Lösung, die zu Ihrem Standort passt.</h2>
+      <p class="lead">Nicht jede Branche braucht denselben Bildschirm. Deshalb führt die Startseite Besucher bewusst zu ihrem konkreten Einsatzfall.</p>
+      <div class="cards-3">
+        <article class="card">
+          <div>
+            <h3>Restaurants</h3>
+            <p>Digitale Menüboards zeigen Preise, Produkte und Aktionen so, dass Gäste schneller verstehen, was sie bestellen können.</p>
+          </div>
+          <a href="/restaurants">Menüboard für Gastronomie planen</a>
+        </article>
+        <article class="card">
+          <div>
+            <h3>Handel</h3>
+            <p>Retail-Displays und Werbestelen machen Angebote im Eingangsbereich, am Regal oder an Laufwegen sichtbar.</p>
+          </div>
+          <a href="/handel">Display-Konzept für den Handel ansehen</a>
+        </article>
+        <article class="card">
+          <div>
+            <h3>Events</h3>
+            <p>LED-Wände und Displays sorgen dafür, dass Marken, Programme und Sponsorenflächen auch aus Distanz wahrgenommen werden.</p>
+          </div>
+          <a href="/events">Event-Display passend planen</a>
+        </article>
+        <article class="card">
+          <div>
+            <h3>Kommunen</h3>
+            <p>City-Screens verbinden öffentliche Informationen mit lokalen Anzeigen und schaffen digitale Infrastruktur ohne Medienbruch.</p>
+          </div>
+          <a href="/kommunen">Stadt-Display-Konzept prüfen</a>
+        </article>
+        <article class="card">
+          <div>
+            <h3>Büro</h3>
+            <p>Empfangsdisplays, Touchscreens und Präsentationsflächen unterstützen Besucherführung, Meetings und professionelles Auftreten.</p>
+          </div>
+          <a href="/buero">Displays für Büroflächen ansehen</a>
+        </article>
+        <article class="card">
+          <div>
+            <h3>Franchise</h3>
+            <p>Mehrere Filialen erhalten konsistente Inhalte, zentrale Kampagnen und ein skalierbares Setup für Rollouts.</p>
+          </div>
+          <a href="/franchise">Filial-Screens zentral steuern</a>
+        </article>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>This is the self-qualification moment. Each card gives one concrete benefit and a specific next click.</aside>
+    </section>
+
+    <section class="section" id="ablauf">
+      <span class="section-label">[So läuft es ab]</span>
+      <h2>Vier Schritte vom Standort zum laufenden Screen.</h2>
+      <p class="lead">Der Ablauf nimmt technischen Druck aus der Entscheidung. Sie wissen früh, was gebraucht wird, was HYSN übernimmt und wann die Inhalte live gehen können.</p>
+      <div class="numbered">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Standort klären</h3>
+          <p>Sie beschreiben Einsatzort, Ziel, Anzahl der Flächen und gewünschte Inhalte. Fotos oder Grundrisse reichen für den ersten Eindruck.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Setup empfehlen</h3>
+          <p>HYSN schlägt passende Display-Typen, Größen, Montageart, Content-Format und Betriebskonzept vor.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Content vorbereiten</h3>
+          <p>Menüs, Angebote, Anzeigen, Stadtinfos oder Kampagnen werden im richtigen Format gestaltet und für die Screens vorbereitet.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Installieren & betreiben</h3>
+          <p>Die Displays werden montiert, eingerichtet, getestet und bei Bedarf laufend mit neuen Inhalten versorgt.</p>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a href="#projekt" class="btn">Ablauf für meinen Standort besprechen</a>
+      </div>
+      <p class="microcopy">Der erste Schritt ist keine technische Beratung im Fachjargon, sondern eine praktische Standort-Einschätzung.</p>
+      <aside class="annotation"><strong>Strategy</strong>The plan lowers perceived effort and time delay, two main friction points in the Value Equation.</aside>
+    </section>
+
+    <section class="section" id="usecases">
+      <span class="section-label">[Konkrete Einsatzfälle]</span>
+      <h2>So sehen HYSN-Screens im Alltag aus.</h2>
+      <p class="lead">Besucher sollen nicht über „Digital Signage“ nachdenken müssen. Sie sollen ihren eigenen Standort wiedererkennen.</p>
+      <div class="use-grid">
+        <article class="use-card">
+          <div class="placeholder">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0"/></svg>
+            <span class="caption">Bild: Döner-Theke mit drei digitalen Menüboards</span>
+          </div>
+          <div class="use-body">
+            <h3>Döner-Theke mit drei Menüboards</h3>
+            <p>Speisekarte, Bestseller und Zusatzangebote laufen oberhalb der Theke. Preisänderungen können ohne Neudruck umgesetzt werden.</p>
+          </div>
+        </article>
+        <article class="use-card">
+          <div class="placeholder">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0"/></svg>
+            <span class="caption">Bild: REWE-Eingangsbereich mit digitaler Werbe-Stele</span>
+          </div>
+          <div class="use-body">
+            <h3>Supermarkt-Eingang mit Werbe-Stele</h3>
+            <p>Lokale Anzeigen und Marktinformationen erscheinen dort, wo Kunden den Standort betreten und Angebote wahrnehmen.</p>
+          </div>
+        </article>
+        <article class="use-card">
+          <div class="placeholder">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0"/></svg>
+            <span class="caption">Bild: Messestand mit LED-Wand und Produktvideo</span>
+          </div>
+          <div class="use-body">
+            <h3>Messestand mit LED-Wand</h3>
+            <p>Produktvideos, Zeitpläne und Markenbotschaften werden großflächig sichtbar, ohne dass der Stand überladen wirkt.</p>
+          </div>
+        </article>
+        <article class="use-card">
+          <div class="placeholder">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0"/></svg>
+            <span class="caption">Bild: Stadt-Fußgängerzone mit Outdoor-Informationsstele</span>
+          </div>
+          <div class="use-body">
+            <h3>Fußgängerzone mit Outdoor-Stele</h3>
+            <p>Veranstaltungen, Hinweise und lokale Werbung werden zentral ausgespielt und können je nach Zeitraum gewechselt werden.</p>
+          </div>
+        </article>
+        <article class="use-card">
+          <div class="placeholder">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0"/></svg>
+            <span class="caption">Bild: Empfang einer Kanzlei mit Besucherinformation</span>
+          </div>
+          <div class="use-body">
+            <h3>Empfang einer Kanzlei</h3>
+            <p>Besucher sehen Ansprechpartner, Raumhinweise und Image-Inhalte direkt beim Eintritt. Das wirkt ruhiger als gedruckte Aushänge.</p>
+          </div>
+        </article>
+        <article class="use-card">
+          <div class="placeholder">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0"/></svg>
+            <span class="caption">Bild: Burger-Franchise mit zentral gesteuerten Filialscreens</span>
+          </div>
+          <div class="use-body">
+            <h3>Burger-Franchise mit Filialscreens</h3>
+            <p>Neue Aktionen, Menüpreise und Kampagnen werden zentral vorbereitet und in mehreren Filialen einheitlich ausgespielt.</p>
+          </div>
+        </article>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>Concrete scenarios create mental pictures. This prevents the homepage from becoming abstract.</aside>
+    </section>
+
+    <section class="section" id="karte">
+      <span class="section-label">[Geografischer Proof]</span>
+      <h2>Digitale Sichtbarkeit funktioniert dort, wo Menschen vorbeikommen.</h2>
+      <p class="lead">Für die finale Website sollte diese Fläche durch eine echte Karte mit freigegebenen Projektstandorten, Fotos und Branchenfiltern ersetzt werden.</p>
+      <div class="map-box" aria-label="Wireframe Deutschlandkarte mit Projektmarkern">
+        <div class="map-outline"></div>
+        <div class="pin p1">Rhein-Main<span>Gastronomie & Büro</span></div>
+        <div class="pin p2">REWE Umfeld<span>Indoor-Werbung</span></div>
+        <div class="pin p3">EDEKA Umfeld<span>Retail Media</span></div>
+        <div class="pin p4">Kommunen<span>City-Screens</span></div>
+        <div class="pin p5">Events<span>LED & Rental</span></div>
+        <div class="map-caption">Wireframe-Element: „Wo unsere Bildschirme bereits laufen“ – später mit echten Standorten, Projektfotos und Freigaben befüllen.</div>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>A location map is strong proof for local B2B buyers and helps municipalities and partners see real-world adoption.</aside>
+    </section>
+
+    <section class="section" id="referenzen">
+      <span class="section-label">[Vorher / Nachher Teaser]</span>
+      <h2>Vorher statische Karte. Nachher drei aktive Menüflächen.</h2>
+      <p class="lead">Ein gutes Referenzmodul zeigt nicht nur das Ergebnis, sondern den Unterschied im Alltag.</p>
+      <div class="before-after">
+        <div class="ba-block">
+          <span class="ba-label">Vorher</span>
+          <h3>Gedruckte Menüs, neue Preise als Einzelaufwand.</h3>
+          <p>Bei jeder Änderung mussten Dateien angepasst, Drucke bestellt und die Präsentation vor Ort wieder aktualisiert werden.</p>
+          <div class="ba-stat">0</div>
+          <p>zentrale Screen-Flächen für Aktionen, Bestseller oder kurzfristige Hinweise.</p>
+        </div>
+        <div class="ba-block">
+          <span class="ba-label">Nachher</span>
+          <h3>Drei Menüboards mit abgestimmtem Content.</h3>
+          <p>Speisekarte, Produktbilder und Aktionen laufen im passenden Format oberhalb der Theke und können schneller angepasst werden.</p>
+          <div class="ba-stat">3</div>
+          <p>sichtbare Menüflächen, die Gäste direkt im Bestellmoment erreichen.</p>
+        </div>
+      </div>
+      <div class="btn-row">
+        <a href="/referenzen" class="btn">Weitere Vorher-Nachher-Projekte ansehen</a>
+      </div>
+      <p class="microcopy">Für die finale Seite sollten echte Fotos, Kundenfreigaben und konkrete Projektzahlen ergänzt werden.</p>
+      <aside class="annotation"><strong>Strategy</strong>Before/after gives proof a narrative. It shows transformation without pretending a full case study is already here.</aside>
+    </section>
+
+    <section class="section" id="skeptiker">
+      <span class="section-label">[Warum nicht einfach selbst kaufen?]</span>
+      <h2>Ein Bildschirm ist schnell gekauft. Wirkung entsteht erst im Betrieb.</h2>
+      <p class="lead">Die häufigste stille Frage ist berechtigt: Warum nicht einfach einen Bildschirm online kaufen und montieren lassen? Weil die sichtbare Fläche nur der Anfang ist.</p>
+      <div class="cards-3">
+        <article class="card">
+          <div>
+            <h3>Hardware allein verkauft nichts.</h3>
+            <p>Ein Display zeigt nur das, was vorbereitet wurde. HYSN denkt Content, Format, Lesbarkeit, Blickrichtung und Aktualisierung von Anfang an mit.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div>
+            <h3>DIY wird schnell zur Daueraufgabe.</h3>
+            <p>Montage, Player, Kabel, Dateiformate, Wiedergabezeiten, Updates und Ausfälle werden unsichtbare Kosten, wenn niemand verantwortlich ist.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div>
+            <h3>AV-Montage ist nicht automatisch Strategie.</h3>
+            <p>HYSN verbindet Technik, Content und bei passenden Standorten Werbevermarktung. Dadurch wird der Screen nicht nur installiert, sondern genutzt.</p>
+          </div>
+        </article>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>This directly answers the MediaMarkt/local-installer objection without sounding defensive.</aside>
+    </section>
+
+    <section class="section" aria-label="HYSN Unterschied Vergleich">
+      <span class="section-label">[Der Unterschied im Vergleich]</span>
+      <h2>Welche Route passt zu welchem Anspruch?</h2>
+      <p class="lead">Die Vergleichssektion macht den Mehrwert greifbar, bevor Preisfragen entstehen.</p>
+      <div class="comparison-table">
+        <div class="comparison-row comparison-head">
+          <div class="comparison-cell">Kriterium</div>
+          <div class="comparison-cell">Hardware-Kauf</div>
+          <div class="comparison-cell">Lokaler AV-Installateur</div>
+          <div class="comparison-cell">HYSN Full-Service</div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-cell"><strong>Content</strong></div>
+          <div class="comparison-cell">meist nicht enthalten</div>
+          <div class="comparison-cell">oft extern oder nachgelagert</div>
+          <div class="comparison-cell">screen-ready geplant und erstellt</div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-cell"><strong>Montage & Setup</strong></div>
+          <div class="comparison-cell">selbst zu organisieren</div>
+          <div class="comparison-cell">technisch möglich</div>
+          <div class="comparison-cell">mit Nutzung, Format und Betrieb abgestimmt</div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-cell"><strong>Laufende Aktualisierung</strong></div>
+          <div class="comparison-cell">interne Aufgabe</div>
+          <div class="comparison-cell">nicht immer Teil des Auftrags</div>
+          <div class="comparison-cell">optional mit Content-Management und Support</div>
+        </div>
+        <div class="comparison-row">
+          <div class="comparison-cell"><strong>Werbepotenzial</strong></div>
+          <div class="comparison-cell">nicht vorgesehen</div>
+          <div class="comparison-cell">meist nicht integriert</div>
+          <div class="comparison-cell">bei passenden Standorten mit DOOH-Modell möglich</div>
+        </div>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>A comparison table kills objection faster than another benefit paragraph.</aside>
+    </section>
+
+    <section class="section" id="stimmen">
+      <span class="section-label">[Kundenstimmen — Platzhalter bis Freigabe]</span>
+      <h2>Was Kunden konkret merken sollten.</h2>
+      <p class="lead">Diese Stimmen sind als realistische Wireframe-Texte formuliert und sollten vor Veröffentlichung durch freigegebene Originalzitate ersetzt werden.</p>
+      <div class="cards-3">
+        <article class="quote-card">
+          <blockquote>„Wir mussten Preise früher immer auf mehreren Tafeln nachziehen. Jetzt ändern wir das Menü digital und die drei Screens sehen trotzdem einheitlich aus.“</blockquote>
+          <div class="quote-meta"><strong>Mehmet A.</strong>Inhaber, Schnellrestaurant · Offenbach</div>
+        </article>
+        <article class="quote-card">
+          <blockquote>„Die Stele im Eingangsbereich wurde nicht nur für Angebote genutzt. Lokale Dienstleister haben die Fläche ebenfalls angefragt, weil sie direkt am Kundenlauf liegt.“</blockquote>
+          <div class="quote-meta"><strong>Katrin L.</strong>Marktleitung, Lebensmitteleinzelhandel · Rhein-Main</div>
+        </article>
+        <article class="quote-card">
+          <blockquote>„Die LED-Wand war am Veranstaltungstag schnell eingerichtet. Besucher haben den Zeitplan und die Sponsorenflächen gesehen, ohne dass wir zusätzliche Beschilderung brauchten.“</blockquote>
+          <div class="quote-meta"><strong>Daniel S.</strong>Eventkoordination, Business-Event · Frankfurt</div>
+        </article>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>Testimonials span restaurant, retail, and event so multiple audiences see proof that feels like their world.</aside>
+    </section>
+
+    <section class="section" id="partner">
+      <span class="section-label">[DOOH / hyads Teaser]</span>
+      <h2>Manche Standorte können mehr als informieren.</h2>
+      <p class="lead">Für Supermärkte, Kommunen und Standortpartner kann ein Screen auch zur lokalen Werbefläche werden. HYSN/hyads kann Backend, Content-Ausspielung und ein passendes Vermarktungskonzept mitdenken.</p>
+      <div class="dooh-panel">
+        <div>
+          <h3>Digitale Screens als lokale Werbefläche</h3>
+          <p>Öffentliche Hinweise, Eigenwerbung und lokale Anzeigen lassen sich auf einer Fläche kombinieren. Für Standortpartner entsteht ein Modell, bei dem Sichtbarkeit und mögliche Werbeeinnahmen zusammen betrachtet werden.</p>
+          <div class="dooh-pills">
+            <span class="pill">Indoor-Stelen</span>
+            <span class="pill">Outdoor-Stelen</span>
+            <span class="pill">LED-Wände</span>
+            <span class="pill">Backend-Betrieb</span>
+          </div>
+          <div class="btn-row">
+            <a href="/partner-programm" class="btn">Standort als Werbefläche prüfen</a>
+          </div>
+          <p class="microcopy">HYSN bewertet realistisch, ob Frequenz, Standort und Werbeumfeld für ein Partner-Modell geeignet sind.</p>
+        </div>
+        <div class="placeholder" style="min-height: 300px;">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0"/></svg>
+          <span class="caption">Bild: Standortpartner-Modell mit Stele, Stadtinfo und lokalen Anzeigen</span>
+        </div>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>This teaser opens the revenue path for municipalities and location partners without distracting restaurant buyers.</aside>
+    </section>
+
+    <section class="section stakes" id="stakes">
+      <span class="section-label">[Wenn nichts verändert wird]</span>
+      <h2>Wenn der Standort gleich aussieht, bleibt auch die Wirkung gleich.</h2>
+      <p class="lead">Gedruckte Flächen funktionieren weiter, aber sie reagieren nicht auf Tageszeiten, Aktionen, Preisänderungen oder lokale Kampagnen. Wer sichtbare Standorte hat und sie nur statisch nutzt, lässt Aufmerksamkeit und Aktualität liegen.</p>
+      <p>Das muss kein radikaler Umbau sein. Oft reicht der erste sinnvoll platzierte Screen, um zu sehen, welche Inhalte am Standort wirklich gebraucht werden.</p>
+      <aside class="annotation"><strong>Strategy</strong>Calm stakes: the consequence is real but not fear-based. It nudges action without pressure tactics.</aside>
+    </section>
+
+    <section class="section final-cta" id="projekt">
+      <span class="section-label">[Abschluss CTA]</span>
+      <h2>Welcher Screen passt zu Ihrem Standort?</h2>
+      <p class="lead">Senden Sie Standort, Branche und gewünschte Nutzung. HYSN prüft, ob Menüboard, Werbestele, LED-Wand, Touchdisplay oder ein DOOH-Modell sinnvoll ist.</p>
+      <div class="btn-row">
+        <a href="/kontakt" class="btn">Mein Display-Projekt einschätzen lassen</a>
+        <a href="https://wa.me/4961038315032" class="btn secondary">Standort per WhatsApp senden</a>
+      </div>
+      <p class="microcopy" style="margin-left:auto;margin-right:auto;">Sie erhalten keine Standardliste, sondern eine erste Einschätzung zu Technik, Content, Montage und nächstem sinnvollen Schritt.</p>
+      <div class="trust-pills">
+        <span class="pill">Beratung nach Standort</span>
+        <span class="pill">Content mitgeplant</span>
+        <span class="pill">Montage & Betrieb möglich</span>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>The CTA asks for a low-risk assessment, not a vague contact request. The objection-killer removes fear of being sold hardware blindly.</aside>
+    </section>
+
+    <footer class="section" aria-label="Footer">
+      <span class="section-label">[Footer]</span>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>HYSN</h3>
+          <p>RA Vision GmbH</p>
+          <p>Digital Signage, LED-Wände, LCD-Displays, Menüboards, Content und DOOH-Konzepte für Unternehmen, Standorte und Kommunen.</p>
+          <p>Deutschlandweit mit Fokus auf Rhein-Main.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Lösungen</h4>
+          <a href="/digital-menu-boards">Digitale Menüboards</a>
+          <a href="/led-videowall">LED Videowalls</a>
+          <a href="/digital-signage">Digital Signage Displays</a>
+          <a href="/display-mieten">Displays mieten</a>
+          <a href="/content-creation">Content Creation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Branchen</h4>
+          <a href="/restaurants">Restaurants</a>
+          <a href="/handel">Handel & Supermärkte</a>
+          <a href="/events">Events</a>
+          <a href="/kommunen">Kommunen</a>
+          <a href="/franchise">Franchise</a>
+        </div>
+        <div class="footer-col">
+          <h4>Kontakt</h4>
+          <a href="tel:+4961038315032">+49 6103 8315 032</a>
+          <a href="mailto:info@hysn.de">info@hysn.de</a>
+          <a href="/kontakt">Projekt einschätzen lassen</a>
+          <a href="/partner-programm">DOOH Partnerprogramm</a>
+          <a href="/referenzen">Referenzen</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 HYSN / RA Vision GmbH</span>
+        <span><a href="/impressum">Impressum</a> · <a href="/datenschutz">Datenschutz</a> · <a href="/agb">AGB</a></span>
+      </div>
+      <aside class="annotation"><strong>Strategy</strong>Footer repeats the main paths and removes old template clutter with clear HYSN-specific navigation.</aside>
+    </footer>
+  </main>
+</body>
+</html>

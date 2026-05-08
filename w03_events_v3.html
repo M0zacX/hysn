@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYSN Wireframe — Events & Messen</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --soft: #f4f4f4;
+      --line: #d0d0d0;
+      --text: #333333;
+      --dark: #111111;
+      --body: #f0f0f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--body);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-width: 1180px;
+      line-height: 1.5;
+    }
+
+    .page {
+      width: 900px;
+      max-width: 900px;
+      margin: 0 250px 0 auto;
+      background: var(--white);
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      position: relative;
+    }
+
+    .annotatable {
+      position: relative;
+    }
+
+    .annotation {
+      position: absolute;
+      right: -225px;
+      top: 28px;
+      width: 200px;
+      padding: 14px 14px 13px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-size: 12px;
+      line-height: 1.45;
+      box-shadow: 8px 8px 0 var(--line);
+    }
+
+    .annotation strong {
+      display: block;
+      color: var(--dark);
+      margin-bottom: 4px;
+      font-size: 11px;
+      letter-spacing: .04em;
+    }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 38px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      color: var(--dark);
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--dark);
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-cta {
+      border: 2px solid var(--text);
+      padding: 9px 15px;
+      color: var(--dark) !important;
+      font-weight: 700;
+    }
+
+    section, footer {
+      padding: 58px 38px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-label {
+      display: block;
+      margin-bottom: 14px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      color: var(--text);
+      opacity: .72;
+      font-weight: 700;
+    }
+
+    h1, h2, h3, h4, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: 52px;
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+      color: var(--dark);
+      margin-bottom: 20px;
+      max-width: 720px;
+    }
+
+    h2 {
+      font-size: 36px;
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+      color: var(--dark);
+      margin-bottom: 16px;
+      max-width: 700px;
+    }
+
+    h3 {
+      font-size: 21px;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    h4 {
+      font-size: 15px;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .lede {
+      font-size: 20px;
+      line-height: 1.45;
+      max-width: 690px;
+      color: var(--text);
+      margin-bottom: 26px;
+    }
+
+    .muted {
+      opacity: .78;
+    }
+
+    .microcopy {
+      font-size: 13px;
+      line-height: 1.45;
+      opacity: .76;
+      margin-top: 12px;
+      margin-bottom: 0;
+      max-width: 620px;
+    }
+
+    .button-row {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 28px;
+      border: 2px solid var(--text);
+      background: transparent;
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 750;
+      font-size: 14px;
+    }
+
+    .btn.secondary {
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 22px;
+      min-height: 100%;
+    }
+
+    .card.soft {
+      background: var(--soft);
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      padding: 18px 16px;
+      background: var(--soft);
+      min-height: 120px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 31px;
+      line-height: 1;
+      color: var(--dark);
+      letter-spacing: -0.04em;
+      margin-bottom: 10px;
+    }
+
+    .stat span {
+      display: block;
+      font-size: 13px;
+      line-height: 1.35;
+      opacity: .82;
+    }
+
+    .pill-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .pill {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 17px 15px;
+      font-weight: 750;
+      color: var(--dark);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .image-placeholder {
+      position: relative;
+      min-height: 320px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      display: flex;
+      align-items: end;
+      justify-content: flex-start;
+    }
+
+    .image-placeholder.small {
+      min-height: 170px;
+    }
+
+    .image-placeholder.tall {
+      min-height: 430px;
+    }
+
+    .image-placeholder svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .image-caption {
+      position: relative;
+      z-index: 2;
+      margin: 18px;
+      padding: 10px 12px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--dark);
+      max-width: 85%;
+    }
+
+    .hero {
+      padding-top: 72px;
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      font-size: 12px;
+      font-weight: 750;
+      color: var(--dark);
+    }
+
+    .trust-note {
+      font-size: 12px;
+      opacity: .7;
+      margin-top: 12px;
+      margin-bottom: 0;
+    }
+
+    .pain-card {
+      min-height: 232px;
+    }
+
+    .pain-card .number {
+      display: inline-grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      margin-bottom: 28px;
+      border: 1px solid var(--line);
+      color: var(--dark);
+      font-weight: 800;
+    }
+
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .scenario-card {
+      display: grid;
+      grid-template-columns: 210px 1fr;
+      gap: 22px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .scenario-label {
+      padding: 12px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      font-weight: 800;
+      color: var(--dark);
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+    }
+
+    .equipment-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .equipment-card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 14px;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .mini-screen {
+      width: 100%;
+      height: 70px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      position: relative;
+    }
+
+    .mini-screen:before,
+    .mini-screen:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--line);
+      transform-origin: center;
+    }
+
+    .mini-screen:before { transform: rotate(18deg); }
+    .mini-screen:after { transform: rotate(-18deg); }
+
+    .equipment-card h3 {
+      font-size: 16px;
+      min-height: 42px;
+      margin-bottom: 8px;
+    }
+
+    .equipment-card p {
+      font-size: 13px;
+      margin-bottom: 0;
+    }
+
+    .spec-line {
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+      font-size: 12px;
+      font-weight: 750;
+      color: var(--dark);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .step {
+      border: 1px solid var(--line);
+      padding: 20px 16px;
+      min-height: 240px;
+      background: var(--white);
+    }
+
+    .step-number {
+      display: inline-block;
+      margin-bottom: 22px;
+      font-size: 34px;
+      line-height: 1;
+      color: var(--dark);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .timeline-list {
+      border: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 16px;
+      padding: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .timeline-row:last-child {
+      border-bottom: 0;
+    }
+
+    .timeline-row strong {
+      color: var(--dark);
+    }
+
+    .cta-strip {
+      background: var(--soft);
+    }
+
+    .cta-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: center;
+      border: 1px solid var(--line);
+      padding: 30px;
+      background: var(--white);
+    }
+
+    .case-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .case-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: var(--soft);
+      min-height: 260px;
+    }
+
+    .case-card.after {
+      background: var(--white);
+      border: 2px solid var(--text);
+    }
+
+    .case-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .meta-item {
+      border: 1px solid var(--line);
+      padding: 10px;
+      background: var(--white);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .meta-item strong {
+      display: block;
+      color: var(--dark);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    blockquote {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    cite {
+      display: block;
+      margin-top: 18px;
+      font-style: normal;
+      font-size: 13px;
+      opacity: .78;
+    }
+
+    .included-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .included-item {
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      min-height: 130px;
+    }
+
+    .included-item strong {
+      display: block;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .support-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .checklist {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .checklist li {
+      padding: 15px 18px;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+    }
+
+    .checklist li:last-child {
+      border-bottom: 0;
+    }
+
+    .checklist li:before {
+      content: "—";
+      margin-right: 10px;
+      color: var(--dark);
+      font-weight: 900;
+    }
+
+    .scale-box {
+      border: 1px solid var(--line);
+      background: var(--soft);
+      padding: 24px;
+      margin-top: 26px;
+    }
+
+    .scale-stage {
+      height: 270px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      position: relative;
+      margin-top: 18px;
+      overflow: hidden;
+    }
+
+    .person {
+      position: absolute;
+      left: 36px;
+      bottom: 30px;
+      width: 28px;
+      height: 105px;
+      border: 2px solid var(--text);
+      border-radius: 16px 16px 4px 4px;
+      background: var(--soft);
+    }
+
+    .person:before {
+      content: "";
+      position: absolute;
+      top: -32px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--text);
+      border-radius: 50%;
+      background: var(--white);
+    }
+
+    .screen-size {
+      position: absolute;
+      bottom: 30px;
+      border: 2px solid var(--dark);
+      background: var(--soft);
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .screen-a { left: 110px; width: 140px; height: 82px; }
+    .screen-b { left: 280px; width: 200px; height: 118px; }
+    .screen-c { right: 36px; width: 260px; height: 154px; }
+
+    .faq-list {
+      border-top: 1px solid var(--line);
+      margin-top: 28px;
+    }
+
+    details {
+      border-bottom: 1px solid var(--line);
+      padding: 20px 0;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 800;
+      color: var(--dark);
+      font-size: 17px;
+      list-style: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary:after {
+      content: "+";
+      float: right;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    details[open] summary:after {
+      content: "−";
+    }
+
+    details p {
+      margin-top: 14px;
+      margin-bottom: 0;
+      max-width: 720px;
+    }
+
+    footer {
+      background: var(--dark);
+      color: var(--white);
+      border-bottom: 0;
+    }
+
+    footer h2,
+    footer h3,
+    footer strong {
+      color: var(--white);
+    }
+
+    footer a {
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    footer .section-label {
+      color: var(--white);
+      opacity: .75;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .footer-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-list li {
+      margin-bottom: 9px;
+      font-size: 14px;
+      opacity: .85;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--text);
+      margin-top: 36px;
+      padding-top: 18px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      opacity: .75;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="nav-wrap annotatable">
+      <nav aria-label="Hauptnavigation">
+        <div class="brand">
+          <div class="brand-mark">HY</div>
+          <span>HYSN</span>
+        </div>
+        <div class="nav-links">
+          <a href="#events">Events</a>
+          <a href="#technik">Miettechnik</a>
+          <a href="#ablauf">Ablauf</a>
+          <a href="#referenz">Referenz</a>
+          <a href="#faq">FAQ</a>
+          <a class="nav-cta" href="#termin">Event-Termin prüfen</a>
+        </div>
+      </nav>
+      <aside class="annotation">
+        <strong>Navigation note</strong>
+        Sticky nav keeps the urgent action visible: date check, equipment, process and proof are the core decision paths for event buyers.
+      </aside>
+    </header>
+
+    <main>
+      <section class="hero annotatable" id="top">
+        <div class="hero-layout">
+          <div>
+            <span class="section-label">[HERO]</span>
+            <span class="hero-kicker">LED-Wände, Displays und Vor-Ort-Technik für Events & Messen</span>
+            <h1>Wenn Ihr Event steht, darf die Bildtechnik nicht wackeln.</h1>
+            <p class="lede">HYSN plant, liefert, installiert und betreut LED-Wände, LCD-Videowalls, Displays und Touch-Stelen für Messen, Konferenzen, Produkt-Launches, Sport-Events und Outdoor-Veranstaltungen.</p>
+            <div class="button-row">
+              <a class="btn" href="#termin">Verfügbarkeit für mein Event prüfen</a>
+              <a class="btn secondary" href="#referenz">Event-Beispiele ansehen</a>
+            </div>
+            <p class="microcopy">Auch bei kurzem Vorlauf prüfen wir realistisch, was für Ihren Termin, Ihre Location und Ihren Aufbauzeitraum machbar ist — inklusive Lieferung, Aufbau, Konfiguration und Abbau.</p>
+          </div>
+
+          <div class="image-placeholder tall" role="img" aria-label="Platzhalter für LED-Wand bei einem Event">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1" />
+              <line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1" />
+              <rect x="12" y="18" width="76" height="42" fill="none" stroke="#333333" stroke-width="1" />
+              <rect x="18" y="66" width="64" height="8" fill="none" stroke="#333333" stroke-width="1" />
+            </svg>
+            <div class="image-caption">Bildplatzhalter: große LED-Wand auf einer realen Messe- oder Bühnenfläche mit Publikum</div>
+          </div>
+        </div>
+        <aside class="annotation">
+          <strong>Hero strategy</strong>
+          Opens with event risk, not product excitement. The visitor should immediately understand: HYSN handles the screen setup before the event date becomes a problem.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="proof">
+        <span class="section-label">[TRUST BAR]</span>
+        <h2>Eventtechnik muss vor Ort funktionieren — nicht nur im Angebot gut aussehen.</h2>
+        <p class="lede">Diese Werte dienen im Wireframe als Proof-Struktur. Vor Veröffentlichung sollten sie mit echten Projektzahlen und Mietparkdaten ersetzt oder bestätigt werden.</p>
+        <div class="grid-4">
+          <div class="stat">
+            <strong>25+</strong>
+            <span>Event-Setups als Richtwert für abgeschlossene oder betreute Projekte</span>
+          </div>
+          <div class="stat">
+            <strong>30+</strong>
+            <span>digitale Screens und Displayflächen im HYSN-/hyads-Umfeld</span>
+          </div>
+          <div class="stat">
+            <strong>100 m²+</strong>
+            <span>skalierbare LED-Flächen für Innen- und Außenbereiche nach Verfügbarkeit</span>
+          </div>
+          <div class="stat">
+            <strong>DE</strong>
+            <span>Rhein-Main als Kernregion, bundesweite Projekte je nach Eventumfang</span>
+          </div>
+        </div>
+        <p class="trust-note">Hinweis im Wireframe: Proof-Zahlen bitte mit realer Projektliste, Mietbestand und Einsatzregionen abgleichen.</p>
+        <aside class="annotation">
+          <strong>Proof note</strong>
+          Event buyers need evidence before they discuss price. Stats are intentionally operational: setups, inventory, LED area, region coverage.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="events">
+        <span class="section-label">[FÜR WELCHE EVENTS]</span>
+        <h2>Für Events, bei denen Sichtbarkeit und Timing zusammenpassen müssen.</h2>
+        <p class="lede">Ob Messestand, Bühne oder Unternehmensveranstaltung: Die passende Displaylösung hängt nicht nur von der Fläche ab, sondern von Licht, Sichtabstand, Aufbauzeit und Inhalt.</p>
+        <div class="pill-row">
+          <div class="pill">Messen</div>
+          <div class="pill">Konferenzen</div>
+          <div class="pill">Konzerte & Festivals</div>
+          <div class="pill">Produkt-Launches</div>
+          <div class="pill">Sport-Events</div>
+          <div class="pill">Corporate Events</div>
+        </div>
+        <aside class="annotation">
+          <strong>Self-qualification</strong>
+          The row lets visitors recognize their event type quickly, then continue into more specific scenarios below.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="risiken">
+        <span class="section-label">[PAIN POINTS]</span>
+        <h2>Ohne professionelle Displaytechnik entstehen Probleme genau dann, wenn keine Zeit mehr bleibt.</h2>
+        <div class="grid-3">
+          <div class="card pain-card">
+            <div class="number">01</div>
+            <h3>Ihr Event wirkt kleiner, als es ist.</h3>
+            <p>Geliehene TVs, zu kleine Screens oder dunkle Projektionen schwächen den Eindruck — besonders auf Messeständen, Bühnen und bei Produktpräsentationen mit Publikum.</p>
+          </div>
+          <div class="card pain-card">
+            <div class="number">02</div>
+            <h3>Ein technischer Fehler wird zum Programmpunkt.</h3>
+            <p>Wenn Signal, Content, Controller oder Helligkeit erst am Eventtag auffallen, verliert Ihr Team Zeit und muss Technik koordinieren, statt Gäste, Aussteller oder Speaker zu betreuen.</p>
+          </div>
+          <div class="card pain-card">
+            <div class="number">03</div>
+            <h3>Koordination frisst die letzten Tage vor dem Event.</h3>
+            <p>Transport, Aufbauzeiten, Strom, Contentformate, Halterung, Abbau und Ansprechpartner werden schnell zur Zusatzbaustelle, wenn kein Partner den Ablauf geschlossen führt.</p>
+          </div>
+        </div>
+        <aside class="annotation">
+          <strong>Pain framing</strong>
+          Pain is framed as loss: weaker impact, technical disruption, coordination load. This makes the full-service solution more valuable.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="usecases">
+        <span class="section-label">[USE CASES]</span>
+        <h2>Vier typische Event-Szenarien — und worauf es jeweils ankommt.</h2>
+        <p class="lede">Nicht jede Veranstaltung braucht dieselbe Technik. HYSN plant die Displaylösung nach Publikum, Raumlicht, Entfernung, Content, Aufbauzeit und Risiko am Eventtag.</p>
+
+        <div class="scenario-grid">
+          <article class="scenario-card">
+            <div class="scenario-label">Messe / Trade Fair<br>3-Tage-Event</div>
+            <div>
+              <h3>Ihr Stand muss aus dem Gang heraus wahrgenommen werden.</h3>
+              <p>Bei einem 3-tägigen Messestand entscheidet die Standgröße darüber, ob eine kompakte Indoor-LED-Wand, eine LCD-Videowall oder mehrere Digital Signage Displays sinnvoller sind. HYSN berücksichtigt die starke Hallenbeleuchtung, den Sichtabstand im Gang und die Frage, ob Inhalte im 10–20-Sekunden-Rhythmus rotieren sollen. Der Aufbau wird so geplant, dass die LED-Wand vor der finalen Standabnahme getestet ist — inklusive Content, Signalweg und Helligkeit. Während der Messetage bleibt ein technischer Ansprechpartner verfügbar; der Abbau erfolgt im vorgegebenen Zeitfenster nach Messeschluss.</p>
+            </div>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-label">Outdoor Festival / Konzert</div>
+            <div>
+              <h3>Die LED-Wand muss Wetter, Tageslicht und Publikum gleichzeitig aushalten.</h3>
+              <p>Bei Outdoor-Events zählt nicht nur die Größe der LED-Fläche, sondern auch Helligkeit, Wetterschutz, sichere Positionierung und die Abstimmung mit Bühne, Ton und Stromversorgung. HYSN plant die Platzierung so, dass die Wand für das Publikum sichtbar bleibt, ohne Laufwege, Sichtachsen oder Soundtechnik zu stören. Backup-Power, Signalführung und wetterbedingte Schutzmaßnahmen werden vorab mit Venue, Produktion oder Technikleitung abgestimmt. HYSN übernimmt Display, Aufbau, Konfiguration und Betreuung; Stromanschlüsse, Sicherheitsfreigaben und Geländeanforderungen werden gemeinsam mit Veranstalter oder Location geklärt.</p>
+            </div>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-label">Corporate Event / Produkt-Launch</div>
+            <div>
+              <h3>Der Auftritt muss präzise zur Marke passen — ohne sichtbare Improvisation.</h3>
+              <p>Bei Produkt-Launches, Presse-Events oder internen Corporate-Veranstaltungen ist die Fläche oft kleiner, aber die Erwartung höher. HYSN lädt Ihre Markeninhalte, Videos, Präsentationsfolien oder Countdown-Sequenzen vorab auf das System und testet sie im passenden Format. Bei Bedarf werden Presenter-Laptop, Kamera, Medienserver oder Backup-Zuspielung eingebunden, damit der Ablauf nicht an einem einzelnen Gerät hängt. Für VIP-Gäste, Geschäftsführung oder Presse ist entscheidend, dass Bildqualität, Timing und Übergänge sauber wirken.</p>
+            </div>
+          </article>
+
+          <article class="scenario-card">
+            <div class="scenario-label">Sport-Event / Stadium</div>
+            <div>
+              <h3>Informationen müssen auch aus größerer Entfernung klar lesbar bleiben.</h3>
+              <p>Bei Sport-Events braucht die Displayfläche andere Prioritäten als ein Messestand: große Formate, robuste LED-Technik, hohe Lesbarkeit und klare Inhalte für Zuschauer auf Distanz. HYSN plant LED-Wände für Spielstand, Sponsorenflächen, Live-Informationen, Spielzeit, Highlight-Clips oder Veranstaltungshinweise. Wenn Live-Daten, Scoreboard-Elemente oder externe Zuspieler eingebunden werden sollen, wird der Signalweg vorab mit dem Technikteam abgestimmt. Entscheidend ist, dass Schriftgrößen, Kontrast und Bildfläche zum Sichtabstand von Tribüne, Spielfeld oder Fanbereich passen.</p>
+            </div>
+          </article>
+        </div>
+        <aside class="annotation">
+          <strong>Use case depth</strong>
+          Each card includes operational buying criteria: distance, brightness, setup window, content flow, responsibility split and day-of support.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="technik">
+        <span class="section-label">[AVAILABLE EQUIPMENT]</span>
+        <h2>Miettechnik für sichtbare Bühnen, starke Messestände und klare Besucherführung.</h2>
+        <p class="lede">Die folgenden Kategorien zeigen, welche Technik typischerweise für Events und Messen geplant wird. Die konkrete Auswahl hängt von Innen-/Außenbereich, Licht, Sichtabstand, Aufbaufläche und Content ab.</p>
+
+        <div class="equipment-grid">
+          <article class="equipment-card">
+            <div class="mini-screen" aria-hidden="true"></div>
+            <div>
+              <h3>Outdoor LED Walls</h3>
+              <p>Für Festivals, Sportflächen, Außenbühnen und Public Viewing mit hoher Helligkeit.</p>
+            </div>
+            <div class="spec-line">Typisch: 3–30 m²+</div>
+          </article>
+
+          <article class="equipment-card">
+            <div class="mini-screen" aria-hidden="true"></div>
+            <div>
+              <h3>Indoor LED Walls</h3>
+              <p>Für Messestände, Produkt-Launches, Konferenzen und Bühnenhintergründe.</p>
+            </div>
+            <div class="spec-line">Typisch: 2–20 m²</div>
+          </article>
+
+          <article class="equipment-card">
+            <div class="mini-screen" aria-hidden="true"></div>
+            <div>
+              <h3>LCD Video Walls</h3>
+              <p>Für hochwertige Indoor-Präsentationen, Foyers, Messestände und Markenflächen.</p>
+            </div>
+            <div class="spec-line">Typisch: 2×2 bis 4×4</div>
+          </article>
+
+          <article class="equipment-card">
+            <div class="mini-screen" aria-hidden="true"></div>
+            <div>
+              <h3>Digital Signage Displays</h3>
+              <p>Für Empfang, Agenda, Sponsoren, Wegführung, Angebote und Nebenflächen.</p>
+            </div>
+            <div class="spec-line">Typisch: 43–98 Zoll</div>
+          </article>
+
+          <article class="equipment-card">
+            <div class="mini-screen" aria-hidden="true"></div>
+            <div>
+              <h3>Touch Stelen</h3>
+              <p>Für interaktive Informationen, Ausstellerverzeichnisse, Produktberatung und Check-in.</p>
+            </div>
+            <div class="spec-line">Typisch: 32–55 Zoll</div>
+          </article>
+        </div>
+        <aside class="annotation">
+          <strong>Equipment clarity</strong>
+          Event buyers want to see size ranges quickly. This reduces vague inquiry friction and supports better lead quality.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="groessen">
+        <span class="section-label">[SCALE VISUALIZATION]</span>
+        <h2>Welche LED-Größe passt in Ihre Location?</h2>
+        <p class="lede">Eine LED-Wand wirkt auf einem Messestand anders als in einer Halle oder vor einer Outdoor-Bühne. Die Größenplanung beginnt deshalb mit Publikum, Sichtabstand und verfügbarer Aufbaufläche.</p>
+        <div class="scale-box">
+          <h3>Beispielhafte Größenwirkung im Raum</h3>
+          <p class="muted">Die Darstellung ist bewusst vereinfacht und dient als Wireframe-Hilfe für die spätere visuelle Umsetzung mit echten Produktbildern oder Renderings.</p>
+          <div class="scale-stage">
+            <div class="person" aria-label="Personensilhouette als Größenvergleich"></div>
+            <div class="screen-size screen-a">3 × 2 m<br>Messestand</div>
+            <div class="screen-size screen-b">5 × 3 m<br>Bühne</div>
+            <div class="screen-size screen-c">8 × 4,5 m<br>Outdoor / Sport</div>
+          </div>
+        </div>
+        <aside class="annotation">
+          <strong>Elevation section</strong>
+          Added because screen scale is hard to imagine. It helps visitors self-brief before requesting a quote.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="ablauf">
+        <span class="section-label">[THE HYSN PROCESS]</span>
+        <h2>Von der Anfrage bis zum Eventtag: ein klarer Ablauf ohne Technik-Pingpong.</h2>
+        <div class="steps">
+          <article class="step">
+            <span class="step-number">01</span>
+            <h3>Termin & Location prüfen</h3>
+            <p>Sie nennen Eventdatum, Ort, Innen- oder Außenbereich, gewünschte Fläche und Aufbauzeitfenster. HYSN prüft, welche Miettechnik realistisch verfügbar ist.</p>
+          </article>
+          <article class="step">
+            <span class="step-number">02</span>
+            <h3>Displaykonzept festlegen</h3>
+            <p>Auf Basis von Publikum, Sichtabstand, Licht und Content wird entschieden, ob LED-Wand, LCD-Videowall, Displays oder Stelen sinnvoll sind.</p>
+          </article>
+          <article class="step">
+            <span class="step-number">03</span>
+            <h3>Content & Technik vorbereiten</h3>
+            <p>Videos, Präsentationen, Logos, Sponsorenflächen oder Live-Zuspielungen werden geprüft und für das Screenformat vorbereitet.</p>
+          </article>
+          <article class="step">
+            <span class="step-number">04</span>
+            <h3>Aufbau, Betreuung, Abbau</h3>
+            <p>HYSN liefert, montiert, konfiguriert und testet die Technik vor Ort. Nach dem Event wird die Miettechnik im vereinbarten Zeitfenster abgebaut.</p>
+          </article>
+        </div>
+        <aside class="annotation">
+          <strong>Process note</strong>
+          The plan reduces anxiety. It tells the buyer what happens next and what input HYSN needs from them.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="vorlauf">
+        <span class="section-label">[LEAD TIME CLARITY]</span>
+        <h2>Kurzer Vorlauf ist möglich — aber der Termin entscheidet.</h2>
+        <p class="lede">Events haben feste Daten. Deshalb sagt HYSN nicht pauschal „geht“, sondern prüft Verfügbarkeit, Transport, Aufbauzeit und Technikbedarf sauber vor der Zusage.</p>
+        <div class="timeline-grid">
+          <div class="image-placeholder small" role="img" aria-label="Platzhalter für Aufbauzeitplan">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1" />
+              <line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1" />
+              <polyline points="12,70 32,55 52,60 72,35 88,40" fill="none" stroke="#333333" stroke-width="1" />
+            </svg>
+            <div class="image-caption">Bildplatzhalter: Zeitplan von Anfrage bis Eventtag</div>
+          </div>
+          <div class="timeline-list">
+            <div class="timeline-row">
+              <strong>Ideal: 3–6 Wochen</strong>
+              <span>Genug Zeit für Technikplanung, Contentcheck, Logistik, Aufbauabstimmung und eventuell Genehmigungen.</span>
+            </div>
+            <div class="timeline-row">
+              <strong>Machbar: 7–14 Tage</strong>
+              <span>Bei verfügbarer Miettechnik, klarer Location, fertigem Content und einfachem Aufbau oft realistisch.</span>
+            </div>
+            <div class="timeline-row">
+              <strong>Kurzfristig: 24–72 Stunden</strong>
+              <span>Nur nach konkreter Prüfung von Bestand, Transport, Teamkapazität, Zugänglichkeit und technischer Komplexität.</span>
+            </div>
+          </div>
+        </div>
+        <p class="microcopy">Was den Zeitplan beeinflusst: LED-Größe, Innen-/Außenbereich, Montagehöhe, Stromversorgung, Anfahrt, Genehmigungen, Contentaufbereitung, gewünschte Vor-Ort-Betreuung und Abbauzeitfenster.</p>
+        <aside class="annotation">
+          <strong>Lead time note</strong>
+          Directly handles short-notice anxiety while protecting HYSN from overpromising before checking logistics.
+        </aside>
+      </section>
+
+      <section class="cta-strip annotatable" id="termin">
+        <span class="section-label">[MID-PAGE CTA]</span>
+        <div class="cta-box">
+          <div>
+            <h2>Prüfen Sie zuerst, ob Ihr Eventtermin verfügbar ist.</h2>
+            <p>Schicken Sie Datum, Ort, Eventart, gewünschte Screenfläche und Aufbauzeitfenster. HYSN meldet zurück, welche Lösung realistisch planbar ist.</p>
+            <p class="microcopy">Sie müssen noch keine fertigen technischen Spezifikationen haben — ein Foto der Location oder ein Standplan reicht für die erste Einschätzung.</p>
+          </div>
+          <div>
+            <a class="btn" href="mailto:info@hysn.de?subject=Verfügbarkeit%20für%20Event%20prüfen">Verfügbarkeit für mein Event prüfen</a>
+          </div>
+        </div>
+        <aside class="annotation">
+          <strong>CTA note</strong>
+          The CTA asks for a date check, not a generic contact. This matches urgent event intent and lowers the first-step burden.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="referenz">
+        <span class="section-label">[VORHER / NACHHER CASE STUDY]</span>
+        <h2>Vom improvisierten Messestand zur klaren Markenfläche.</h2>
+        <p class="lede">Repräsentatives Beispiel für die spätere Case-Study-Struktur. Der wichtigste Punkt: Erst der schwache Ausgangszustand macht die Verbesserung glaubwürdig.</p>
+
+        <div class="grid-2">
+          <div class="image-placeholder" role="img" aria-label="Platzhalter für Vorher Nachher Messestand">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1" />
+              <line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1" />
+              <rect x="14" y="22" width="28" height="22" fill="none" stroke="#333333" stroke-width="1" />
+              <rect x="56" y="16" width="30" height="34" fill="none" stroke="#333333" stroke-width="1" />
+              <line x1="12" y1="72" x2="88" y2="72" stroke="#333333" stroke-width="1" />
+            </svg>
+            <div class="image-caption">Bildplatzhalter: Messestand vor/nach HYSN LED-Wand</div>
+          </div>
+          <div>
+            <div class="case-columns">
+              <article class="case-card">
+                <span class="section-label">[VORHER]</span>
+                <h3>Vier geliehene TVs, unterschiedliche Höhen, wenig Wirkung.</h3>
+                <p>Ein Aussteller plante einen 72 m² Messestand mit Produktvideos, hatte aber nur einzelne TVs auf Stativen vorgesehen. Aus dem Gang war die Fläche kaum als Markenauftritt erkennbar, Inhalte liefen nicht synchron und das Team musste die Zuspielung selbst überwachen.</p>
+              </article>
+              <article class="case-card after">
+                <span class="section-label">[NACHHER]</span>
+                <h3>12 m² Indoor-LED-Wand als sichtbarer Mittelpunkt.</h3>
+                <p>HYSN ersetzte die Einzelbildschirme durch eine zentrale LED-Wand, lud die Videos vorab, testete die Helligkeit im Hallenlicht und richtete eine Content-Schleife für Produkt, Referenzen und Call-to-Action ein. Der Stand wirkte vom Hauptgang klarer, Besucher blieben häufiger stehen und das Team musste die Technik nicht betreuen.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-meta">
+          <div class="meta-item"><strong>Event</strong>3 Messetage</div>
+          <div class="meta-item"><strong>Fläche</strong>72 m² Stand</div>
+          <div class="meta-item"><strong>Display</strong>12 m² Indoor LED</div>
+          <div class="meta-item"><strong>Aufbau</strong>1 Tag vor Start</div>
+        </div>
+        <aside class="annotation">
+          <strong>Case study note</strong>
+          Representative numbers give shape. Replace with a real HYSN event case once available, keeping the before/after logic.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="testimonials">
+        <span class="section-label">[TESTIMONIALS]</span>
+        <h2>Was Eventverantwortliche nach dem Aufbau wissen wollen: Hat es funktioniert?</h2>
+        <div class="grid-3">
+          <div class="card soft">
+            <blockquote>„Drei Tage vor der Messe hat uns ein anderer Anbieter abgesagt. HYSN hat Lieferung, Aufbau und einen Techniker vor Ort organisiert. Am ersten Messetag sah der Stand genauso aus wie im Plan.“</blockquote>
+            <cite>— Messeverantwortliche, B2B-Aussteller</cite>
+          </div>
+          <div class="card soft">
+            <blockquote>„Wir hatten einen Outdoor-Event im Oktober. Es gab Regenschauer, aber die LED-Wand lief durch und das Team hat die Technik im Hintergrund sauber betreut.“</blockquote>
+            <cite>— Veranstaltungsleiter, Outdoor-Event</cite>
+          </div>
+          <div class="card soft">
+            <blockquote>„Der Unterschied war der Ansprechpartner vor Ort. Bei einem 4-stündigen Programm musste ich nicht selbst zwischen Speaker, Laptop und Screen vermitteln.“</blockquote>
+            <cite>— Marketing Managerin, Produkt-Launch</cite>
+          </div>
+        </div>
+        <aside class="annotation">
+          <strong>Quote note</strong>
+          Dummy quotes are written with specific operational detail, not generic praise. They should be replaced with approved real testimonials.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="inklusive">
+        <span class="section-label">[WHAT'S INCLUDED]</span>
+        <h2>Was bei der Eventmiete mitgedacht wird.</h2>
+        <p class="lede">Damit Ihr Team nicht mehrere Dienstleister koordinieren muss, bündelt HYSN die wesentlichen Schritte der Displaymiete in einem Ablauf.</p>
+        <div class="included-grid">
+          <div class="included-item"><strong>Lieferung</strong>Transport der abgestimmten Miettechnik zur Location oder zum Messegelände.</div>
+          <div class="included-item"><strong>Montage</strong>Aufbau, Ausrichtung und sichere Platzierung nach Location- und Eventanforderung.</div>
+          <div class="included-item"><strong>Konfiguration</strong>Einrichtung von Zuspielung, Controller, Medienplayern und Screenformaten.</div>
+          <div class="included-item"><strong>Content Loading</strong>Einspielen und Testen von Videos, Bildern, Präsentationen oder Sponsorenflächen.</div>
+          <div class="included-item"><strong>Vor-Ort-Support</strong>Technischer Ansprechpartner für Aufbau, Testlauf und Eventbetrieb nach Vereinbarung.</div>
+          <div class="included-item"><strong>Abbau</strong>Demontage und Abtransport im vereinbarten Zeitfenster nach Eventende.</div>
+        </div>
+        <aside class="annotation">
+          <strong>Scope note</strong>
+          Clear inclusions prevent hidden-effort objections. This also makes price feel more justified than hardware-only rental.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="support">
+        <span class="section-label">[ON-SITE SUPPORT]</span>
+        <div class="support-layout">
+          <div>
+            <h2>Am Eventtag gibt es einen technischen Ansprechpartner — nicht nur eine Telefonnummer.</h2>
+            <p class="lede">Wenn Vor-Ort-Support vereinbart ist, betreut ein HYSN-Techniker die Displaytechnik während Aufbau, Testlauf und Eventbetrieb. So bleibt Ihr Team bei Gästen, Ausstellern, Speakern oder Sponsoren.</p>
+            <p>Der Ansprechpartner prüft Signalwege, Helligkeit, Contentwiedergabe und Übergänge. Bei Präsentationen oder Live-Zuspielungen stimmt er sich mit Regie, AV-Team, Bühne oder Venue-Technik ab.</p>
+          </div>
+          <ul class="checklist">
+            <li>Signaltest vor Einlass oder Programmstart</li>
+            <li>Kontrolle von Helligkeit, Format und Lesbarkeit</li>
+            <li>Contentwechsel nach Ablaufplan</li>
+            <li>Abstimmung mit Ton, Bühne, Regie oder Messebau</li>
+            <li>Schnelle Fehleranalyse bei Zuspiel- oder Formatproblemen</li>
+            <li>Geordneter Abbau nach dem vereinbarten Zeitfenster</li>
+          </ul>
+        </div>
+        <aside class="annotation">
+          <strong>Reassurance note</strong>
+          This section attacks the biggest event objection: fear of failure on the day. It clarifies who is responsible on-site.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="content-support">
+        <span class="section-label">[CONTENT SUPPORT]</span>
+        <h2>Kein fertiger Screen-Content? Besser jetzt klären als am Aufbautag.</h2>
+        <div class="grid-2">
+          <div class="card soft">
+            <h3>Wenn Sie fertige Inhalte haben</h3>
+            <p>HYSN prüft vorab Format, Auflösung, Seitenverhältnis, Länge, Dateityp und Lesbarkeit. So fällt nicht erst vor Ort auf, dass eine Präsentation unscharf, ein Video falsch skaliert oder ein Logo zu klein ist.</p>
+          </div>
+          <div class="card soft">
+            <h3>Wenn Sie noch Inhalte brauchen</h3>
+            <p>HYSN kann einfache Screen-Layouts, Event-Slides, Sponsorenflächen, Agenda-Anzeigen oder kurze Animationen als Zusatzleistung vorbereiten. Besonders für Messen und Corporate Events verhindert das kurzfristige Designprobleme.</p>
+          </div>
+        </div>
+        <aside class="annotation">
+          <strong>Upsell note</strong>
+          Added as a conversion-support upsell. It prevents the common post-inquiry problem: hardware is booked, but content is not screen-ready.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="contingency">
+        <span class="section-label">[CONTINGENCY]</span>
+        <h2>Was passiert, wenn am Eventtag etwas ausfällt?</h2>
+        <p class="lede">Technik ist planbar, aber Events brauchen eine klare Rückfallebene. Deshalb werden kritische Punkte vor dem Aufbau geprüft: Strom, Zuspielung, Content, Controller, Wetter, Zugang und Verantwortlichkeiten.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Vorab-Test</h3>
+            <p>Content und Signalwege werden vor Start getestet, damit Formatfehler und Zuspielprobleme nicht im laufenden Programm sichtbar werden.</p>
+          </div>
+          <div class="card">
+            <h3>Ersatz- und Servicelogik</h3>
+            <p>Je nach Projektumfang werden Ersatzkomponenten, Kabel, Medienplayer oder technische Alternativen eingeplant.</p>
+          </div>
+          <div class="card">
+            <h3>Klare Zuständigkeit</h3>
+            <p>HYSN definiert vorab, was das Displayteam übernimmt und welche Punkte bei Venue, Stromdienstleister, Messebau oder Regie liegen.</p>
+          </div>
+        </div>
+        <aside class="annotation">
+          <strong>Risk handling</strong>
+          Added because serious organizers ask about failure scenarios. It reassures without making unrealistic guarantees.
+        </aside>
+      </section>
+
+      <section class="annotatable" id="faq">
+        <span class="section-label">[FAQ]</span>
+        <h2>Fragen, die Eventteams vor der Displaymiete klären sollten.</h2>
+        <div class="faq-list">
+          <details open>
+            <summary>Gibt es eine Mindestmietdauer?</summary>
+            <p>Die Mindestmietdauer hängt von Technik, Transport, Aufbauaufwand und Eventort ab. Für viele Events wird mindestens ein Eventtag plus Aufbau- und Abbauzeit kalkuliert; bei Messen oder Festivals wird meist projektbezogen gerechnet.</p>
+          </details>
+          <details>
+            <summary>Können Sie auch kurzfristige Anfragen übernehmen?</summary>
+            <p>Ja, kurzfristige Anfragen können geprüft werden. Entscheidend sind Verfügbarkeit der passenden Technik, Entfernung zur Location, Aufbauzeitfenster, Contentstatus und technische Komplexität. Eine ehrliche Machbarkeitsprüfung ist hier wichtiger als eine schnelle Zusage.</p>
+          </details>
+          <details>
+            <summary>Was passiert, wenn sich mein Eventdatum verschiebt?</summary>
+            <p>Bitte melden Sie die Änderung so früh wie möglich. HYSN prüft, ob Miettechnik, Team und Logistik für den neuen Termin verfügbar sind. Bereits entstandene Planungs-, Transport- oder Reservierungskosten müssen je nach Projektstatus separat bewertet werden.</p>
+          </details>
+          <details>
+            <summary>Wer übernimmt Transport, Aufbau und Abbau?</summary>
+            <p>HYSN kann Lieferung, Montage, Konfiguration und Abbau übernehmen. Im Angebot sollte klar ausgewiesen werden, welche Logistikkosten enthalten sind, welche Zufahrts- und Ladebedingungen gelten und ob besondere Messe- oder Venue-Vorgaben bestehen.</p>
+          </details>
+          <details>
+            <summary>Unterstützen Sie bei Genehmigungen für Outdoor-Events?</summary>
+            <p>HYSN kann technische Informationen, Maße und Anforderungen für die Abstimmung bereitstellen. Genehmigungen, Sicherheitsfreigaben, Geländeanforderungen oder behördliche Auflagen liegen in der Regel beim Veranstalter, der Location oder dem zuständigen Planungsbüro.</p>
+          </details>
+          <details>
+            <summary>Welche Dateiformate kann ich für meine Inhalte liefern?</summary>
+            <p>Üblich sind gängige Video- und Bildformate wie MP4, MOV, JPG oder PNG sowie Präsentationsinhalte nach vorheriger Abstimmung. Wichtig sind Auflösung, Seitenverhältnis, Lesbarkeit und die Frage, ob Inhalte als Schleife, manuell oder live zugespielt werden.</p>
+          </details>
+          <details>
+            <summary>Welche Helligkeit brauche ich für Tageslicht?</summary>
+            <p>Outdoor-Tageslicht erfordert deutlich hellere LED-Technik als ein Indoor-Messestand. Die passende Helligkeit hängt von Sonnenrichtung, Überdachung, Uhrzeit, Sichtabstand und Contentkontrast ab. HYSN prüft deshalb den Einsatzort, bevor eine Technik empfohlen wird.</p>
+          </details>
+          <details>
+            <summary>Kann ich einen Techniker für die gesamte Veranstaltung buchen?</summary>
+            <p>Ja, Vor-Ort-Betreuung kann je nach Eventdauer und Ablauf eingeplant werden. Das ist besonders sinnvoll bei Live-Zuspielungen, mehreren Programmpunkten, Präsentationen, Bühnenbetrieb oder sensiblen Corporate Events.</p>
+          </details>
+        </div>
+        <aside class="annotation">
+          <strong>FAQ note</strong>
+          FAQ answers buyer objections around minimum duration, short notice, date changes, logistics, permits, formats, brightness and technician coverage.
+        </aside>
+      </section>
+
+      <section class="cta-strip annotatable" id="entscheidung">
+        <span class="section-label">[STAKES + FINAL CTA]</span>
+        <div class="cta-box">
+          <div>
+            <h2>Ihr Eventdatum rückt näher. Die Displaytechnik sollte nicht erst in der letzten Woche offen sein.</h2>
+            <p>Während andere Stände, Bühnen oder Sponsorenflächen bereits mit starken Screens sichtbar werden, verliert ein schwacher Aufbau Aufmerksamkeit genau in dem Moment, in dem Publikum, Gäste und Entscheider vor Ort sind.</p>
+            <p class="microcopy">Eine erste Prüfung verpflichtet Sie nicht zur Buchung — sie klärt nur, welche Technik für Ihren Termin realistisch verfügbar ist.</p>
+          </div>
+          <div>
+            <a class="btn" href="mailto:info@hysn.de?subject=Eventtechnik%20für%20meinen%20Termin%20prüfen">Eventtechnik für meinen Termin prüfen</a>
+          </div>
+        </div>
+        <aside class="annotation">
+          <strong>Final CTA note</strong>
+          Stakes are mild and practical: fixed event date plus competing visual presence. No pressure tactics, just risk clarity.
+        </aside>
+      </section>
+    </main>
+
+    <footer class="annotatable">
+      <span class="section-label">[FOOTER]</span>
+      <div class="footer-grid">
+        <div>
+          <h2>HYSN</h2>
+          <p>Digital Signage, LED-Wände, LCD-Videowalls, Touch Displays und Full-Service Displaylösungen für Unternehmen, Events, Handel und öffentliche Räume.</p>
+        </div>
+        <div>
+          <h3>Lösungen</h3>
+          <ul class="footer-list">
+            <li><a href="#technik">LED-Wände mieten</a></li>
+            <li><a href="#technik">LCD-Videowalls</a></li>
+            <li><a href="#technik">Digital Signage Displays</a></li>
+            <li><a href="#technik">Touch Stelen</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Eventarten</h3>
+          <ul class="footer-list">
+            <li><a href="#usecases">Messen</a></li>
+            <li><a href="#usecases">Konferenzen</a></li>
+            <li><a href="#usecases">Festivals</a></li>
+            <li><a href="#usecases">Sport-Events</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Kontakt</h3>
+          <ul class="footer-list">
+            <li>RA Vision GmbH</li>
+            <li><a href="mailto:info@hysn.de">info@hysn.de</a></li>
+            <li><a href="tel:+4961038315032">+49 6103 8315 032</a></li>
+            <li>Deutschland</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 HYSN / RA Vision GmbH</span>
+        <span>Impressum · Datenschutz · AGB</span>
+      </div>
+      <aside class="annotation">
+        <strong>Footer note</strong>
+        Footer reinforces offer categories and gives immediate contact details. Replace legal links with final CMS routes.
+      </aside>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1375 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1200, initial-scale=1.0" />
+  <title>HYSN Wireframe | Büro & Unternehmen</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --light: #f4f4f4;
+      --line: #d0d0d0;
+      --text: #333333;
+      --black: #111111;
+      --body: #f0f0f0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--body);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      min-width: 1200px;
+      padding-right: 250px;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--white);
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      position: relative;
+    }
+
+    section,
+    header,
+    footer {
+      position: relative;
+      padding: 64px 56px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-section {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 18px 56px;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--black);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--text);
+    }
+
+    .section-label {
+      display: block;
+      margin-bottom: 18px;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #777;
+      font-weight: 700;
+    }
+
+    h1, h2, h3, h4, p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 18px;
+      color: var(--black);
+      font-size: 48px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    h2 {
+      margin-bottom: 18px;
+      color: var(--black);
+      font-size: 34px;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      color: var(--black);
+      font-size: 20px;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+    }
+
+    h4 {
+      margin-bottom: 8px;
+      color: var(--black);
+      font-size: 15px;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    p {
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+
+    .lead {
+      max-width: 680px;
+      font-size: 20px;
+      color: #444;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .kicker {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr 0.97fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      min-width: 0;
+    }
+
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 24px 0 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 28px;
+      border: 2px solid var(--text);
+      color: var(--black);
+      background: transparent;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    .btn:hover {
+      background: var(--light);
+    }
+
+    .btn.small-btn {
+      padding: 10px 18px;
+      font-size: 13px;
+    }
+
+    .cta-note {
+      margin-top: 12px;
+      padding-left: 14px;
+      border-left: 3px solid var(--line);
+      font-size: 14px;
+      color: #555;
+    }
+
+    .placeholder {
+      background: var(--light);
+      border: 1px solid var(--line);
+      min-height: 260px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .placeholder.tall {
+      min-height: 420px;
+    }
+
+    .placeholder.short {
+      min-height: 180px;
+    }
+
+    .placeholder svg.cross {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      color: #bbb;
+      pointer-events: none;
+    }
+
+    .placeholder-caption {
+      position: relative;
+      z-index: 1;
+      max-width: 70%;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--line);
+      text-align: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #555;
+    }
+
+    .annotation {
+      position: absolute;
+      right: -230px;
+      top: 28px;
+      width: 190px;
+      padding: 14px;
+      background: var(--light);
+      border: 1px solid var(--line);
+      box-shadow: 8px 8px 0 rgba(0,0,0,0.04);
+      font-size: 12px;
+      line-height: 1.4;
+      color: #555;
+    }
+
+    .annotation strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--black);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+    }
+
+    .stat {
+      padding: 24px 18px;
+      border-right: 1px solid var(--line);
+      background: var(--light);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat-number {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--black);
+      font-size: 28px;
+      font-weight: 850;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: #555;
+    }
+
+    .area-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .area-chip {
+      padding: 18px 16px;
+      border: 1px solid var(--line);
+      background: var(--light);
+      font-weight: 750;
+      color: var(--black);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 26px;
+    }
+
+    .card-grid.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-grid.four {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .card.shaded {
+      background: var(--light);
+    }
+
+    .card p:last-child,
+    .split-box p:last-child,
+    .faq-item p:last-child,
+    .step p:last-child {
+      margin-bottom: 0;
+    }
+
+    .use-card {
+      padding: 28px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .use-card .label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 9px;
+      border: 1px solid var(--line);
+      background: var(--light);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #555;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+      margin-top: 28px;
+    }
+
+    .split-box {
+      padding: 26px;
+      border: 1px solid var(--line);
+      background: var(--light);
+    }
+
+    .solution-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .solution-item {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 12px;
+      align-items: start;
+      padding: 16px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .solution-item span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      border: 1px solid var(--line);
+      background: var(--light);
+      color: var(--black);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .check-list {
+      margin: 22px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .check-list li {
+      position: relative;
+      padding: 14px 0 14px 34px;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+    }
+
+    .check-list li:last-child {
+      border-bottom: 0;
+    }
+
+    .check-list li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 20px;
+      height: 20px;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--black);
+      background: var(--white);
+    }
+
+    .step-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 28px;
+      border: 1px solid var(--line);
+    }
+
+    .step {
+      padding: 24px 18px;
+      border-right: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .step:last-child {
+      border-right: 0;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 16px;
+      border: 1px solid var(--line);
+      background: var(--light);
+      color: var(--black);
+      font-weight: 850;
+    }
+
+    .cta-strip {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .cta-strip h2,
+    .cta-strip h3,
+    .cta-strip .section-label {
+      color: var(--white);
+    }
+
+    .cta-strip p {
+      color: #e9e9e9;
+    }
+
+    .cta-strip .btn {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    .cta-strip .btn:hover {
+      background: #333333;
+    }
+
+    .cta-strip .cta-note {
+      border-left-color: #666;
+      color: #e0e0e0;
+    }
+
+    .product-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .product-card .mini-placeholder {
+      height: 96px;
+      margin-bottom: 16px;
+      border: 1px solid var(--line);
+      background: var(--light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 750;
+      color: #666;
+      text-align: center;
+      padding: 8px;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 28px;
+      border: 1px solid var(--line);
+    }
+
+    .case-col {
+      padding: 26px;
+    }
+
+    .case-col:first-child {
+      border-right: 1px solid var(--line);
+      background: var(--light);
+    }
+
+    .case-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .case-metric {
+      padding: 14px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .quote {
+      padding: 26px;
+      border: 1px solid var(--line);
+      background: var(--light);
+    }
+
+    blockquote {
+      margin: 0 0 18px;
+      font-size: 17px;
+      line-height: 1.48;
+      color: var(--black);
+    }
+
+    cite {
+      display: block;
+      font-style: normal;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .dashboard {
+      margin-top: 28px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .dashboard-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      background: var(--light);
+      font-size: 13px;
+      font-weight: 750;
+      color: var(--black);
+    }
+
+    .dashboard-body {
+      display: grid;
+      grid-template-columns: 190px 1fr;
+      min-height: 300px;
+    }
+
+    .dashboard-menu {
+      border-right: 1px solid var(--line);
+      padding: 16px;
+      background: var(--light);
+    }
+
+    .dashboard-menu div {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+    }
+
+    .dashboard-main {
+      padding: 18px;
+    }
+
+    .screen-row {
+      display: grid;
+      grid-template-columns: 1fr 86px 86px;
+      gap: 10px;
+      align-items: center;
+      padding: 12px;
+      border: 1px solid var(--line);
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    .status {
+      text-align: center;
+      border: 1px solid var(--line);
+      background: var(--light);
+      padding: 6px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 22px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .timeline-item strong {
+      color: var(--black);
+    }
+
+    .templates {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .template {
+      min-height: 130px;
+      border: 1px solid var(--line);
+      background: var(--light);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .template strong {
+      color: var(--black);
+      font-size: 14px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .gallery .placeholder {
+      min-height: 170px;
+    }
+
+    .gallery .placeholder-caption {
+      max-width: 84%;
+      font-size: 11px;
+      padding: 9px;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .faq-item {
+      padding: 22px;
+      border: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .stakes {
+      background: var(--light);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr;
+      gap: 34px;
+    }
+
+    footer a {
+      color: var(--text);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .fineprint {
+      margin-top: 32px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      font-size: 12px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="nav-section">
+      <div class="annotation">
+        <strong>Nav rationale</strong>
+        Sticky navigation keeps decision-makers oriented while the page handles office-specific objections.
+      </div>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a href="#" class="logo" aria-label="HYSN Startseite">HYSN</a>
+        <div class="nav-links">
+          <a href="#bereiche">Bereiche</a>
+          <a href="#it">IT-Integration</a>
+          <a href="#ablauf">Ablauf</a>
+          <a href="#produkte">Produkte</a>
+          <a href="#faq">FAQ</a>
+          <a href="#beratung">Beratung</a>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero" id="top">
+      <div class="annotation">
+        <strong>Hero strategy</strong>
+        Problem-led for a problem-aware office buyer: outdated reception and meeting rooms, not generic signage.
+      </div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="section-label">[HERO]</span>
+          <h1>Wenn Empfang und Meetingräume nicht mehr zum Anspruch Ihres Unternehmens passen.</h1>
+          <p class="lead">HYSN plant, liefert und installiert digitale Displays für Büros, Empfangsbereiche, Meetingräume und interne Kommunikation — inklusive Content, Web-Verwaltung und Support.</p>
+          <div class="button-row">
+            <a class="btn" href="#beratung">Beratung für unser Büro anfragen</a>
+            <a class="btn" href="#beispiele">Office-Beispiele ansehen</a>
+          </div>
+          <p class="cta-note">Kein langes IT-Projekt: Standard-Internet reicht in der Regel aus, HYSN übernimmt Planung, Montage, Einrichtung und Übergabe.</p>
+        </div>
+        <div class="placeholder tall" role="img" aria-label="Platzhalter für modernen Empfangsbereich mit HYSN Screen">
+          <svg class="cross" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" stroke-width="0.7"/>
+            <line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" stroke-width="0.7"/>
+          </svg>
+          <div class="placeholder-caption">Bildplatzhalter: Moderner Corporate-Empfang mit HYSN Display / Videowall</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust">
+      <div class="annotation">
+        <strong>Trust strategy</strong>
+        Use practical proof: visible operating experience, low coordination effort and office-relevant delivery claims.
+      </div>
+      <span class="section-label">[VERTRAUEN]</span>
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-number">30+</span>
+          <span class="stat-label">verwaltete Screens im HYSN-/hyads-Umfeld</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">1</span>
+          <span class="stat-label">Ansprechpartner für Hardware, Content, Montage und Support</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">1–2</span>
+          <span class="stat-label">Vor-Ort-Termine bis zur einsatzbereiten Übergabe bei Standardprojekten</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">Web</span>
+          <span class="stat-label">basiertes Content Management für einfache Änderungen ohne lokale Software</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="bereiche">
+      <div class="annotation">
+        <strong>Self-selection</strong>
+        This row lets different office stakeholders quickly see their use case before reading the page.
+      </div>
+      <span class="section-label">[FÜR WELCHE UNTERNEHMENSBEREICHE]</span>
+      <h2>Digitale Displays dort, wo Ihr Büro jeden Tag Wirkung verliert.</h2>
+      <p class="lead">Ob Besucher, Bewerber, Kunden oder Mitarbeitende: In vielen Unternehmensbereichen entscheidet der erste Blick darüber, wie modern und organisiert Ihr Standort wahrgenommen wird.</p>
+      <div class="area-row">
+        <div class="area-chip">Empfangsbereich</div>
+        <div class="area-chip">Meetingräume</div>
+        <div class="area-chip">Mitarbeiterkommunikation</div>
+        <div class="area-chip">Schulungsräume</div>
+        <div class="area-chip">Showroom & Verkaufsraum</div>
+        <div class="area-chip">Kantine & Aufenthaltsraum</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="annotation">
+        <strong>Pain framing</strong>
+        Loss-focused cards show what the company is currently risking: image, clarity and meeting quality.
+      </div>
+      <span class="section-label">[PROBLEME IM BÜROALLTAG]</span>
+      <h2>Was veraltete Bürokommunikation jeden Tag kostet.</h2>
+      <div class="card-grid">
+        <article class="card shaded">
+          <h3>Der erste Eindruck wirkt älter als Ihr Unternehmen.</h3>
+          <p>Gedruckte Empfangsschilder, alte Monitore oder leere Wandflächen lassen selbst moderne Unternehmen unnötig statisch wirken. Besucher nehmen diesen Eindruck mit, bevor das erste Gespräch beginnt.</p>
+        </article>
+        <article class="card shaded">
+          <h3>Interne Informationen verteilen sich auf E-Mails, Aushänge und Flurfunk.</h3>
+          <p>Wichtige Updates erreichen nicht alle gleichzeitig. HR, Marketing und Geschäftsführung müssen dieselben Informationen mehrfach erklären, weil es keinen sichtbaren zentralen Kanal im Gebäude gibt.</p>
+        </article>
+        <article class="card shaded">
+          <h3>Meetingräume bremsen Präsentationen aus.</h3>
+          <p>Wenn Kabel, alte Displays oder unklare Buchungsinformationen stören, verliert jedes Meeting Zeit. Externe Termine wirken weniger professionell, interne Workshops weniger konzentriert.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="annotation">
+        <strong>Use-case depth</strong>
+        Concrete scenarios make the solution imaginable for office managers, HR, marketing and IT.
+      </div>
+      <span class="section-label">[OFFICE USE CASES]</span>
+      <h2>So sieht Digital Signage im Unternehmen praktisch aus.</h2>
+      <p class="lead">HYSN plant nicht nur den Screen. Entscheidend ist, welcher Inhalt wo läuft, wer ihn verwaltet und wie wenig Aufwand Ihr Team nach der Installation hat.</p>
+      <div class="card-grid two">
+        <article class="use-card">
+          <span class="label">Empfangsbereich</span>
+          <h3>Ein Empfang, der Besucher führt und Ihr Unternehmen sichtbar macht.</h3>
+          <p>Während der Geschäftszeiten zeigt der Screen Besucherbegrüßungen, Unternehmensnews, Recruiting-Kampagnen, Produktbilder oder einen kurzen Markenfilm. Nach Feierabend kann der Inhalt automatisch auf Öffnungszeiten, Sicherheitsinformationen oder eine reduzierte Markenansicht wechseln.</p>
+          <p>Für kleinere Standorte genügt häufig ein einzelnes hochwertiges Display hinter dem Empfang oder im Wartebereich. Bei stärker frequentierten Headquarters kann eine LCD-Videowall eingesetzt werden, damit der Eingangsbereich bewusst repräsentativ wirkt.</p>
+          <p>Empfangsmitarbeitende können vorbereitete Begrüßungen und Tageshinweise über das Web-Interface auswählen, ohne Layouts neu gestalten zu müssen. HYSN richtet dafür klare Vorlagen ein, damit Inhalte professionell bleiben.</p>
+        </article>
+        <article class="use-card">
+          <span class="label">Meetingraum</span>
+          <h3>Präsentieren, buchen und zusammenarbeiten — ohne Technikdiskussion vor jedem Termin.</h3>
+          <p>Im Meetingraum kann das Display für Präsentationen, Videokonferenzen, Raumstatus und interne Workshops genutzt werden. Optional wird Touch-Funktionalität ergänzt, wenn Teams gemeinsam skizzieren, Inhalte markieren oder Schulungen interaktiv durchführen sollen.</p>
+          <p>Je nach Raumkonzept plant HYSN einzelne Displays pro Raum, ein zentrales Board für große Konferenzräume oder mehrere Screens für hybride Präsentationen. Kalender- und Buchungsinformationen können über passende Schnittstellen oder vorbereitete Statusanzeigen eingebunden werden.</p>
+          <p>Für IT-Teams bleibt die Lösung planbar: Netzwerk, Strom, Zuspielung und Bedienlogik werden vorab geklärt. Nach der Übergabe weiß das Team, welcher Screen wie genutzt wird und wer Änderungen verwalten darf.</p>
+        </article>
+        <article class="use-card">
+          <span class="label">Mitarbeiterkommunikation</span>
+          <h3>Unternehmensnews sichtbar machen, statt sie im Postfach zu verlieren.</h3>
+          <p>Displays in Kantine, Flur, Aufzugsvorraum oder Aufenthaltsbereich zeigen kurze Updates dort, wo Mitarbeitende ohnehin vorbeikommen. Typische Inhalte sind Standortnews, KPIs, Geburtstage, HR-Hinweise, Sicherheitsmeldungen, Benefits, interne Events oder neue Kolleginnen und Kollegen.</p>
+          <p>HR, Marketing oder interne Kommunikation können Inhalte zentral planen und zeitlich steuern. Wöchentliche Updates reichen oft aus; dringende Hinweise lassen sich kurzfristig austauschen, ohne neue Aushänge zu drucken.</p>
+          <p>Für mehrere Etagen können unterschiedliche Playlists genutzt werden: Produktion sieht andere Hinweise als Verwaltung, Besucherbereiche sehen nur freigegebene externe Inhalte. So bleibt interne Kommunikation sichtbar, aber kontrolliert.</p>
+        </article>
+        <article class="use-card">
+          <span class="label">Schulung & Showroom</span>
+          <h3>Wenn Produkte, Prozesse oder Trainings nicht nur erklärt, sondern erlebt werden sollen.</h3>
+          <p>In Schulungsräumen können Displays Trainingsunterlagen, Prozessvideos, Sicherheitsmodule oder Workshop-Inhalte zeigen. Touch Displays ermöglichen interaktive Übungen, Feedbackrunden und gemeinsame Bearbeitung direkt am Screen.</p>
+          <p>Im Showroom liegt der Fokus anders: Produktwelten, Anwendungsfälle, Referenzen und Markenstorytelling müssen hochwertig wirken und schnell wechselbar sein. HYSN konfiguriert Displaygröße, Helligkeit, Zuspielung und Contentstruktur passend zum Raum und zur Besuchersituation.</p>
+          <p>So entsteht kein allgemeiner Bildschirm, sondern ein gezielter Präsentationspunkt: für Vertriebsgespräche, Kundentermine, Partnerbesuche oder interne Schulungstage.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="annotation">
+        <strong>Solution clarity</strong>
+        This section lists exactly what is included so buyers can justify internally and avoid scope anxiety.
+      </div>
+      <span class="section-label">[DIE HYSN OFFICE-LÖSUNG]</span>
+      <h2>Alles, was aus einem Display ein funktionierendes Office-System macht.</h2>
+      <p class="lead">Ein Bildschirm allein löst noch kein Kommunikationsproblem. Entscheidend sind passende Hardware, saubere Montage, professioneller Content und eine klare Zuständigkeit nach der Installation.</p>
+      <div class="solution-list">
+        <div class="solution-item">
+          <span>01</span>
+          <div>
+            <h3>Hardware passend zum Raum</h3>
+            <p>HYSN empfiehlt Displaygröße, Helligkeit, Montageart, Ausrichtung und Gerätetyp passend zu Empfang, Meetingraum, Flur, Kantine oder Showroom.</p>
+          </div>
+        </div>
+        <div class="solution-item">
+          <span>02</span>
+          <div>
+            <h3>Content und Vorlagen</h3>
+            <p>Willkommensscreens, Markenflächen, Newsbereiche, Meetingraum-Status, KPI-Anzeigen und interne Hinweise werden als professionelle Vorlagen vorbereitet.</p>
+          </div>
+        </div>
+        <div class="solution-item">
+          <span>03</span>
+          <div>
+            <h3>Installation und Einrichtung</h3>
+            <p>Montage, Kabelwege, Zuspielung, Netzwerk, Testlauf und Grundkonfiguration werden so vorbereitet, dass Ihr Team nicht mehrere Dienstleister koordinieren muss.</p>
+          </div>
+        </div>
+        <div class="solution-item">
+          <span>04</span>
+          <div>
+            <h3>Zentrales Management-Dashboard</h3>
+            <p>Inhalte können webbasiert verwaltet, geplant und je Screen oder Standort gesteuert werden. Für Marketing, HR oder Office Management entstehen klare Rechte und Abläufe.</p>
+          </div>
+        </div>
+        <div class="solution-item">
+          <span>05</span>
+          <div>
+            <h3>Support nach der Übergabe</h3>
+            <p>Bei Fragen zu Content, Betrieb oder technischen Einstellungen bleibt HYSN Ansprechpartner — damit die Lösung nicht nach der Montage liegen bleibt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="it">
+      <div class="annotation">
+        <strong>IT objection killer</strong>
+        The biggest blocker is integration fear. This makes the system feel low-risk and technically bounded.
+      </div>
+      <span class="section-label">[IT-INTEGRATION]</span>
+      <div class="split">
+        <div>
+          <h2>Keine Spezialinfrastruktur. Kein monatelanges IT-Projekt.</h2>
+          <p class="lead">Für die meisten Office-Setups reicht eine normale Internetverbindung und ein sauber definierter Betriebsweg. HYSN klärt die Anforderungen vor der Montage, damit IT, Office Management und Marketing dieselbe Erwartung haben.</p>
+          <ul class="check-list">
+            <li>Standard-Internetverbindung genügt in der Regel für Content-Updates und Remote-Verwaltung.</li>
+            <li>Das Content Management ist webbasiert; lokale Spezialsoftware ist normalerweise nicht erforderlich.</li>
+            <li>Optional können Rollen, Freigaben und — projektabhängig — SSO-Anforderungen berücksichtigt werden.</li>
+            <li>Kalender-, Raumstatus- oder Microsoft-365-nahe Workflows werden im Konzept gesondert geprüft.</li>
+            <li>Datenschutzrelevante Funktionen wie Kameras werden nicht automatisch eingesetzt, sondern nur bei ausdrücklichem Bedarf separat bewertet.</li>
+          </ul>
+        </div>
+        <div class="placeholder" role="img" aria-label="Platzhalter IT Übersicht">
+          <svg class="cross" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" stroke-width="0.7"/>
+            <line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" stroke-width="0.7"/>
+          </svg>
+          <div class="placeholder-caption">Visual: Display + Internet + Web-Dashboard + Rollenfreigabe</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Elevation added: Central content management visualization reduces anxiety about who runs the screens after install. -->
+    <section>
+      <div class="annotation">
+        <strong>Dashboard visual</strong>
+        Screenshot-style block turns “CMS” into something a non-technical stakeholder can understand.
+      </div>
+      <span class="section-label">[CONTENT MANAGEMENT VISUAL]</span>
+      <h2>So kontrolliert Ihr Team, was auf welchem Screen läuft.</h2>
+      <p class="lead">Das Dashboard wird im Wireframe bewusst sichtbar gemacht, weil viele Büroprojekte nicht an Hardware scheitern, sondern an der Frage: Wer pflegt die Inhalte später?</p>
+      <div class="dashboard" aria-label="Schematische Darstellung eines Content Management Dashboards">
+        <div class="dashboard-top">
+          <span>HYSN Content Dashboard — Standort Frankfurt</span>
+          <span>Letzte Aktualisierung: heute 09:42</span>
+        </div>
+        <div class="dashboard-body">
+          <div class="dashboard-menu">
+            <div>Standorte</div>
+            <div>Screens</div>
+            <div>Playlists</div>
+            <div>Vorlagen</div>
+            <div>Freigaben</div>
+          </div>
+          <div class="dashboard-main">
+            <div class="screen-row">
+              <strong>Empfang EG</strong>
+              <span class="status">Online</span>
+              <span class="status">Playlist A</span>
+            </div>
+            <div class="screen-row">
+              <strong>Meetingraum 1</strong>
+              <span class="status">Online</span>
+              <span class="status">Raumstatus</span>
+            </div>
+            <div class="screen-row">
+              <strong>Kantine 2. OG</strong>
+              <span class="status">Online</span>
+              <span class="status">HR-News</span>
+            </div>
+            <div class="screen-row">
+              <strong>Showroom</strong>
+              <span class="status">Online</span>
+              <span class="status">Produktdemo</span>
+            </div>
+            <p class="small">Wireframe-Darstellung: Inhalte, Rechte und Playlists werden später je nach gewähltem System konkretisiert.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ablauf">
+      <div class="annotation">
+        <strong>Process</strong>
+        Four steps show predictability and lower perceived effort for busy office teams.
+      </div>
+      <span class="section-label">[ABLAUF]</span>
+      <h2>Vom ersten Gespräch zur einsatzbereiten Lösung — in klaren Schritten.</h2>
+      <div class="step-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Bedarfsanalyse</h3>
+          <p>Sie zeigen den Standort, die Räume und die gewünschten Inhalte. HYSN klärt Ziel, Zielgruppe, Platzierung und technische Rahmenbedingungen.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Hardware-Konfiguration</h3>
+          <p>Displaytyp, Größe, Halterung, Ausrichtung, Zuspielung und Content-Struktur werden passend zum Office-Use-Case festgelegt.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Installation</h3>
+          <p>Montage, Einrichtung, Testlauf und Grundinhalte werden umgesetzt. Ziel ist eine saubere Lösung, die sich optisch in Ihr Büro einfügt.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Schulung & Übergabe</h3>
+          <p>Ihr Team erhält eine verständliche Einweisung: Inhalte ändern, Playlists planen, Rechte nutzen und Support kontaktieren.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-strip">
+      <div class="annotation">
+        <strong>Mid-page CTA</strong>
+        After the technical explanation, the CTA asks for a practical office assessment, not a vague inquiry.
+      </div>
+      <span class="section-label">[CTA]</span>
+      <h2>Sie möchten wissen, welche Screen-Lösung in Ihrem Büro sinnvoll ist?</h2>
+      <p class="lead">HYSN prüft mit Ihnen Empfang, Meetingräume, interne Kommunikation und technische Voraussetzungen — und empfiehlt eine Lösung, die zu Ihrem Standort passt.</p>
+      <div class="button-row">
+        <a class="btn" href="#beratung">Office-Setup mit HYSN besprechen</a>
+      </div>
+      <p class="cta-note">Sie müssen noch kein fertiges Konzept haben — ein Grundriss, Fotos vom Bereich oder eine kurze Beschreibung reichen für die erste Einschätzung.</p>
+    </section>
+
+    <section id="produkte">
+      <div class="annotation">
+        <strong>Product relevance</strong>
+        Product cards are office-specific so they do not feel like generic hardware catalog entries.
+      </div>
+      <span class="section-label">[PASSENDE PRODUKTE]</span>
+      <h2>Welche HYSN Produkte typischerweise in Büros eingesetzt werden.</h2>
+      <div class="card-grid four">
+        <article class="product-card">
+          <div class="mini-placeholder">Produktvisual: Digital Signage Display</div>
+          <h3>Digital Signage Displays</h3>
+          <p>Für Empfang, Flur, Kantine und interne Kommunikation, wenn Inhalte regelmäßig aktualisiert werden sollen.</p>
+        </article>
+        <article class="product-card">
+          <div class="mini-placeholder">Produktvisual: Interactive Whiteboard</div>
+          <h3>Interactive Whiteboards</h3>
+          <p>Für Besprechungen, Workshops und Schulungen, in denen Teams direkt am Screen arbeiten.</p>
+        </article>
+        <article class="product-card">
+          <div class="mini-placeholder">Produktvisual: Touch Display</div>
+          <h3>Touch Displays</h3>
+          <p>Für Showrooms, Produktdemos, Besucherinformationen oder interaktive Präsentationen.</p>
+        </article>
+        <article class="product-card">
+          <div class="mini-placeholder">Produktvisual: LCD-Videowall</div>
+          <h3>LCD-Videowalls</h3>
+          <p>Für repräsentative Empfangsbereiche, Showrooms und große Markenflächen im Unternehmensgebäude.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Elevation added: Visual examples gallery helps different office types self-identify with the solution. -->
+    <section id="beispiele">
+      <div class="annotation">
+        <strong>Visual examples</strong>
+        Multiple environments help buyers picture the screen in their own type of office.
+      </div>
+      <span class="section-label">[BEISPIEL-GALERIE]</span>
+      <h2>Vier typische Office-Umgebungen, in denen digitale Displays sofort sichtbar wirken.</h2>
+      <div class="gallery">
+        <div class="placeholder" role="img" aria-label="Tech-Unternehmen Empfang">
+          <svg class="cross" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" stroke-width="0.7"/><line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" stroke-width="0.7"/></svg>
+          <div class="placeholder-caption">Tech-Unternehmen: Empfang mit Markenfilm</div>
+        </div>
+        <div class="placeholder" role="img" aria-label="Kanzlei Empfang">
+          <svg class="cross" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" stroke-width="0.7"/><line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" stroke-width="0.7"/></svg>
+          <div class="placeholder-caption">Kanzlei: diskrete Besucherbegrüßung</div>
+        </div>
+        <div class="placeholder" role="img" aria-label="Industrie Headquarters">
+          <svg class="cross" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" stroke-width="0.7"/><line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" stroke-width="0.7"/></svg>
+          <div class="placeholder-caption">Industrie-HQ: KPIs & Standortnews</div>
+        </div>
+        <div class="placeholder" role="img" aria-label="Healthcare Verwaltung">
+          <svg class="cross" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="currentColor" stroke-width="0.7"/><line x1="100" y1="0" x2="0" y2="100" stroke="currentColor" stroke-width="0.7"/></svg>
+          <div class="placeholder-caption">Healthcare-Verwaltung: Hinweise & Orientierung</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Elevation added: Content templates pack removes content creation anxiety for office teams. -->
+    <section>
+      <div class="annotation">
+        <strong>Templates</strong>
+        This answers the common “what should we even show on the screen?” objection.
+      </div>
+      <span class="section-label">[CONTENT-VORLAGEN]</span>
+      <h2>Sie müssen nicht bei null anfangen.</h2>
+      <p class="lead">Für typische Office-Inhalte kann HYSN Vorlagen vorbereiten, die Ihr Team später selbst befüllt oder zeitlich steuert.</p>
+      <div class="templates">
+        <div class="template">
+          <strong>Willkommen</strong>
+          <span>Besuchername, Firmenlogo, Ansprechpartner, Terminraum</span>
+        </div>
+        <div class="template">
+          <strong>News-Ticker</strong>
+          <span>Unternehmensupdates, HR-Hinweise, Events, interne Meldungen</span>
+        </div>
+        <div class="template">
+          <strong>Meetingraum</strong>
+          <span>Raumstatus, Agenda, Workshop-Hinweise, Präsentationsmodus</span>
+        </div>
+        <div class="template">
+          <strong>KPI & Kultur</strong>
+          <span>Ziele, Kennzahlen, Mitarbeitervideos, Benefits, Recruiting</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Elevation added: Multi-screen scaling story shows how one reception screen can expand into a controlled network. -->
+    <section>
+      <div class="annotation">
+        <strong>Scaling story</strong>
+        Many offices start small. This makes expansion feel planned rather than like a second project.
+      </div>
+      <span class="section-label">[SKALIERUNG]</span>
+      <h2>Starten Sie mit einem Screen — und erweitern Sie später strukturiert.</h2>
+      <p class="lead">Viele Unternehmen beginnen im Empfangsbereich. Wenn die Nutzung funktioniert, lassen sich weitere Etagen, Meetingräume oder Standorte über dieselbe Managementlogik ergänzen.</p>
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>Phase 1</strong>
+          <div>
+            <h3>Empfang digitalisieren</h3>
+            <p>Ein zentraler Screen für Besucherbegrüßung, Markenfilm und aktuelle Unternehmenshinweise.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <strong>Phase 2</strong>
+          <div>
+            <h3>Meetingräume anbinden</h3>
+            <p>Displays für Präsentation, Zusammenarbeit und Raumstatus. Bedienung und Content-Logik werden vereinheitlicht.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <strong>Phase 3</strong>
+          <div>
+            <h3>Mitarbeiterkommunikation erweitern</h3>
+            <p>Screens in Kantine, Fluren und Aufenthaltsbereichen zeigen HR-News, KPIs und interne Kampagnen.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <strong>Phase 4</strong>
+          <div>
+            <h3>Mehrere Standorte steuern</h3>
+            <p>Playlists, Rechte und Inhalte werden je Standort angepasst, ohne jedes Display einzeln vor Ort zu pflegen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="annotation">
+        <strong>Case proof</strong>
+        Before/after structure shows transformation; numbers are representative and marked as such.
+      </div>
+      <span class="section-label">[VORHER / NACHHER]</span>
+      <h2>Repräsentativer Projektfall: Vom statischen Empfang zur digitalen Unternehmensfläche.</h2>
+      <p class="small">Beispielhafte Darstellung für den Wireframe — Zahlen und Branche später durch echten Kundenfall ersetzen.</p>
+      <div class="case-grid">
+        <div class="case-col">
+          <h3>Vorher</h3>
+          <p>Ein mittelständisches Unternehmen im Rhein-Main-Gebiet empfing wöchentlich rund 120 Besucher in einem Empfangsbereich mit gedruckten Wegweisern, einzelnen Aushängen und einem älteren Monitor ohne klares Content-Konzept.</p>
+          <p>Willkommenshinweise wurden manuell gedruckt, interne News liefen per E-Mail, Recruiting-Inhalte waren für Bewerber im Gebäude nicht sichtbar. Der Empfang funktionierte organisatorisch, wirkte aber nicht wie ein moderner Unternehmensstandort.</p>
+        </div>
+        <div class="case-col">
+          <h3>Nachher</h3>
+          <p>HYSN plante eine digitale Empfangsfläche mit einem Hauptdisplay, zwei Mitarbeiter-Screens auf den Etagen und einem Showroom-Screen für Kundentermine. Inhalte werden zentral verwaltet und nach Zielgruppe gesteuert.</p>
+          <p>Besucher sehen aktuelle Begrüßungen, Bewerber sehen Employer-Branding-Inhalte, Mitarbeitende erhalten Standortnews und HR-Hinweise. Änderungen erfolgen über vorbereitete Vorlagen statt über neue Ausdrucke.</p>
+        </div>
+      </div>
+      <div class="case-metrics">
+        <div class="case-metric">
+          <strong>4 Screens</strong>
+          <p class="small">Empfang, Etagenkommunikation und Showroom</p>
+        </div>
+        <div class="case-metric">
+          <strong>120 Besucher/Woche</strong>
+          <p class="small">sichtbarere Marken- und Besucherkommunikation</p>
+        </div>
+        <div class="case-metric">
+          <strong>1 Dashboard</strong>
+          <p class="small">zentrale Steuerung durch Office & Marketing</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="annotation">
+        <strong>Testimonials</strong>
+        Dummy quotes are specific and role-based; replace later with real voices.
+      </div>
+      <span class="section-label">[STIMMEN AUS UNTERNEHMEN]</span>
+      <h2>Was Entscheider an einer guten Office-Lösung bemerken.</h2>
+      <p class="small">Beispielhafte Referenzstimmen für den Wireframe — später durch echte Kundenstimmen ersetzen.</p>
+      <div class="card-grid">
+        <article class="quote">
+          <blockquote>„Unser Empfang sah aus wie 2010. Mit dem neuen Screen wirkt der Standort, als hätten wir gerade modernisiert — obwohl wir seit 15 Jahren im selben Gebäude sitzen.“</blockquote>
+          <cite>Geschäftsführer, mittelständisches Dienstleistungsunternehmen</cite>
+        </article>
+        <article class="quote">
+          <blockquote>„Ich dachte, das wird wieder ein IT-Projekt. Am Ende waren es ein Beratungstermin, ein Installationstermin und eine kurze Einweisung. Inhalte ändere ich jetzt selbst über das Web-Interface.“</blockquote>
+          <cite>Office Managerin, Unternehmenszentrale Rhein-Main</cite>
+        </article>
+        <article class="quote">
+          <blockquote>„Bei Vorstellungsgesprächen läuft im Empfang unser Mitarbeitervideo. Bewerber haben das mehrfach erwähnt — ein kleines Detail, das viel über unsere Kultur zeigt.“</blockquote>
+          <cite>Marketing Director, B2B-Technologieunternehmen</cite>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="annotation">
+        <strong>Post-install clarity</strong>
+        This section directly answers the “what happens once it’s up?” concern.
+      </div>
+      <span class="section-label">[NACH DER INSTALLATION]</span>
+      <h2>Wer macht was, wenn die Screens hängen?</h2>
+      <p class="lead">Damit die Lösung im Alltag funktioniert, braucht es klare Rollen. HYSN richtet den technischen Rahmen ein — Ihr Team steuert die Inhalte so weit, wie Sie es möchten.</p>
+      <div class="card-grid two">
+        <article class="card shaded">
+          <h3>Ihr Team</h3>
+          <p>Office Management kann Besucherbegrüßungen und Tageshinweise einpflegen. HR kann interne News, Benefits, Geburtstage oder Recruiting-Inhalte vorbereiten. Marketing kann Markenvideos, Kampagnen und Standortkommunikation planen.</p>
+        </article>
+        <article class="card shaded">
+          <h3>HYSN</h3>
+          <p>HYSN übernimmt Einrichtung, Vorlagenstruktur, technische Übergabe und Support. Auf Wunsch kann HYSN auch Content-Anpassungen, neue Designs, weitere Screens oder laufende Wartung betreuen.</p>
+        </article>
+      </div>
+      <ul class="check-list">
+        <li>Rollen und Freigaben verhindern, dass jeder alles ändern kann.</li>
+        <li>Vorlagen sorgen dafür, dass Inhalte auch bei schnellen Updates professionell aussehen.</li>
+        <li>Mehrere Screens können unterschiedliche Inhalte zeigen, ohne getrennte Systeme aufzubauen.</li>
+        <li>Bei technischen Fragen gibt es einen Ansprechpartner statt Hersteller, Monteur und Softwareanbieter separat.</li>
+      </ul>
+    </section>
+
+    <section id="faq">
+      <div class="annotation">
+        <strong>FAQ strategy</strong>
+        Answers real corporate buying questions: IT, licenses, calendar, GDPR, warranty and off-hours content.
+      </div>
+      <span class="section-label">[FAQ]</span>
+      <h2>Fragen, die Office, IT und Geschäftsführung vorab klären wollen.</h2>
+      <div class="faq-grid">
+        <article class="faq-item">
+          <h3>Brauchen wir eine separate Internetleitung?</h3>
+          <p>In der Regel nein. Für Content-Updates genügt meist eine stabile Standard-Internetverbindung. HYSN prüft vorab, ob LAN, WLAN oder eine alternative Lösung sinnvoll ist.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Wer kontrolliert, was auf den Screens läuft?</h3>
+          <p>Das wird über Rollen und Zuständigkeiten definiert. Häufig verwalten Office Management, Marketing oder HR die Inhalte, während HYSN die technische Struktur einrichtet.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Können Microsoft 365, Kalender oder SSO angebunden werden?</h3>
+          <p>Kalender- und SSO-nahe Anforderungen werden projektabhängig geprüft. Für einfache Inhalte ist keine tiefe Integration nötig; bei Raumstatus oder Freigabelogiken wird die passende Lösung im Konzept festgelegt.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Wie lange dauert die Installation?</h3>
+          <p>Bei Standard-Office-Projekten ist die Umsetzung häufig mit wenigen Terminen planbar: Beratung, Vorbereitung, Montage und Übergabe. Größere Videowalls oder mehrere Etagen benötigen entsprechend mehr Abstimmung.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Wie laut sind die Screens im Büro?</h3>
+          <p>Die meisten Office-Inhalte laufen ohne Ton. Wenn Audio in Schulungsräumen oder Showrooms gewünscht ist, wird Lautstärke, Wiedergabequelle und Nutzungssituation separat geplant.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Was läuft außerhalb der Geschäftszeiten?</h3>
+          <p>Die Inhalte können zeitgesteuert wechseln: tagsüber Besucher- und Unternehmenskommunikation, abends reduzierte Markenflächen, Öffnungszeiten, Sicherheitsinformationen oder ein deaktivierter Screen.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Können verschiedene Etagen unterschiedliche Inhalte zeigen?</h3>
+          <p>Ja. Je nach System können Screens in Gruppen organisiert werden, etwa Empfang, Verwaltung, Produktion, Kantine oder Showroom. So sieht jede Zielgruppe die passenden Inhalte.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Brauchen wir eine Lizenz pro Screen?</h3>
+          <p>Das hängt vom gewählten Content-Management-System und Projektumfang ab. HYSN stellt die laufenden Kosten transparent dar, bevor Sie sich für ein Setup entscheiden.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Was ist mit Datenschutz und Kameras?</h3>
+          <p>Standard-Office-Screens benötigen keine Kamera. Falls interaktive oder sensorbasierte Funktionen gewünscht sind, werden Datenschutz, Zweck, Technik und Verantwortlichkeiten gesondert geprüft.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Welche Garantie oder Wartung gibt es?</h3>
+          <p>Garantie und Support richten sich nach Hardware, Herstellerbedingungen und vereinbartem Serviceumfang. HYSN kann Wartung, Remote-Support und Content-Betreuung als laufende Leistung einplanen.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="stakes" id="beratung">
+      <div class="annotation">
+        <strong>Final CTA</strong>
+        Stakes remain mild: image and productivity loss, not fear-based urgency.
+      </div>
+      <span class="section-label">[STAKES & FINAL CTA]</span>
+      <h2>Der erste Eindruck entscheidet, bevor Ihr Team erklären kann, wofür Ihr Unternehmen steht.</h2>
+      <p class="lead">Wenn Empfang, Meetingräume und interne Kommunikation veraltet wirken, verliert Ihr Standort jeden Tag ein Stück Professionalität. Eine gute Display-Lösung macht Informationen sichtbar, Räume nutzbarer und Ihr Unternehmen moderner — ohne dass Ihr Team ein neues IT-System betreiben muss.</p>
+      <div class="button-row">
+        <a class="btn" href="mailto:info@hysn.de?subject=Beratung%20B%C3%BCro%20%26%20Unternehmen">Beratung für unser Büro anfragen</a>
+        <a class="btn" href="#top">Seite nochmals von oben ansehen</a>
+      </div>
+      <p class="cta-note">Für die erste Einschätzung reichen Fotos vom Empfang oder Meetingraum und eine kurze Beschreibung, was der Screen später zeigen soll.</p>
+    </section>
+
+    <footer>
+      <div class="annotation">
+        <strong>Footer</strong>
+        Footer reinforces full-service positioning and routes office buyers to relevant pages.
+      </div>
+      <span class="section-label">[FOOTER]</span>
+      <div class="footer-grid">
+        <div>
+          <div class="logo">HYSN</div>
+          <p>Digitale Displays, LED-/LCD-Lösungen, Content, Installation und Support für Unternehmen, Gastronomie, Handel, Events und öffentliche Standorte.</p>
+          <p class="small">RA Vision GmbH · Deutschland</p>
+        </div>
+        <div>
+          <h4>Lösungen</h4>
+          <a href="#">Büro & Unternehmen</a>
+          <a href="#">Restaurants</a>
+          <a href="#">Retail & Supermärkte</a>
+          <a href="#">Events</a>
+          <a href="#">Kommunen</a>
+        </div>
+        <div>
+          <h4>Kontakt</h4>
+          <a href="mailto:info@hysn.de">info@hysn.de</a>
+          <a href="tel:+4961038315032">+49 6103 8315 032</a>
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+        </div>
+      </div>
+      <div class="fineprint">
+        Wireframe-Seite für HYSN / RA Vision GmbH. Alle sichtbaren Texte sind als echte Richtungs-Copy formuliert; projektbezogene Kennzahlen und Referenzen sollten vor Livegang mit realen Daten ersetzt werden.
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

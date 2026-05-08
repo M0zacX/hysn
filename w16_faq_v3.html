@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYSN FAQ Wireframe</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --page: #ffffff;
+      --body: #f0f0f0;
+      --light: #f4f4f4;
+      --line: #d0d0d0;
+      --text: #333333;
+      --strong: #111111;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--body);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+      min-width: 1200px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--page);
+      position: relative;
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      min-height: 100vh;
+    }
+
+    .annotation {
+      position: absolute;
+      left: calc(100% + 24px);
+      width: 210px;
+      background: var(--light);
+      border: 1px solid var(--line);
+      padding: 14px;
+      color: #555;
+      font-size: 12px;
+      line-height: 1.45;
+      box-shadow: 0 2px 0 rgba(0,0,0,0.03);
+    }
+
+    .annotation strong {
+      display: block;
+      color: var(--strong);
+      margin-bottom: 5px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .note-hero { top: 120px; }
+    .note-search { top: 610px; }
+    .note-nav { top: 875px; }
+    .note-cta { bottom: 190px; }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--strong);
+      font-size: 18px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .nav-links a {
+      padding: 4px 0;
+      border-bottom: 1px solid transparent;
+    }
+
+    .nav-links a:hover {
+      border-bottom-color: var(--strong);
+      color: var(--strong);
+    }
+
+    .section {
+      border-bottom: 1px solid var(--line);
+      padding: 56px 40px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #777;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 70px 40px 56px;
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .hero h1 {
+      margin: 0 0 18px;
+      color: var(--strong);
+      font-size: 44px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      max-width: 760px;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 18px;
+      color: #444;
+      max-width: 700px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .meta-pill {
+      border: 1px solid var(--line);
+      background: var(--light);
+      padding: 8px 12px;
+    }
+
+    .search-panel {
+      background: var(--light);
+      border: 1px solid var(--line);
+      padding: 24px;
+      margin-top: 18px;
+    }
+
+    .search-label {
+      font-weight: 700;
+      color: var(--strong);
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+    .search-input {
+      border: 2px solid var(--line);
+      background: var(--white);
+      height: 52px;
+      width: 100%;
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .search-icon {
+      color: #777;
+      font-size: 17px;
+    }
+
+    .most-asked {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .asked-card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 14px;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .asked-card span {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #777;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .asked-card a {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--strong);
+      line-height: 1.35;
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 34px;
+      align-items: start;
+    }
+
+    .category-nav {
+      position: sticky;
+      top: 86px;
+      border: 1px solid var(--line);
+      background: var(--light);
+      padding: 16px;
+    }
+
+    .category-nav h2 {
+      margin: 0 0 12px;
+      font-size: 13px;
+      color: var(--strong);
+    }
+
+    .category-nav a {
+      display: block;
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 9px 10px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: #444;
+    }
+
+    .category-nav a:hover {
+      border-color: var(--strong);
+      color: var(--strong);
+    }
+
+    .faq-category {
+      scroll-margin-top: 100px;
+      padding-bottom: 42px;
+      margin-bottom: 42px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-category:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .category-head {
+      margin-bottom: 16px;
+    }
+
+    .category-head h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: var(--strong);
+    }
+
+    .category-head p {
+      margin: 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    details {
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+    }
+
+    details:first-of-type {
+      border-top: 1px solid var(--line);
+    }
+
+    summary {
+      list-style: none;
+      cursor: pointer;
+      font-weight: 750;
+      color: var(--strong);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 15px;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      flex: 0 0 auto;
+      font-weight: 600;
+      color: #555;
+    }
+
+    details[open] summary::after {
+      content: "–";
+    }
+
+    details p {
+      margin: 12px 34px 0 0;
+      font-size: 14px;
+      color: #444;
+    }
+
+    .inline-link {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      color: var(--strong);
+    }
+
+    .video-placeholder {
+      margin-top: 14px;
+      border: 1px dashed #999;
+      background: var(--light);
+      padding: 14px;
+      font-size: 13px;
+      color: #555;
+    }
+
+    .cta-block {
+      background: var(--light);
+      border: 1px solid var(--line);
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .cta-block h2 {
+      margin: 0 0 12px;
+      font-size: 30px;
+      line-height: 1.12;
+      color: var(--strong);
+      letter-spacing: -0.03em;
+    }
+
+    .cta-block p {
+      margin: 0;
+      font-size: 15px;
+      color: #444;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--text);
+      padding: 12px 28px;
+      background: transparent;
+      font-weight: 750;
+      font-size: 14px;
+      color: var(--strong);
+      text-align: center;
+    }
+
+    .button:hover {
+      background: var(--white);
+    }
+
+    .objection {
+      font-size: 12px;
+      color: #555;
+      text-align: center;
+      margin-top: 2px;
+    }
+
+    footer {
+      padding: 34px 40px;
+      background: var(--strong);
+      color: var(--white);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    footer h3 {
+      margin: 0 0 12px;
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    footer p,
+    footer a {
+      color: #d0d0d0;
+      font-size: 13px;
+      margin: 0 0 8px;
+      display: block;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      margin-top: 28px;
+      padding-top: 16px;
+      font-size: 12px;
+      color: #d0d0d0;
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="annotation note-hero">
+      <strong>Hero strategy</strong>
+      Fast trust page. No abstract brand claim. The visitor immediately sees that this page answers price, installation, content, support, contract and DOOH questions.
+    </div>
+
+    <div class="annotation note-search">
+      <strong>Search intent</strong>
+      The visual search field signals that HYSN expects specific concerns and helps users get to the right answer fast.
+    </div>
+
+    <div class="annotation note-nav">
+      <strong>Sticky FAQ nav</strong>
+      Categories stay visible while scrolling because this page is long by design. Prospects should never feel lost.
+    </div>
+
+    <div class="annotation note-cta">
+      <strong>CTA logic</strong>
+      The CTA does not force a quote request. It matches the page intent: ask the question that is still blocking the inquiry.
+    </div>
+
+    <nav class="navbar">
+      <a class="logo" href="/">HYSN</a>
+      <div class="nav-links">
+        <a href="/digital-signage">Digital Signage</a>
+        <a href="/installation">Installation</a>
+        <a href="/content-creation">Content</a>
+        <a href="/dooh-hyads">DOOH</a>
+        <a href="/contact">Kontakt</a>
+      </div>
+    </nav>
+
+    <header class="hero">
+      <div class="section-label">FAQ</div>
+      <h1>Antworten auf die wichtigsten Fragen rund um digitale Bildschirme von HYSN.</h1>
+      <p>Hier finden Sie klare Informationen zu Kosten, Bildschirmtypen, Installation, Content, Support, Werbeeinnahmen und Verträgen — ohne technische Umwege und ohne versteckte Standardfloskeln.</p>
+      <div class="hero-meta">
+        <div class="meta-pill">Für Restaurants, Retail, Kommunen, Events und Standortpartner</div>
+        <div class="meta-pill">Zuletzt aktualisiert: Mai 2026</div>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="section-label">Häufig gesucht</div>
+
+      <div class="search-panel">
+        <div class="search-label">Wonach suchen Sie?</div>
+        <div class="search-input" aria-label="FAQ Suche">
+          <span>Suchbegriff eingeben, z. B. Installation, Preis, Garantie, LED oder Werbeeinnahmen</span>
+          <span class="search-icon">⌕</span>
+        </div>
+      </div>
+
+      <div class="most-asked">
+        <div class="asked-card">
+          <span>Preis</span>
+          <a href="#preise-investition">Was kostet ein digitaler Bildschirm ungefähr?</a>
+        </div>
+        <div class="asked-card">
+          <span>Dauer</span>
+          <a href="#installation-montage">Wie lange dauert die Installation?</a>
+        </div>
+        <div class="asked-card">
+          <span>Leistung</span>
+          <a href="#content-inhalte">Müssen wir Inhalte selbst erstellen?</a>
+        </div>
+        <div class="asked-card">
+          <span>Support</span>
+          <a href="#wartung-support">Was passiert bei einem Ausfall?</a>
+        </div>
+        <div class="asked-card">
+          <span>Vertrag</span>
+          <a href="#vertraege-kuendigung">Wie lange läuft ein Vertrag?</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Alle Fragen</div>
+
+      <!-- Elevation note: The FAQ uses native expandable accordions. This keeps the long page scannable while still allowing complete, direct answers. -->
+      <div class="faq-layout">
+        <aside class="category-nav">
+          <h2>Kategorien</h2>
+          <a href="#allgemein-einstieg">Allgemein & Einstieg</a>
+          <a href="#preise-investition">Preise & Investition</a>
+          <a href="#hardware-technik">Hardware & Technik</a>
+          <a href="#installation-montage">Installation & Montage</a>
+          <a href="#content-inhalte">Content & Inhalte</a>
+          <a href="#wartung-support">Wartung & Support</a>
+          <a href="#dooh-werbeeinnahmen">DOOH & Werbeeinnahmen</a>
+          <a href="#vertraege-kuendigung">Verträge & Kündigung</a>
+        </aside>
+
+        <div class="faq-content">
+          <section class="faq-category" id="allgemein-einstieg">
+            <div class="category-head">
+              <h2>Allgemein & Einstieg</h2>
+              <p>Für Besucher, die HYSN zum ersten Mal prüfen und schnell verstehen möchten, ob die Lösung zu ihrem Standort passt.</p>
+            </div>
+
+            <details open>
+              <summary>Was genau bietet HYSN an?</summary>
+              <p>HYSN plant, liefert und betreibt digitale Bildschirm-Lösungen für Unternehmen, Gastronomie, Retail, Kommunen, Events und Werbestandorte. Dazu gehören LCD-Displays, LED-Videowalls, digitale Menüboards, Werbestelen, Touch-Displays, Content-Erstellung, Montage, Wartung und bei passenden Standorten auch DOOH-Werbemodelle.</p>
+            </details>
+
+            <details>
+              <summary>Für welche Unternehmen ist HYSN geeignet?</summary>
+              <p>HYSN ist geeignet, wenn Ihr Standort Kunden, Besucher oder Passanten erreicht und Sie Informationen, Angebote oder Werbung sichtbar präsentieren möchten. Typische Kunden sind Restaurants, Franchisebetriebe, Supermärkte, Einzelhandel, Kommunen, Eventflächen, Büros, Schulen, Immobilienbetreiber und lokale Werbekunden.</p>
+            </details>
+
+            <details>
+              <summary>Wie startet man ein Projekt mit HYSN?</summary>
+              <p>Am Anfang steht ein kurzes Gespräch über Standort, Ziel, Bildschirmanzahl, Montageart, Content und Budgetrahmen. Danach erhalten Sie eine Empfehlung für Bildschirmtyp, Größe, Ausrichtung, Inhalte und Umsetzung — bei größeren Projekten inklusive Konzept, Visualisierung oder Standortbewertung.</p>
+            </details>
+
+            <details>
+              <summary>Wie lange dauert es vom ersten Gespräch bis zum laufenden Bildschirm?</summary>
+              <p>Bei einfachen Menüboard- oder Indoor-Display-Projekten ist eine Umsetzung oft innerhalb weniger Wochen möglich, wenn Content, Strom und Montagefläche geklärt sind. Outdoor-Stelen, LED-Wände, kommunale Projekte oder Sondermontagen dauern länger, weil Standortprüfung, Genehmigungen, Statik, Lieferzeit und technische Planung berücksichtigt werden müssen.</p>
+            </details>
+
+            <details>
+              <summary>Arbeitet HYSN nur in Deutschland?</summary>
+              <p>Der Schwerpunkt liegt auf Projekten in Deutschland, insbesondere für B2B-Kunden und Standorte im Rhein-Main-Gebiet sowie darüber hinaus. Internationale Lieferung oder Unterstützung kann je nach Projektumfang geprüft werden, ist aber nicht bei jedem Service identisch mit einem lokalen Full-Service-Projekt.</p>
+            </details>
+
+            <details>
+              <summary>Ist HYSN eher ein Hardware-Anbieter oder eine Agentur?</summary>
+              <p>HYSN ist bewusst beides nicht nur einzeln. Sie bekommen Hardware, Planung, Content, Montage, technische Einrichtung und laufende Betreuung aus einer Hand, damit aus einem Bildschirm ein funktionierendes Kommunikations- oder Werbesystem wird.</p>
+            </details>
+          </section>
+
+          <section class="faq-category" id="preise-investition">
+            <div class="category-head">
+              <h2>Preise & Investition</h2>
+              <p>Für Besucher, die wissen möchten, welche Kosten realistisch sind und welche Leistungen im Angebot enthalten sind.</p>
+            </div>
+
+            <details open>
+              <summary>Was kostet ein digitaler Bildschirm bei HYSN ungefähr?</summary>
+              <p>Der Preis hängt von Bildschirmtyp, Größe, Helligkeit, Anzahl, Montage und Content-Aufwand ab. Ein Restaurant-Menüboard-Paket mit drei Bildschirmen, Inhaltsgestaltung und Wandhalterungen liegt typischerweise im Bereich um 2.400 €; größere LED-Wände, Outdoor-Stelen und Multi-Standort-Projekte werden individuell kalkuliert.</p>
+            </details>
+
+            <details>
+              <summary>Gibt es eine Mindestinvestition?</summary>
+              <p>Für reine Einzelanfragen gibt es keine pauschale Mindestinvestition, solange die Lösung technisch und wirtschaftlich sinnvoll ist. Bei DOOH-, Standortpartner- oder Outdoor-Projekten ist die Einstiegshürde höher, weil Hardware, Installation, Betrieb, Content und Werbevermarktung dauerhaft tragfähig sein müssen.</p>
+            </details>
+
+            <details>
+              <summary>Welche Finanzierungsmodelle gibt es?</summary>
+              <p>Je nach Projekt sind Kauf, Miete, Servicepakete, Co-Investment oder Revenue-Sharing möglich. Bei Werbestandorten kann ein Modell sinnvoll sein, bei dem Werbeeinnahmen zur Finanzierung beitragen; die konkrete Struktur hängt von Standortqualität, Laufzeit, Hardwarewert und Werbepotenzial ab.</p>
+            </details>
+
+            <details>
+              <summary>Was ist im Preis enthalten und was ist optional?</summary>
+              <p>In einem Angebot werden Hardware, Halterungen, Content-Erstellung, Montage, Setup, Software, Wartung und Support getrennt oder als Paket ausgewiesen. Optional sind zum Beispiel Deckenhalterungen, Sondermontage, zusätzliche Animationen, monatliche Content-Updates, Outdoor-Gehäuse, Wartungsverträge oder Werbevermarktung.</p>
+            </details>
+
+            <details>
+              <summary>Sind die Bildschirme zu kaufen oder zu mieten?</summary>
+              <p>Beides ist möglich. Kauf eignet sich für dauerhafte Standorte mit klarer Nutzung, während Miete häufig für Events, Kampagnen, Testphasen oder Projekte mit begrenzter Laufzeit sinnvoll ist.</p>
+            </details>
+
+            <details>
+              <summary>Warum kann nicht jeder Preis sofort online feststehen?</summary>
+              <p>Ein 55-Zoll-Indoor-Screen, eine Outdoor-Stele und eine LED-Wand haben völlig unterschiedliche Anforderungen an Helligkeit, Schutzklasse, Montage, Strom, Zuspielung und Wartung. HYSN kann deshalb Richtwerte nennen, kalkuliert größere Projekte aber sauber nach Standort und Nutzung, damit später keine wichtigen Kosten fehlen.</p>
+            </details>
+          </section>
+
+          <section class="faq-category" id="hardware-technik">
+            <div class="category-head">
+              <h2>Hardware & Technik</h2>
+              <p>Für Käufer, die die richtige Bildschirmart wählen müssen, ohne sich durch technische Datenblätter kämpfen zu wollen.</p>
+            </div>
+
+            <details open>
+              <summary>Welche Bildschirmgröße empfehlen Sie für meine Situation?</summary>
+              <p>Die richtige Größe hängt vom Betrachtungsabstand, Inhalt, Raum, Helligkeit und Ziel ab. Für Menüboards werden häufig mehrere 43- bis 55-Zoll-Displays eingesetzt, während Schaufenster, Stelen, Videowalls oder Außenflächen andere Größen und Helligkeitsklassen brauchen.</p>
+            </details>
+
+            <details>
+              <summary>Was ist der Unterschied zwischen LED und LCD?</summary>
+              <p>LCD-Displays sind fertige Bildschirme mit hoher Auflösung und eignen sich besonders für Indoor-Menüs, Werbung, Informationen, Stelen und Videowalls. LED-Wände bestehen aus Modulen, können deutlich größer gebaut werden und sind ideal für hohe Sichtbarkeit, größere Entfernungen, Events, Fassaden oder Outdoor-Werbung.</p>
+            </details>
+
+            <details>
+              <summary>Funktionieren die Bildschirme auch im Außenbereich?</summary>
+              <p>Ja, aber dafür müssen Outdoor-geeignete Bildschirme, LED-Module oder Stelen eingesetzt werden. Normale Indoor-Displays sind für Feuchtigkeit, Temperaturschwankungen, direkte Sonne und dauerhafte Außenbelastung nicht ausgelegt und sollten nicht einfach außen montiert werden.</p>
+            </details>
+
+            <details>
+              <summary>Wie hell sind die Bildschirme — sind sie auch bei Sonneneinstrahlung sichtbar?</summary>
+              <p>Für Innenräume reicht eine andere Helligkeit als für Schaufenster oder direkte Außenbereiche. Bei Standorten mit Sonne prüfen wir Blickrichtung, Tageslicht, Glasflächen und Entfernung, damit die Lösung nicht nur technisch funktioniert, sondern tatsächlich sichtbar bleibt.</p>
+            </details>
+
+            <details>
+              <summary>Wie lange hält die Hardware?</summary>
+              <p>Professionelle Digital-Signage-Hardware ist für deutlich längere Laufzeiten ausgelegt als normale Consumer-TVs. Die tatsächliche Lebensdauer hängt von Einsatzdauer, Temperatur, Helligkeit, Reinigung, Umgebung und Wartung ab; Verschleißteile, falsche Nutzung oder äußere Beschädigungen sind nicht automatisch durch Garantie abgedeckt.</p>
+            </details>
+
+            <details>
+              <summary>Welche Mediaplayer oder Software wird verwendet?</summary>
+              <p>Das hängt vom Projekt ab: einfache Menüboards, Werbenetzwerke, LED-Wände und Multi-Standort-Systeme haben unterschiedliche Anforderungen. HYSN wählt Mediaplayer, Controller und CMS so aus, dass Inhalte zuverlässig laufen, aus der Ferne aktualisiert werden können und die Hardware nicht unnötig überlastet wird.</p>
+            </details>
+          </section>
+
+          <section class="faq-category" id="installation-montage">
+            <div class="category-head">
+              <h2>Installation & Montage</h2>
+              <p>Für Kunden, die wissen möchten, wie aus Hardware vor Ort ein sauber laufendes System wird.</p>
+            </div>
+
+            <details open>
+              <summary>Wer installiert die Bildschirme?</summary>
+              <p>Die Installation kann durch HYSN beziehungsweise beauftragte Montageteams erfolgen, abhängig von Standort, Entfernung, Hardware und Projektgröße. Bei einfachen Lieferprojekten kann die Montage auch kundenseitig erfolgen, wenn Wand, Strom, Halterung und technische Einrichtung klar vorbereitet sind.</p>
+            </details>
+
+            <details>
+              <summary>Wie lange dauert eine typische Installation?</summary>
+              <p>Ein einfaches Indoor-Menüboard-Setup kann häufig innerhalb eines Tages montiert und eingerichtet werden, sofern Strom, Wandfläche und Inhalte vorbereitet sind. LED-Wände, Outdoor-Stelen, Sonderhalterungen oder Installationen mit mehreren Standorten benötigen mehr Zeit für Planung, Lieferung, Montage und Funktionstest.</p>
+            </details>
+
+            <details>
+              <summary>Brauche ich einen Elektriker?</summary>
+              <p>Wenn bereits sichere Stromanschlüsse an der richtigen Stelle vorhanden sind, ist nicht immer ein separater Elektriker nötig. Müssen neue Leitungen, abgesicherte Stromkreise, Außenanschlüsse oder bauliche Anpassungen hergestellt werden, muss ein qualifizierter Elektriker eingeplant werden.</p>
+            </details>
+
+            <details>
+              <summary>Was passiert, wenn meine Wand nicht geeignet ist?</summary>
+              <p>Dann wird nicht einfach montiert. HYSN prüft Alternativen wie Deckenhalterungen, freistehende Stelen, andere Wandbereiche, Unterkonstruktionen oder eine angepasste Bildschirmanzahl; statische oder bauliche Sonderprüfungen können zusätzliche Kosten verursachen.</p>
+            </details>
+
+            <details>
+              <summary>Können Sie auch außerhalb der Geschäftszeiten installieren?</summary>
+              <p>Ja, das kann je nach Standort und Teamplanung möglich sein, besonders bei Restaurants, Supermärkten und laufenden Betrieben. Installationen außerhalb normaler Zeiten müssen aber vorher geplant werden, weil Anfahrt, Zugang, Lärm, Stromabschaltung und Mehrkosten geklärt werden müssen.</p>
+            </details>
+
+            <details>
+              <summary>Was muss vor dem Montagetermin vorbereitet sein?</summary>
+              <p>Wichtig sind Zugang zum Standort, freie Montageflächen, geklärte Stromversorgung, Ansprechpartner vor Ort und final freigegebene Inhalte, wenn die Bildschirme direkt live gehen sollen. Bei Outdoor- oder öffentlichen Flächen kommen Genehmigungen, Fundament, Kabelführung und Sicherheitsanforderungen hinzu.</p>
+              <p><a class="inline-link" href="/installation">Mehr Details auf der Seite Installation & Montage</a></p>
+            </details>
+          </section>
+
+          <section class="faq-category" id="content-inhalte">
+            <div class="category-head">
+              <h2>Content & Inhalte</h2>
+              <p>Für Unternehmen, die keine eigenen Designer oder Techniker für Bildschirmcontent einsetzen möchten.</p>
+            </div>
+
+            <details open>
+              <summary>Müssen wir die Inhalte selbst erstellen?</summary>
+              <p>Nein. HYSN kann Menüboards, Werbegrafiken, Kampagnen, Animationen und screenfertige Inhalte erstellen, damit Sie nicht separat mit Designer, Animator und Techniker koordinieren müssen.</p>
+            </details>
+
+            <details>
+              <summary>Können wir unsere eigenen Fotos und Videos verwenden?</summary>
+              <p>Ja, eigene Fotos, Videos, Logos und CI-Vorgaben können verwendet werden, wenn Qualität, Rechte und Format passen. Wenn Bildmaterial zu klein, unscharf oder nicht verkaufsstark ist, empfehlen wir eine Überarbeitung oder neue Visuals, damit der Bildschirm nicht hochwertig montiert, aber schwach bespielt wird.</p>
+            </details>
+
+            <details>
+              <summary>Wie schnell können Inhalte aktualisiert werden?</summary>
+              <p>Bei Systemen mit Remote-Content-Management können Preisänderungen, Angebote oder Kampagnen oft ohne Vor-Ort-Termin aktualisiert werden. Die konkrete Geschwindigkeit hängt davon ab, ob nur bestehende Inhalte angepasst werden oder ob neue Designs, Animationen oder Freigaben nötig sind.</p>
+            </details>
+
+            <details>
+              <summary>Können wir Inhalte selbst ändern, ohne HYSN zu kontaktieren?</summary>
+              <p>Ja, wenn das Projekt mit einem passenden CMS und Benutzerzugang eingerichtet wird. Für einfache Änderungen kann das sinnvoll sein; bei markenrelevanten Menüboards, Kampagnen oder Werbenetzwerken empfehlen wir klare Freigabeprozesse, damit keine falschen Preise, ungeeigneten Formate oder beschädigten Layouts ausgespielt werden.</p>
+            </details>
+
+            <details>
+              <summary>Welche Dateiformate werden unterstützt?</summary>
+              <p>Typische Formate sind Bilder, Videos und screenoptimierte Design-Dateien, zum Beispiel PNG, JPG, MP4 oder projektabhängige CMS-Formate. Entscheidend sind Auflösung, Seitenverhältnis, Dateigröße, Codec und Lesbarkeit auf dem konkreten Bildschirm.</p>
+            </details>
+
+            <details>
+              <summary>Können Inhalte für mehrere Standorte zentral gesteuert werden?</summary>
+              <p>Ja, Multi-Standort-Setups können zentral geplant werden, sodass Filialen einheitliche Markeninhalte erhalten und einzelne Standorte trotzdem lokale Angebote anzeigen können. Das ist besonders sinnvoll für Franchisebetriebe, Restaurantketten, Retail-Gruppen und Werbenetzwerke.</p>
+              <p><a class="inline-link" href="/content-creation">Mehr Details auf der Seite Content Creation</a></p>
+            </details>
+          </section>
+
+          <section class="faq-category" id="wartung-support">
+            <div class="category-head">
+              <h2>Wartung & Support</h2>
+              <p>Für Kunden, die wissen möchten, was passiert, wenn ein Bildschirm im Alltag nicht wie geplant läuft.</p>
+            </div>
+
+            <details open>
+              <summary>Was passiert, wenn der Bildschirm nicht funktioniert?</summary>
+              <p>Zuerst wird geprüft, ob das Problem an Strom, Netzwerk, Mediaplayer, Content, Software oder Hardware liegt. Viele Probleme lassen sich aus der Ferne eingrenzen; wenn ein Vor-Ort-Einsatz nötig ist, wird dieser je nach Vertrag, Standort und Dringlichkeit koordiniert.</p>
+            </details>
+
+            <details>
+              <summary>Wie schnell antworten Sie bei einem Support-Problem?</summary>
+              <p>Support-Reaktionszeiten hängen vom vereinbarten Serviceumfang ab. Für laufende Kunden und betriebskritische Systeme werden klare Kommunikationswege festgelegt, damit Ausfälle nicht über unklare E-Mail-Verläufe liegen bleiben.</p>
+            </details>
+
+            <details>
+              <summary>Bieten Sie 24/7 Support an?</summary>
+              <p>Standardmäßig ist nicht jedes Projekt automatisch mit 24/7 Support ausgestattet. Für Werbenetzwerke, größere Rollouts, Events oder kritische Standorte können erweiterte Support- und Monitoring-Leistungen vereinbart werden.</p>
+            </details>
+
+            <details>
+              <summary>Was ist von der Garantie abgedeckt?</summary>
+              <p>Die Garantie richtet sich nach Hardware, Herstellerbedingungen und vereinbartem Leistungsumfang. Nicht automatisch abgedeckt sind zum Beispiel unsachgemäße Nutzung, äußere Beschädigung, bauliche Eingriffe, Stromprobleme, Feuchtigkeit bei falschem Einsatz oder nicht freigegebene Fremdsoftware.</p>
+            </details>
+
+            <details>
+              <summary>Können Sie Probleme aus der Ferne beheben?</summary>
+              <p>Ja, wenn das System mit Remote-Zugriff, stabiler Internetverbindung und geeigneter Software eingerichtet ist. Typische Fernwartung betrifft Content-Updates, Neustarts, Playlist-Prüfungen, Softwareeinstellungen und erste Fehlerdiagnosen.</p>
+            </details>
+
+            <details>
+              <summary>Gibt es Wartungspakete?</summary>
+              <p>Ja, Wartung und Betrieb können als laufende Leistung vereinbart werden, zum Beispiel für Content-Updates, technische Überwachung, Fehleranalyse, Ersatzkoordination und regelmäßige Systempflege. Der Umfang sollte vor Projektstart festgelegt werden, damit klar ist, was enthalten ist und was separat berechnet wird.</p>
+              <p><a class="inline-link" href="/maintenance">Mehr Details auf der Seite Wartung & Support</a></p>
+            </details>
+          </section>
+
+          <section class="faq-category" id="dooh-werbeeinnahmen">
+            <div class="category-head">
+              <h2>DOOH & Werbeeinnahmen</h2>
+              <p>Für Standortpartner, Kommunen und Werbekunden, die digitale Bildschirme auch zur Monetarisierung nutzen möchten.</p>
+            </div>
+
+            <details open>
+              <summary>Wie hoch ist die realistische monatliche Einnahme von einem Werbebildschirm?</summary>
+              <p>Die Einnahme hängt stark von Standortfrequenz, Sichtbarkeit, Bildschirmgröße, Aufenthaltsdauer, lokaler Werbenachfrage und Vermarktungsmodell ab. Ein guter Standort kann mehrere lokale Werbepartner tragen, aber HYSN gibt keine pauschale Einnahmegarantie, bevor Standort und Vermarktung realistisch bewertet wurden.</p>
+              <div class="video-placeholder">Video placeholder: 60-Sekunden-Erklärung „Wie Werbeeinnahmen bei einem digitalen Standort entstehen“.</div>
+            </details>
+
+            <details>
+              <summary>Wer findet die Werbepartner?</summary>
+              <p>Das hängt vom Modell ab. HYSN beziehungsweise hyads kann Vermarktung, Kampagnenplanung und Backend-Betrieb übernehmen; bei Kommunen oder Standortpartnern können lokale Kontakte zusätzlich helfen, passende regionale Werbekunden schneller zu gewinnen.</p>
+            </details>
+
+            <details>
+              <summary>Kann ich bestimmte Werbepartner ablehnen?</summary>
+              <p>Ja, bei Partner- und Standortmodellen können Ausschlusskriterien vereinbart werden, zum Beispiel für Branchen, Wettbewerber oder Inhalte, die nicht zum Standort passen. Diese Regeln sollten vorher klar definiert werden, damit die Vermarktung nicht später durch Einzelfallentscheidungen blockiert wird.</p>
+            </details>
+
+            <details>
+              <summary>Was passiert, wenn keine Werbepartner für meinen Standort gefunden werden?</summary>
+              <p>Dann fallen die erwarteten Werbeeinnahmen entsprechend niedriger aus oder bleiben aus. Deshalb sollte vor der Installation geprüft werden, ob der Standort genug Frequenz, Sichtbarkeit und lokale Werbenachfrage hat; bei schwächeren Standorten kann ein klassisches Kauf- oder Informationsdisplay sinnvoller sein als ein werbefinanziertes Modell.</p>
+            </details>
+
+            <details>
+              <summary>Wie wird die Einnahme ausgezahlt?</summary>
+              <p>Die Auszahlung hängt vom vereinbarten Modell ab, zum Beispiel Umsatzbeteiligung, Fixmiete, Co-Investment oder Partneranteil. Entscheidend ist, dass Abrechnungszeitraum, Werbeerlöse, Betriebskosten, Hardwarefinanzierung und Auszahlungslogik im Vertrag klar geregelt sind.</p>
+            </details>
+
+            <details>
+              <summary>Eignet sich jeder Standort für DOOH-Werbung?</summary>
+              <p>Nein. Ein Standort muss gesehen werden, regelmäßig Frequenz haben, ausreichend lange Blickkontakte ermöglichen und für Werbekunden relevant sein; ein Bildschirm an einer schlechten Stelle erzeugt keine verlässliche Nachfrage.</p>
+              <p><a class="inline-link" href="/dooh-hyads">Mehr Details auf der Seite DOOH & hyads</a></p>
+            </details>
+          </section>
+
+          <section class="faq-category" id="vertraege-kuendigung">
+            <div class="category-head">
+              <h2>Verträge & Kündigung</h2>
+              <p>Für Entscheider, die vor der Anfrage wissen möchten, welche Bindung, Pflichten und Optionen realistisch sind.</p>
+            </div>
+
+            <details open>
+              <summary>Was ist die typische Vertragslaufzeit?</summary>
+              <p>Die Laufzeit hängt davon ab, ob Sie kaufen, mieten, einen Servicevertrag abschließen oder ein werbefinanziertes Standortmodell nutzen. Kaufprojekte können einmalig umgesetzt werden, während Miete, Wartung, Content-Betreuung und DOOH-Modelle meist mit laufenden Vertragslaufzeiten arbeiten.</p>
+            </details>
+
+            <details>
+              <summary>Was passiert am Ende des Vertrags?</summary>
+              <p>Das wird im jeweiligen Modell geregelt. Möglich sind Rückgabe der gemieteten Hardware, Verlängerung, Kaufoption, Anpassung des Serviceumfangs oder bei Partnerprojekten eine neue Regelung für Betrieb, Einnahmen und Verantwortlichkeiten.</p>
+            </details>
+
+            <details>
+              <summary>Kann ich vorzeitig kündigen?</summary>
+              <p>Bei reinen Kaufprojekten stellt sich die Frage anders als bei Miete, Wartung oder Umsatzbeteiligung. Eine vorzeitige Kündigung laufender Verträge ist nur nach den vereinbarten Bedingungen möglich; offene Hardwarekosten, Installationskosten oder bereits erbrachte Leistungen können dabei relevant sein.</p>
+            </details>
+
+            <details>
+              <summary>Was passiert mit dem Bildschirm, wenn der Vertrag endet?</summary>
+              <p>Bei gekaufter Hardware bleibt der Bildschirm grundsätzlich beim Kunden, sofern nichts anderes vereinbart ist. Bei Miet-, Leasing-, Betreiber- oder Revenue-Sharing-Modellen kann Rückbau, Übernahme, Verlängerung oder eine neue Vereinbarung vorgesehen sein.</p>
+            </details>
+
+            <details>
+              <summary>Gibt es versteckte laufende Kosten?</summary>
+              <p>Laufende Kosten sollten im Angebot klar ausgewiesen werden, zum Beispiel Software, Wartung, Content-Updates, Remote-Management, Werbevermarktung oder Support. Wenn eine Leistung nicht im Paket enthalten ist, sollte sie auch nicht stillschweigend erwartet werden.</p>
+            </details>
+
+            <details>
+              <summary>Bekomme ich vor Vertragsschluss ein klares Angebot?</summary>
+              <p>Ja. Ein seriöses Angebot sollte zeigen, welche Hardware geliefert wird, welche Montage enthalten ist, wer Content erstellt, welche laufenden Leistungen anfallen und welche Positionen optional sind.</p>
+            </details>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Frage offen?</div>
+      <div class="cta-block">
+        <div>
+          <h2>Frage nicht dabei? Stellen Sie sie direkt.</h2>
+          <p>Schreiben Sie kurz, welcher Bildschirm, Standort oder Vertragspunkt unklar ist. HYSN antwortet mit einer konkreten Einschätzung statt einer allgemeinen Standardantwort.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="button" href="/contact">Meine Frage zu HYSN stellen</a>
+          <a class="button" href="https://wa.me/" aria-label="WhatsApp Kontakt">Frage per WhatsApp senden</a>
+          <div class="objection">Auch wenn Sie noch keine technische Spezifikation haben, reicht eine kurze Beschreibung Ihres Standorts.</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-grid">
+        <div>
+          <h3>HYSN</h3>
+          <p>Digitale Bildschirme, Content, Installation und Betrieb für Unternehmen, Kommunen und Werbestandorte.</p>
+        </div>
+        <div>
+          <h3>Leistungen</h3>
+          <a href="/digital-signage">Digital Signage</a>
+          <a href="/led-videowall">LED Videowalls</a>
+          <a href="/content-creation">Content Creation</a>
+          <a href="/maintenance">Wartung & Support</a>
+        </div>
+        <div>
+          <h3>Kontakt</h3>
+          <p>RA Vision GmbH</p>
+          <p>info@hysn.de</p>
+          <p>+49 6103 8315 032</p>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 HYSN / RA Vision GmbH. Wireframe für die FAQ-Seite.</div>
+    </footer>
+  </main>
+</body>
+</html>

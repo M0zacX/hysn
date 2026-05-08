@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HYSN Wireframe — Handel & Supermärkte</title>
+  <style>
+    :root {
+      --white: #ffffff;
+      --paper: #f4f4f4;
+      --line: #d0d0d0;
+      --text: #333333;
+      --black: #111111;
+      --body: #f0f0f0;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--body);
+      color: var(--text);
+      font-family: system-ui, -apple-system, sans-serif;
+      min-width: 1220px;
+      line-height: 1.45;
+    }
+
+    .page {
+      width: 900px;
+      margin: 0 auto 80px auto;
+      background: var(--white);
+      position: relative;
+      box-shadow: 0 0 0 1px var(--line);
+    }
+
+    .section {
+      position: relative;
+      padding: 56px 48px;
+      border-bottom: 1px solid var(--line);
+      background: var(--white);
+    }
+
+    .section.alt { background: var(--paper); }
+
+    .section-label {
+      display: block;
+      font-size: 10px;
+      line-height: 1;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      color: #333333;
+      opacity: .62;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    .annotation {
+      position: absolute;
+      left: calc(100% + 22px);
+      top: 26px;
+      width: 210px;
+      min-height: 74px;
+      padding: 14px 14px 13px 14px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: 4px 4px 0 #d0d0d0;
+      color: var(--text);
+      font-size: 12px;
+      line-height: 1.36;
+    }
+
+    .annotation strong {
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 6px;
+      color: var(--black);
+    }
+
+    h1, h2, h3, h4, p { margin-top: 0; }
+
+    h1 {
+      font-size: 52px;
+      line-height: .98;
+      letter-spacing: -0.055em;
+      color: var(--black);
+      max-width: 680px;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      font-size: 34px;
+      line-height: 1.06;
+      letter-spacing: -0.035em;
+      color: var(--black);
+      margin-bottom: 18px;
+      max-width: 720px;
+    }
+
+    h3 {
+      font-size: 22px;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 10px;
+    }
+
+    h4 {
+      font-size: 15px;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 18px;
+      max-width: 690px;
+    }
+
+    .lead {
+      font-size: 20px;
+      line-height: 1.42;
+      max-width: 700px;
+      color: var(--text);
+    }
+
+    .small { font-size: 13px; color: var(--text); }
+    .muted { opacity: .72; }
+    .no-margin { margin: 0; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 18px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      color: var(--black);
+      letter-spacing: .04em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border: 2px solid var(--black);
+      display: grid;
+      place-items: center;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .button-row {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 28px;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      border: 2px solid #333333;
+      background: transparent;
+      color: #111111;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      min-height: 48px;
+    }
+
+    .btn.small-btn {
+      padding: 10px 18px;
+      min-height: 42px;
+      font-size: 13px;
+    }
+
+    .btn:hover { background: #f4f4f4; }
+
+    .objection {
+      font-size: 13px;
+      color: var(--text);
+      max-width: 650px;
+      margin-top: 6px;
+      margin-bottom: 0;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .grid-6 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 20px;
+      min-height: 120px;
+    }
+
+    .alt .card { background: var(--white); }
+
+    .stat-card {
+      border: 1px solid var(--line);
+      padding: 18px 16px;
+      background: var(--white);
+      min-height: 130px;
+    }
+
+    .stat-number {
+      font-size: 31px;
+      line-height: 1;
+      color: var(--black);
+      font-weight: 800;
+      margin-bottom: 10px;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      min-height: 260px;
+      background: #f4f4f4;
+      border: 1px solid #d0d0d0;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      text-align: center;
+      color: #333333;
+      font-size: 13px;
+      font-weight: 600;
+      overflow: hidden;
+    }
+
+    .image-placeholder svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .image-placeholder span {
+      position: relative;
+      background: #f4f4f4;
+      padding: 8px 12px;
+      border: 1px solid #d0d0d0;
+      max-width: 250px;
+    }
+
+    .mini-placeholder { min-height: 140px; }
+
+    .path-card {
+      border: 1px solid var(--line);
+      padding: 26px;
+      background: var(--white);
+      min-height: 315px;
+      position: relative;
+    }
+
+    .path-letter {
+      width: 38px;
+      height: 38px;
+      border: 2px solid var(--text);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      margin-bottom: 18px;
+      color: var(--black);
+    }
+
+    .tag {
+      display: inline-flex;
+      border: 1px solid var(--line);
+      padding: 5px 8px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 12px;
+      background: #ffffff;
+    }
+
+    .list {
+      padding-left: 18px;
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .list li { margin-bottom: 9px; }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .step-number {
+      font-size: 13px;
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border: 2px solid var(--text);
+      font-weight: 800;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+
+    .process {
+      counter-reset: process;
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .process-item {
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 18px;
+      align-items: start;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      padding: 18px;
+    }
+
+    .process-num {
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--text);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: var(--black);
+    }
+
+    .revenue-box {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-top: 26px;
+    }
+
+    .calc {
+      border: 1px solid var(--line);
+      padding: 24px;
+      background: var(--white);
+    }
+
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 15px;
+    }
+
+    .calc-row strong { color: var(--black); }
+    .calc-row:last-child { border-bottom: 0; }
+
+    .cta-strip {
+      border: 2px solid var(--text);
+      padding: 30px;
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .comparison .card { min-height: 330px; }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .checklist li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 10px;
+      margin-bottom: 13px;
+      font-size: 15px;
+    }
+
+    .checklist li:before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--text);
+      margin-top: 3px;
+    }
+
+    .quote {
+      border-left: 3px solid var(--text);
+      padding-left: 16px;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .quote-source {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--black);
+      font-weight: 800;
+    }
+
+    .faq-item {
+      border-top: 1px solid var(--line);
+      padding: 20px 0;
+    }
+
+    .faq-item:last-child { border-bottom: 1px solid var(--line); }
+    .faq-item h3 { font-size: 18px; margin-bottom: 8px; }
+    .faq-item p { margin-bottom: 0; max-width: 770px; }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 22px;
+      background: #ffffff;
+    }
+
+    .table th, .table td {
+      border: 1px solid var(--line);
+      padding: 14px;
+      vertical-align: top;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    .table th {
+      color: var(--black);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      background: #f4f4f4;
+    }
+
+    .content-gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .gallery-card {
+      border: 1px solid var(--line);
+      background: #ffffff;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gallery-card .image-placeholder {
+      min-height: 115px;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .gallery-card div.copy { padding: 14px; }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr repeat(3, .7fr);
+      gap: 24px;
+    }
+
+    .footer-grid ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .footer-grid li { margin-bottom: 9px; }
+
+    @media print {
+      body { min-width: auto; background: white; }
+      .page { width: 900px; margin: 0; box-shadow: none; }
+      .annotation { display: none; }
+      .nav { position: relative; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <nav class="nav">
+      <div class="brand"><div class="brand-mark">HY</div><span>HYSN</span></div>
+      <div class="nav-links">
+        <a href="#formate">Formate</a>
+        <a href="#modell">Einnahmen</a>
+        <a href="#ablauf">Ablauf</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn small-btn" href="#standortanalyse">Standort prüfen lassen</a>
+      </div>
+    </nav>
+
+    <section class="section" id="hero">
+      <div class="annotation"><strong>Strategie</strong>Startet bewusst beim ungenutzten Potenzial. Diese Zielgruppe kennt Digital Signage bereits und will wissen, ob HYSN den Betrieb und die Werbeseite übernehmen kann.</div>
+      <span class="section-label">[Hero]</span>
+      <div class="hero-layout">
+        <div>
+          <h1>Ihr Markt hat täglich Reichweite. Nutzen Sie sie als digitale Werbefläche.</h1>
+          <p class="lead">HYSN plant, installiert und betreibt digitale Screens für Supermärkte, Drogerien, Tankstellen und Handelsflächen — inklusive Content-Steuerung, Werbepartnern und laufender Betreuung.</p>
+          <div class="button-row">
+            <a href="#standortanalyse" class="btn">Retail-Standort prüfen lassen</a>
+            <a href="#modell" class="btn">Einnahmemodell ansehen</a>
+          </div>
+          <p class="objection">Sie müssen keine Werbekunden suchen und kein Technikteam aufbauen — HYSN übernimmt Betrieb, Inhalte und Vermarktung nach vereinbartem Modell.</p>
+        </div>
+        <div class="image-placeholder">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1"/></svg>
+          <span>Bildplatzhalter: Digitale Werbestele im Eingangsbereich eines modernen Supermarkts</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="proof">
+      <div class="annotation"><strong>Proof</strong>Die Zahlen sind als Verkaufsbeweise aufgebaut: bestehende Handelsumfelder, Netzwerkgröße, lokaler Einstiegspreis und realistischer Werbekundenrahmen.</div>
+      <span class="section-label">[Trust Bar]</span>
+      <div class="grid-4">
+        <div class="stat-card">
+          <div class="stat-number">REWE<br>/EDEKA</div>
+          <div class="stat-label">Aktive Handelsstandorte im Projektumfeld</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">30+</div>
+          <div class="stat-label">verwaltete oder betriebene Werbescreens im HYSN/hyads-Umfeld</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">99 €</div>
+          <div class="stat-label">typischer Einstieg für lokale Werbekunden pro Monat und Standortpaket</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4–6</div>
+          <div class="stat-label">Werbekunden als realistisches Zielbild für einen gut sichtbaren Retail-Screen</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="formate">
+      <div class="annotation"><strong>Self-Selection</strong>Hilft Besuchern sofort zu erkennen, ob ihre Handelsform gemeint ist. Jede Karte nennt den passenden Screen-Fit statt nur Branchen zu listen.</div>
+      <span class="section-label">[Für welche Handelsformate]</span>
+      <h2>Für Handelsflächen, auf denen Kunden warten, laufen oder entscheiden.</h2>
+      <p>Der passende Screen hängt nicht nur von der Fläche ab, sondern vom Blickkontakt: Eingang, Kassenzone, Frischetheke, Gangführung oder Außenbereich.</p>
+      <div class="grid-6">
+        <div class="card"><h3>Supermarkt</h3><p class="small no-margin">Indoor-Stelen am Eingang, Kassenscreens oder Frischetheken-Flächen für POS-Angebote und lokale Werbung.</p></div>
+        <div class="card"><h3>Discounter</h3><p class="small no-margin">Klare Aktionskommunikation in hochfrequenten Zonen, ohne den Warenfluss zu stören.</p></div>
+        <div class="card"><h3>Drogerie</h3><p class="small no-margin">Portrait-Screens für längere Blickkontakte zwischen Beauty, Gesundheit und Impulsartikeln.</p></div>
+        <div class="card"><h3>Fachmarkt</h3><p class="small no-margin">Produktberatung, Herstellerkampagnen und Aktionsflächen dort, wo Kunden vergleichen.</p></div>
+        <div class="card"><h3>Einkaufszentrum</h3><p class="small no-margin">Zentrale Stelen oder Videowalls für Mieterkommunikation, Events und gebuchte Werbekampagnen.</p></div>
+        <div class="card"><h3>Tankstelle</h3><p class="small no-margin">Kurze, klare Spots an Kasse, Eingang oder Zapfsäulenbereich für schnelle Kaufimpulse.</p></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="value-paths">
+      <div class="annotation"><strong>Positioning</strong>Diese Sektion öffnet zwei Wege: Monetarisierung und eigene Kommunikation. Viele Retail-Entscheider denken zuerst nur an einen davon.</div>
+      <span class="section-label">[Zwei Wertwege]</span>
+      <h2>Zwei Wege, wie ein Retail-Screen für Ihren Standort arbeitet.</h2>
+      <div class="grid-2">
+        <div class="path-card">
+          <div class="path-letter">A</div>
+          <h3>Der Screen erzeugt Werbeeinnahmen.</h3>
+          <p>HYSN platziert und betreibt den Screen an einem sichtbaren Punkt. Lokale und regionale Werbepartner buchen Kampagnen. Ihr Standort erhält je nach Modell eine Beteiligung an den laufenden Werbeeinnahmen.</p>
+          <ul class="list">
+            <li>Geeignet für Eingänge, Kassenzonen und stark frequentierte Laufwege.</li>
+            <li>HYSN übernimmt Vermarktung, Einspielung und technische Betreuung.</li>
+            <li>Monatliche Auswertung schafft Transparenz über Werbepartner und Einnahmen.</li>
+          </ul>
+        </div>
+        <div class="path-card">
+          <div class="path-letter">B</div>
+          <h3>Der Screen steuert Ihre eigene POS-Kommunikation.</h3>
+          <p>Sie nutzen digitale Flächen für Wochenangebote, Frischeaktionen, Kundenhinweise oder Eigenmarken-Kampagnen. Inhalte können zeitgesteuert laufen, etwa Frühstücksangebote am Morgen und Grillaktionen am Freitagabend.</p>
+          <ul class="list">
+            <li>Geeignet für Aktionsflächen, Abteilungen und Servicebereiche.</li>
+            <li>HYSN liefert Hardware, Content-Vorlagen, Installation und Support.</li>
+            <li>Optional kombinierbar mit bezahlten Anzeigen in freien Slots.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pain">
+      <div class="annotation"><strong>Pain</strong>Die Verlustlogik ist bewusst klar: Umsatz bleibt liegen, Aufmerksamkeit wandert ab, der Markt wirkt weniger modern.</div>
+      <span class="section-label">[Pain Points]</span>
+      <h2>Ohne digitale Fläche verlieren Handelsstandorte drei Dinge gleichzeitig.</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Ungenutzte Werbefläche</h3>
+          <p class="small no-margin">Jeden Tag laufen Kunden an stark sichtbaren Punkten vorbei. Wenn dort nur statische Plakate hängen, entsteht keine laufende Werbeeinnahme.</p>
+        </div>
+        <div class="card">
+          <h3>Verlorene Aufmerksamkeit</h3>
+          <p class="small no-margin">Aktionsware, Frischeangebote und lokale Hinweise konkurrieren mit Regalen, Schildern und Einkaufsstress. Bewegte Inhalte setzen sich sichtbarer durch.</p>
+        </div>
+        <div class="card">
+          <h3>Modernitätslücke</h3>
+          <p class="small no-margin">Wenn Wettbewerber bereits digitale POS-Flächen betreiben, wirkt die eigene Kommunikation schneller veraltet — auch bei guter Warenqualität.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="use-cases">
+      <div class="annotation"><strong>Use Cases</strong>Jede Karte beantwortet Standort, Tageslogik, Inhalte und Werbemodell. So wird aus „Retail Media“ ein konkreter Betrieb im Markt.</div>
+      <span class="section-label">[Use Cases]</span>
+      <h2>So funktioniert Digital Signage im Handel konkret.</h2>
+      <div class="grid-2">
+        <div class="card">
+          <span class="tag">Großer Supermarkt</span>
+          <h3>Vom Eingangsbereich bis zur Frischetheke.</h3>
+          <p>Bei einem REWE- oder EDEKA-Format steht der stärkste Screen meist am Eingang oder in Blickrichtung Kasse. Morgens laufen Bäcker-, Kaffee- und Frühstücksimpulse, abends schnelle Angebotsflächen für Grillen, Getränke oder Convenience-Produkte.</p>
+          <p>Eigene Marktaktionen können mit bezahlten Anzeigen rotieren, zum Beispiel 60 Prozent Eigenkommunikation und 40 Prozent lokale Werbespots. Die Beteiligung wird projektbezogen festgelegt — häufig als Revenue-Share, wenn HYSN die Vermarktung übernimmt.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Drogerie</span>
+          <h3>Längere Blickkontakte für Beauty, Gesundheit und Impulskäufe.</h3>
+          <p>In Drogerien bewegen sich Kunden langsamer und vergleichen intensiver. Portrait-Displays in Aktionsnähe oder am Eingangsweg eignen sich für Beauty-Marken, OTC-Pharma, saisonale Pflege, Fotodienstleistungen und lokale Gesundheitsanbieter.</p>
+          <p>Wichtig ist eine ruhige, hochwertige Gestaltung: kurze Botschaften, klare Produktbilder und keine laute Dauerwerbung. HYSN kann Playlists so strukturieren, dass Eigenaktionen und gebuchte Kampagnen nicht gegeneinander arbeiten.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Tankstelle / Convenience</span>
+          <h3>Hohe Frequenz, sehr kurze Entscheidungsmomente.</h3>
+          <p>An Tankstellen zählt jede Sekunde. Ein Screen an der Kasse spielt kurze Impulse für Kaffee, Snacks, Autowäsche oder Tabakfolgeprodukte; ein Outdoor-Screen im Sichtfeld der Zapfsäule kann lokale Services oder Tagesangebote zeigen.</p>
+          <p>Der Werbemix funktioniert besonders gut mit Werkstätten, Lieferdiensten, Fitnessstudios, Schnellrestaurants und regionalen Angeboten. Inhalte müssen extrem klar sein: ein Bild, ein Angebot, ein nächster Schritt.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Einkaufszentrum / Mall</span>
+          <h3>Ein Screen wird zur gemeinsamen Medienfläche für viele Mieter.</h3>
+          <p>In Einkaufszentren kann der Screen dem Center-Management gehören oder durch HYSN im Partnermodell betrieben werden. Einnahmen fließen je nach Vertrag an das Center, während Mieter Kampagnen, Events und lokale Angebote sichtbar buchen können.</p>
+          <p>Der Content unterscheidet sich von einem Einzelmarkt: Orientierung, Eventhinweise, Mieteraktionen und regionale Werbung wechseln in einer klaren Rotation. So bleibt die Fläche nützlich für Besucher und wirtschaftlich interessant für Betreiber.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="standortanalyse">
+      <div class="annotation"><strong>Methodik</strong>Diese zusätzliche Sektion baut Vertrauen auf, bevor über Geld gesprochen wird. Sie zeigt: HYSN platziert nicht einfach irgendeinen Screen.</div>
+      <span class="section-label">[Standortanalyse]</span>
+      <h2>Bevor ein Screen empfohlen wird, wird der Standort geprüft.</h2>
+      <p>Eine digitale Werbefläche ist nur dann sinnvoll, wenn sie gesehen wird, technisch sauber betrieben werden kann und zum Kundenfluss passt. Deshalb bewertet HYSN vorab die wichtigsten Standortfaktoren.</p>
+      <div class="grid-4">
+        <div class="card"><h3>Sichtachsen</h3><p class="small no-margin">Wo schauen Kunden natürlich hin — Eingang, Warteschlange, Frischetheke oder Ausgang?</p></div>
+        <div class="card"><h3>Frequenz</h3><p class="small no-margin">Welche Zeiten und Zonen liefern genug Kontakte für Eigenkommunikation und Werbepartner?</p></div>
+        <div class="card"><h3>Technik</h3><p class="small no-margin">Strom, Netzwerk, Montage, Brandschutz und sichere Platzierung werden früh geprüft.</p></div>
+        <div class="card"><h3>Vermarktung</h3><p class="small no-margin">Welche Branchen passen zum Standort, ohne Kunden oder Marktpositionierung zu stören?</p></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="plan">
+      <div class="annotation"><strong>Plan</strong>Kurzer 3-Schritt-Plan nach StoryBrand: Der Kunde sieht den nächsten Weg, ohne technische Details verstehen zu müssen.</div>
+      <span class="section-label">[Der HYSN Plan]</span>
+      <h2>Der Weg vom Marktstandort zur laufenden Screenfläche.</h2>
+      <div class="steps">
+        <div class="card">
+          <div class="step-number">1</div>
+          <h3>Standort prüfen</h3>
+          <p class="small no-margin">Sie senden Grunddaten oder buchen eine Begehung. HYSN bewertet Sichtbarkeit, Frequenz, Technik und passende Screenpositionen.</p>
+        </div>
+        <div class="card">
+          <div class="step-number">2</div>
+          <h3>Screen + Werbepartner planen</h3>
+          <p class="small no-margin">Sie erhalten ein klares Modell: Gerätetyp, Platzierung, Inhalte, Werbeflächen, Sperrbranchen und Einnahmestruktur.</p>
+        </div>
+        <div class="card">
+          <div class="step-number">3</div>
+          <h3>Laufende Einnahmen starten</h3>
+          <p class="small no-margin">Nach Installation übernimmt HYSN Betrieb, Content-Steuerung und Werbemanagement nach vereinbartem Leistungsumfang.</p>
+        </div>
+      </div>
+      <div class="button-row">
+        <a class="btn" href="#kontakt">Standortmodell besprechen</a>
+      </div>
+      <p class="objection">Auch ein Pilot mit einem Standort ist möglich, bevor weitere Filialen ausgerollt werden.</p>
+    </section>
+
+    <section class="section" id="modell">
+      <div class="annotation"><strong>Revenue</strong>Keine Garantieversprechen. Die Beispielrechnung gibt Orientierung und zeigt, dass die Werbeseite realistisch gedacht ist.</div>
+      <span class="section-label">[Revenue Model]</span>
+      <h2>Wie die finanzielle Seite für Handelsstandorte funktioniert.</h2>
+      <p>Je nach Standort und Vertragsmodell kann der Screen gekauft, gemietet, gemeinsam betrieben oder über ein Revenue-Share-Modell eingesetzt werden. Bei einem werbefinanzierten Modell akquiriert und verwaltet HYSN lokale oder regionale Werbepartner; Ihr Standort erhält eine vereinbarte Beteiligung oder profitiert von einer reduzierten Einstiegshürde.</p>
+      <div class="revenue-box">
+        <div class="image-placeholder">
+          <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1"/></svg>
+          <span>Grafikplatzhalter: Einnahmenfluss zwischen Standort, HYSN und Werbepartnern</span>
+        </div>
+        <div class="calc">
+          <span class="tag">Orientierung, keine Garantie</span>
+          <h3>Beispiel für einen gut sichtbaren Indoor-Screen</h3>
+          <div class="calc-row"><span>4 lokale Werbekunden</span><strong>4 × 99 €</strong></div>
+          <div class="calc-row"><span>Monatlicher Werbeumsatz brutto</span><strong>396 €</strong></div>
+          <div class="calc-row"><span>6 lokale Werbekunden</span><strong>6 × 99 €</strong></div>
+          <div class="calc-row"><span>Monatlicher Werbeumsatz brutto</span><strong>594 €</strong></div>
+          <div class="calc-row"><span>Standortbeteiligung</span><strong>vertraglich definiert</strong></div>
+          <p class="small muted no-margin">Die tatsächliche Einnahme hängt von Frequenz, Sichtbarkeit, Werbenachfrage, Laufzeit, Screenposition und vereinbartem Modell ab.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="ablauf">
+      <div class="annotation"><strong>Operations</strong>Der Ablauf übersetzt das Angebot in eine sichere Entscheidungsstrecke — von Kontakt bis zu ersten Werbekunden.</div>
+      <span class="section-label">[How It Works]</span>
+      <h2>Vom ersten Gespräch bis zum laufenden Screenbetrieb.</h2>
+      <div class="process">
+        <div class="process-item"><div class="process-num">1</div><div><h3>Kurze Standortaufnahme</h3><p class="small no-margin">Sie nennen Marktformat, Adresse, Wunschbereich und aktuelle Herausforderungen. Fotos oder eine Begehung reichen für eine erste Einschätzung.</p></div></div>
+        <div class="process-item"><div class="process-num">2</div><div><h3>Empfehlung mit Modell</h3><p class="small no-margin">HYSN schlägt Gerätetyp, Position, Content-Mix, Werbekategorien, Sperrbranchen und Einnahmelogik vor.</p></div></div>
+        <div class="process-item"><div class="process-num">3</div><div><h3>Installation und Content-Setup</h3><p class="small no-margin">Screen, Halterung, Player, Netzwerk, Testbetrieb und erste Inhalte werden eingerichtet. Ihr Team muss keine technische Plattform einrichten.</p></div></div>
+        <div class="process-item"><div class="process-num">4</div><div><h3>Betrieb mit ersten Werbepartnern</h3><p class="small no-margin">Nach Freigabe laufen eigene Inhalte und gebuchte Werbekampagnen. Monatliche Reports zeigen Inhalte, Partner und vereinbarte Einnahmen.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="cta-mid">
+      <div class="annotation"><strong>Conversion</strong>CTA genau an dem Punkt, an dem Modell und Ablauf verstanden sind. Kein generisches „Kontakt aufnehmen“.</div>
+      <span class="section-label">[Mid-Page CTA]</span>
+      <div class="cta-strip">
+        <div>
+          <h2 class="no-margin">Prüfen Sie, ob Ihr Markt als Werbestandort funktioniert.</h2>
+          <p class="small no-margin">HYSN bewertet Sichtbarkeit, Technik und realistisches Werbepotenzial.</p>
+        </div>
+        <div>
+          <a class="btn" href="#kontakt">Standortanalyse anfordern</a>
+          <p class="objection">Die Ersteinschätzung verpflichtet Sie nicht zu einem Rollout.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="produkte">
+      <div class="annotation"><strong>Products</strong>Produktkarten sind nicht technisch erklärt, sondern mit Retail-Nutzen verknüpft.</div>
+      <span class="section-label">[Relevant Products]</span>
+      <h2>Die passenden HYSN-Lösungen für Handel und Supermärkte.</h2>
+      <div class="grid-4">
+        <div class="card">
+          <div class="image-placeholder mini-placeholder"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1"/></svg><span>Digital Signage Display</span></div>
+          <h3>Digital Signage</h3>
+          <p class="small no-margin">Für Angebote, Hinweise und Kampagnen, die zentral gesteuert und schnell aktualisiert werden.</p>
+        </div>
+        <div class="card">
+          <div class="image-placeholder mini-placeholder"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1"/></svg><span>Indoor Werbestele</span></div>
+          <h3>Indoor Werbestelen</h3>
+          <p class="small no-margin">Für Eingangsbereiche, Kassenzonen und Laufwege mit hoher Kundenfrequenz.</p>
+        </div>
+        <div class="card">
+          <div class="image-placeholder mini-placeholder"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1"/></svg><span>LCD Videowall</span></div>
+          <h3>LCD Videowall</h3>
+          <p class="small no-margin">Für größere Aktionsflächen, Centerbereiche und aufmerksamkeitsstarke Innenwerbung.</p>
+        </div>
+        <div class="card">
+          <div class="image-placeholder mini-placeholder"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1"/></svg><span>hyads Netzwerk</span></div>
+          <h3>hyads DOOH-Netzwerk</h3>
+          <p class="small no-margin">Für Standorte, die digitale Reichweite mit lokaler Werbevermarktung verbinden möchten.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="content-gallery">
+      <div class="annotation"><strong>Visibility</strong>Diese zusätzliche Galerie nimmt die Sorge, dass der Screen billig oder störend wirkt. Sie zeigt einen sinnvollen Tagesmix.</div>
+      <span class="section-label">[Content-Beispiele]</span>
+      <h2>Was auf einem Retail-Screen tatsächlich laufen kann.</h2>
+      <p>Der Screen muss nicht wie eine reine Werbefläche wirken. Ein sinnvoller Mix verbindet Marktinformationen, Eigenaktionen und bezahlte Kampagnen in einer ruhigen Rotation.</p>
+      <div class="content-gallery">
+        <div class="gallery-card"><div class="image-placeholder"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1"/></svg><span>Morgen</span></div><div class="copy"><h4>Frühstück & Bäckerei</h4><p class="small no-margin">Kaffee, Backwaren, Tagesstart-Angebote.</p></div></div>
+        <div class="gallery-card"><div class="image-placeholder"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1"/></svg><span>Mittag</span></div><div class="copy"><h4>Convenience & Frische</h4><p class="small no-margin">Schnelle Mahlzeiten, Salatbar, To-go-Produkte.</p></div></div>
+        <div class="gallery-card"><div class="image-placeholder"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1"/></svg><span>Abend</span></div><div class="copy"><h4>Grillen & Getränke</h4><p class="small no-margin">Wochenendaktionen, Aktionsware, regionale Produkte.</p></div></div>
+        <div class="gallery-card"><div class="image-placeholder"><svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="0" x2="100" y2="100" stroke="#d0d0d0" stroke-width="1"/><line x1="100" y1="0" x2="0" y2="100" stroke="#d0d0d0" stroke-width="1"/></svg><span>Werbeslot</span></div><div class="copy"><h4>Lokale Kampagnen</h4><p class="small no-margin">Apotheke, Fitnessstudio, Autohaus, Gastronomie.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="case-study">
+      <div class="annotation"><strong>Case Study</strong>Vorher/Nachher-Struktur macht den Wert greifbar. Zahlen werden als Projekt-/Orientierungswerte markiert, nicht als Garantie.</div>
+      <span class="section-label">[Vorher / Nachher Case Study]</span>
+      <h2>Beispiel aus dem REWE/EDEKA-Umfeld: aus statischer POS-Fläche wird ein laufender Medienstandort.</h2>
+      <div class="comparison">
+        <div class="card">
+          <span class="tag">Vorher</span>
+          <h3>Gute Kundenfrequenz, aber keine digitale Einnahmefläche.</h3>
+          <ul class="list">
+            <li>Aktionsplakate mussten gedruckt, getauscht und im Markt verteilt werden.</li>
+            <li>Der Eingangsbereich hatte Sichtbarkeit, wurde aber nicht als Medienfläche genutzt.</li>
+            <li>Lokale Werbepartner konnten nicht sauber eingebunden oder ausgewertet werden.</li>
+            <li>Der Markt wirkte im Vergleich zu modernen Retail-Media-Flächen weniger digital.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tag">Nachher</span>
+          <h3>Ein sichtbarer Screen mit Eigencontent und gebuchten Werbeslots.</h3>
+          <ul class="list">
+            <li>Eigene Marktaktionen laufen zeitgesteuert neben lokalen Werbekampagnen.</li>
+            <li>Werbepartner werden zentral verwaltet, ohne dass das Marktteam Kampagnen bauen muss.</li>
+            <li>Bei 4–6 lokalen Buchungen entsteht ein monatlicher Werbeumsatz von ca. 396–594 € brutto als Orientierungsrahmen.</li>
+            <li>Der Standort erhält ein moderneres Erscheinungsbild und eine klare Grundlage für weitere Screens.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="annotation"><strong>Voice</strong>Dummy-Zitate klingen bewusst operativ, nicht glatt. Sie greifen echte Einwände auf: Einnahmehöhe, Rollout-Aufwand, Kundenwahrnehmung.</div>
+      <span class="section-label">[Testimonials]</span>
+      <h2>Was Handelsentscheider nach dem Start bemerken.</h2>
+      <div class="grid-3">
+        <div class="card">
+          <p class="quote">„Wir hatten im ersten Monat vorsichtig mit etwa 200 € Werbeumsatz gerechnet. Am Ende lag der Screen bei 380 €, weil die Position direkt am Eingang besser funktioniert hat als erwartet.“</p>
+          <div class="quote-source">Marktleiter, Supermarkt Rhein-Main</div>
+        </div>
+        <div class="card">
+          <p class="quote">„Wir haben mit einem Pilotmarkt in Frankfurt gestartet und sind jetzt bei vier Standorten. Der wichtigste Punkt: Mein Team muss keine Anzeigenkunden koordinieren und keine Dateien einspielen.“</p>
+          <div class="quote-source">Regionalmanager, Lebensmitteleinzelhandel</div>
+        </div>
+        <div class="card">
+          <p class="quote">„Was ich nicht erwartet habe: Stammkunden sprechen Aktionen häufiger an als bei gedruckten Plakaten. Besonders bei wechselnden Wochenangeboten ist der Screen deutlich sichtbarer.“</p>
+          <div class="quote-source">Betreiberin, Drogerie / Convenience</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="handles">
+      <div class="annotation"><strong>Objection Killer</strong>Diese Sektion entfernt die größte Bremse: „Bleibt die Arbeit bei uns hängen?“ Die Antwort ist sichtbar in zwei Spalten.</div>
+      <span class="section-label">[HYSN übernimmt / Ihr Markt übernimmt]</span>
+      <h2>Klar getrennt: Was HYSN übernimmt — und was bei Ihrem Standort bleibt.</h2>
+      <div class="comparison">
+        <div class="card">
+          <h3>HYSN übernimmt</h3>
+          <ul class="checklist">
+            <li>Standortanalyse und Screenempfehlung</li>
+            <li>Hardware, Halterung, Player und technische Einrichtung</li>
+            <li>Installation und Funktionstest vor Ort</li>
+            <li>Content-Struktur, Playlists und Kampagnensteuerung</li>
+            <li>Akquise und Verwaltung von Werbepartnern, wenn Teil des Modells</li>
+            <li>Remote-Support, Wartungskoordination und monatliche Auswertung</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Ihr Standort übernimmt</h3>
+          <ul class="checklist">
+            <li>Freigabe des geeigneten Platzes im Markt</li>
+            <li>Abstimmung zu Eigeninhalten, Sperrbranchen und Werberegeln</li>
+            <li>Zugang für Installation und technische Prüfung</li>
+            <li>Benennung eines Ansprechpartners für Freigaben</li>
+            <li>Optional: Hinweise auf lokale Werbepartner, wenn gewünscht</li>
+            <li>Keine tägliche Bedienung des Screens im Markt erforderlich</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="vergleich">
+      <div class="annotation"><strong>Differentiation</strong>Zusätzliche Vergleichstabelle zeigt HYSN zwischen großer Retail-Media-Welt und Nichtstun: lokaler, konkreter, betreuter.</div>
+      <span class="section-label">[Vergleich]</span>
+      <h2>Warum ein HYSN-Modell anders ist als klassische Retail-Media-Netzwerke.</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Option</th>
+            <th>Was passiert</th>
+            <th>Risiko für den Markt</th>
+            <th>Wann sinnvoll</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>HYSN / hyads Modell</strong></td>
+            <td>Screen, Betrieb, lokale Vermarktung und Reports aus einer Hand.</td>
+            <td>Gering, weil Aufwand und Werbemanagement ausgelagert werden können.</td>
+            <td>Wenn ein Standort Einnahmen und moderne Kommunikation verbinden will.</td>
+          </tr>
+          <tr>
+            <td><strong>Klassisches Retail Media</strong></td>
+            <td>Große Netzwerke mit nationalen Kampagnen und standardisierten Buchungen.</td>
+            <td>Oft weniger flexibel für kleinere Standorte oder lokale Werbekunden.</td>
+            <td>Wenn bereits Konzernstrukturen und zentrale Media-Prozesse bestehen.</td>
+          </tr>
+          <tr>
+            <td><strong>Statische Plakate</strong></td>
+            <td>Druck, Austausch und begrenzte Aktualität.</td>
+            <td>Keine laufende digitale Einnahmefläche und weniger Sichtbarkeit.</td>
+            <td>Nur bei sehr selten wechselnder Kommunikation.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section alt" id="reporting">
+      <div class="annotation"><strong>Transparency</strong>Beruhigt Entscheider, die Sichtbarkeit über Kampagnen, Inhalte und Einnahmen erwarten.</div>
+      <span class="section-label">[Monatliches Reporting]</span>
+      <h2>Sie behalten Überblick, ohne den Screen täglich zu verwalten.</h2>
+      <p>Monatliche Auswertungen können zeigen, welche Werbepartner aktiv waren, welche Inhalte gespielt wurden, welche Einnahmen angefallen sind und welche Kampagnen für den nächsten Zeitraum geplant sind.</p>
+      <div class="grid-3">
+        <div class="stat-card"><div class="stat-number">Partner</div><div class="stat-label">Aktive Werbekunden und gebuchte Zeiträume</div></div>
+        <div class="stat-card"><div class="stat-number">Slots</div><div class="stat-label">Eigencontent, Werbespots und geplante Rotationen</div></div>
+        <div class="stat-card"><div class="stat-number">€</div><div class="stat-label">Abrechnung und Beteiligung nach vereinbartem Modell</div></div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="annotation"><strong>FAQ</strong>Retail-Fragen statt Marketing-Fragen. Fokus: Kontrolle, Wettbewerber, Technik, Vertrag und Transparenz.</div>
+      <span class="section-label">[FAQ]</span>
+      <h2>Fragen, die Marktleiter und Retail-Manager vor der Entscheidung stellen.</h2>
+      <div class="faq-item">
+        <h3>Wer entscheidet, was auf dem Screen läuft?</h3>
+        <p>Vor dem Start werden Content-Regeln festgelegt: Eigeninhalte, Werbekategorien, Sperrbranchen, Freigaben und Laufzeiten. Sie behalten Kontrolle über sensible Inhalte, während HYSN die technische Einspielung übernimmt.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Können wir Wettbewerber oder bestimmte Branchen ausschließen?</h3>
+        <p>Ja. Wettbewerber, sensible Produktgruppen oder unpassende Branchen können vertraglich ausgeschlossen werden. Gerade bei Supermärkten und Drogerien ist diese Abstimmung wichtig.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Was passiert, wenn nicht genug Werbekunden buchen?</h3>
+        <p>Dann wird das Modell angepasst: mehr Eigencontent, andere Branchenansprache, geänderte Pakete oder ein Pilotzeitraum mit klarer Auswertung. HYSN kommuniziert Einnahmen als Potenzial, nicht als garantierte Pauschale.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Braucht der Screen eine eigene Internetleitung?</h3>
+        <p>Nicht immer. Je nach Standort kann vorhandenes Netzwerk, Mobilfunk oder eine separate Lösung sinnvoll sein. HYSN prüft vorab, welche Variante stabil und für den Markt praktikabel ist.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Wer zahlt Strom, Wartung und Reparaturen?</h3>
+        <p>Das hängt vom gewählten Modell ab. Im Angebot wird klar getrennt, welche Kosten im Betrieb enthalten sind, welche Leistungen HYSN übernimmt und welche Standortkosten beim Markt bleiben.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Erhalten wir monatliche Reports?</h3>
+        <p>Bei einem vermarkteten Modell können monatliche Auswertungen vereinbart werden: aktive Werbepartner, Kampagnen, Laufzeiten, Einnahmen und nächste Planungsschritte.</p>
+      </div>
+    </section>
+
+    <section class="section alt" id="stakes">
+      <div class="annotation"><strong>Final CTA</strong>Stakes ohne Angstmache: Wettbewerber nutzen Reichweite bereits. Der CTA ist spezifisch und auf den nächsten Schritt fokussiert.</div>
+      <span class="section-label">[Stakes + Final CTA]</span>
+      <h2>Jeder Monat ohne digitale Fläche lässt Reichweite ungenutzt.</h2>
+      <p>Handelsstandorte mit hoher Frequenz werden zunehmend zu Medienflächen. Wenn Ihr Markt täglich Kundenkontakt hat, aber keine digitale Werbefläche betreibt, bleiben Aufmerksamkeit, Modernität und mögliche Werbeeinnahmen liegen.</p>
+      <div class="button-row">
+        <a class="btn" href="#kontakt">Retail-Screen für meinen Standort prüfen</a>
+        <a class="btn" href="#modell">Beispielrechnung noch einmal ansehen</a>
+      </div>
+      <p class="objection">Sie erhalten zuerst eine Standortbewertung — keine pauschale Geräteempfehlung und kein unrealistisches Einnahmeversprechen.</p>
+    </section>
+
+    <section class="section" id="kontakt">
+      <div class="annotation"><strong>Lead Form</strong>Formularfelder erfassen die Informationen, die für eine echte Standortanalyse relevant sind.</div>
+      <span class="section-label">[Kontaktformular Wireframe]</span>
+      <h2>Standortanalyse anfordern</h2>
+      <p>Füllen Sie die wichtigsten Angaben aus. HYSN prüft, welches Modell für Ihren Markt realistisch ist: Eigenkommunikation, Werbeeinnahmen oder eine Kombination aus beidem.</p>
+      <div class="grid-2">
+        <div class="card"><h4>Name / Unternehmen</h4><p class="small no-margin">Textfeld</p></div>
+        <div class="card"><h4>Handelsformat</h4><p class="small no-margin">Supermarkt, Drogerie, Tankstelle, Fachmarkt, Center</p></div>
+        <div class="card"><h4>Standort / Region</h4><p class="small no-margin">Adresse oder Stadt</p></div>
+        <div class="card"><h4>Gewünschter Einsatz</h4><p class="small no-margin">Werbeeinnahmen, POS-Kommunikation, beides</p></div>
+        <div class="card"><h4>Kontakt</h4><p class="small no-margin">E-Mail und Telefonnummer</p></div>
+        <div class="card"><h4>Optional</h4><p class="small no-margin">Fotos vom Eingangsbereich oder Kassenzone hochladen</p></div>
+      </div>
+      <div class="button-row">
+        <a class="btn" href="mailto:info@hysn.de">Standortdaten senden</a>
+      </div>
+      <p class="objection">Ihre Angaben reichen für eine erste Einschätzung; Details können im Beratungsgespräch geklärt werden.</p>
+    </section>
+
+    <footer class="section alt" id="footer">
+      <div class="annotation"><strong>Footer</strong>Footer bleibt schlank, mit B2B-relevanten Einstiegen und rechtlichen Links. Keine Template-Reste.</div>
+      <span class="section-label">[Footer]</span>
+      <div class="footer-grid">
+        <div>
+          <div class="brand" style="margin-bottom:14px;"><div class="brand-mark">HY</div><span>HYSN</span></div>
+          <p class="small">Digitale Screens, DOOH-Werbeflächen und Retail-Media-Lösungen für Handelsstandorte in Deutschland.</p>
+          <p class="small no-margin">RA Vision GmbH · info@hysn.de · +49 6103 8315 032</p>
+        </div>
+        <div>
+          <h4>Lösungen</h4>
+          <ul>
+            <li>Handel & Supermärkte</li>
+            <li>Gastronomie</li>
+            <li>Kommunen</li>
+            <li>Events</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Produkte</h4>
+          <ul>
+            <li>Digital Signage</li>
+            <li>LED Videowalls</li>
+            <li>LCD Videowalls</li>
+            <li>Werbestelen</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Rechtliches</h4>
+          <ul>
+            <li>Impressum</li>
+            <li>Datenschutz</li>
+            <li>AGB</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
