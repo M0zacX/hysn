@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(powershell -ExecutionPolicy Bypass -File \"c:\\\\hysn-main\\\\contactpage\\\\_splice.ps1\"; Remove-Item \"c:\\\\hysn-main\\\\contactpage\\\\_splice.ps1\",\"c:\\\\hysn-main\\\\contactpage\\\\_sec4.html\" -Force)",
+      "PowerShell(powershell -ExecutionPolicy Bypass -File 'c:\\\\hysn-main\\\\content-creation-page\\\\build.ps1')"
+    ]
+  }
+}
